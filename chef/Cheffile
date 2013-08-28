@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'chef-client'
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'vim'
+cookbook 'fail2ban'
+cookbook 'ufw'
+cookbook 'htop'
+cookbook 'ssh_known_hosts'
+cookbook 'java'
+cookbook 'python'
+cookbook 'ntp'
+cookbook 'sudo'
+cookbook 'logwatch'
+cookbook 'apache2'
+cookbook 'redis', :git => "https://github.com/miah/chef-redis"
+cookbook 'database'
+cookbook 'postgresql'
+cookbook 'unattended-upgrades',
+    git: 'git://github.com/patdeegan/chef-unattended-upgrades.git'
+cookbook 'htop'
+cookbook 'phantomjs'
+cookbook 'openssh'
+cookbook 'nodejs'
+cookbook 'statsd', :git => 'https://github.com/jellybob/kitchen.git', :ref => "statsd"
+cookbook 'rbenv'
+cookbook 'ruby_build'
+cookbook 'bundler'
+cookbook 'rails'
+cookbook 'nginx'

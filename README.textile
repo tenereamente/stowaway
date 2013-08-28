@@ -46,12 +46,39 @@ The application is configured to send email using a Mandrill account.
 
 h2. Getting Started
 
-TODO: vagrant, chef, capistrano
+1. Install [Vagrant](http://www.vagrantup.com)
+2. Install [Virtualbox](http://www.virtualbox.org)
+3. Install the vagrant-omnibus plugin using `vagrant plugin install vagrant-omnibus`
+4. Install the vagrant-vbguest plugin using `vagrant plugin install vagrant-vbguest`
+5. Run `vagrant up`. The first time this will download 300MB for the base box, after that it is cached for re-use.
+6. Once provisioning completes, you can visit the [dev version of StowAway](http://localhost:3000). Register for an account.
+
+h2. Installing a real server
+
+1. Provision a fresh server (Digital Ocean, EC2, fresh OS install, etc).
+2. Add your SSH key to the server using `ssh-copy-id root@stowaway.com`. On OS X the ssh-copy-id command can be installed from homebrew using `brew install ssh-copy-id`.
+3. Install chef-solo from the omnibus package
+
+    ssh root@stowaway.com "curl -L https://www.opscode.com/chef/install.sh | bash"
+
+4. Rsync the chef recipes to the machine and run chef-solo
+
+    ./provision-server-with-chef-solo
+
+At this point you should see chef run to completion and give you a fully configured server. Any chef recipe attributes that need to be overriden to tweak the server in a different way than the Vagrant machine can be specified in `chef/roles/server.rb`, otherwise things should be identical to the Vagrant machine. In order to make changes, you can work locally and change the recipe files, then test them out with `vagrant provision`. Once you are happy with the changes you can apply them to the server by re-running step 4.
+
+h2. Deploying the application
+
+TODO: capistrano staging + production environments
+TODO: chef phusion passenger
 
 h2. Running Tests
 
 * rake cucumber
 * rake spec
+
+TODO: Travis-CI
+TODO: Jasmine
 
 h2. Documentation and Support
 
