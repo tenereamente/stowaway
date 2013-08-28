@@ -17,16 +17,9 @@ SITE
       postgresql (>= 1.0.0)
       xfs (>= 0.0.0)
     discovery (0.2.0)
-    dmg (1.1.0)
     fail2ban (1.2.2)
       yum (>= 0.0.0)
     firewall (0.11.0)
-    git (2.5.2)
-      build-essential (>= 0.0.0)
-      dmg (>= 0.0.0)
-      runit (>= 1.0)
-      windows (>= 0.0.0)
-      yum (>= 0.0.0)
     htop (1.1.0)
       yum (>= 0.0.0)
     iptables (0.12.0)
@@ -64,11 +57,6 @@ SITE
     rails (0.9.2)
       apache2 (>= 0)
       ruby (>= 0)
-    rbenv (1.5.1)
-      apt (>= 0.0.0)
-      build-essential (>= 0.0.0)
-      git (>= 0.0.0)
-      ohai (>= 1.1)
     ruby (0.9.2)
     ruby_build (0.8.0)
     rubygems (0.3.0)
@@ -94,6 +82,13 @@ GIT
   specs:
     unattended-upgrades (0.0.1)
       apt (>= 0.0.0)
+
+GIT
+  remote: https://github.com/fnichol/chef-rbenv
+  ref: v0.7.2
+  sha: f2b53292e810dd2b43f6121f9958f5f29979dcb1
+  specs:
+    rbenv (0.7.2)
 
 GIT
   remote: https://github.com/miah/chef-redis

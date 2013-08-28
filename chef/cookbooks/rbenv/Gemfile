@@ -1,8 +1,10 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'berkshelf', '>= 3.0.0.beta1'
-gem 'thor-foodcritic'
+gem 'rake'
+gem 'foodcritic'
 
-group :development do
-  gem 'thor'
+group :integration do
+  gem 'berkshelf'
+  gem 'jamie'
+  gem 'jamie-vagrant'
 end

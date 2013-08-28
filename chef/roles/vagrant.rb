@@ -8,7 +8,7 @@ run_list(
     "recipe[build-essential]",
     "recipe[ruby_build]", 
     "recipe[bundler]",
-    #"recipe[rbenv::user_install]",
+    "recipe[rbenv::system]",
     "recipe[rails]",
     "recipe[custom]"
 )
@@ -19,7 +19,9 @@ override_attributes(
     "mail" => nil
   },
   :rbenv => {
-   "rubies" => "2.0.0-p247"
+    rubies: "2.0.0-p247",
+    global: "2.0.0-p247",
+    gems: {'2.0.0-p247' => [{ name: 'bundler' }]}
   }
 )
 
