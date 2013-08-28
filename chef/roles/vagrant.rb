@@ -6,8 +6,6 @@ run_list(
     "recipe[unattended-upgrades]",
     "recipe[redis::server]",
     "recipe[build-essential]",
-    "recipe[statsd]",
-    "recipe[phantomjs]",
     "recipe[ruby_build]", 
     "recipe[bundler]",
     #"recipe[rbenv::user_install]",

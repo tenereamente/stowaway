@@ -23,10 +23,8 @@ cookbook 'postgresql'
 cookbook 'unattended-upgrades',
     git: 'git://github.com/patdeegan/chef-unattended-upgrades.git'
 cookbook 'htop'
-cookbook 'phantomjs'
 cookbook 'openssh'
 cookbook 'nodejs'
-cookbook 'statsd', :git => 'https://github.com/jellybob/kitchen.git', :ref => "statsd"
 cookbook 'rbenv'
 cookbook 'ruby_build'
 cookbook 'bundler'
