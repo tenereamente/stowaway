@@ -22,8 +22,8 @@ group :development do
   gem 'quiet_assets'
   gem 'hooves', require: 'hooves/default' # make unicorn the default for rails s
   gem 'git-smart', require: false
+  gem 'librarian-chef', require: false
   gem 'letter_opener'
-  gem 'librarian', '>= 0.0.26', require: false
 end
 group :development, :test do
   gem 'factory_girl_rails'

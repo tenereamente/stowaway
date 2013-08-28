@@ -46,19 +46,16 @@ The application is configured to send email using a Mandrill account.
 
 h2. Getting Started
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+TODO: vagrant, chef, capistrano
+
+h2. Running Tests
+
+* rake cucumber
+* rake spec
 
 h2. Documentation and Support
 
 This is the only documentation.
-
-h4. Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Similar Projects
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 h2. Contributing
 
@@ -69,12 +66,10 @@ If you make improvements to this application, please share with others.
 * Commit with Git.
 * Send the author a pull request.
 
-If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I'll add a note to the README so that others can find your work.
-
 h2. Credits
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Jay Collins, Johann Sabbath, Patrick Kenney, Elliot Murphy
 
 h2. License
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Apache V2.0
