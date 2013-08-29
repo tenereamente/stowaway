@@ -28,6 +28,7 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'knife-solo_data_bag'
 end
 group :test do
   gem 'capybara'

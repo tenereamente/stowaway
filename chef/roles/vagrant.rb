@@ -9,6 +9,7 @@ run_list(
     "recipe[ruby_build]", 
     "recipe[bundler]",
     "recipe[rbenv::system]",
+    "recipe[postgresql::server]",
     "recipe[rails]",
     "recipe[custom]"
 )
@@ -22,6 +23,14 @@ override_attributes(
     rubies: "2.0.0-p247",
     global: "2.0.0-p247",
     gems: {'2.0.0-p247' => [{ name: 'bundler' }]}
+  },
+  :postgresql => {
+    password: { postgres: "totallyinsecure" },
+    server: { packages: %w{postgresql postgresql-contrib} },
+    pg_hba: [
+      {type: 'local', db: 'all', user: 'postgres', addr: nil, method: 'ident' },
+      {type: 'host', db: 'all', user: 'postgres', addr: 'localhost', method: 'md5'}
+    ]
   }
 )
 
