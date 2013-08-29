@@ -50,7 +50,7 @@ h2. Getting Started
 2. Install [Virtualbox](http://www.virtualbox.org)
 3. Install the vagrant-omnibus plugin using `vagrant plugin install vagrant-omnibus`
 4. Install the vagrant-vbguest plugin using `vagrant plugin install vagrant-vbguest`
-5. Run `vagrant up`. The first time this will download 300MB for the base box, after that it is cached for re-use.
+5. Run `vagrant up`. The first time this will download 500MB for the base box, after that it is cached for re-use.
 6. Once provisioning completes, you can visit the [dev version of StowAway](http://localhost:3000). Register for an account.
 
 h2. Installing a real server
