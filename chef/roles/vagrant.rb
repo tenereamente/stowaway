@@ -9,12 +9,15 @@ run_list(
     "recipe[ruby_build]", 
     "recipe[bundler]",
     "recipe[rbenv::system]",
+    "recipe[database]",
     "recipe[postgresql::server]",
+    "recipe[postgresql::contrib]",
+    "recipe[postgresql::config_pgtune]",
     "recipe[rails]",
     "recipe[custom]"
 )
 
-override_attributes(
+default_attributes(
   :unattended_upgrades => {
     "allowed_origins" => ['${distro_id}:${distro_codename}-security'],
     "mail" => nil
@@ -26,11 +29,17 @@ override_attributes(
   },
   :postgresql => {
     password: { postgres: "totallyinsecure" },
-    server: { packages: %w{postgresql postgresql-contrib} },
     pg_hba: [
       {type: 'local', db: 'all', user: 'postgres', addr: nil, method: 'ident' },
       {type: 'host', db: 'all', user: 'postgres', addr: 'localhost', method: 'md5'}
-    ]
+    ],
+    config_pgtune: { db_type: 'desktop', max_connections: '5', total_memory: '131072kB' }
+  },
+  :custom => {
+    :cap_base => '/app',
+    :deploy_to => 'dev',
+    :database => 'stowaway_development',
+    :database_password => 'insecure'
   }
 )
 
