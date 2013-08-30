@@ -52,7 +52,8 @@ h2. Getting Started
 4. Install the vagrant-vbguest plugin using `vagrant plugin install vagrant-vbguest`
 5. Run `vagrant up`. The first time this will download 500MB for the base box, after that it is cached for re-use.
 6. `vagrant ssh-config --host stowaway_development >> ~/.ssh/config`
-7. Once provisioning completes, you can go to the Deploy step.
+7. 1. Run `cap development deploy:setup deploy:migrations` 
+8. Once provisioning completes, you can go to the Deploy step.
 
 h2. Installing a real server
 
@@ -68,15 +69,22 @@ h2. Installing a real server
 
 At this point you should see chef run to completion and give you a fully configured server. Any chef recipe attributes that need to be overriden to tweak the server in a different way than the Vagrant machine can be specified in `chef/roles/server.rb`, otherwise things should be identical to the Vagrant machine. In order to make changes, you can work locally and change the recipe files, then test them out with `vagrant provision`. Once you are happy with the changes you can apply them to the server by re-running step 4.
 
-5. Go to the deploy step
+5. Run `cap staging deploy:setup deploy:migrations` 
+
+6. Run `cap production deploy:setup deploy:migrations`
+
+7. Manually configure DNS to point to the server
+
+8. TODO: SSL certificates
+
 
 h2. Deploying the application
 
-TODO: capistrano staging + production environments
 Portions of capistrano tasks were based on https://github.com/smartlogic/chef-cap-demo/
 
-1. Run `cap development deploy:setup deploy:migrations` 
-2. Run `cap development deploy`. Repeat as needed to try new versions of the application.
+TODO: fix deployment of production environment with secure cookie key and DB passwords
+
+1. Run `cap development deploy`. Repeat as needed to try new versions of the application.
 3. After a deploy, visit the [dev version of StowAway](http://localhost:3000). Register for an account.
 
 h2. Running Tests
