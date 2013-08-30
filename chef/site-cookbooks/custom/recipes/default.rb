@@ -54,6 +54,34 @@ directory "#{node['custom']['deploy_to']}/shared" do
   mode '0755'
 end
 
+directory "#{node['custom']['deploy_to']}/shared/system" do
+  action :create
+  owner "web_user"
+  group "web_user"
+  mode '0755'
+end
+
+directory "#{node['custom']['deploy_to']}/shared/log" do
+  action :create
+  owner "web_user"
+  group "web_user"
+  mode '0755'
+end
+
+directory "#{node['custom']['deploy_to']}/shared/pids" do
+  action :create
+  owner "web_user"
+  group "web_user"
+  mode '0755'
+end
+
+directory "#{node['custom']['deploy_to']}/releases" do
+  action :create
+  owner "web_user"
+  group "web_user"
+  mode '0755'
+end
+
 template "#{node['custom']['deploy_to']}/shared/database.yml" do
   source 'database.yml.erb'
   owner "web_user"

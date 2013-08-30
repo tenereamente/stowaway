@@ -37,7 +37,7 @@ default_attributes(
   },
   :custom => {
     :cap_base => '/app',
-    :deploy_to => 'dev',
+    :deploy_to => '/app/dev',
     :database => 'stowaway_development',
     :database_password => 'insecure'
   }

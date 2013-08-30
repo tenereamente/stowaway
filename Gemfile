@@ -29,6 +29,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'knife-solo_data_bag'
+  gem 'capistrano'
+  gem 'capistrano-ext'
 end
 group :test do
   gem 'capybara'
