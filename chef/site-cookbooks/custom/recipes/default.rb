@@ -4,6 +4,7 @@ packages = [
   "colordiff",
   "byobu",
   "git",
+  "vim-nox"
 ]
 
 packages.each do |p|
@@ -33,11 +34,11 @@ end
 
 include_recipe "postgresql::ruby"
 
-directory "#{node['custom']['cap_base']}" do
+directory "/app" do
   action :create
   owner "web_user"
   group "web_user"
-  mode '0755'
+  mode "0755"
 end
 
 directory "#{node['custom']['deploy_to']}" do
@@ -55,6 +56,13 @@ directory "#{node['custom']['deploy_to']}/shared" do
 end
 
 directory "#{node['custom']['deploy_to']}/shared/system" do
+  action :create
+  owner "web_user"
+  group "web_user"
+  mode '0755'
+end
+
+directory "#{node['custom']['deploy_to']}/shared/config" do
   action :create
   owner "web_user"
   group "web_user"
@@ -82,7 +90,7 @@ directory "#{node['custom']['deploy_to']}/releases" do
   mode '0755'
 end
 
-template "#{node['custom']['deploy_to']}/shared/database.yml" do
+template "#{node['custom']['deploy_to']}/shared/config/database.yml" do
   source 'database.yml.erb'
   owner "web_user"
   group "web_user"
