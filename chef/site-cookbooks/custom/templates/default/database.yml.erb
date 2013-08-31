@@ -1,5 +1,6 @@
+# delivered by chef
 <%= node['custom']['rails_environment'] %>:
-  adapter: <%= node['custom']['adapter'] %>
+  adapter: postgresql
   database: <%= node['custom']['database'] %>
   username: <%= node['custom']['database_user'] %>
 <% if node['custom']['database_password'] %>

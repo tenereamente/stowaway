@@ -1,19 +1,26 @@
 name "vagrant"
 description 'This is a custom role for Vagrant to use'
 run_list(
+    "recipe[build-essential]",
+    #"recipe[annoyances]",
+    "recipe[openssl]",
+    "recipe[openssh]",
+    "recipe[sudo]",
     "recipe[apt]",
     "recipe[runit]",
     "recipe[unattended-upgrades]",
     "recipe[redis::server]",
-    "recipe[build-essential]",
     "recipe[ruby_build]", 
     "recipe[bundler]",
     "recipe[rbenv::system]",
+    "recipe[nginx]",
+    "recipe[monit]",
     "recipe[database]",
     "recipe[postgresql::server]",
     "recipe[postgresql::contrib]",
     "recipe[postgresql::config_pgtune]",
     "recipe[rails]",
+    "recipe[phantomjs]",
     "recipe[custom]"
 )
 
@@ -35,11 +42,26 @@ default_attributes(
     ],
     config_pgtune: { db_type: 'desktop', max_connections: '5', total_memory: '131072kB' }
   },
+  openssh: {
+    permit_root_login: "no",
+    password_authentication: "no"
+  },
+  authorization: {
+    sudo: {
+      groups: [
+        :admin,
+        :sudo
+      ],
+      passwordless: true
+    }
+  },
   :custom => {
-    :cap_base => '/app',
     :deploy_to => '/app/dev',
     :database => 'stowaway_development',
-    :database_password => 'insecure'
+    :rails_environment => 'development',
+    :database_user => 'web_user',
+    :database_password => 'insecure',
+    :database_host => 'localhost'
   }
 )
 

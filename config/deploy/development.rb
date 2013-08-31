@@ -1,5 +1,5 @@
-set :user, 'vagrant'
-set :sudo_user, 'web_user'
+set :user, 'web_user'
+set :sudo_user, 'vagrant'
 server 'stowaway_development', :web, :app, :db, :primary => true
 set :port, 2222
 

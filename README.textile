@@ -46,6 +46,8 @@ The application is configured to send email using a Mandrill account.
 
 h2. Getting Started
 
+You can use rvm or rbenv and Postgres.app and just run bundle and rails server, along with the various rake tasks. Or, if you want the full monty automatic setup luxury, use Vagrant.
+
 1. Install [Vagrant](http://www.vagrantup.com)
 2. Install [Virtualbox](http://www.virtualbox.org)
 3. Install the vagrant-omnibus plugin using `vagrant plugin install vagrant-omnibus`

@@ -21,6 +21,7 @@ set :deploy_via, :remote_cache
 set :bundle_flags, '--deployment --quiet --binstubs --shebang ruby-local-exec'
 
 set :use_sudo, false
+set :group_writeable, false
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
@@ -33,10 +34,10 @@ namespace :custom do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config"
   end
 
-  desc 'Create the .rbenv-version file'
-  task :rbenv_version, :roles => :app do
-    run "cd #{release_path} && rbenv local 1.9.3-p327"
-  end
+  #desc 'Create the .rbenv-version file'
+  #task :rbenv_version, :roles => :app do
+  #  run "cd #{release_path} && rbenv local 1.9.3-p327"
+  #end
 
   desc 'Install data'
   task :data, :roles => :app do
@@ -44,7 +45,41 @@ namespace :custom do
   end
 end
 
-before 'bundle:install', 'custom:rbenv_version'
+# --------------------------------------------
+# Overloaded tasks
+# --------------------------------------------
+namespace :deploy do
+  desc <<-DESC
+    Prepares one or more servers for deployment. Before you can use any \
+    of the Capistrano deployment tasks with your project, you will need to \
+    make sure all of your servers have been prepared with `cap deploy:setup'. When \
+    you add a new server to your cluster, you can easily run the setup task \
+    on just that server by specifying the HOSTS environment variable:
+
+      $ cap HOSTS=new.server.com deploy:setup
+
+    It is safe to run this task on servers that have already been set up; it \
+    will not destroy any deployed revisions or data.
+  DESC
+  task :setup, :except => { :no_release => true } do
+    dirs = [deploy_to, releases_path, shared_path]
+    dirs += shared_children.map { |d| File.join(shared_path, d.split('/').last) }
+    run "#{try_sudo} mkdir -p #{dirs.join(' ')}"
+    run "#{try_sudo} chmod 755 #{dirs.join(' ')}" if fetch(:group_writeable, true)
+  end
+  
+  desc "Setup shared application directories and permissions after initial setup"
+  task :setup_shared do
+    puts "STUB: Setup"
+  end
+
+  desc "Setup backup directory for database and web files"
+  task :setup_backup, :except => { :no_release => true } do
+    run "#{try_sudo} mkdir -p #{backups_path} && #{try_sudo} chmod g+w #{backups_path}"
+  end
+end
+
+#before 'bundle:install', 'custom:rbenv_version'
 after 'deploy:update_code', 'custom:file_system'
 after 'deploy:restart', 'custom:data', 'deploy:cleanup'
 

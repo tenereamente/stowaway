@@ -25,6 +25,10 @@ group :development do
   gem 'librarian-chef', require: false
   gem 'letter_opener'
 end
+
+gem 'therubyracer'
+
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'

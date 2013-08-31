@@ -1,4 +1,5 @@
 def template(from, to)
+  puts "template file from: #{from} to: #{to}"
   erb = File.read(File.expand_path("../templates/#{from}", __FILE__))
   put ERB.new(erb).result(binding), to, :via => :scp
 end
@@ -26,3 +27,4 @@ def close_sessions
   sessions.values.each { |session| session.close }
   sessions.clear
 end
+

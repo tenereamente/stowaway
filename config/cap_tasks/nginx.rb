@@ -1,4 +1,12 @@
 namespace :nginx do
+  desc "Test: Task used to verify Capistrano is working."
+  task :debug do
+    run 'echo AUSER: $USER'
+    with_sudo_user do
+      sudo 'echo LUSER: $USER'
+    end
+  end
+
   desc "Setup nginx configuration for this application"
   task :setup, roles: :web do
     template "nginx_unicorn.erb", "/tmp/nginx_conf"
