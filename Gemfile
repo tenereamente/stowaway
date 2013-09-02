@@ -20,12 +20,12 @@ group :development do
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'html2haml'
   gem 'quiet_assets'
-  gem 'hooves', require: 'hooves/default' # make unicorn the default for rails s
   gem 'git-smart', require: false
   gem 'librarian-chef', require: false
   gem 'letter_opener'
 end
 
+gem 'hooves', require: 'hooves/default' # make unicorn the default for rails s
 gem 'therubyracer'
 
 
