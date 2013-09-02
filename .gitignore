@@ -19,6 +19,7 @@
 /.vagrant
 
 /chef/tmp/
+/chef/.chef/encrypted_data_bag_secret
 
 # minimal Rails specific artifacts
 db/*.sqlite3
