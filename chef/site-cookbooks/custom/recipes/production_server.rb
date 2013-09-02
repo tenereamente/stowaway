@@ -4,7 +4,8 @@ packages = [
   "colordiff",
   "byobu",
   "git",
-  "vim-nox"
+  "vim-nox",
+  "build-essential"
 ]
 
 packages.each do |p|
@@ -16,6 +17,12 @@ user 'web_user' do
   shell "/bin/bash"
   supports manage_home: true
 end
+
+#group "admin" do
+#  append true
+#  action :modify
+#  members "web_user"
+#end
 
 directory "/home/web_user/.ssh" do
   action :create
@@ -97,11 +104,14 @@ template "#{node['custom']['deploy_to']}/shared/config/database.yml" do
   mode "0644"
 end
 
+secret = File.read(Pathname.new(File.expand_path(File.dirname(__FILE__))) + "../../../.chef/encrypted_data_bag_secret")
+passwords = Chef::EncryptedDataBagItem.load("custom", "secrets", secret)
+
+
 postgresql_connection_info = {:host => "localhost",
                               :port => 5432,
                               :username => 'postgres',
-                              # TODO encrypted password
-                              :password => node['postgresql']['password']['postgres']}
+                              :password => passwords['prod']['postgresql']}
 
 postgresql_database "#{node['custom']['database']}" do
   connection postgresql_connection_info
@@ -110,8 +120,7 @@ end
 
 postgresql_database_user 'web_user' do
   connection postgresql_connection_info
-  # TODO encrypted password
-  password "#{node['custom']['database_password']}"
+  password passwords['prod']['web_user']
   action :create
 end
 

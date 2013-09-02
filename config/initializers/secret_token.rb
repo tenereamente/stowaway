@@ -12,5 +12,5 @@
 if Rails.env.development?
   StowAway::Application.config.secret_key_base = 'veryinsecurekeyonlyforuseonlocalhostdevelopmentnotonrealservers'
 else
-  StowAway::Application.config.secret_key_base = File.File.read(Rails.root + '/config/SECRET_KEY_BASE')
+  StowAway::Application.config.secret_key_base = File.read(Rails.root + '/config/SECRET_KEY_BASE')
 end

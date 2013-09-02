@@ -25,8 +25,6 @@ This application requires:
 * Ruby version 2.0.0
 * Rails version 4.0.0
 
-Learn more about "Installing Rails":http://railsapps.github.io/installing-rails.html.
-
 h2. Database
 
 This application uses PostgreSQL with ActiveRecord.
@@ -64,6 +62,12 @@ h2. Installing a real server
 3. Install chef-solo from the omnibus package
 
     ssh root@stowaway.com "curl -L https://www.opscode.com/chef/install.sh | bash"
+
+4. Get the encrypted data bag secret from LastPass and copy it into `chef/.chef/encrypted_data_bag_secret`. This file must never be added to git (it is listed in .gitignore) because this file is used to decrypt the passwords used for the database server and other sensitive data such as SSL private keys.
+
+This was originally created using the command `openssl rand -base64 512 | tr -d '\r\n' > chef/.chef/encrypted_data_bag_secret`.
+
+To change the postgres password or otherwise edit encrypted secrets, `cd chef` and `knife solo data bag edit custom secrets`.
 
 4. Rsync the chef recipes to the machine and run chef-solo
 
