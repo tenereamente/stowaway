@@ -36,7 +36,7 @@ namespace :custom do
   desc 'Shared storage folders and symlinks to the release'
   task :file_system, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config"
-    run "test -f #{shared_path}/config/SECRET_KEY_BASE || cd #{release_path} && bundle exec rake secret > #{shared_path}/config/SECRET_KEY_BASE"
+    run "test -f #{shared_path}/config/SECRET_KEY_BASE || (cd #{release_path} && bundle exec rake secret > #{shared_path}/config/SECRET_KEY_BASE)"
     run "ln -nfs #{shared_path}/config/SECRET_KEY_BASE #{release_path}/config"
   end
 
