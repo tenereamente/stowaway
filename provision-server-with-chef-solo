@@ -1,3 +1,4 @@
 #!/bin/bash
-rsync -az chef root@monitoring.likeablelocal.com:/tmp/chef-solo
-ssh root@stowaway.elliotmurphy.com "chef-solo -c /tmp/chef-solo/chef/solo-config.rb -o 'role[server]'"
+SERVER=root@stowaway.elliotmurphy.com
+rsync -az chef $SERVER:/tmp/chef-solo
+ssh $SERVER "chef-solo -c /tmp/chef-solo/chef/solo-config.rb -o 'role[production_server]'"

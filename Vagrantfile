@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "opscode-ubuntu-13.04"
   config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-13.04_provisionerless.box"
-  config.vm.network :forwarded_port, guest: 3000, host: 3000, auto_correct: false
+  config.vm.network :forwarded_port, guest: 80, host: 8880, auto_correct: false
 
   # this block of settings are specific to virtualbox,
   # ignored for other providers
@@ -36,5 +36,6 @@ Vagrant.configure("2") do |config|
     chef.data_bags_path = "chef/data_bags"
     chef.roles_path = "chef/roles"
     chef.add_role "vagrant"
+    chef.add_recipe "custom::vagrant"
   end
 end

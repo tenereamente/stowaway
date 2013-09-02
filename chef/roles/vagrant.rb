@@ -20,8 +20,7 @@ run_list(
     "recipe[postgresql::contrib]",
     "recipe[postgresql::config_pgtune]",
     "recipe[rails]",
-    "recipe[phantomjs]",
-    "recipe[custom]"
+    "recipe[phantomjs]"
 )
 
 default_attributes(

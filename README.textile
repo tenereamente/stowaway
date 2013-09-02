@@ -55,7 +55,7 @@ You can use rvm or rbenv and Postgres.app and just run bundle and rails server, 
 5. Run `vagrant up`. The first time this will download 500MB for the base box, after that it is cached for re-use.
 6. `vagrant ssh-config --host stowaway_development >> ~/.ssh/config`
 7. 1. Run `cap development deploy:setup deploy:migrations` 
-8. Once provisioning completes, you can go to the Deploy step.
+8. View the site [running in the VM](http://localhost:8880).
 
 h2. Installing a real server
 
