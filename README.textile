@@ -99,6 +99,8 @@ h2. Running Tests
 * rake spec
 
 Continuous integration tests are run in [Travis CI](https://travis-ci.org/stowawayco/StowAway/)
+"!https://travis-ci.org/stowawayco/StowAway.png!":https://travis-ci.org/stowawayco/StowAway
+
 TODO: Jasmine
 
 h2. Documentation and Support
