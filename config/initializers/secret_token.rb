@@ -9,7 +9,7 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-if Rails.env.development?
+if Rails.env.development? or Rails.env.test?
   StowAway::Application.config.secret_key_base = 'veryinsecurekeyonlyforuseonlocalhostdevelopmentnotonrealservers'
 else
   StowAway::Application.config.secret_key_base = File.read(Rails.root.join('config', 'SECRET_KEY_BASE'))
