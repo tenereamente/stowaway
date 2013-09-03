@@ -1,44 +1,3 @@
-# install some packages
-packages = [
-  "sl",
-  "colordiff",
-  "byobu",
-  "git",
-  "vim-nox",
-  "build-essential"
-]
-
-packages.each do |p|
-  package p
-end
-
-user 'web_user' do
-  home "/home/web_user"
-  shell "/bin/bash"
-  supports manage_home: true
-end
-
-#group "admin" do
-#  append true
-#  action :modify
-#  members "web_user"
-#end
-
-directory "/home/web_user/.ssh" do
-  action :create
-  owner 'web_user'
-  group 'web_user'
-  mode '0700'
-end
-
-template "home/web_user/.ssh/authorized_keys" do
-  source 'authorized_keys.erb'
-  owner "web_user"
-  group "web_user"
-  mode "0600"
-  variables keys: data_bag_item('users', 'production_deploy')["ssh_keys"]
-end
-
 include_recipe "postgresql::ruby"
 
 directory "/app" do
@@ -48,57 +7,56 @@ directory "/app" do
   mode "0755"
 end
 
-# This section is set to /app/production
-directory "#{node['custom']['deploy_to']}" do
+directory "/app/staging" do
   action :create
   owner "web_user"
   group "web_user"
   mode '0755'
 end
 
-directory "#{node['custom']['deploy_to']}/shared" do
+directory "/app/staging/shared" do
   action :create
   owner "web_user"
   group "web_user"
   mode '0755'
 end
 
-directory "#{node['custom']['deploy_to']}/shared/system" do
+directory "/app/staging/shared/system" do
   action :create
   owner "web_user"
   group "web_user"
   mode '0755'
 end
 
-directory "#{node['custom']['deploy_to']}/shared/config" do
+directory "/app/staging/shared/config" do
   action :create
   owner "web_user"
   group "web_user"
   mode '0755'
 end
 
-directory "#{node['custom']['deploy_to']}/shared/log" do
+directory "/app/staging/shared/log" do
   action :create
   owner "web_user"
   group "web_user"
   mode '0755'
 end
 
-directory "#{node['custom']['deploy_to']}/shared/pids" do
+directory "/app/staging/shared/pids" do
   action :create
   owner "web_user"
   group "web_user"
   mode '0755'
 end
 
-directory "#{node['custom']['deploy_to']}/releases" do
+directory "/app/staging/releases" do
   action :create
   owner "web_user"
   group "web_user"
   mode '0755'
 end
 
-template "#{node['custom']['deploy_to']}/shared/config/database.yml" do
+template "/app/staging/shared/config/database.yml" do
   source 'database.yml.erb'
   owner "web_user"
   group "web_user"
@@ -114,7 +72,7 @@ postgresql_connection_info = {:host => "localhost",
                               :username => 'postgres',
                               :password => passwords['prod']['postgresql']}
 
-postgresql_database "#{node['custom']['database']}" do
+postgresql_database "stowaway_staging" do
   connection postgresql_connection_info
   action :create
 end
@@ -127,7 +85,7 @@ end
 
 postgresql_database_user 'web_user' do
   connection postgresql_connection_info
-  database_name "#{node['custom']['database']}"
+  database_name "stowaway_staging"
   privileges [:all]
   action :grant
 end

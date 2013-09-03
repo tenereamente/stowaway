@@ -1,6 +1,6 @@
 check process <%= application %>_unicorn with pidfile <%= unicorn_pid %>
-  start program = "/etc/init.d/unicorn_<%= application %> start"
-  stop program = "/etc/init.d/unicorn_<%= application %> stop"
+  start program = "/etc/init.d/unicorn_<%= application %>_<%= stage %> start"
+  stop program = "/etc/init.d/unicorn_<%= application %>_<%= stage %> stop"
 
 <% unicorn_workers.times do |n| %>
   <% pid = unicorn_pid.sub(".pid", ".#{n}.pid") %>

@@ -1,6 +1,6 @@
 name "production_server"
 description 'This is a custom role for chef-solo on the production server'
-run_list("role[vagrant]", "recipe[custom::production_server]")
+run_list("role[vagrant]", "recipe[custom::production_server]", "recipe[custom::staging_server]")
 
 secret = File.read(Pathname.new(File.expand_path(File.dirname(__FILE__))) + "../.chef/encrypted_data_bag_secret")
 passwords = Chef::EncryptedDataBagItem.load("custom", "secrets", secret)
