@@ -53,5 +53,6 @@ end
 gem 'gibbon'
 gem 'figaro'
 gem 'travis'
+gem 'compass-rails'
 gem 'zurb-foundation', "~> 4.3.1"
 gem 'google-webfonts'
