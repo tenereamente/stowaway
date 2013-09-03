@@ -25,7 +25,7 @@ set :default_environment, {
 set :application, 'stowaway'
 
 set :scm, :git
-set :repository,  'git@github.com:stowawayco/StowAway.git'
+set :repository,  'https://github.com/stowawayco/StowAway.git'
 set :branch, :master
 set :deploy_via, :remote_cache
 
