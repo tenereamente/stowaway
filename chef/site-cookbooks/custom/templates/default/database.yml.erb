@@ -9,3 +9,14 @@
   host: <%= node['custom']['database_host'] %>
   encoding: utf8
   min_messages: warning
+
+staging:
+  adapter: postgresql
+  database: <%= node['custom']['database'] %>
+  username: <%= node['custom']['database_user'] %>
+<% if node['custom']['database_password'] %>
+  password: <%= node['custom']['database_password'] %>
+<% end %>
+  host: <%= node['custom']['database_host'] %>
+  encoding: utf8
+  min_messages: warning
