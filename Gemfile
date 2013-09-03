@@ -52,3 +52,4 @@ end
 
 gem 'gibbon'
 gem 'figaro'
+gem 'travis'
