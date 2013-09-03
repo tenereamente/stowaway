@@ -6,7 +6,7 @@ set :notifier_mail_options, {
   :method => :sendmail, # :test, :smtp, :sendmail, or any other valid ActionMailer delivery method
   :from   => 'capistrano@stowaway.co',
   :to     => ['elliot.murphy@gmail.com', 'patrick@deviceable.com', 'johann.sabbath@gmail.com'],
-  :github => 'statik/StowAway'
+  :github => 'stowawayco/StowAway'
 }
 
 load 'config/cap_tasks/base'
@@ -25,7 +25,7 @@ set :default_environment, {
 set :application, 'stowaway'
 
 set :scm, :git
-set :repository,  'git@github.com:statik/StowAway.git'
+set :repository,  'git@github.com:stowawayco/StowAway.git'
 set :branch, :master
 set :deploy_via, :remote_cache
 
