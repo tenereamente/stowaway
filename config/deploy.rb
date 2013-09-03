@@ -1,5 +1,13 @@
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
+require 'capistrano/notifier/mail'
+
+set :notifier_mail_options, {
+  :method => :sendmail, # :test, :smtp, :sendmail, or any other valid ActionMailer delivery method
+  :from   => 'capistrano@stowaway.co',
+  :to     => ['elliot.murphy@gmail.com', 'patrick@deviceable.com', 'johann.sabbath@gmail.com'],
+  :github => 'statik/StowAway'
+}
 
 load 'config/cap_tasks/base'
 load 'config/cap_tasks/nginx'

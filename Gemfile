@@ -47,5 +47,5 @@ end
 group :deployment do
   gem 'capistrano'
   gem 'capistrano_colors'
-  gem 'hipchat'
+  gem 'capistrano-notifier'
 end

@@ -88,10 +88,10 @@ h2. Deploying the application
 
 Portions of capistrano tasks were based on https://github.com/smartlogic/chef-cap-demo/
 
-TODO: fix deployment of production environment with secure cookie key and DB passwords
-
-1. Run `cap development deploy`. Repeat as needed to try new versions of the application.
-3. After a deploy, visit the [dev version of StowAway](http://localhost:3000). Register for an account.
+0. In order to have email notifications of deploys sent out, [set up sendmail/postfix](http://jasoncodes.com/posts/mac-os-rails-server#email)
+1. To deploy the current code from GitHub, run `cap production deploy`. Repeat as needed to try new versions of the application.
+2. TODO: set up a staging version of the application as well
+3. After a deploy, visit the [production server](http://stowaway.co).
 
 h2. Running Tests
 
