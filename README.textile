@@ -38,9 +38,9 @@ h2. Development
 * Authentication: Devise
 * Authorization: CanCan
 
-h2. Email
+h2. Email & Configuration
 
-The application is configured to send email using a Mandrill account.
+The application is configured to send email using a Mandrill account. Configuration is done via the [figaro](http://railsapps.github.io/rails-environment-variables.html) gem, which provides heroku-like abstraction of config variables.
 
 h2. Getting Started
 

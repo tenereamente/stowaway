@@ -49,3 +49,6 @@ group :deployment do
   gem 'capistrano_colors'
   gem 'capistrano-notifier'
 end
+
+gem 'gibbon'
+gem 'figaro'
