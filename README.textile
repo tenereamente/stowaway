@@ -40,20 +40,20 @@ h2. Development
 
 h2. Email & Configuration
 
-The application is configured to send email using a Mandrill account. Configuration is done via the [figaro](http://railsapps.github.io/rails-environment-variables.html) gem, which provides heroku-like abstraction of config variables.
+The application is configured to send email using a Mandrill account. Configuration is done via the "figaro":http://railsapps.github.io/rails-environment-variables.html gem, which provides heroku-like abstraction of config variables.
 
 h2. Getting Started
 
 You can use rvm or rbenv and Postgres.app and just run bundle and rails server, along with the various rake tasks. Or, if you want the full monty automatic setup luxury, use Vagrant.
 
-1. Install [Vagrant](http://www.vagrantup.com)
-2. Install [Virtualbox](http://www.virtualbox.org)
+1. Install "Vagrant":http://www.vagrantup.com
+2. Install "Virtualbox":http://www.virtualbox.org
 3. Install the vagrant-omnibus plugin using `vagrant plugin install vagrant-omnibus`
 4. Install the vagrant-vbguest plugin using `vagrant plugin install vagrant-vbguest`
 5. Run `vagrant up`. The first time this will download 500MB for the base box, after that it is cached for re-use.
 6. `vagrant ssh-config --host stowaway_development >> ~/.ssh/config`
 7. 1. Run `cap development deploy:setup deploy:migrations` 
-8. View the site [running in the VM](http://localhost:8880).
+8. View the site "running in the VM":http://localhost:8880 .
 
 h2. Installing a real server
 
@@ -79,7 +79,7 @@ At this point you should see chef run to completion and give you a fully configu
 
 6. Run `cap production deploy:setup deploy:migrations`
 
-7. Look at the [production](http://www.stowaway.co) or [staging](http://staging.stowaway.co) site.
+7. Look at the "production":http://www.stowaway.co or "staging":http://staging.stowaway.co site.
 
 8. TODO: SSL certificates
 
@@ -88,18 +88,17 @@ h2. Deploying the application
 
 Portions of capistrano tasks were based on https://github.com/smartlogic/chef-cap-demo/
 
-0. In order to have email notifications of deploys sent out, [set up sendmail/postfix](http://jasoncodes.com/posts/mac-os-rails-server#email)
+0. In order to have email notifications of deploys sent out, "set up sendmail/postfix":http://jasoncodes.com/posts/mac-os-rails-server#email
 1. To deploy the current code from GitHub, run `cap production deploy`. Repeat as needed to try new versions of the application.
 2. TODO: set up a staging version of the application as well
-3. After a deploy, visit the [production server](http://stowaway.co).
+3. After a deploy, visit the "production server":http://stowaway.co .
 
 h2. Running Tests
 
 * rake cucumber
 * rake spec
 
-Continuous integration tests are run in [Travis CI](https://travis-ci.org/stowawayco/StowAway/)
-"!https://travis-ci.org/stowawayco/StowAway.png!":https://travis-ci.org/stowawayco/StowAway
+Continuous integration tests are run in "Travis CI":https://travis-ci.org/stowawayco/StowAway/ "!https://travis-ci.org/stowawayco/StowAway.png!":https://travis-ci.org/stowawayco/StowAway
 
 TODO: Jasmine
 
