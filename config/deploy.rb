@@ -86,5 +86,6 @@ end
 
 #before 'bundle:install', 'custom:rbenv_version'
 after 'deploy:update_code', 'custom:file_system'
+before 'deploy:assets:precompile', 'custom:file_system'
 after 'deploy:restart', 'deploy:cleanup'
 
