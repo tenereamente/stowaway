@@ -1,10 +1,9 @@
-.row
+.row.hero
   - @users.each do |user|
     %p
-      User: #{link_to user.name, user}
-
-  %p.small Rails environment is
-  = Rails.env
+      user: #{link_to user.name, user}
 
   %h1 Throwaway everything you know about traditional storage.
-  %h2 stowaway.co
+  %h2.logo stowaway.co
+  //%p.small= Rails.env
+  

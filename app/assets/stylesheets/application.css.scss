@@ -8,21 +8,25 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  //= require foundation_and_overrides
+ *= require_self
  *= require_tree .
 */
-.brand {
-  float: left;
-  padding-right: 8px;
+body {
+  font-family: "Dosis";
 }
-ul.nav {
-  list-style: none;
-  margin: 0 0 2em;
-  padding: 0;
+nav {
+  text-transform: lowercase;
+  font-weight: normal;
 }
-ul.nav li {
-  display: inline;
+h1 {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.logo {
+  font-family: "Quicksand";
+  font-weight: normal;
+  letter-spacing: -1px;
 }
 #flash_notice, #flash_alert {
   padding: 5px 8px;
