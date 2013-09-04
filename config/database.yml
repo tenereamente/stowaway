@@ -54,5 +54,13 @@ production:
   pool:     5
   template: template0
 
+staging:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: stowaway_production
+  pool:     5
+  template: template0
+
 cucumber:
   <<: *test
