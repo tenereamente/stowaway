@@ -6,4 +6,4 @@ set :port, 22
 
 set :deploy_to, '/app/production'
 set :rails_env, 'production'
-set :vhost, 'stowaway.co'
+set :vhost, 'www.stowaway.co'
