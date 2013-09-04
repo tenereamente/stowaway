@@ -4,7 +4,7 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env)
+Bundler.require *Rails.groups(:assets => %w(development test))
 
 module StowAway
   class Application < Rails::Application
@@ -31,5 +31,8 @@ module StowAway
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    config.assets.initialize_on_precompile = false
+    config.assets.enabled = true
   end
 end
