@@ -98,7 +98,7 @@ h2. Running Tests
 * rake cucumber
 * rake spec
 
-Continuous integration tests are run in "Travis CI":https://travis-ci.org/stowawayco/StowAway/ "!https://travis-ci.org/stowawayco/StowAway.png!":https://travis-ci.org/stowawayco/StowAway
+Continuous integration tests are run in "Travis CI":https://travis-ci.org/stowawayco/stowaway/ "!https://travis-ci.org/stowawayco/stowaway.png!":https://travis-ci.org/stowawayco/stowaway
 
 TODO: Jasmine
 
