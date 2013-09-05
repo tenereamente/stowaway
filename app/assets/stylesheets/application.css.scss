@@ -11,17 +11,14 @@
  //= require foundation_and_overrides
  *= require_self
  *= require_tree .
+ *= require font-awesome
 */
+
+::selection {
+ background: rgba(0,0,0,.1); 
+}
 body {
   font-family: "Dosis";
-}
-nav {
-  text-transform: lowercase;
-  font-weight: normal;
-}
-h1 {
-  font-weight: 500;
-  text-transform: uppercase;
 }
 .logo {
   font-family: "Quicksand";
@@ -40,3 +37,46 @@ h1 {
   background-color: #FCC;
   border: solid 1px #C66;
 }
+
+.social {
+  display: inline-block;
+  a {
+    color: rgba(0,0,0,.7);
+    transition: color 300ms ease-out;
+    &:hover {
+      color: rgba(0,0,0,.5);
+    }
+  }
+}
+
+.button {
+  background: rgba(0,0,0,.7);
+  color: rgba(255,255,255,.9);
+  &:hover {
+    background: rgba(0,0,0,.5);
+    color: rgba(255,255,255,.9);
+  };
+}
+
+p {
+  a {
+    border-bottom: 1px solid;
+  }
+}
+/* Type */
+
+.center {
+  text-align: center;
+}
+nav {
+  text-transform: lowercase;
+  font-weight: normal;
+}
+h1 {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+li {
+  list-style-type: none;
+}
+
