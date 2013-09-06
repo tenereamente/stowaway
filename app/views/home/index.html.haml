@@ -3,18 +3,17 @@
     - @users.each do |user|
       %p
         user: #{link_to user.name, user}
-
-    %h1 Throwaway everything you know about traditional storage.
+    %h1 Throw out what you know about 'traditional' storage.
     %h2.logo stowaway.co
   %a.button.large.round{:href => "#", "data-reveal-id" => "myModal"} 
     %span.icon-stack
       %i.icon-stack-base.dark.icon-plane.pull-left
       %i.icon-rocket.light.pull-left 
-      GET NOTIFIED
+      BE NOTIFIED
   .row
     %h4.small.large-6.large-offset-3.columns
-      We are eager to change the way people store their mint condition
-      = succeed "." do
+      We will give you a heads up when we launch. In the meantime, enjoy some
+      = succeed " are stored on earth." do
         %a{:href => "http://www.youtube.com/watch?v=joDjwtjIQS8", :target => "_blank"} Rock'em Sock'em Robots
     //%p.small= Rails.env
 = render 'home/modals'
