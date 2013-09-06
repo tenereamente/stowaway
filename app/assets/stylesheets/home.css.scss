@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.home{
-  background: image-url("tile4.svg") repeat;
+  background: image-url("tile.svg") repeat;
   background-size: 70%;
   background-color: #34ab00;
   #main {
@@ -16,12 +16,8 @@ body.home{
         font-size: 3.2em;
       }
     }
-  }
-}
-
-.reveal-modal {
-  color: rgba(0,0,0,.9);
-  h2 {
-    color: rgba(0,0,0,.3);
+    .button {
+      font-size: 150%;
+    }
   }
 }

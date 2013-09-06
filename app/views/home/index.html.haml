@@ -6,14 +6,12 @@
     %h1 Throw out what you know about 'traditional' storage.
     %h2.logo stowaway.co
   %a.button.large.round{:href => "#", "data-reveal-id" => "myModal"} 
-    %span.icon-stack
-      %i.icon-stack-base.dark.icon-plane.pull-left
-      %i.icon-rocket.light.pull-left 
-      BE NOTIFIED
-  .row
+    %i.icon-rocket.icon-left.icon-muted
+    BE NOTIFIED
+  .row.mb20
     %h4.small.large-6.large-offset-3.columns
       We will give you a heads up when we launch. In the meantime, enjoy some
-      = succeed " are stored on earth." do
+      = succeed "." do
         %a{:href => "http://www.youtube.com/watch?v=joDjwtjIQS8", :target => "_blank"} Rock'em Sock'em Robots
     //%p.small= Rails.env
 = render 'home/modals'

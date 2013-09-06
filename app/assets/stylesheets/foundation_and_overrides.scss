@@ -113,8 +113,8 @@ $shiny-edge-active-color: rgba(#000, 0);
 
 // Media Queries
 
-// $small-screen: 768px;
-// $medium-screen: 1280px;
+$small-screen: 480px;
+$medium-screen: 768px;
 // $large-screen: 1440px;
 
 // $screen: "only screen";
@@ -188,7 +188,7 @@ $h1-font-size: emCalc(50);
 
 // A general <small> styling
 
-// $small-font-size: 60%;
+$small-font-size: 60%;
 // $small-font-color: lighten($header-font-color, 30%);
 
 // Style paragraphs
@@ -347,8 +347,11 @@ $h1-font-size: emCalc(50);
 // $button-med: emCalc(12);
 // $button-tny: emCalc(7);
 // $button-sml: emCalc(9);
-$button-lrg: emCalc(20);
+$button-lrg: emCalc(19);
 
+button.large, .button.large {
+  padding: 1em;
+}
 // We use this to control the display property.
 
 // $button-display: inline-block;
