@@ -58,3 +58,4 @@ gem 'zurb-foundation', "~> 4.3.1"
 gem 'google-webfonts'
 gem 'customerio'
 gem 'font-awesome-rails'
+
