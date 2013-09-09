@@ -35,6 +35,7 @@ group :development, :test do
   gem 'knife-solo_data_bag'
   gem 'capistrano'
   gem 'capistrano-ext'
+  gem 'pry-byebug'
 end
 group :test do
   gem 'capybara'
