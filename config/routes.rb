@@ -5,4 +5,5 @@ StowAway::Application.routes.draw do
   get 'search' => 'search#index'
   get 'spaces' => 'spaces#index'
   get 'space' => 'space#index'
+  get 'listspace' => 'listspace#index'
 end
