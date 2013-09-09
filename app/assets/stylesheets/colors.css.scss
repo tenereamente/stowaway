@@ -19,7 +19,7 @@ body.home {
     a {
     color: $peach;
       &:hover {
-        color: lighten($peach, .3);
+        color: shade($peach, .3);
       }
     }
   }
@@ -29,10 +29,20 @@ body.listspace {
   background: $midnight image-url("tile.svg") repeat;
 }
 
+body.sessions {
+  background: $red image-url("tile.svg") repeat;
+  a {
+    color: $red;
+    &:hover {
+      color: shade($red, .7);
+    }
+  }
+}
+
 .box {
   background: #fff;
   border-radius: 3px;
-  padding: 1px 0;
+  padding: 2em;
   margin-bottom: 25px;
   box-shadow: 0 0 0 5px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
   color: #555;

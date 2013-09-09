@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+###
 document.addEventListener "click", (->
 
   red = Math.round(Math.random() * 255)
@@ -12,3 +13,4 @@ document.addEventListener "click", (->
   document.body.style.backgroundColor = rgb
   document.body.style.transition = crossfade
 ), false
+###
