@@ -3,3 +3,6 @@
 # Add application configuration variables here, as shown below.
 #
 # MANDRILL_API_KEY: 12345
+# ADMIN_NAME: Storage Admin
+# ADMIN_EMAIL: admin@stowaway.co
+# ADMIN_PASSWORD: somepassword
