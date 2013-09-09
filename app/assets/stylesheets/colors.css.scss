@@ -3,69 +3,68 @@
 $blue: rgb(26, 101, 228);
 $peach: rgb(253, 182, 63);
 $magenta: rgb(184, 5, 146);
-$landing: rgb(110, 94, 116); //Lavender
+$lavender: rgb(110, 94, 116); //Lavender
 $green: rgb(75, 155, 48);
 $tweed: rgb(128, 98, 44);
 $red: rgb(200, 70, 57);
 $midnight: rgb(14, 41, 73);
 $orange: rgb(252, 122, 30);
 
-body.home {
-  background: $landing image-url("tile.svg") repeat;
-  .button {
-    background-color: shade($landing, 80);
+@mixin page-color-theme($base_color) {
+  background: $base_color image-url("tile.svg") repeat;
+  .contain-to-grid {
+    background: shade($base_color, 70);
+    .top-bar {
+      background: none;
+    }
+  }
+  
+  a {
+    color: tint($base_color, 80);
+    border-bottom: 1px solid dotted;
     &:hover {
-      background-color: shade($landing, 40);
+      color: tint($base_color, 70);
+    }
+  }
+  .button {
+    background-color: shade($base_color, 80);
+    &:hover {
+      background-color: shade($base_color, 40);
     }
     &:active {
-      background-color: shade($landing, 60);
+      background-color: shade($base_color, 60);
     }
   }
   .social {
     a {
-    color: shade($landing, 80);
+    color: shade($base_color, 80);
       &:hover {
-        color: shade($landing, 40);
+        color: shade($base_color, 40);
       }
       &:active {
-        color: shade($landing, 60);
+        color: shade($base_color, 60);
       }
     }
   }
+}
+body.home {
+  @include page-color-theme($lavender);
 }
 
 body.listspace {
-  background: $midnight image-url("tile.svg") repeat;
+  @include page-color-theme($blue);
 }
 
 body.sessions {
-  background: $red image-url("tile.svg") repeat;
-  a {
-    color: $red;
-    &:hover {
-      color: shade($red, .7);
-    }
-  }
+  @include page-color-theme($red);
 }
 
 body.registrations {
-  background: $blue image-url("tile.svg") repeat;
-  a {
-    color: $blue;
-    &:hover {
-      color: shade($blue, .7);
-    }
-  }
+  @include page-color-theme($green);
 }
 
-body.passwords {
-  background: $orange image-url("tile.svg") repeat;
-  a {
-    color: $orange;
-    &:hover {
-      color: shade($orange, .7);
-    }
-  }
+body.passwords, body.confirmations {
+  @include page-color-theme($peach);
 }
 
 .box {
