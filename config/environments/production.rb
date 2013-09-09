@@ -74,12 +74,14 @@ StowAway::Application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify  
 
-    config.action_mailer.smtp_settings = {
-      :address   => "smtp.mandrillapp.com",
-      :port      => 25,
-      :user_name => ENV["MANDRILL_USERNAME"],
-      :password  => ENV["MANDRILL_API_KEY"]
-    }
+  config.action_mailer.smtp_settings = {
+    :address   => "smtp.mandrillapp.com",
+    :port      => 25,
+    :user_name => ENV["MANDRILL_USERNAME"],
+    :password  => ENV["MANDRILL_API_KEY"]
+  }
+
+  config.action_mailer.default_url_options ||= { host: 'www.stowaway.co' }
 
 
   # Disable automatic flushing of the log to improve performance.

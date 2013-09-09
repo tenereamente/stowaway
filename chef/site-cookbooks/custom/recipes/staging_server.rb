@@ -63,15 +63,16 @@ template "/app/staging/shared/config/database.yml" do
   mode "0644"
 end
 
+secret = File.read(Pathname.new(File.expand_path(File.dirname(__FILE__))) + "../../../.chef/encrypted_data_bag_secret")
+passwords = Chef::EncryptedDataBagItem.load("custom", "secrets", secret)
+
 template "/app/staging/shared/config/application.yml" do
   source 'application.yml.erb'
   owner "web_user"
   group "web_user"
   mode "0644"
+  variables mandrill_api_key: passwords['prod']['mandrill_api_key'], mandrill_username: passwords['prod']['mandrill_username']
 end
-
-secret = File.read(Pathname.new(File.expand_path(File.dirname(__FILE__))) + "../../../.chef/encrypted_data_bag_secret")
-passwords = Chef::EncryptedDataBagItem.load("custom", "secrets", secret)
 
 
 postgresql_connection_info = {:host => "localhost",
