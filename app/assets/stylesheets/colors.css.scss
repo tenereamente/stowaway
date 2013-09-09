@@ -3,7 +3,7 @@
 $blue: rgb(26, 101, 228);
 $peach: rgb(253, 182, 63);
 $magenta: rgb(184, 5, 146);
-$lavender: rgb(110, 94, 116);
+$landing: rgb(110, 94, 116); //Lavender
 $green: rgb(75, 155, 48);
 $tweed: rgb(128, 98, 44);
 $red: rgb(200, 70, 57);
@@ -11,15 +11,24 @@ $midnight: rgb(14, 41, 73);
 $orange: rgb(252, 122, 30);
 
 body.home {
-  background: $lavender image-url("tile.svg") repeat;
+  background: $landing image-url("tile.svg") repeat;
   .button {
-    background-color: $lavender;
+    background-color: shade($landing, 80);
+    &:hover {
+      background-color: shade($landing, 40);
+    }
+    &:active {
+      background-color: shade($landing, 60);
+    }
   }
   .social {
     a {
-    color: $peach;
+    color: shade($landing, 80);
       &:hover {
-        color: shade($peach, .3);
+        color: shade($landing, 40);
+      }
+      &:active {
+        color: shade($landing, 60);
       }
     }
   }
@@ -39,12 +48,32 @@ body.sessions {
   }
 }
 
+body.registrations {
+  background: $blue image-url("tile.svg") repeat;
+  a {
+    color: $blue;
+    &:hover {
+      color: shade($blue, .7);
+    }
+  }
+}
+
+body.passwords {
+  background: $orange image-url("tile.svg") repeat;
+  a {
+    color: $orange;
+    &:hover {
+      color: shade($orange, .7);
+    }
+  }
+}
+
 .box {
   background: #fff;
   border-radius: 3px;
   padding: 2em;
   margin-bottom: 25px;
-  box-shadow: 0 0 0 5px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 0 0 10px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
   color: #555;
   h1, h2, h3, h4, h5, h6 {
     color: rgba(#555, .5);

@@ -1,4 +1,4 @@
-.row
+.row.box
   %h2
     edit #{resource_name.to_s.humanize}
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f|

@@ -10,10 +10,9 @@
         = google_webfonts_link_tag :quicksand => [400,700], :open_sans_condensed => [300,700], :dosis => [300,400,500,600,700]
         = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
-  %nav.top-bar.hide-for-small
-    = render 'layouts/navigation'
-    = render 'layouts/messages'
-  %h1 Start to store like never before.
+  = render 'layouts/navigation'
+  = render 'layouts/messages'
+  
   #main{:role => "main"}
     = yield
   %footer
