@@ -99,6 +99,10 @@ $bg-image: image-url("tile2.svg") repeat ;
     }
   }
 }
+
+body.storagespaces {
+  @include page-color-theme($tweed);
+}
 body.home {
   @include page-color-theme($lavender);
 }

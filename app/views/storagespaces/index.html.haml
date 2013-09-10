@@ -1,0 +1,57 @@
+.row
+  .large-9.push-3.columns{"accept-charset" => "UTF-8", :action => "/boats", "data-excluded" => ":disabled", "data-focus" => "first", :enctype => "multipart/form-data", :method => "post", :name => "boatForm", :novalidate => "novalidate"}
+    .form-container
+      .page-header
+        .process-status.pull-right
+          step
+          %b 1
+          of
+          %b 5
+        %h2 
+          Step 1.
+          %b Space Details
+      .row
+        = simple_form_for(@resource, html: {class: 'form-vertical', id: 'request-invitation' }, remote: true) do |f|
+          = f.input :address, autofocus: true, required: true
+          = f.button :submit, 'Next Step', class: 'btn-primary'
+        
+      
+  .large-3.pull-9.columns.sidebar
+    %ul.navbar-steps.navbar-steps-wizard
+      %li.active
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 1
+            .dot
+          Location
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 2
+            .dot
+          Space Detail
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 3
+            .dot 
+          Listing Information
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 4
+            .dot
+          Photos
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 5
+            .dot
+          Complete
+
+        
