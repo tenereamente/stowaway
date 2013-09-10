@@ -100,6 +100,8 @@ h2. Running Tests
 
 Continuous integration tests are run in "Travis CI":https://travis-ci.org/stowawayco/stowaway/ "!https://travis-ci.org/stowawayco/stowaway.png!":https://travis-ci.org/stowawayco/stowaway
 
+Security scans are done by "Code Climate":https://codeclimate.com/github/stowawayco/stowaway "!https://codeclimate.com/github/stowawayco/stowaway.png!":https://codeclimate.com/github/stowawayco/stowaway
+
 TODO: Jasmine
 
 h2. Documentation and Support
