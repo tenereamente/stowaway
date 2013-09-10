@@ -2,6 +2,7 @@
   .row.hero
     %h1 Throw out what you know about 'traditional' storage.
     %h2.logo stowaway.co
+- unless user_signed_in?
   %a.button.large.round{id: 'request-invitation-button', :href => "#", "data-reveal-id" => "invitationModal"} 
     %i.icon-rocket.icon-left.icon-muted
     BE NOTIFIED
@@ -14,5 +15,5 @@
       = succeed "." do
         %a{:href => "http://www.youtube.com/watch?v=joDjwtjIQS8", :target => "_blank"} Rock'em Sock'em Robots
     //%p.small= Rails.env
-= render 'home/modals'
+  = render 'home/modals'
   
