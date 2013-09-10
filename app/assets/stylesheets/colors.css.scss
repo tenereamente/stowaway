@@ -20,15 +20,22 @@ $bg-image: image-url("tile2.svg") repeat ;
     margin-bottom: 25px;
     box-shadow: 0 0 0 10px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
     color: #555;
+    input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+      border: 1px solid tint($base_color, 70);
+      box-shadow: 0 none;
+      background-color: tint($base_color, 97);
+      &:focus {
+        box-shadow: none!important;
+        border-color: shade($base_color, 10);
+         background-color: #fff;
+      }
+    }
     input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button {
       color: tint($base_color, 80);
       background-color: shade($base_color, 20);
       &:hover {
         color: tint($base_color, 90);
         background-color: shade($base_color, 40);
-      }
-      &:focus {
-        box-shadow: 0 0 0 10px $base_color,0 1px 3px rgba(0,0,0,0.1);
       }
     }
     label {
