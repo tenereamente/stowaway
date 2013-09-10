@@ -4,17 +4,17 @@ $blue: rgb(26, 101, 228);
 $peach: rgb(253, 182, 63);
 $magenta: rgb(184, 5, 146);
 $lavender: rgb(110, 94, 116); //Lavender
-$green: rgb(75, 155, 48);
+$green: #87ae3a;
 $tweed: rgb(128, 98, 44);
 $red: rgb(200, 70, 57);
 $midnight: rgb(14, 41, 73);
 $orange: rgb(252, 122, 30);
-
+$sky: #8b98d8;
 $bg-image: image-url("tile2.svg") repeat ;
 
 @mixin page-color-theme($base_color) {
   .box {
-    background: tint($base_color, 95);
+    background: tint($base_color, 90);
     border-radius: 3px;
     padding: 2em;
     margin-bottom: 25px;
@@ -101,7 +101,7 @@ $bg-image: image-url("tile2.svg") repeat ;
 }
 
 body.storagespaces {
-  @include page-color-theme($tweed);
+  @include page-color-theme($sky);
 }
 body.home {
   @include page-color-theme($lavender);
