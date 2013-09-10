@@ -7,10 +7,12 @@
       %thead
         %tr
           %th EMAIL
+          %th ZIP
           %th WHEN REQUESTED
       %tbody
         - @waiting_users.each do |u|
           %tr
             %td= u.email
+            %td= u.zip
             %td= time_ago_in_words(u.created_at)
   = will_paginate @waiting_users

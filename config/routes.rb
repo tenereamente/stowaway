@@ -7,6 +7,6 @@ StowAway::Application.routes.draw do
   get 'listspace/map' => 'listspace#map'
 
   get 'admin' => 'admin#index'
-  get "login" => redirect("users#sign_in")
+  get "/login" => redirect("/users")
  
 end
