@@ -13,3 +13,14 @@
 button.large, .button.large {
   padding: 1em;
 }
+
+.contain-to-grid {
+  .top-bar {
+    li.signup {
+      margin: 0 0 0 .5em;
+      a.button {
+        padding: .25em .5em;
+      }
+    }
+  }
+}

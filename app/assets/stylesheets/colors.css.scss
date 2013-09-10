@@ -10,15 +10,28 @@ $red: rgb(200, 70, 57);
 $midnight: rgb(14, 41, 73);
 $orange: rgb(252, 122, 30);
 
-$bg-image: image-url("tile.svg") repeat ;
+$bg-image: image-url("tile2.svg") repeat ;
 
 @mixin page-color-theme($base_color) {
-  background: $base_color $bg-image;
-  color: shade($base_color, 9);
-  footer {
-    /*background: shade($base_color, 70);
-    border-top: 1px solid tint($base_color, 90);*/
+  .box {
+    background: tint($base_color, 90);
+    border-radius: 3px;
+    padding: 2em;
+    margin-bottom: 25px;
+    box-shadow: 0 0 0 10px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
+    color: #555;
+    h1, h2, h3, h4, h5, h6 {
+      color: rgba(#555, .5);
+    }
+    a {
+      color: shade($base_color, 10);
+      &:hover {
+        color: shade($base_color, 20);
+      }
+    }
   }
+  background: $base_color $bg-image;
+  color: shade($base_color, 20);
   .contain-to-grid {
     background: shade($base_color, 50);
     .top-bar {
@@ -26,19 +39,19 @@ $bg-image: image-url("tile.svg") repeat ;
       a {
         &:not(button) {
           color: tint($base_color, 70);
+          padding: 0 .5em;
         }
         &:hover {
           color: #fff;
         }
         &.button {
-          background-color: shade($base_color, 70);
-          box-shadow: 0 4px 0 shade($base_color, 80);
+          color: tint($base_color, 70);
+          background-color: shade($base_color, 80);
           &:hover {
-            background-color: shade($base_color, 10);
+            background-color: shade($base_color, 70);
           }
           &:active {
-            background-color: shade($base_color, 40);
-            box-shadow: none;
+            background-color: shade($base_color, 80);
             top: 10px;
           }
         }
@@ -48,14 +61,6 @@ $bg-image: image-url("tile.svg") repeat ;
           color: tint($base_color, 70);
         }
       }
-    }
-  }
-  
-  a {
-    color: tint($base_color, 80);
-    border-bottom: 1px solid dotted;
-    &:hover {
-      color: tint($base_color, 70);
     }
   }
   .button {
@@ -69,12 +74,12 @@ $bg-image: image-url("tile.svg") repeat ;
   }
   .social {
     a {
-    color: shade($base_color, 80);
+    color: shade($base_color, 50);
       &:hover {
-        color: shade($base_color, 40);
+        color: shade($base_color, 60);
       }
       &:active {
-        color: shade($base_color, 60);
+        color: shade($base_color, 70);
       }
     }
   }
@@ -97,16 +102,4 @@ body.registrations {
 
 body.passwords, body.confirmations {
   @include page-color-theme($peach);
-}
-
-.box {
-  background: #fff;
-  border-radius: 3px;
-  padding: 2em;
-  margin-bottom: 25px;
-  box-shadow: 0 0 0 10px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
-  color: #555;
-  h1, h2, h3, h4, h5, h6 {
-    color: rgba(#555, .5);
-  }
 }
