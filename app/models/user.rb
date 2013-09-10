@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  scope :invitation_pending, -> { where(sign_in_count: 0, invitation_sent_at: nil) }
+
   # override Devise method
   # no password is required when the account is created; validate password when the user sets one
   validates_confirmation_of :password

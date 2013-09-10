@@ -1,2 +1,14 @@
-%h1 Admin
-%p Find me in app/views/admin/index.html.haml
+.center
+  %h1
+    = @waiting_users.count
+    on Waiting list
+  %table
+    %thead
+      %tr
+        %th EMAIL
+        %th WHEN REQUESTED
+    %tbody
+      - @waiting_users.each do |u|
+        %tr
+          %td= u.email
+          %td= time_ago_in_words(u.created_at)
