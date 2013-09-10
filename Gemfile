@@ -14,6 +14,7 @@ gem 'haml-rails'
 gem 'pg'
 gem 'rolify'
 gem 'simple_form', '>= 3.0.0.rc'
+gem 'will_paginate'
 # For client side validations later
 #gem 'strip_attributes'                 # clean spaces from model attrs
 #gem 'client_side_validations'          # client side form validation
