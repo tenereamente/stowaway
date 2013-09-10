@@ -2,9 +2,12 @@
   .row.hero
     %h1 Throw out what you know about 'traditional' storage.
     %h2.logo stowaway.co
-  %a.button.large.round{:href => "#", "data-reveal-id" => "myModal"} 
+  %a.button.large.round{id: 'request-invitation-button', :href => "#", "data-reveal-id" => "invitationModal"} 
     %i.icon-rocket.icon-left.icon-muted
     BE NOTIFIED
+  %div.button.large.round.hide{id: 'invitation-confirmed-button', style: 'display: none;'}
+    %i.icon-check.icon-left.icon-muted
+    GOT IT
   .row.mb20
     %h4.small.large-6.large-offset-3.columns
       We will give you a heads up when we launch. In the meantime, enjoy some

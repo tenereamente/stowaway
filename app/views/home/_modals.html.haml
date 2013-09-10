@@ -1,6 +1,9 @@
-#myModal.reveal-modal.small
+#invitationModal.reveal-modal.small
   %h2 Awesome. I have it.
-  %p.lead Your couch.  It is mine.
-  %p Im a cool paragraph that lives inside of an even cooler modal. Wins
+  %p.lead Coming soon. Storage redefined.
+  %p Leave your email address for early access.
+  = simple_form_for(@resource, html: {class: 'form-vertical', id: 'request-invitation' }, remote: true) do |f|
+    = f.input :email, autofocus: true, required: true
+    = f.button :submit, 'Request access to the beta', class: 'btn-primary'
   %a.close-reveal-modal x
   

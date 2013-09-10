@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    @resource = User.new
     # select pre-launch layout if nobody logged in
     if user_signed_in?
       render :layout => "application"

@@ -14,3 +14,9 @@ document.addEventListener "click", (->
   document.body.style.transition = crossfade
 ), false
 ###
+
+$ ->
+  $('#request-invitation').on 'ajax:success', (event, data, status, xhr) ->
+    $('#invitationModal').foundation('reveal', 'close')
+    $('#request-invitation-button').hide()
+    $('#invitation-confirmed-button').show()

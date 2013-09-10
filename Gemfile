@@ -14,6 +14,10 @@ gem 'haml-rails'
 gem 'pg'
 gem 'rolify'
 gem 'simple_form', '>= 3.0.0.rc'
+# For client side validations later
+#gem 'strip_attributes'                 # clean spaces from model attrs
+#gem 'client_side_validations'          # client side form validation
+#gem 'client_side_validations-simple_form'
 gem 'unicorn'
 group :development do
   gem 'better_errors'
