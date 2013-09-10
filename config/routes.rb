@@ -4,7 +4,7 @@ StowAway::Application.routes.draw do
   resources :users
   resources :storagespaces, :as => 'storage_spaces'
   get 'search' => 'search#index'
-  get 'listspace/map' => 'listspace#map'
+  get '/map' => 'storagespaces#map'
 
   get 'admin' => 'admin#index'
   get "/login" => redirect("/users")
