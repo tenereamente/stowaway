@@ -10,8 +10,14 @@ $red: rgb(200, 70, 57);
 $midnight: rgb(14, 41, 73);
 $orange: rgb(252, 122, 30);
 
+$bg-image: image-url("tile.svg") repeat ;
+
 @mixin page-color-theme($base_color) {
-  background: $base_color image-url("tile.svg") repeat;
+  background: $base_color $bg-image;
+  footer {
+    background: shade($base_color, 70);
+    border-top: 1px solid tint($base_color, 90);
+  }
   .contain-to-grid {
     background: shade($base_color, 70);
     .top-bar {
