@@ -14,14 +14,40 @@ $bg-image: image-url("tile.svg") repeat ;
 
 @mixin page-color-theme($base_color) {
   background: $base_color $bg-image;
+  color: shade($base_color, 9);
   footer {
-    background: shade($base_color, 70);
-    border-top: 1px solid tint($base_color, 90);
+    /*background: shade($base_color, 70);
+    border-top: 1px solid tint($base_color, 90);*/
   }
   .contain-to-grid {
-    background: shade($base_color, 70);
+    background: shade($base_color, 50);
     .top-bar {
       background: none;
+      a {
+        &:not(button) {
+          color: tint($base_color, 70);
+        }
+        &:hover {
+          color: #fff;
+        }
+        &.button {
+          background-color: shade($base_color, 70);
+          box-shadow: 0 4px 0 shade($base_color, 80);
+          &:hover {
+            background-color: shade($base_color, 10);
+          }
+          &:active {
+            background-color: shade($base_color, 40);
+            box-shadow: none;
+            top: 10px;
+          }
+        }
+      }
+      .brand {
+        a {
+          color: tint($base_color, 70);
+        }
+      }
     }
   }
   

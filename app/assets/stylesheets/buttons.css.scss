@@ -1,0 +1,15 @@
+/* Buttons */
+
+.button, .btn {
+  border-radius: 6px;
+  &:hover {
+  }
+  .icon-rocket {
+    color: rgba(255,255,255,.5);
+    margin: 0 1em 0 0;
+  }
+} 
+
+button.large, .button.large {
+  padding: 1em;
+}

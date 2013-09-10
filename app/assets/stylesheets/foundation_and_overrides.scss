@@ -52,7 +52,7 @@ $em-base: 18 !default;
 $default-float: left;
 
 // $body-bg: #fff;
-$body-font-color: #fff;
+// $body-font-color: shade($base_color, 9);
 $body-font-family: "Dosis", sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
@@ -1241,7 +1241,7 @@ $topbar-bg: rgba(#fff,1);
 
 // Height and margin
 
-// $topbar-height: 45px;
+$topbar-height: 54px;
 $topbar-margin-bottom: emCalc(32);
 
 // Control Input height for top bar
