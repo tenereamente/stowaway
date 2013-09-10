@@ -2,14 +2,15 @@
   %h1
     = @waiting_users.count
     on Waiting list
-  %table
-    %thead
-      %tr
-        %th EMAIL
-        %th WHEN REQUESTED
-    %tbody
-      - @waiting_users.each do |u|
+  .row
+    %table.small-6.large-centered.columns
+      %thead
         %tr
-          %td= u.email
-          %td= time_ago_in_words(u.created_at)
+          %th EMAIL
+          %th WHEN REQUESTED
+      %tbody
+        - @waiting_users.each do |u|
+          %tr
+            %td= u.email
+            %td= time_ago_in_words(u.created_at)
   = will_paginate @waiting_users
