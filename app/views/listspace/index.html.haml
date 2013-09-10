@@ -1,51 +1,10 @@
-.row.box
+.row
   - @users.each do |user|
     %p
       user: #{link_to user.name, user}
-  .large-3.columns
-    %ul.navbar-steps.navbar-steps-wizard
-      %li.active
-        .content
-          %i.icon-complete
-          .num-container
-            .num 1
-            .dot
-          Space Details
-      %li.incomplete
-        .content
-          %i.icon-complete
-          .num-container
-            .num 2
-            .dot
-          Location
-      %li.incomplete
-        .content
-          %i.icon-complete
-          .num-container
-            .num 3
-            .dot  
-          Listing Information
-      %li.incomplete
-        .content
-          %i.icon-complete
-          .num-container
-            .num 4
-            .dot
-          Photos
-      %li.incomplete
-        .content
-          %i.icon-complete
-          .num-container
-            .num 5
-            .dot
-          Complete
-  .large-9.columns{"accept-charset" => "UTF-8", :action => "/boats", "data-excluded" => ":disabled", "data-focus" => "first", :enctype => "multipart/form-data", :method => "post", :name => "boatForm", :novalidate => "novalidate"}
-    %div{:style => "margin:0;padding:0;display:inline"}
-      %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-      %input{:name => "authenticity_token", :type => "hidden", :value => "3DugOlq+vBe6SN2O4PL9seCFwZVZaGihitXRAdPIEZo="}/
-    .form-container.padding.padding-small
-      %input#section{:name => "section", :type => "hidden", :value => "basic"}/
-      %input#save_and_finish_later{:name => "save_and_finish_later", :type => "hidden", :value => "false"}/
+.row
+  .large-9.push-3.columns{"accept-charset" => "UTF-8", :action => "/boats", "data-excluded" => ":disabled", "data-focus" => "first", :enctype => "multipart/form-data", :method => "post", :name => "boatForm", :novalidate => "novalidate"}
+    .form-container
       .page-header
         .process-status.pull-right
           step
@@ -55,119 +14,45 @@
         %h2 
           Step 1.
           %b Space Details
-          %small This information is used to help renters find your space in search results.
       .row
-        .large-12
-          .row
-            .large-8
-              .row
-                .large-4
-                  %label.control-label Type of Space
-                .large7
-                  %select#boat-type.chzn.input-xsmall.chzn-done.parsley-validated.parsley-error{"data-disable-search" => "true", "data-error-container" => "#type-ec", "data-linked-select" => "boat-categories", "data-placeholder" => "Select a Type", "data-required" => "true", :name => "boat[boat_profile_attributes][boat_type]", :style => "display: none;"}
-                    %option
-                    %option{"data-catagories" => "Power", :value => "Power"} Power
-                    %option{"data-catagories" => "Sail", :value => "Sail"} Sail
-                    %option{"data-catagories" => "Human Powered", :value => "Human Powered"} Human Powered
-                  #boat_type_chzn.chzn-container.chzn-container-single.chzn.input-xsmall.chzn-container-single-nosearch{:style => "width: 258px;", :title => ""}
-                    %a.chzn-single.chzn-default{:href => "javascript:void(0)", :tabindex => "-1"}
-                      %span Select a Type
-                    %div
-                      %b
-                    .chzn-drop{:style => "left: -9000px; width: 256px; top: 25px;"}
-                      .chzn-search
-                        %input{:autocomplete => "off", :style => "width: 221px;", :type => "text"}/
-                      %ul.chzn-results
-                        %li#boat_type_chzn_o_1.active-result{:style => ""} Power
-                        %li#boat_type_chzn_o_2.active-result{:style => ""} Sail
-                        %li#boat_type_chzn_o_3.active-result{:style => ""} Human Powered
-                  #type-ec.error-container
-                    %ul#parsley-8088719500228763.parsley-error-list{:style => "display: block;"}
-                      %li.required{:style => "display: list-item;"} This value is required.
-          .row
-            .large-8
-              .row
-                .large-4
-                  %label.control-label Category
-                .large-7
-                  %select#selG4S.boat-categories.chzn.input-xsmall.chzn-done.parsley-validated.parsley-error{"data-error-container" => "#category-ec", "data-form-aside-el" => "#category-help", "data-placeholder" => "Select a Category", "data-required" => "true", :name => "boat[boat_profile_attributes][boat_category]", :style => "display: none;"}
-                    %option
-                    %option{"data-group" => "Power", :disabled => "", :value => "Airboat"} Airboat
-                    %option{"data-group" => "Power", :disabled => "", :value => "Aluminum Fishing"} Aluminum Fishing
-                    %option{"data-group" => "Power", :disabled => "", :value => "Angler"} Angler
-                    %option{"data-group" => "Power", :disabled => "", :value => "Bass Space"} Bass Space
-                    %option{"data-group" => "Power", :disabled => "", :value => "Bow Rider"} Bow Rider
-                    %option{"data-group" => "Power", :disabled => "", :value => "Catamaran (Power)"} Catamaran
-                    %option{"data-group" => "Power", :disabled => "", :value => "Center Console"} Center Console
-                    %option{"data-group" => "Power", :disabled => "", :value => "Classic (Power)"} Classic
-                    %option{"data-group" => "Power", :disabled => "", :value => "Commercial"} Commercial
-                    %option{"data-group" => "Power", :disabled => "", :value => "Convertible"} Convertible
-                    %option{"data-group" => "Power", :disabled => "", :value => "Cruiser (Power)"} Cruiser
-                    %option{"data-group" => "Power", :disabled => "", :value => "Cuddy Cabin"} Cuddy Cabin
-                    %option{"data-group" => "Power", :disabled => "", :value => "Deck Space"} Deck Space
-                    %option{"data-group" => "Power", :disabled => "", :value => "Dive Space"} Dive Space
-                    %option{"data-group" => "Power", :disabled => "", :value => "Downeast"} Downeast
-                    %option{"data-group" => "Power", :disabled => "", :value => "Dual Console"} Dual Console
-                    %option{"data-group" => "Power", :disabled => "", :value => "Duck Space"} Duck Space
-                    %option{"data-group" => "Power", :disabled => "", :value => "Express Cruiser"} Express Cruiser
-                    %option{"data-group" => "Power", :disabled => "", :value => "Fish and Ski"} Fish and Ski
-                    %option{"data-group" => "Power", :disabled => "", :value => "Flats Space"} Flats Space
-                    %option{"data-group" => "Power", :disabled => "", :value => "Flybridge"} Flybridge
-                    %option{"data-group" => "Power", :disabled => "", :value => "Houseboat"} Houseboat
-                    %option{"data-group" => "Power", :disabled => "", :value => "Inflatable Outboard"} Inflatable Outboard
-                    %option{"data-group" => "Power", :disabled => "", :value => "Jet Space"} Jet Space
-                    %option{"data-group" => "Power", :disabled => "", :value => "Jon Space"} Jon Space
-                    %option{"data-group" => "Power", :disabled => "", :value => "Mega Yacht"} Mega Yacht
-                    %option{"data-group" => "Power", :disabled => "", :value => "Motor Yacht"} Motor Yacht
-                    %option{"data-group" => "Power", :disabled => "", :value => "Offshore Sport Fishing"} Offshore Sport Fishing
-                    %option{"data-group" => "Power", :disabled => "", :value => "Other"} Other
-                    %option{"data-group" => "Power", :disabled => "", :value => "Performance"} Performance
-                    %option{"data-group" => "Power", :disabled => "", :value => "Performance Fishing"} Performance Fishing
-                    %option{"data-group" => "Power", :disabled => "", :value => "Pilothouse"} Pilothouse
-                    %option{"data-group" => "Power", :disabled => "", :value => "Pontoon"} Pontoon
-                    %option{"data-group" => "Power", :disabled => "", :value => "Rigid Inflatable"} Rigid Inflatable
-                    %option{"data-group" => "Power", :disabled => "", :value => "Runabout"} Runabout
-                    %option{"data-group" => "Power", :disabled => "", :value => "Saltwater Fishing"} Saltwater Fishing
-                    %option{"data-group" => "Power", :disabled => "", :value => "Ski and Wakeboard boat"} Ski and Wakeboard boat
-                    %option{"data-group" => "Power", :disabled => "", :value => "Skiff"} Skiff
-                    %option{"data-group" => "Power", :disabled => "", :value => "Trawler"} Trawler
-                    %option{"data-group" => "Power", :disabled => "", :value => "Walkaround"} Walkaround
-                    %option{"data-group" => "Power", :disabled => "", :value => "Weekender"} Weekender
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Catamaran (Sail)"} Catamaran
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Classic (Sail)"} Classic
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Cruiser (Sail)"} Cruiser
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Cruiser/Racer"} Cruiser/Racer
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Cutter"} Cutter
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Daysailer/Weekender"} Daysailer/Weekender
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Ketch"} Ketch
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Motorsailer"} Motorsailer
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Trimaran"} Trimaran
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Other"} Other
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Racer"} Racer
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Sloop"} Sloop
-                    %option{"data-group" => "Sail", :disabled => "", :value => "Yawl"} Yawl
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Kayak"} Kayak
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Sea Kayak"} Sea Kayak
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Canoe"} Canoe
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Outrigger Canoe"} Outrigger Canoe
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Row Space"} Row Space
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Scull"} Scull
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Paddle Board"} Paddle Board
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Dinghy"} Dinghy
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Inflatable"} Inflatable
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Rigid Inflatable"} Rigid Inflatable
-                    %option{"data-group" => "Human Powered", :disabled => "", :value => "Other"} Other
-                  #selG4S_chzn.chzn-container.chzn-container-single.boat-categories.chzn.input-xsmall{:style => "width: 258px;", :title => ""}
-                    %a.chzn-single.chzn-default{:href => "javascript:void(0)", :tabindex => "-1"}
-                      %span Select a Category
-                    %div
-                      %b
-                    .chzn-drop{:style => "left: -9000px; width: 256px; top: 26px;"}
-                      .chzn-search
-                        %input{:autocomplete => "off", :style => "width: 221px;", :type => "text"}/
-                      %ul.chzn-results
-                  #category-ec.error-container
-                    %ul#parsley-5819784949999303.parsley-error-list{:style => "display: block;"}
-                      %li.required{:style => "display: list-item;"} This value is required.
-            .large-4
-              #category-help.help-bubble.fade A boat’s category type typically refers to the way in which the boat is used.
+        .large-12.columns
+      
+  .large-3.pull-9.columns.sidebar
+    %ul.navbar-steps.navbar-steps-wizard
+      %li.active
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 1
+            .dot
+          Space Details
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 2
+            .dot
+          Location
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 3
+            .dot 
+          Listing Information
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 4
+            .dot
+          Photos
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 5
+            .dot
+          Complete
+
+        

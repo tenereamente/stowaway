@@ -14,12 +14,27 @@ $bg-image: image-url("tile2.svg") repeat ;
 
 @mixin page-color-theme($base_color) {
   .box {
-    background: tint($base_color, 90);
+    background: tint($base_color, 95);
     border-radius: 3px;
     padding: 2em;
     margin-bottom: 25px;
     box-shadow: 0 0 0 10px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
     color: #555;
+    .sidebar {
+      ul {
+        .active {
+          .content {
+            background-color: shade($base-color, 20);
+            color: tint($base-color, 80);
+          }
+        }
+        .inactive {
+          .content {
+            background-color: tint($base-color, 80);
+          }
+        }
+      }
+    }
     h1, h2, h3, h4, h5, h6 {
       color: rgba(#555, .5);
     }
