@@ -3,11 +3,14 @@
 .button, .btn {
   border-radius: 6px;
   transition: background-color 300ms ease-out;
+  font-family: "Quicksand";
+  text-transform: uppercase;
+  font-weight: normal;
   &:hover {
   }
   .icon-rocket {
     color: rgba(255,255,255,.5);
-    margin: 0 1em 0 0;
+    margin: 0 .75em 0 0;
   }
 } 
 

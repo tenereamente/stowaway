@@ -13,6 +13,35 @@ $sky: #8b98d8;
 $bg-image: image-url("tile2.svg") repeat ;
 
 @mixin page-color-theme($base_color) {
+  .hero {
+    h1 {
+      color: shade($base_color, 70);
+      small {
+        color: shade($base_color, 70);
+      }
+    }
+    h3 {
+      color: shade($base_color, 70);
+    }
+    color: shade($base_color, 50); ;
+  }
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+    border: 1px solid tint($base_color, 70);
+    box-shadow: 0 none;
+    background-color: tint($base_color, 97);
+    &:focus {
+      box-shadow: none!important;
+      border-color: shade($base_color, 10);
+       background-color: #fff;
+    }
+  }
+  input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button {
+    color: tint($base_color, 80);
+    background-color: shade($base_color, 20);
+    &:hover {
+      color: tint($base_color, 90);
+      background-color: shade($base_color, 40);
+    }
   .box {
     background: tint($base_color, 90);
     border-radius: 3px;
@@ -20,23 +49,6 @@ $bg-image: image-url("tile2.svg") repeat ;
     margin-bottom: 25px;
     box-shadow: 0 0 0 10px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
     color: #555;
-    input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
-      border: 1px solid tint($base_color, 70);
-      box-shadow: 0 none;
-      background-color: tint($base_color, 97);
-      &:focus {
-        box-shadow: none!important;
-        border-color: shade($base_color, 10);
-         background-color: #fff;
-      }
-    }
-    input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button {
-      color: tint($base_color, 80);
-      background-color: shade($base_color, 20);
-      &:hover {
-        color: tint($base_color, 90);
-        background-color: shade($base_color, 40);
-      }
     }
     label {
       color: shade($base_color, 40);
@@ -73,7 +85,7 @@ $bg-image: image-url("tile2.svg") repeat ;
     .top-bar {
       background: none;
       a {
-        transition: color 300ms ease-out;;
+        transition: color 300ms ease-out;
         &:not(button) {
           color: tint($base_color, 70);
           padding: 0 .5em;
@@ -104,12 +116,13 @@ $bg-image: image-url("tile2.svg") repeat ;
     }
   }
   .button {
-    background-color: shade($base_color, 80);
+    background-color: shade($base_color, 50);
+    color: tint($base_color, 90);
     &:hover {
-      background-color: shade($base_color, 40);
+      background-color: shade($base_color, 60);
     }
     &:active {
-      background-color: shade($base_color, 60);
+      background-color: shade($base_color, 70);
     }
   }
   .social {

@@ -1,19 +1,25 @@
 .center
   .row.hero
-    %h1 Throw out what you know about 'traditional' storage.
     %h2.logo stowaway.co
-- unless user_signed_in?
-  %a.button.large.round{id: 'request-invitation-button', :href => "#", "data-reveal-id" => "invitationModal"} 
-    %i.icon-rocket.icon-left.icon-muted
-    BE NOTIFIED
-  %div.button.large.round.hide{id: 'invitation-confirmed-button', style: 'display: none;'}
-    %i.icon-check.icon-left.icon-muted
-    GOT IT
-  .row.mb20
-    %h4.small.large-6.large-offset-3.columns
-      We will give you a heads up when we launch. In the meantime, enjoy some
-      = succeed "." do
-        %a{:href => "http://www.youtube.com/watch?v=joDjwtjIQS8", :target => "_blank"} Rock'em Sock'em Robots
+    %h1
+      %small We call it
+      = succeed "Shareable" do
+        %br/
+      Storage.
+    %h3.mb20
+      Think babysitting for your boxes.
+  - unless user_signed_in?
+    %h4.mb20 Register your email, and we'll send you a prelaunch heads up 
+    %a.button.large.round{id: 'request-invitation-button', :href => "#", "data-reveal-id" => "invitationModal"}
+      %i.icon-rocket.icon-left.icon-muted
+      BE NOTIFIED
+    %div.button.large.round.hide{id: 'invitation-confirmed-button', style: 'display: none;'}
+      %i.icon-ok-check.icon-left.icon-muted
+      BOOYA!
+    .row.mb20
+      %h4.small.large-6.large-offset-3.columns
+        In the meantime, enjoy a little
+        = succeed "." do
+          %a{:href => "http://www.youtube.com/watch?v=joDjwtjIQS8", :target => "_blank"} Rock'em Sock'em
     //%p.small= Rails.env
-  = render 'home/modals'
-  
+= render 'home/modals'

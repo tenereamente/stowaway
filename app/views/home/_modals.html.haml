@@ -1,10 +1,10 @@
 #invitationModal.reveal-modal.small
-  %h2 Awesome. I have it.
-  %p.lead Coming soon. Storage redefined.
-  %p Leave your email address for early access.
+  %h3 Coming soon...
+  %h3 Storage redefined.
+  %p.lead Leave an email and zip for early access.
   = simple_form_for(@resource, html: {class: 'form-vertical', id: 'request-invitation' }, remote: true) do |f|
     = f.input :email, autofocus: true, required: true
     = f.input :zip, required: true
-    = f.button :submit, 'Request access to the beta', class: 'btn-primary'
+    = f.button :submit, 'Get Notified', class: 'btn'
   %a.close-reveal-modal x
   

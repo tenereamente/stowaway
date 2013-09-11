@@ -4,3 +4,26 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   border-radius: 5px;
   text-transform: capitalize;
 }
+
+.input {
+  position: relative;
+  label {
+    position: absolute;
+    z-index: 2;
+    top: 16px;
+    right: 15px;
+    left: 15px;
+    color: #9a9da1;
+    line-height: 1;
+    margin: 0;
+    overflow: hidden;
+    font-size: 1em;
+    white-space: nowrap;
+    cursor: text;
+    opacity: 1;
+    transition: opacity 300ms ease-out;
+    &:focus {
+      opacity: 0;
+    }
+  }
+}

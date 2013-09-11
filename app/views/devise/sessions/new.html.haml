@@ -1,4 +1,4 @@
-.row.box
+.row
   %h2 sign in
   = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
     = f.input :email, :autofocus => true
