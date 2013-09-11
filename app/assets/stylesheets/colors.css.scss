@@ -13,6 +13,8 @@ $sky: #8b98d8;
 $bg-image: image-url("tile2.svg") repeat ;
 
 @mixin page-color-theme($base_color) {
+  background: $base_color $bg-image;
+  color: shade($base_color, 20);
   .hero {
     h1 {
       color: shade($base_color, 70);
@@ -42,6 +44,7 @@ $bg-image: image-url("tile2.svg") repeat ;
       color: tint($base_color, 90);
       background-color: shade($base_color, 40);
     }
+  }
   .box {
     background: tint($base_color, 90);
     border-radius: 3px;
@@ -49,9 +52,10 @@ $bg-image: image-url("tile2.svg") repeat ;
     margin-bottom: 25px;
     box-shadow: 0 0 0 10px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
     color: #555;
-    }
-    label {
-      color: shade($base_color, 40);
+    .input {
+      label {
+        color: shade($base_color, 40);
+      }
     }
     .sidebar {
       ul {
@@ -78,8 +82,6 @@ $bg-image: image-url("tile2.svg") repeat ;
       }
     }
   }
-  background: $base_color $bg-image;
-  color: shade($base_color, 20);
   .contain-to-grid {
     background: shade($base_color, 50);
     .top-bar {
