@@ -29,3 +29,12 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     }
   }
 }
+
+.input.boolean {
+  height: 2em;
+  label {
+    position: relative;
+    z-index: 1;
+    top: 0;
+  }
+}
