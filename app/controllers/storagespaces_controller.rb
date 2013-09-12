@@ -1,8 +1,7 @@
 class StoragespacesController < ApplicationController
-  before_filter :authenticate_user!
-
+  # before_filter :authenticate_user!d
   def index
-    @resource = StorageSpacegit.new
+    @resource = StorageSpace.new
   end
 
   def create

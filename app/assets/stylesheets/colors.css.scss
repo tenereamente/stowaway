@@ -140,6 +140,10 @@ $bg-image: image-url("tile2.svg") repeat ;
   }
 }
 
+body {
+  @include page-color-theme(#444);  
+}
+
 body.storagespaces {
   @include page-color-theme($sky);
 }
@@ -162,3 +166,5 @@ body.registrations {
 body.passwords, body.confirmations {
   @include page-color-theme($peach);
 }
+
+

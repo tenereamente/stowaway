@@ -2,7 +2,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   padding: 1em .5em;
   font-size: 1.5em;
   border-radius: 5px;
-  text-transform: capitalize;
+  text-transform: auto;
 }
 
 .input {
@@ -19,11 +19,13 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     overflow: hidden;
     font-size: 1em;
     white-space: nowrap;
+    text-transform: lowercase;
     cursor: text;
     opacity: 1;
     transition: opacity 300ms ease-out;
     &:focus {
       opacity: 0;
+      display: none;
     }
   }
 }

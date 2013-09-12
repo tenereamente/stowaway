@@ -1,6 +1,6 @@
-.row.box
+.row
   %h2
-    edit #{resource_name.to_s.humanize}
+    Edit #{resource_name.to_s.humanize}
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f|
     = f.error_notification
     = display_base_errors resource
@@ -10,7 +10,7 @@
     = f.input :password_confirmation, :required => false
     = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
     = f.button :submit, 'Update', :class => 'btn-primary'
-  %h3 Cancel my account
+  %h3 Unhappy?
   %p
-    Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
+    Cancel anytime #{link_to "Close My Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
   = link_to "Back", :back
