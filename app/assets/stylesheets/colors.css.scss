@@ -10,7 +10,8 @@ $red: rgb(200, 70, 57);
 $midnight: rgb(14, 41, 73);
 $orange: rgb(252, 122, 30);
 $sky: #8b98d8;
-$bg-image: image-url("tile2.svg") repeat ;
+$bg-image: image-url("tile2.svg") repeat;
+$burgundy: #541c1e;
 
 @mixin page-color-theme($base_color) {
   background: $base_color $bg-image;
@@ -156,11 +157,11 @@ body.listspace {
 }
 
 body.sessions {
-  @include page-color-theme($red);
+  @include page-color-theme($green);
 }
 
 body.registrations {
-  @include page-color-theme($green);
+  @include page-color-theme($orange);
 }
 
 body.passwords, body.confirmations {
