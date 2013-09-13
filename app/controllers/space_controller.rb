@@ -1,5 +1,5 @@
 class SpaceController < ApplicationController
   def index
-    @users = User.all
+    @spaces = StorageSpace.all
   end
 end

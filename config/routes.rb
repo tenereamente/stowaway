@@ -4,7 +4,7 @@ StowAway::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   
   resources :users
-  resources :storagespaces, :as => 'storage_spaces'
+  resources :space, :as => 'storage_spaces'
   
   # post launch, this will be served on root instead of the prelaunch page
   get 'home' => 'home#home'
