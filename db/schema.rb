@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130910122523) do
+ActiveRecord::Schema.define(version: 20130913144627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,27 +27,23 @@ ActiveRecord::Schema.define(version: 20130910122523) do
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
-  create_table "rental_agreement", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "height"
-  end
-  
   create_table "storage_spaces", force: true do |t|
     t.integer  "user_id"
     t.integer  "height"
     t.integer  "length"
     t.integer  "width"
-    t.string   "units"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
+    t.float    "lat"
+    t.float    "lng"
     t.string   "address1"
     t.string   "address2"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.float    "lat"
-    t.float    "lng"
+    t.string   "country"
   end
 
   add_index "storage_spaces", ["user_id"], name: "index_storage_spaces_on_user_id", using: :btree

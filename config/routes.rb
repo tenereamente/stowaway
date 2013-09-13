@@ -13,6 +13,6 @@ StowAway::Application.routes.draw do
   get '/map' => 'storagespaces#map'
 
   get 'admin' => 'admin#index'
-  get "/login" => redirect("/users")
+  get "/login" => redirect("home#dashboard")
  
 end
