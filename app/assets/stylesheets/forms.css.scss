@@ -30,8 +30,11 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   }
 }
 
-.input.boolean {
+.input.boolean, .input > .selectdrop {
   height: 2em;
+}
+
+.input.boolean, .input.country {
   label {
     position: relative;
     z-index: 1;

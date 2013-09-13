@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20130913144627) do
   create_table "storage_spaces", force: true do |t|
     t.integer  "user_id"
     t.integer  "height"
-    t.integer  "length"
+    t.integgit ser  "length"
     t.integer  "width"
     t.text     "notes"
     t.datetime "created_at"
