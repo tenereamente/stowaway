@@ -20,9 +20,9 @@ class User < ActiveRecord::Base
   end
 
   # override Devise method
-  def confirmation_required?
-    false
-  end
+  #def confirmation_required?
+  #  false
+  #end
 
   # override Devise method
   def active_for_authentication?
