@@ -4,7 +4,8 @@ packages = [
   "colordiff",
   "byobu",
   "git",
-  "vim-nox"
+  "vim-nox",
+  "imagemagick" # needed for paperclip gem
 ]
 
 packages.each do |p|

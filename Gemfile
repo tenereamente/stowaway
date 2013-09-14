@@ -20,6 +20,9 @@ gem 'simple_form', '>= 3.0.0.rc'
 gem 'will_paginate'
 gem 'acts-as-taggable-on'
 gem 'gmaps4rails'
+gem 'stripe'
+gem 'paperclip', '~> 3.0'
+gem 'aws-sdk', '~> 1.5.7'
 # For client side validations later
 #gem 'strip_attributes'                 # clean spaces from model attrs
 #gem 'client_side_validations'          # client side form validation

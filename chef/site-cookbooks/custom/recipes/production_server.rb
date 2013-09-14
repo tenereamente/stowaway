@@ -2,10 +2,13 @@
 packages = [
   "sl",
   "colordiff",
-  "byobu",
+  "tmux",
   "git",
   "vim-nox",
-  "build-essential"
+  "build-essential",
+  "imagemagick",
+  "htop",
+  "bmon"
 ]
 
 packages.each do |p|
@@ -123,7 +126,12 @@ template "#{node['custom']['deploy_to']}/shared/config/application.yml" do
             mandrill_username: passwords['prod']['mandrill_username'],
             mailchimp_api_key: passwords['prod']['mailchimp_api_key'],
             facebook_app_id: passwords['prod']['facebook_app_id'],
-            facebook_app_secret: passwords['prod']['facebook_app_secret']
+            facebook_app_secret: passwords['prod']['facebook_app_secret'],
+            aws_access_key_id: passwords['prod']['aws_access_key_id'],
+            aws_secret_access_key: passwords['prod']['aws_secret_access_key'],
+            stripe_pk: passwords['prod']['stripe_live_pk'],
+            stripe_sk: passwords['prod']['stripe_live_sk']
+
 end
 
 directory "/etc/nginx/ssl" do
