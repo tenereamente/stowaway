@@ -11,7 +11,7 @@
     %a.button.launch.large.round{id: 'request-invitation-button', :href => "#", "data-reveal-id" => "invitationModal"}
       %i.icon-rocket.icon-left.icon-muted
       BE NOTIFIED
-      = request.protocol
+      = request.ssl? ? "true" : "false" 
     %div.button.large.round.hide{id: 'invitation-confirmed-button', style: 'display: none;'}
       %i.icon-ok-sign.icon-left.icon-muted
       BOOYA!
