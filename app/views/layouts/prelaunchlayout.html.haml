@@ -7,7 +7,8 @@
         = stylesheet_link_tag "application", :media => "all"
         = javascript_include_tag "application"
         = csrf_meta_tags
-        = google_webfonts_link_tag :quicksand => [400,700], :open_sans_condensed => [300,700], :dosis => [300,400,500,600,700]
+        /= google_webfonts_link_tag :quicksand => [400,700], :open_sans_condensed => [300,700], :dosis => [300,400,500,600,700]
+        %link{ type: "text/css", rel: "stylesheet", href: "http://fonts.googleapis.com/css?family=Quicksand:400,700|Open+Sans+Condensed:300,700|Dosis:300,400,500,600,700" }
         = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
   #main{:role => "main"}
