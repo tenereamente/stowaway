@@ -122,6 +122,26 @@ template "#{node['custom']['deploy_to']}/shared/config/application.yml" do
   variables mandrill_api_key: passwords['prod']['mandrill_api_key'], mandrill_username: passwords['prod']['mandrill_username']
 end
 
+directory "/etc/nginx/ssl" do
+  mode "0600"
+  owner "web_user"
+  group "web_user"
+end
+
+file "/etc/nginx/ssl/stowaway_production.crt" do
+  mode "0600"
+  content passwords['prod']['production_ssl_certs']
+  owner "web_user"
+  group "web_user"
+end
+
+file "/etc/nginx/ssl/stowaway_production.key" do
+  mode "0600"
+  content passwords['prod']['production_ssl_key']
+  owner "web_user"
+  group "web_user"
+end
+
 postgresql_database "#{node['custom']['database']}" do
   connection postgresql_connection_info
   action :create

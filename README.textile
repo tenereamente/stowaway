@@ -69,7 +69,7 @@ h2. Installing a real server
 
 This was originally created using the command `openssl rand -base64 512 | tr -d '\r\n' > chef/.chef/encrypted_data_bag_secret`.
 
-To change the postgres password or otherwise edit encrypted secrets, `cd chef` and `knife solo data bag edit custom secrets`.
+To change the postgres password or otherwise edit encrypted secrets, `cd chef` and `knife solo data bag edit custom secrets`. To convert an SSL certificate private key into a one-line blob that may be pasted into the encrypted data bag, use: `ruby -e 'p ARGF.read' <filename>`
 
 4. Rsync the chef recipes to the machine and run chef-solo
 

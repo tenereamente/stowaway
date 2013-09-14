@@ -3,8 +3,18 @@ upstream unicorn_<%= application %>_<%= stage %> {
 }
 
 server {
+    listen         80;
+    return 301 https://$host$request_uri;
+}
+
+server {
+  listen 443;
   <%= "server_name #{vhost};" %> 
   root <%= current_path %>/public;
+
+  ssl on;
+  ssl_certificate <%= application %>_<%= stage %>.crt;
+  ssl_certificate_key <%= application %>_<%= stage %>.key;  
 
   if (-f $document_root/system/maintenance.html) {
     return 503;
