@@ -71,7 +71,11 @@ template "/app/staging/shared/config/application.yml" do
   owner "web_user"
   group "web_user"
   mode "0644"
-  variables mandrill_api_key: passwords['prod']['mandrill_api_key'], mandrill_username: passwords['prod']['mandrill_username']
+  variables mandrill_api_key: passwords['prod']['mandrill_api_key'], 
+            mandrill_username: passwords['prod']['mandrill_username'],
+            mailchimp_api_key: passwords['prod']['mailchimp_api_key'],
+            facebook_app_id: passwords['prod']['facebook_app_id'],
+            facebook_app_secret: passwords['prod']['facebook_app_secret']
 end
 
 directory "/etc/nginx/ssl" do
