@@ -22,7 +22,6 @@ cookbook 'database'
 cookbook 'postgresql'
 cookbook 'unattended-upgrades',
     git: 'git://github.com/patdeegan/chef-unattended-upgrades.git'
-cookbook 'htop'
 cookbook 'openssl'
 cookbook 'monit'
 cookbook 'openssh'

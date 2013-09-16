@@ -31,6 +31,11 @@ override_attributes(
     :database_user => 'web_user',
     :database_password => passwords['prod']['web_user'],
     :database_host => 'localhost'
+  },
+  :firewall => {
+    :rules => [
+      {:http => { :port => "80" }}
+    ]
   }
 )
 

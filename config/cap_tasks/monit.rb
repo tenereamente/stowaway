@@ -6,6 +6,7 @@ namespace :monit do
     nginx
     postgresql
     unicorn
+    resque
     syntax
     reload
   end
@@ -14,6 +15,7 @@ namespace :monit do
   task(:nginx, roles: :web) { monit_config "nginx" }
   task(:postgresql, roles: :db) { monit_config "postgresql" }
   task(:unicorn, roles: :app) { monit_config "unicorn" }
+  task(:resque, roles: :app) { monit_config "resque" }
 
   %w[start stop restart syntax reload].each do |command|
     desc "Run Monit #{command} script"

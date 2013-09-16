@@ -23,6 +23,7 @@ gem 'gmaps4rails'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.5.7'
+gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 # For client side validations later
 #gem 'strip_attributes'                 # clean spaces from model attrs
 #gem 'client_side_validations'          # client side form validation
