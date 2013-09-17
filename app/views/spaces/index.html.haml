@@ -6,7 +6,8 @@
 - @spaces.each do |s|
   .row.locations
     .small-3.column
-      = link_to "Space ID #{s.id}", space_path(s), :class => 'button'
+      = link_to "More", space_path(s), :class => 'button'
+      = link_to "Edit", edit_space_path(s), :class => 'button'
     .small-3.column
       - if s.photo.exists?
         = image_tag s.photo.url(:thumb)
