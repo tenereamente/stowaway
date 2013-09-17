@@ -171,3 +171,9 @@ postgresql_database_user 'web_user' do
   privileges [:all]
   action :grant
 end
+
+firewall_rule "http/https" do
+  protocol :tcp
+  ports [ 80, 443 ]
+  action :allow
+end
