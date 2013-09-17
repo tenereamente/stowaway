@@ -1,8 +1,8 @@
 .center
   %h1
-    = @spaces.count
+    = h @spaces.count
     spaces
   .row
     - @spaces.each do |s|
       .row
-        = s.normalized_address
+        = h s.normalized_address
