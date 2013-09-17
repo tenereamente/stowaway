@@ -6,3 +6,10 @@
 # ADMIN_NAME: Storage Admin
 # ADMIN_EMAIL: admin@stowaway.co
 # ADMIN_PASSWORD: somepassword
+# FACEBOOK_APP_ID: 
+# FACEBOOK_APP_SECRET: 
+# AWS_ACCESS_KEY_ID: 
+# AWS_SECRET_ACCESS_KEY: 
+# AWS_REGION: 'us-east-1'
+# STRIPE_SK: 
+# STRIPE_PK: 

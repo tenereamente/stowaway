@@ -22,6 +22,10 @@
   ga('create', 'UA-43750203-1', 'stowaway.co');
   ga('send', 'pageview');
   
+:javascript
+  $(document).ready(function() { 
+    if( $('.gmaps4rails_map').length > 0 ) { Gmaps.loadMaps(); } 
+  });
 
 :javascript
   $(document).ready(function(){

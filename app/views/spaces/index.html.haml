@@ -1,0 +1,8 @@
+.center
+  %h1
+    = @spaces.count
+    spaces
+  .row
+    - @spaces.each do |s|
+      .row
+        = s.normalized_address

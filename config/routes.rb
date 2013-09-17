@@ -4,13 +4,15 @@ StowAway::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   
   resources :users
-  resources :space, :as => 'storage_spaces'
+  resources :spaces
+  resources :charges
+
+  get 'map' => 'spaces#map'
   
   # post launch, this will be served on root instead of the prelaunch page
   get 'home' => 'home#home'
 
   get 'search' => 'search#index'
-  get '/map' => 'storagespaces#map'
 
   get 'admin' => 'admin#index'
   get "/login" => redirect("/users/sign_in")
