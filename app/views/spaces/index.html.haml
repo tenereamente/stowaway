@@ -2,7 +2,13 @@
   %h2 
     Available Spaces
   = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
+
 - @spaces.each do |s|
   .row.locations
-    = link_to "Space ID #{s.id}", space_path(s), :class =>'button'
-    = h s.normalized_address
+    .small-3.column
+      = link_to "Space ID #{s.id}", space_path(s), :class => 'button'
+    .small-3.column
+      - if s.photo.exists?
+        = image_tag s.photo.url(:thumb)
+    .small-6.column
+      = h s.normalized_address

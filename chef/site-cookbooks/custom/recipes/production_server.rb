@@ -129,6 +129,7 @@ template "#{node['custom']['deploy_to']}/shared/config/application.yml" do
             facebook_app_secret: passwords['prod']['facebook_app_secret'],
             aws_access_key_id: passwords['prod']['aws_access_key_id'],
             aws_secret_access_key: passwords['prod']['aws_secret_access_key'],
+            aws_bucket: "stowawayco-production",
             stripe_pk: passwords['prod']['stripe_live_pk'],
             stripe_sk: passwords['prod']['stripe_live_sk']
 

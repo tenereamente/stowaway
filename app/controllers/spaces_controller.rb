@@ -17,4 +17,23 @@ class SpacesController < ApplicationController
     @space = Space.find(params[:id])
   end
 
+  def edit
+    @resource = Space.find(params[:id])
+  end
+
+  def update
+    @space = Space.find(params[:id])
+    if @space.update_attributes(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :photo))
+      redirect_to spaces_path, :notice => "Space updated."
+    else
+      redirect_to spaces_path, :alert => "Unable to update space."
+    end
+  end
+
+  def destroy
+    space = Space.find(params[:id])
+    space.destroy
+    redirect_to spaces_path, :notice => "Space deleted."
+  end
+
 end

@@ -5,6 +5,12 @@ class Space < ActiveRecord::Base
                   :normalized_address => "normalized_address",
                   :msg => "Sorry, not even Google could figure out where that is"
 
+  has_attached_file :photo, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
+
   def gmaps4rails_address
     "#{self.address1}, #{self.city}, #{self.zip}"
   end
