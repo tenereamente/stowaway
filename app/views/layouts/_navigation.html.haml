@@ -14,6 +14,8 @@
             = link_to 'Account', edit_user_registration_path
             %ul.dropdown
               %li
+                = link_to 'My Spaces', '#'
+              %li
                 = link_to 'Logout', destroy_user_session_path, :method=>'delete'
           - if current_user.has_role? :admin
             %li.has-dropdown

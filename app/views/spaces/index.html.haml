@@ -1,10 +1,9 @@
 .row
   %h2 
-    %i.icon-search.pull-left
-    Find Storage
+    Available Spaces
   = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
-  .row
-    - @spaces.each do |s|
-      .row
-        = link_to "Space ID #{s.id}", space_path(s)
-        = h s.normalized_address
+.row
+  - @spaces.each do |s|
+    .row
+      = link_to "Space ID #{s.id}", space_path(s)
+      = h s.normalized_address
