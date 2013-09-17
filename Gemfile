@@ -37,6 +37,7 @@ group :development do
   gem 'git-smart', require: false
   gem 'librarian-chef', require: false
   gem 'letter_opener'
+  gem 'brakeman', require: false
 end
 
 gem 'hooves', require: 'hooves/default' # make unicorn the default for rails s
