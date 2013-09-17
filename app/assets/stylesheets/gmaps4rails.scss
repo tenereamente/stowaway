@@ -1,0 +1,35 @@
+.map_container {
+  padding: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc #ccc #999 #ccc;
+  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+  margin: 0 0 2em 0;
+}
+
+.gmaps4rails_map {
+
+  height: 400px;
+}
+.locations {
+  a.button {
+    margin: 0 1em 0 0;
+  }
+}
+.bing_map {
+   position: absolute;
+   top: 20;
+   left: 10;
+   width: 400px;
+   height: 400px;
+   border:#555555 2px solid;
+}
+
+img,
+object,
+embed {
+  max-width: none !important;
+  height: auto;
+}

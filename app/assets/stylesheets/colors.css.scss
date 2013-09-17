@@ -78,6 +78,12 @@ $burgundy: #541c1e;
     }
     a {
       color: shade($base_color, 10);
+      &.button {
+        background-color: tint($base_color, 80);
+        &:hover {
+          background-color: tint($base_color, 70);
+        }
+      }
       &:hover {
         color: shade($base_color, 20);
       }
