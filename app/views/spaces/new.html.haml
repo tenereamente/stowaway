@@ -1,8 +1,72 @@
-= simple_form_for @resource do |f|
-  = f.input :notes
-  = f.input :address1
-  = f.input :address2
-  = f.input :city
-  = f.input :state
-  = f.input :zip
-  = f.button :submit
+.row
+  .large-9.push-3.columns{"accept-charset" => "UTF-8", :action => "/boats", "data-excluded" => ":disabled", "data-focus" => "first", :enctype => "multipart/form-data", :method => "post", :name => "boatForm", :novalidate => "novalidate"}
+    %select.selectdrop
+    .form-container
+      .page-header
+        .process-status.pull-right
+          step
+          %b 1
+          of
+          %b 5
+        %h2 
+          Step 1.
+          %b Add a Space
+        = simple_form_for(@resource, html: {class: 'form-vertical', id: 'list-space-step1' }, remote: true) do |f|
+          .row
+            .small-12.column
+              = f.input :address1, autofocus: true, required: true
+          .row
+            .small-12.column
+              = f.input :address2, autofocus: true, required: true
+          .row
+            .small-6.column
+              = f.input :city, autofocus: true, required: true
+            .small-3.column
+              = f.input_field :state, :label => 'State', collection: us_states, autofocus: true, input_html: {style: 'height:100px!important;'}, required: true
+            .small-3.column
+              = f.input :zip, autofocus: true, required: true
+          .row
+            .small-12.large-6.column
+              = f.input_field :country, input_html: { class: 'selectdrop' }, :label => 'Select Country', priority: [ "United States" ], autofocus: true, required: true
+              = f.hint 'This is a hint!'
+          .row
+            .small-12.large-6.column
+              = f.button :submit, 'Next Step', class: 'btn-primary large-6 small-12 column'
+              
+  .large-3.pull-9.columns.sidebar
+    %ul.navbar-steps.navbar-steps-wizard
+      %li.active
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 1
+            .dot
+          Location
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 2
+            .dot
+          Space Detail
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 3
+            .dot 
+          Listing Information
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 4
+            .dot
+          Photos
+      %li.inactive
+        .content
+          %i.icon-ok-sign
+          .num-container
+            .num 5
+            .dot
+          Complete

@@ -1,8 +1,9 @@
-.center
-  %h1
-    = h @spaces.count
-    spaces
-  .row
-    - @spaces.each do |s|
-      .row
-        = h s.normalized_address
+.row
+  .large-9.push-3.columns
+    Show me some spaces
+    = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
+    .row
+      - @spaces.each do |s|
+        .row
+          = link_to "Space ID #{s.id}", space_path(s)
+          = h s.normalized_address
