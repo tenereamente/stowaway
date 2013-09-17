@@ -10,7 +10,7 @@ class SpacesController < ApplicationController
   end
   def create
     @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country))
-    render 'show'
+    redirect_to spaces_path
   end
 
   def show

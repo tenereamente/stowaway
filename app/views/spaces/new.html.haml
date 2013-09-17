@@ -11,7 +11,7 @@
         %h2 
           Step 1.
           %b Add a Space
-        = simple_form_for(@resource, html: {class: 'form-vertical', id: 'list-space-step1' }, remote: true) do |f|
+        = simple_form_for(@resource, html: {class: 'form-vertical', id: 'list-space-step1' }) do |f|
           .row
             .small-12.column
               = f.input :address1, autofocus: true, required: true
@@ -31,7 +31,7 @@
               = f.hint 'This is a hint!'
           .row
             .small-12.large-6.column
-              = f.button :submit, 'Next Step', class: 'btn-primary large-6 small-12 column'
+              = f.button :submit, 'Save', class: 'btn-primary large-6 small-12 column'
               
   .large-3.pull-9.columns.sidebar
     %ul.navbar-steps.navbar-steps-wizard
