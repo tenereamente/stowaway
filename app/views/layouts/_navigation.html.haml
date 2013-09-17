@@ -7,18 +7,20 @@
         %a{:href => "#"}
     %section.top-bar-section
       %ul.right
+        %li
+          = link_to 'Find Space', '/spaces'
         - if user_signed_in?
-          %li
-            = link_to 'Logout', destroy_user_session_path, :method=>'delete'
-        - else
-          %li
-            = link_to 'Login', new_user_session_path
-        - if user_signed_in?
-          %li
-            = link_to 'Edit account', edit_user_registration_path
+          %li.has-dropdown
+            = link_to 'Account', edit_user_registration_path
+            %ul.dropdown
+              %li
+                = link_to 'Logout', destroy_user_session_path, :method=>'delete'
           - if current_user.has_role? :admin
-            %li
+            %li.has-dropdown
               = link_to 'Admin', admin_path
+              %ul.dropdown
+                %li
+                  = link_to 'Users', users_path
         - else
           %li
             = link_to 'Sign up', new_user_registration_path
