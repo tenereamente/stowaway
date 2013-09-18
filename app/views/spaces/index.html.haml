@@ -11,5 +11,7 @@
     .small-3.column
       - if s.photo.exists?
         = image_tag s.photo.url(:thumb)
-    .small-6.column
+    .small-3.column
       = h s.normalized_address
+    .small-3.column
+      = s.user.name
