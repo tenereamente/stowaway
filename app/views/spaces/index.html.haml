@@ -15,13 +15,20 @@
         %h4
           = h s.normalized_address
       .row
-        = link_to "View", space_path(s), :class => 'button'
-        = link_to "Edit", edit_space_path(s), :class => 'button'
-        = link_to "Book", new_user_charge_path(current_user), :class => 'button'
+        = link_to space_path(s), {:class=>'button'} do
+          %i{:class=>'icon-eye-open'}
+          View
+        = link_to space_path(s), {:class=>'button'} do
+          %i{:class=>'icon-pencil'}
+          Edit
+        = link_to space_path(s), {:class=>'button'} do
+          %i{:class=>'icon-ok'}
+          Book
+
     .small-4.large-4.column
       .blockquote
         %p
           = s.notes
           %cite
-            %a= link_to s.user.name, user_path(s.user) 
+            %a= link_to s.user.name, user_path(s.user)
 
