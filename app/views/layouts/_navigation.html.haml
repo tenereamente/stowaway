@@ -8,7 +8,8 @@
     %section.top-bar-section
       %ul.right
         %li
-          = link_to 'Find Space', '/spaces'
+          -# We disable turbolinking of spaces page because that breaks the Google Map on initial view
+          = link_to 'Find Space', '/spaces', 'data-no-turbolink' => true
         - if user_signed_in?
           %li.has-dropdown
             = link_to 'Account', edit_user_registration_path
