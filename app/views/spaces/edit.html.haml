@@ -10,17 +10,17 @@
         = f.input :address1, autofocus: true, required: true
     .row
       .small-12.column
-        = f.input :address2, autofocus: true, required: true
+        = f.input :address2
     .row
       .small-6.column
-        = f.input :city, autofocus: true, required: true
+        = f.input :city, required: true
       .small-3.column
         = f.input_field :state, :label => 'State', collection: us_states, autofocus: true, input_html: {style: 'height:100px!important;'}, required: true
       .small-3.column
-        = f.input :zip, autofocus: true, required: true
+        = f.input :zip, required: true
     .row
       .small-12.large-6.column
-        = f.input_field :country, input_html: { class: 'selectdrop' }, :label => 'Select Country', priority: [ "United States" ], autofocus: true, required: true
+        = f.input_field :country, input_html: { class: 'selectdrop' }, :label => 'Select Country', priority: [ "United States" ], required: true
     .row
       .small-12.large-6.column
         = f.file_field :photo
