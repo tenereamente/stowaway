@@ -3,6 +3,9 @@
   = simple_form_for(@resource, html: {class: 'form-vertical', id: 'list-space-step1' }) do |f|
     .row
       .small-12.column
+        = f.input :notes
+    .row
+      .small-12.column
         = f.input :address1, autofocus: true, required: true
     .row
       .small-12.column

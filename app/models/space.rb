@@ -1,5 +1,6 @@
 class Space < ActiveRecord::Base
   belongs_to :user
+  has_many :listings
   acts_as_taggable
   acts_as_gmappable :lat => 'lat', :lng => 'lng', :process_geocoding => :geocode?,
                   :normalized_address => "normalized_address",
