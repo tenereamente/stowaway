@@ -6,8 +6,6 @@ StowAway::Application.routes.draw do
   resources :users
   resources :spaces
   resources :charges
-
-  get 'map' => 'spaces#map'
   
   # post launch, this will be served on root instead of the prelaunch page
   get 'home' => 'home#home'

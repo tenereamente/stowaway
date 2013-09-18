@@ -164,6 +164,7 @@ GEM
     ethon (0.6.1)
       ffi (>= 1.3.0)
       mime-types (~> 1.18)
+    excon (0.25.3)
     execjs (2.0.1)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
@@ -179,8 +180,19 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    fog (1.15.0)
+      builder
+      excon (~> 0.25.0)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5)
+      ruby-hmac
     font-awesome-rails (3.2.1.3)
       railties (>= 3.2, < 5.0)
+    formatador (0.2.4)
     fssm (0.2.10)
     gh (0.12.4)
       addressable
@@ -465,6 +477,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   figaro
+  fog
   font-awesome-rails
   gibbon
   git-smart
