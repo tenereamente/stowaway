@@ -23,5 +23,5 @@
         %p
           = s.notes
           %cite
-            %a= s.user.name 
+            %a= link_to s.user.name, user_path(s.user) 
 
