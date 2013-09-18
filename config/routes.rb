@@ -3,10 +3,14 @@ StowAway::Application.routes.draw do
   
   devise_for :users, :controllers => {:registrations => "registrations"}
   
-  resources :users
-  resources :spaces
-  resources :charges
+  resources :users do
+    resources :charges
+  end
   
+  resources :spaces do
+    resources :listings
+  end
+
   # post launch, this will be served on root instead of the prelaunch page
   get 'home' => 'home#home'
 
