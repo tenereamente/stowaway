@@ -9,7 +9,7 @@ class SpacesController < ApplicationController
     @resource = Space.new
   end
   def create
-    @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country))
+    @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country).merge(user_id: current_user.id))
     redirect_to spaces_path
   end
 
