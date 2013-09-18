@@ -17,7 +17,7 @@
       .row
         = link_to "View", space_path(s), :class => 'button'
         = link_to "Edit", edit_space_path(s), :class => 'button'
-        = link_to "Book", '#', :class => 'button'
+        = link_to "Book", new_user_charge_path(current_user), :class => 'button'
     .small-2.large-2.column
       %a
         = s.user.name 
