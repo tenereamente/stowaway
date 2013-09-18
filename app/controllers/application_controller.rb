@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    root_path
+    # This would be root_path but we don't have anything there yet
+    #root_path
+    spaces_path
   end
 end
