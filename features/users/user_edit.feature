@@ -3,8 +3,6 @@ Feature: Edit User
   I want to edit my user profile
   so I can change my username
 
-  	# TODO: menus are being worked on
-    @wip 
     Scenario: I sign in and edit my account
       Given I am logged in
       When I edit my account details

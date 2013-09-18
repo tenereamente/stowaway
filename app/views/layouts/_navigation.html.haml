@@ -12,7 +12,7 @@
           = link_to 'Find Space', '/spaces', 'data-no-turbolink' => true
         - if user_signed_in?
           %li.has-dropdown
-            = link_to 'Account', edit_user_registration_path
+            = link_to 'Account', edit_user_registration_path, id: 'account'
             %ul.dropdown
               %li
                 = link_to 'My Spaces', '#'
