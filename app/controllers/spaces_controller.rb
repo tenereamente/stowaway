@@ -9,8 +9,14 @@ class SpacesController < ApplicationController
     @resource = Space.new
   end
   def create
-    @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country).merge(user_id: current_user.id))
-    redirect_to spaces_path
+    user_id = user_signed_in? ? current_user.id : nil
+    @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country).merge(user_id: user_id ))
+    if user_id
+      redirect_to spaces_path
+    else
+      # TODO gradual registration, redirect to a form that collects username and email
+      redirect_to spaces_path, :alert => "Space created without owner, need to register user"
+    end
   end
 
   def show
