@@ -10,7 +10,7 @@
         = image_tag s.photo.url(:thumb)
       - else
         %img{src: "http://placehold.it/100x100"}/
-    .small-8.large-8.column
+    .small-6.large-6.column
       .row
         %h4
           = h s.normalized_address
@@ -18,7 +18,10 @@
         = link_to "View", space_path(s), :class => 'button'
         = link_to "Edit", edit_space_path(s), :class => 'button'
         = link_to "Book", new_user_charge_path(current_user), :class => 'button'
-    .small-2.large-2.column
-      %a
-        = s.user.name 
+    .small-4.large-4.column
+      .blockquote
+        %p
+          = s.notes
+          %cite
+            %a= s.user.name 
 
