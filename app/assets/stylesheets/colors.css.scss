@@ -93,11 +93,21 @@ $burgundy: #541c1e;
     background: shade($base_color, 50);
     .top-bar {
       background: none;
+      .dropdown {
+        background: shade($base_color, 50);
+        margin-top: -.5em;
+        li {
+          a {
+            &:hover {
+            }
+          }
+        }
+      }
       a {
         transition: color 300ms ease-out;
         &:not(button) {
           color: tint($base_color, 70);
-          padding: 0 .5em;
+          padding: 0 1em;
         }
         &:hover {
           color: #fff;

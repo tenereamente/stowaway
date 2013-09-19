@@ -13,7 +13,6 @@
         %i.icon-instagram.icon-3x
 
 = yield :scripts
-
 - if user_signed_in?
   - current_user_email = current_user.email
   - current_user_name = current_user.name
@@ -35,7 +34,8 @@
       //  ltv:          1495.00, // Decimal; lifetime value of the account
       //  plan:         'Enhanced' // Plan name for the account
       //}
-    //}]);    
+    //}]); 
+    
 :javascript
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

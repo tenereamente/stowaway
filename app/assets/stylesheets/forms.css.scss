@@ -7,6 +7,9 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 
 .input {
   position: relative;
+  textarea {
+    height: 7em;
+  }
   label {
     position: absolute;
     z-index: 2;

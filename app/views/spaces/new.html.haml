@@ -1,28 +1,40 @@
+%h2 Add a Space
 .row
-  %h2 Add a Space
-  = simple_form_for(@resource, html: {class: 'form-vertical', id: 'list-space-step1' }) do |f|
-    .row
-      .small-12.column
-        = f.input :notes
-    .row
-      .small-12.column
-        = f.input :address1, autofocus: true, required: true
-    .row
-      .small-12.column
-        = f.input :address2
-    .row
-      .small-6.column
-        = f.input :city, required: true
-      .small-3.column
-        = f.input_field :state, :label => 'State', collection: us_states, input_html: {style: 'height:100px!important;'}, required: true
-      .small-3.column
-        = f.input :zip, required: true
-    .row
-      .small-12.large-6.column
-        = f.input_field :country, input_html: { class: 'selectdrop' }, :label => 'Select Country', priority: [ "United States" ], required: true
-    .row
-      .small-12.large-6.column
-        = f.file_field :photo
-    .row
-      .small-12.large-6.column
-        = f.button :submit, 'Save', class: 'btn-primary large-6 small-12 column'
+  = simple_form_for(@resource, html: {class: 'custom', id: 'list-space-step1' }) do |f|
+    .large-8.column
+      .row
+        .small-12.column
+          %label{for: "customDropdown1"} What Type of Space?
+          %select#customDropdown1.medium
+            %option{disabled: "disabled"} A Garage
+            %option A Yard
+            %option A Closet
+            %option An Attic
+      .row
+        .small-12.column
+          = f.input :address1, autofocus: true, required: true, :label => 'address'
+      .row
+        .small-12.column
+          = f.input :address2, :label => 'apt / unit no.'
+      .row
+        .small-6.column
+          = f.input :city, required: true
+        .small-3.column
+          = f.input_field :state, :label => 'State', collection: us_states, input_html: {style: 'height:100px!important;'}, required: true
+        .small-3.column
+          = f.input :zip, required: true
+      .row
+        .small-12.large-6.column
+          = f.input_field :country, input_html: { class: 'selectdrop' }, :label => 'Select Country', priority: [ "United States" ], required: true
+      .row
+        .large-12.column
+          = f.input :notes, :label => 'Tell us a bit about your space.'
+      .row
+        .small-12.large-6.column
+          %label Add a Photo
+          = f.file_field :photo
+      .row
+        .small-12.large-6.column
+          = f.button :submit, 'Save', class: 'btn-primary large-6 small-12 column'
+    .large-4.column
+      = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
