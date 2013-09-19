@@ -1,16 +1,21 @@
 class SpacesController < ApplicationController
   def index
-    @spaces = Space.all
-    @json = Space.all.to_gmaps4rails do |space, marker|
+    if params[:tag].present? 
+      @spaces = Space.tagged_with(params[:tag])
+    else 
+      @spaces = Space.all
+    end 
+    @json = @spaces.to_gmaps4rails do |space, marker|
       marker.json({ :id => space.id, :notes => space.notes })
     end
   end
+
   def new
     @resource = Space.new
   end
   def create
     user_id = user_signed_in? ? current_user.id : nil
-    @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country).merge(user_id: user_id ))
+    @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :tag_list).merge(user_id: user_id ))
     if user_id
       redirect_to spaces_path
     else
@@ -29,7 +34,7 @@ class SpacesController < ApplicationController
 
   def update
     @space = Space.find(params[:id])
-    if @space.update_attributes(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :photo))
+    if @space.update_attributes(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :photo, :tag_list))
       redirect_to spaces_path, :notice => "Space updated."
     else
       redirect_to spaces_path, :alert => "Unable to update space."
