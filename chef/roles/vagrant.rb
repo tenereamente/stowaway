@@ -23,7 +23,10 @@ run_list(
     "recipe[postgresql::contrib]",
     "recipe[postgresql::config_pgtune]",
     "recipe[rails]",
-    "recipe[phantomjs]"
+    "recipe[phantomjs]",
+    "recipe[python]",
+    "recipe[tarsnap]",
+    "recipe[tarsnap::tarsnapper]"
 )
 
 default_attributes(
