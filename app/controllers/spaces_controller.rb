@@ -1,9 +1,9 @@
 class SpacesController < ApplicationController
   def index
     if params[:tag].present? 
-      @spaces = Space.tagged_with(params[:tag])
+      @spaces = Space.owned.tagged_with(params[:tag])
     else 
-      @spaces = Space.all
+      @spaces = Space.owned.all
     end 
     @json = @spaces.to_gmaps4rails do |space, marker|
       marker.json({ :id => space.id, :notes => space.notes })
@@ -13,6 +13,7 @@ class SpacesController < ApplicationController
   def new
     @resource = Space.new
   end
+
   def create
     user_id = user_signed_in? ? current_user.id : nil
     @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :tag_list).merge(user_id: user_id ))
