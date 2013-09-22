@@ -27,6 +27,7 @@ gem 'aws-sdk', '~> 1.5.7'
 gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 gem 'whenever'
 gem 'blogit', git: 'https://github.com/KatanaCode/blogit.git', branch: 'master'
+gem 'select2-rails'
 # For client side validations later
 #gem 'strip_attributes'                 # clean spaces from model attrs
 #gem 'client_side_validations'          # client side form validation

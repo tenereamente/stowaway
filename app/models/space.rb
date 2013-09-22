@@ -12,6 +12,8 @@ class Space < ActiveRecord::Base
     medium: '300x300>'
   }
 
+  scope :owned, -> { where('user_id is not null')}
+
   def gmaps4rails_address
     "#{self.address1}, #{self.city}, #{self.zip}"
   end
