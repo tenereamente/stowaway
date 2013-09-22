@@ -19,4 +19,5 @@ StowAway::Application.routes.draw do
   get 'admin' => 'admin#index'
   get "/login" => redirect("/users/sign_in")
  
+  mount Blogit::Engine => "/blog"
 end
