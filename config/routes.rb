@@ -14,6 +14,8 @@ StowAway::Application.routes.draw do
   # post launch, this will be served on root instead of the prelaunch page
   get 'home' => 'home#home'
 
+  get 'terms' => 'home#terms'
+
   get 'search' => 'search#index'
 
   get 'admin' => 'admin#index'
