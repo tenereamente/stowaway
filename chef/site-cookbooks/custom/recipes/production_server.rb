@@ -141,6 +141,13 @@ directory "/etc/nginx/ssl" do
   group "web_user"
 end
 
+file "/root/tarsnap.key" do
+  mode "0600"
+  owner "root"
+  group "root"
+  content passwords['prod']['tarsnap']
+end
+
 file "/etc/nginx/ssl/stowaway_production.crt" do
   mode "0600"
   content passwords['prod']['production_ssl_certs']
