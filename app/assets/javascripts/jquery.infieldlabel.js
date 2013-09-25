@@ -1,3 +1,15 @@
+/*
+ * jquery.infieldlabel
+ * A simple jQuery plugin for adding labels that sit over a form field and fade away when the fields are populated.
+ * 
+ * Copyright (c) 2009 - 2013 Doug Neiner <doug@dougneiner.com> (http://code.dougneiner.com)
+ * Source: https://github.com/dcneiner/In-Field-Labels-jQuery-Plugin
+ * Dual licensed MIT or GPL
+ *   MIT (http://www.opensource.org/licenses/mit-license)
+ *   GPL (http://www.opensource.org/licenses/gpl-license)
+ *
+ * @version 0.1.4
+ */
 (function ($) {
 
   $.InFieldLabels = function (label, field, options) {
@@ -61,6 +73,7 @@
       if ( base.options.pollDuration > 0 ) {
         initialSet = setInterval( function () {
         if (base.$field.val() !== "") {
+          console.log("hit pollDuration");
           base.$label.hide();
           base.showing = false;
           clearInterval( initialSet );
@@ -81,7 +94,7 @@
 
      base.setOpacity = function (opacity) {
             base.$label.stop().animate({ opacity: opacity }, base.options.fadeDuration, function () {
-                if (opacity === 0.0) {
+                if (opacity == 0.0) {
                     base.$label.hide();
                 }
             });
@@ -144,7 +157,6 @@
 
   $.fn.inFieldLabels = function (options) {
     var allowed_types = options && options.enabledInputTypes || $.InFieldLabels.defaultOptions.enabledInputTypes;
-
     return this.each(function () {
       // Find input or textarea based on for= attribute
       // The for attribute on the label must contain the ID

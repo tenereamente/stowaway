@@ -1,10 +1,10 @@
 #invitationModal.reveal-modal.small
   %h3 Coming soon...
   %h2 Storage Redefined.
-  %p.lead Leave an email and zip to become part of our beta group.
-  = simple_form_for(@resource, html: {class: 'form-vertical', id: 'request-invitation' }, remote: true) do |f|
-    = f.input :email, autofocus: true, required: true
-    = f.input :zip, required: true
+  %p.lead Leave an email and zip to become part of our beta group. Hello.
+  = simple_form_for(@resource, html: {class: 'custom', id: 'request-invitation', autocomplete: 'off' }, remote: true) do |f|
+    = f.input :email, required: true, input_html: { autocomplete: 'off' }
+    = f.input :zip, required: true, input_html: { autocomplete: 'off' }
     = f.button :submit, 'Get Notified'
   %a.close-reveal-modal x
   
