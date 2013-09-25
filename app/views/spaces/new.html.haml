@@ -6,17 +6,15 @@
         .small-12.column
           
           %h3 Where is your space?
-          %ul.button-group.round
-            %li
-              %input{:name => "environment_type", :type => "radio", :value => "Indoor"}
-              %label.button{"data-name" => "Indoor", "data-type-id" => "1", :for => "Indoor"}
-                %i.icon-house
-                %span Indoor
-            %li
-              %input{:name => "environment_type", :type => "radio", :value => "Outdoor"}
-              %label.button{"data-name" => "Outdoor", "data-type-id" => "2", :for => "Outdoor"}
-                %i.icon-house
-                %span Outdoor
+          .button-group.round
+            = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
+              = b.label(class: 'button') do
+                - if b.text == 'Indoor'
+                  %i.icon-home
+                - else
+                  %i.icon-leaf
+                %span
+                  = b.text
             
         .small-12.column
           %h3 What type of space is it?
