@@ -12,7 +12,7 @@
                 - if b.text == 'Indoor'
                   %i.icon-home
                 - else
-                  %i.icon-leaf
+                  %i.icon-sun
                 %span
                   = b.text
             
@@ -20,9 +20,27 @@
           %h3 What type of space is it?
           %ul.indoor.button-group.round
             %li
-              %a.button Attic or Closet
+              %a.button Attic
             %li
-              %a.button Garage or Basement
+              %a.button Garage
+            %li
+              %a.button Spare Rooom
+            %li
+              %a.button Shelf
+            %li
+              %a.button.dropdown{'data-dropdown' => 'data1', :href => "#"} Other
+              %ul#drop1.f-dropdown
+                %li
+                  %a.button Trailer
+                %li
+                  %a.button Cave
+                %li
+                  %a.button Treehouse
+                %li
+                  %a.button Tipi
+                %li
+                  %a.button Earthship
+              
           %ul.outdoor.button-group.round
             %li
               %a.button Driveway or Parking Lot

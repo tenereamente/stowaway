@@ -94,10 +94,13 @@ footer {
   }
 }
 
+.avatar {
+  border-radius: 1000px;
+}
 .top-bar {
   .logo {
     font-size: emCalc(22);
-    line-height: emCalc(48);
+    line-height: emCalc(54);
   }
   .top-bar-section {
     ul {

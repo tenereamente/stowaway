@@ -149,7 +149,7 @@
   $.InFieldLabels.defaultOptions = {
     fadeOpacity: 0.5, // Once a field has focus, how transparent should the label be
     fadeDuration: 300, // How long should it take to animate from 1.0 opacity to the fadeOpacity
-    pollDuration: 0, // If set to a number greater than zero, this will poll until content is detected in a field
+    pollDuration: 300, // If set to a number greater than zero, this will poll until content is detected in a field
     enabledInputTypes: [ "text", "search", "tel", "url", "email", "password", "number", "textarea" ],
     className: false // Class assigned to enhanced labels
   };

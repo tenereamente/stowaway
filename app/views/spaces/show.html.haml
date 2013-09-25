@@ -6,7 +6,9 @@
     .row
       = @space.environment
     .row
+      = 
       = @space.zip
+    .row
       = @space.notes
   .large-4.columns
-      = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
+    = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
