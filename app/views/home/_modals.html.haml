@@ -3,8 +3,8 @@
   %h2 Storage Redefined.
   %p.lead Leave an email and zip to become part of our beta group. Hello.
   = simple_form_for(@resource, html: {class: 'custom', id: 'request-invitation', autocomplete: 'off' }, remote: true) do |f|
-    = f.input :email, required: true, input_html: { autocomplete: 'off' }
-    = f.input :zip, required: true, input_html: { autocomplete: 'off' }
+    = f.input :email, required: true
+    = f.input :zip, required: true
     = f.button :submit, 'Get Notified'
   %a.close-reveal-modal x
   

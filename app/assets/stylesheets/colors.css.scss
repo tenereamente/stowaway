@@ -35,7 +35,7 @@ $burgundy: #541c1e;
     &:focus {
       box-shadow: none!important;
       border-color: shade($base_color, 10);
-       background-color: #fff;
+      background-color: #fff;
     }
   }
   input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button {

@@ -1,6 +1,6 @@
 %h2 Add a Space
 .row
-  = simple_form_for(@resource, html: {class: 'custom', id: 'list-space-step1' }) do |f|
+  = simple_form_for(@resource, html: {class: 'custom', id: 'list-space-step1', autocomplete: 'off' }) do |f|
     .large-8.column
       .row
         .small-12.column
@@ -54,6 +54,10 @@
           = f.input :width, autofocus: true, required: true, :label => 'width', :class => 'small-2 columns'
           = f.input :height, autofocus: true, required: true, :label => 'height', :class => 'small-2 columns'
           = f.input_field :units, input_html: { class: 'selectdrop' }, :label => 'units', priority: [ "United States" ], required: true
+      - unless signed_in?
+        .row
+          .small-12.column
+            = email_field_tag :user_email, { label: 'Email address', required: true }
       .row
         .small-12.column
           = f.input :address1, autofocus: true, required: true, :label => 'address'
