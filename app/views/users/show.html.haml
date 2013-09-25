@@ -3,9 +3,9 @@
   %h3 user
   %p
     - if @user.avatar.exists?
-      = image_tag @user.avatar.url(:thumb)
+      = image_tag @user.avatar.url(:square)
     - else
-      = image_tag "http://placehold.it/50x50"
+      = image_tag "http://placehold.it/200x200"
     user: #{@user.name}
   %p
     email: #{@user.email if @user.email}

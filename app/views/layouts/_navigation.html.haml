@@ -15,7 +15,7 @@
         - if user_signed_in?
           %li.has-dropdown
             = link_to edit_user_registration_path do
-              = image_tag("http://placehold.it/50x50", {:alt => "my account", :class => "avatar"})
+              = render 'layouts/avatar.small'
               %span 
                 = current_user.name
             %ul.dropdown

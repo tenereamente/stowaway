@@ -1,12 +1,10 @@
-%h1
-  = @space.title
-
-%ul
-  %li
-    %a
-      %i.icon-home
-      Indoor
-      
-= @space.zip
-
-= @space.notes
+.row
+  .large-8.columns
+    .row
+      %h1 
+        = @space.title
+    .row
+      = @space.environment
+    .row
+      = @space.zip
+      = @space.notes
