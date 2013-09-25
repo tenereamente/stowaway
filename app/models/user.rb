@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
 
   blogs
 
+  has_attached_file :avatar, styles: {
+    thumb: '50x50>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
+
   # override Devise method
   # no password is required when the account is created; validate password when the user sets one
   validates_confirmation_of :password

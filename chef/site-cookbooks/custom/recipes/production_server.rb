@@ -48,7 +48,7 @@ directory "/app" do
   action :create
   owner "web_user"
   group "web_user"
-  mode "0755"
+  mode "0775"
 end
 
 # This section is set to /app/production
@@ -146,6 +146,13 @@ file "/root/tarsnap.key" do
   owner "root"
   group "root"
   content passwords['prod']['tarsnap']
+end
+
+cron_d 'postgres-backups' do
+  minute  0
+  hour    23
+  command '/usr/bin/pg_dumpall > /app/dailydbbackup.sql && tarsnapper --target "stowaway-db" --sources "/app" --deltas 1d 7d 30d - make'
+  user    'postgres'
 end
 
 file "/etc/nginx/ssl/stowaway_production.crt" do

@@ -26,7 +26,8 @@ run_list(
     "recipe[phantomjs]",
     "recipe[python]",
     "recipe[tarsnap]",
-    "recipe[tarsnap::tarsnapper]"
+    "recipe[tarsnap::tarsnapper]",
+    "recipe[cron]"
 )
 
 default_attributes(

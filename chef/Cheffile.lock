@@ -127,6 +127,7 @@ DEPENDENCIES
   build-essential (>= 0)
   bundler (>= 0)
   chef-client (>= 0)
+  cron (>= 0)
   database (>= 0)
   fail2ban (>= 0)
   htop (>= 0)

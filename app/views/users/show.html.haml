@@ -2,6 +2,10 @@
   .span-
   %h3 user
   %p
+    - if @user.avatar.exists?
+      = image_tag @user.avatar.url(:thumb)
+    - else
+      = image_tag "http://placehold.it/50x50"
     user: #{@user.name}
   %p
     email: #{@user.email if @user.email}

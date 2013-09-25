@@ -4,7 +4,7 @@ directory "/app" do
   action :create
   owner "web_user"
   group "web_user"
-  mode "0755"
+  mode "0777"
 end
 
 directory "/app/staging" do

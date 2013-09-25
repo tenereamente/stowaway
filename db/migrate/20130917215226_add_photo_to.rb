@@ -4,6 +4,6 @@ class AddPhotoTo < ActiveRecord::Migration
   end
 
   def self.down
-  	remove_attachment :spaces, :avatar
+  	remove_attachment :spaces, :photo
   end
 end
