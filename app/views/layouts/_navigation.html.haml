@@ -14,12 +14,17 @@
           = link_to 'Find Space', spaces_path, 'data-no-turbolink' => true
         - if user_signed_in?
           %li.has-dropdown
-            = link_to 'Account', edit_user_registration_path, id: 'account'
+            = link_to edit_user_registration_path do
+              = image_tag("http://placehold.it/50x50", {:alt => "my account", :class => "avatar"})
+              %span 
+                = current_user.name
             %ul.dropdown
               %li
                 = link_to 'My Spaces', '#'
               %li
                 = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+              %li
+                = link_to 'Terms', terms_path
           - if current_user.has_role? :admin
             %li.has-dropdown
               = link_to 'Admin', admin_path
