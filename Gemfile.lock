@@ -214,6 +214,7 @@ GEM
     formatador (0.2.4)
     fssm (0.2.10)
     gemedit (1.0.1)
+    geocoder (1.1.8)
     gh (0.12.4)
       addressable
       backports
@@ -513,6 +514,7 @@ DEPENDENCIES
   fog
   font-awesome-rails
   gemedit
+  geocoder
   gibbon
   git-smart
   gmaps4rails
