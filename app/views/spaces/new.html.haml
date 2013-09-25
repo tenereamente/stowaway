@@ -4,20 +4,28 @@
     .large-8.column
       .row
         .small-12.column
-          %h3 Where is the space?
-          %ul
+          
+          %h3 Where is your space?
+          %ul.button-group.round
             %li
-              %a.button Indoor
+              %input{:name => "environment_type", :type => "radio", :value => "Indoor"}
+              %label.button{"data-name" => "Indoor", "data-type-id" => "1", :for => "Indoor"}
+                %i.icon-house
+                %span Indoor
             %li
-              %a.button Outdoor
+              %input{:name => "environment_type", :type => "radio", :value => "Outdoor"}
+              %label.button{"data-name" => "Outdoor", "data-type-id" => "2", :for => "Outdoor"}
+                %i.icon-house
+                %span Outdoor
+            
         .small-12.column
           %h3 What type of space is it?
-          %ul.indoor
+          %ul.indoor.button-group.round
             %li
               %a.button Attic or Closet
             %li
               %a.button Garage or Basement
-          %ul.outdoor
+          %ul.outdoor.button-group.round
             %li
               %a.button Driveway or Parking Lot
             %li
@@ -26,7 +34,7 @@
               %a.button Open Area
         .small-12.column
           %h3 How's the access?
-          %ul.indoor
+          %ul.button-group.round
             %li
               %a.button 24 Hour
             %li
@@ -35,7 +43,7 @@
               %a.button Limited
         .small-12.column
           %h3 Features
-          %ul.indoor
+          %ul.button-group.round
             %li
               %a.button Climate Controlled
             %li
@@ -43,10 +51,10 @@
             %li
               %a.button Attended
         .small-12.column
-          %h3 Dimensions
-          = f.input :length, autofocus: true, required: true, :label => 'length'
-          = f.input :width, autofocus: true, required: true, :label => 'width'
-          = f.input :height, autofocus: true, required: true, :label => 'height'
+          %h3 Space Dimensions
+          = f.input :length, autofocus: true, required: true, :label => 'length', :class => 'small-2 columns'
+          = f.input :width, autofocus: true, required: true, :label => 'width', :class => 'small-2 columns'
+          = f.input :height, autofocus: true, required: true, :label => 'height', :class => 'small-2 columns'
           = f.input_field :units, input_html: { class: 'selectdrop' }, :label => 'units', priority: [ "United States" ], required: true
       .row
         .small-12.column
@@ -69,12 +77,6 @@
           = f.input :notes, :label => 'Tell us a bit about your space.'
       .row
         .small-12.large-6.column
-          %label Add a Photo
-          = f.file_field :photo
-      .row
-        .small-12.large-6.column
           = f.button :submit, 'Save', class: 'button-primary large-6 small-12 column'
-    .large-4.column
-      = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
 
     
