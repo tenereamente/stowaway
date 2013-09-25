@@ -16,11 +16,11 @@ class SpacesController < ApplicationController
 
   def create
     user_id = user_signed_in? ? current_user.id : nil
-    @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :tag_list).merge(user_id: user_id ))
+    @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :tag_list, :email, :available, :complete).merge(user_id: user_id ))
     if user_id
       redirect_to spaces_path
     else
-      # TODO gradual registration, redirect to a form that collects username and email
+      # TODO gradual registration, take email param and create a user on the fly and log them in.
       redirect_to spaces_path, :alert => "Space created without owner, need to register user"
     end
   end
@@ -35,7 +35,7 @@ class SpacesController < ApplicationController
 
   def update
     @space = Space.find(params[:id])
-    if @space.update_attributes(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :photo, :tag_list))
+    if @space.update_attributes(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :photo, :tag_list, :available, :complete))
       redirect_to spaces_path, :notice => "Space updated."
     else
       redirect_to spaces_path, :alert => "Unable to update space."

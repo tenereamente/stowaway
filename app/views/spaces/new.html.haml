@@ -75,7 +75,9 @@
       - unless signed_in?
         .row
           .small-12.column
-            = email_field_tag :user_email, { label: 'Email address', required: true }
+            .input
+              %label Email address
+              = email_field_tag :user_email
       .row
         .small-12.column
           = f.input :address1, autofocus: true, required: true, :label => 'address'
