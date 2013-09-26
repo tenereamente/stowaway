@@ -14,6 +14,10 @@ class Space < ActiveRecord::Base
 
   scope :owned, -> { where('user_id is not null')}
 
+  scope :by_user, lambda { |id|
+    where(:user_id => id)
+  }
+
   def gmaps4rails_address
     "#{self.address1}, #{self.city}, #{self.zip}"
   end

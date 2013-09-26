@@ -1,6 +1,9 @@
 class SpacesController < ApplicationController
   def index
-    if params[:tag].present? 
+    puts params
+    if params[:user_id].present?
+      @spaces = Space.by_user(params[:user_id].to_i)
+    elsif params[:tag].present? 
       @spaces = Space.owned.tagged_with(params[:tag])
     else 
       @spaces = Space.owned.all
@@ -27,6 +30,9 @@ class SpacesController < ApplicationController
 
   def show
     @space = Space.find(params[:id])
+    @json = @space.to_gmaps4rails do |space, marker|
+      marker.json({ :id => space.id, :notes => space.notes })
+    end
   end
 
   def edit

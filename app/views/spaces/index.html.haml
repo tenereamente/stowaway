@@ -22,9 +22,10 @@
         = link_to space_path(s), {:class=>'button'} do
           %i{:class=>'icon-eye-open'}
           View
-        = link_to edit_space_path(s), {:class=>'button'} do
-          %i{:class=>'icon-pencil'}
-          Edit
+        - if signed_in? and current_user.id == s.user_id
+          = link_to edit_space_path(s), {:class=>'button'} do
+            %i{:class=>'icon-pencil'}
+            Edit
         = link_to new_user_charge_path(s), {:class=>'button'} do
           %i{:class=>'icon-ok'}
           Book

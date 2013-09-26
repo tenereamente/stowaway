@@ -5,6 +5,7 @@ StowAway::Application.routes.draw do
   
   resources :users do
     resources :charges
+    resources :spaces, only: [:index]
   end
   
   resources :spaces do

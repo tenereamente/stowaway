@@ -20,7 +20,7 @@
                 = current_user.name
             %ul.dropdown
               %li
-                = link_to 'My Spaces', '#'
+                = link_to 'My Spaces', user_spaces_path(current_user)
               %li
                 = link_to 'Logout', destroy_user_session_path, :method=>'delete'
               %li
