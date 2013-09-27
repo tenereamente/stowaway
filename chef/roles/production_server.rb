@@ -1,6 +1,11 @@
 name "production_server"
 description 'This is a custom role for chef-solo on the production server'
-run_list("role[vagrant]", "recipe[custom::production_server]", "recipe[custom::staging_server]")
+run_list(
+  "role[vagrant]",
+  "recipe[postfix]",
+  "recipe[postfix::aliases]",
+  "recipe[custom::production_server]",
+  "recipe[custom::staging_server]")
 
 secret = File.read(Pathname.new(File.expand_path(File.dirname(__FILE__))) + "../.chef/encrypted_data_bag_secret")
 passwords = Chef::EncryptedDataBagItem.load("custom", "secrets", secret)
@@ -36,6 +41,16 @@ override_attributes(
     :rules => [
       {:http => { :port => "80" }}
     ]
+  },
+  :postfix => {
+    :aliases => {
+      root: 'hello@stowaway.co'
+    },
+    :mail_type => 'master',
+    :main => {
+      :mydestination => "localhost, www.stowaway.co",
+      :mydomain => "stowaway.co"
+    }
   }
 )
 

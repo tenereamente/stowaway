@@ -151,8 +151,7 @@ end
 cron_d 'postgres-backups' do
   minute  0
   hour    23
-  command '/usr/bin/pg_dumpall > /app/dailydbbackup.sql && tarsnapper --target "stowaway-db" --sources "/app" --deltas 1d 7d 30d - make'
-  user    'postgres'
+  command 'sudo -u postgres /usr/bin/pg_dumpall > /app/dailydbbackup.sql && tarsnapper --target "stowaway-db-\$date" --sources "/app" --deltas 1d 7d 30d - make'
 end
 
 file "/etc/nginx/ssl/stowaway_production.crt" do
