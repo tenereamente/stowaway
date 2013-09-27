@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
-    @users = User.all.order('created_at ASC')
+    @users = User.all.order(:created_at).reverse_order
   end
 
   def show
