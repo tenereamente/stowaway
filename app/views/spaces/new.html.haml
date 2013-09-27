@@ -71,7 +71,7 @@
           = f.input :length, autofocus: true, required: true, :label => 'length', :class => 'small-2 columns'
           = f.input :width, autofocus: true, required: true, :label => 'width', :class => 'small-2 columns'
           = f.input :height, autofocus: true, required: true, :label => 'height', :class => 'small-2 columns'
-          = f.input_field :units, input_html: { class: 'selectdrop' }, :label => 'units', priority: [ "United States" ], required: true
+          = f.input_field :units, input_html: { :class => 'selectdrop' }, :label => 'units', priority: [ "United States" ], required: true
       - unless signed_in?
         .row
           .small-12.column
@@ -88,17 +88,17 @@
         .small-6.column
           = f.input :city, required: true
         .small-3.column
-          = f.input_field :state, :label => 'State', collection: us_states, input_html: {style: 'height:100px!important;'}, required: true
+          = f.input :state, :label => 'State', collection: us_states, :input_html => {:style => 'height:100px!important;'}, required: true
         .small-3.column
           = f.input :zip, required: true
       .row
         .small-12.large-6.column
-          = f.input_field :country, input_html: { class: 'selectdrop' }, :label => 'Select Country', priority: [ "United States" ], required: true
+          = f.input :country, input_html: {:class => 'selectdrop'}, :label => 'Select Country', priority: [ "United States" ], required: true
       .row
         .large-12.column
           = f.input :notes, :label => 'Tell us a bit about your space.'
       .row
         .small-12.large-6.column
-          = f.button :submit, 'Save', class: 'button-primary large-6 small-12 column'
+          = f.button :submit, 'Save', :class => 'button-primary large-6 small-12 column'
 
     
