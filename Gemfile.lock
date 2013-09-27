@@ -24,6 +24,15 @@ GIT
       redcarpet (>= 2.0.1)
 
 GIT
+  remote: https://github.com/getsentry/raven-ruby.git
+  revision: d6b40142bd667487e84a7738b2cd2b73b918b8d4
+  specs:
+    sentry-raven (0.6.0)
+      faraday (>= 0.7.6)
+      hashie (>= 1.1.0)
+      uuidtools
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: 06c860aeeac012f251807322e49eb5eeb0380a58
   specs:
@@ -541,6 +550,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.0)
   select2-rails
+  sentry-raven!
   simple_form (>= 3.0.0.rc)
   stripe!
   therubyracer

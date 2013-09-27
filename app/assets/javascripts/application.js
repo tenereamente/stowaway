@@ -17,6 +17,11 @@
 //= require turbolinks
 //= require_tree .
 
+Raven.config('https://29d77e9d991246e29dd3a050d4f39719@app.getsentry.com/13422', {
+    // we highly recommend restricting exceptions to a domain in order to filter out clutter
+    whitelistUrls: [/stowaway\.co/]
+}).install();
+
 $(function(){ $(document).foundation(); });
 
 // Include the UserVoice JavaScript SDK (only needed once on a page)

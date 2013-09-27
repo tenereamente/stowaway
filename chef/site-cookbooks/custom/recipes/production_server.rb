@@ -131,7 +131,8 @@ template "#{node['custom']['deploy_to']}/shared/config/application.yml" do
             aws_secret_access_key: passwords['prod']['aws_secret_access_key'],
             aws_bucket: "stowawayco-production",
             stripe_pk: passwords['prod']['stripe_live_pk'],
-            stripe_sk: passwords['prod']['stripe_live_sk']
+            stripe_sk: passwords['prod']['stripe_live_sk'],
+            getsentry_key: passwords['prod']['getsentry_key']
 
 end
 

@@ -29,6 +29,7 @@ gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 gem 'whenever'
 gem 'blogit', git: 'https://github.com/KatanaCode/blogit.git', branch: 'master'
 gem 'select2-rails'
+gem 'sentry-raven', :git => "https://github.com/getsentry/raven-ruby.git"
 # For client side validations later
 #gem 'strip_attributes'                 # clean spaces from model attrs
 #gem 'client_side_validations'          # client side form validation
