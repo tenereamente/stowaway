@@ -3,4 +3,3 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
 	$("#space_tag_list").select2({tags:[]});
-	#$("#space_country").select2();
