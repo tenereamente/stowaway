@@ -1304,3 +1304,7 @@ $topbar-menu-link-color: #555;
 // $topbar-sticky-class: ".sticky";
 
 @import 'foundation';
+
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/buttons";

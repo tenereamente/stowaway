@@ -74,6 +74,10 @@ footer {
 .mb50 {
   margin-bottom: emCalc(50);
 }
+
+.mr10 {
+  margin-right: emCalc(10);
+}
 /* Branding */
 
 .logo {
@@ -125,7 +129,6 @@ footer {
         .button {
           line-height: auto;
           height: auto;
-          padding: 2px 10px;
         }
       }
     }

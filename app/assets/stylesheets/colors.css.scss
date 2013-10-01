@@ -8,12 +8,33 @@ $green: #87ae3a;
 $tweed: rgb(128, 98, 44);
 $red: rgb(200, 70, 57);
 $midnight: rgb(14, 41, 73);
-$orange: rgb(252, 122, 30);
-$sky: #8b98d8;
+$orange: #f48231;
+$sky: #3aa8f7;
 $bg-image: image-url("tile2.svg") repeat;
 $burgundy: #541c1e;
 
-@mixin page-color-theme($base_color) {
+@mixin color-one($base_color) {
+  .button {
+    background-color: shade($base_color, 50);
+    color: tint($base_color, 90);
+    &:hover {
+      background-color: shade($base_color, 60);
+    }
+    &:active {
+      background-color: shade($base_color, 70);
+    }
+  }
+  .social {
+    a {
+    color: shade($base_color, 50);
+      &:hover {
+        color: shade($base_color, 60);
+      }
+      &:active {
+        color: shade($base_color, 70);
+      }
+    }
+  }
   background: $base_color $bg-image;
   color: shade($base_color, 20);
   .hero {
@@ -90,7 +111,7 @@ $burgundy: #541c1e;
     }
   }
   .contain-to-grid {
-    background: shade($base_color, 50);
+    background: rgba(tint($base_color, 95),.8);
     .top-bar {
       background: none;
       .dropdown {
@@ -105,8 +126,7 @@ $burgundy: #541c1e;
       a {
         transition: color 300ms ease-out;
         &:not(button) {
-          color: tint($base_color, 70);
-          padding: 0 1em;
+          color: shade($base_color, 70);
         }
         &:hover {
           color: #fff;
@@ -125,62 +145,46 @@ $burgundy: #541c1e;
       }
       .brand {
         a {
-          color: tint($base_color, 70);
+          color: shade($base_color, 70);
           &:hover {
-            color: #fff;
+            color: shade($base_color, 50);
           }
         }
       }
     }
   }
-  .button {
-    background-color: shade($base_color, 50);
-    color: tint($base_color, 90);
-    &:hover {
-      background-color: shade($base_color, 60);
-    }
-    &:active {
-      background-color: shade($base_color, 70);
-    }
-  }
-  .social {
-    a {
-    color: shade($base_color, 50);
-      &:hover {
-        color: shade($base_color, 60);
-      }
-      &:active {
-        color: shade($base_color, 70);
-      }
-    }
-  }
+}
+
+@mixin color-two($base-color) {
+ 
 }
 
 body {
-  @include page-color-theme(#444);  
+  @include color-one($sky);
+  @include color-two($orange); 
 }
 
 body.storagespaces {
-  @include page-color-theme($sky);
+  @include color-one($sky);
 }
 body.home {
-  @include page-color-theme($lavender);
+  @include color-one($lavender);
 }
 
 body.listspace {
-  @include page-color-theme($blue);
+  @include color-one($blue);
 }
 
 body.sessions {
-  @include page-color-theme($green);
+  @include color-one($green);
 }
 
 body.registrations {
-  @include page-color-theme($orange);
+  @include color-one($orange);
 }
 
 body.passwords, body.confirmations {
-  @include page-color-theme($peach);
+  @include color-one($peach);
 }
 
 

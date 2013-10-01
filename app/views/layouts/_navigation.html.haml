@@ -9,14 +9,14 @@
       %ul.right
         %li
           = link_to 'Blog', blogit_path
-        %li
+        %li.mr10
           -# We disable turbolinking of spaces page because that breaks the Google Map on initial view
-          %a.button{:href => spaces_path}
+          %a.button.radius{:href => spaces_path}
             %i.icon-search.icon-left.icon-muted
             %span Find Space
             
         %li.signup
-          %a.button{:href => new_space_path}
+          %a.button.radius{:href => new_space_path}
             %i.icon-plus-sign.icon-left.icon-muted
             List Space
         - if user_signed_in?
