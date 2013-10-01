@@ -18,15 +18,34 @@ button.large, .button.large {
   padding: 1em;
 }
 
-.contain-to-grid {
+/*.contain-to-grid {
   .top-bar {
     a.button {
       padding: .5em;
       font-size: .875em;
+      overflow: hidden;
+      i, span {
+        transition: 2 all curve;
+        position: absolute;
+      }
+      span {
+        transform: translate(200, 0);
+      }
+      &:hover {
+        i {
+          transform: translate(-200, 0);
+        }
+        span {
+          transform: translate(0, 0);
+        }
+      }
     }
   }
-}
+}*/
 
+body .contain-to-grid .top-bar a.button {
+  padding: .5em 1em;
+}
 input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button {
   padding: 1em;
   font-size: 1em;

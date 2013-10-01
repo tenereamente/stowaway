@@ -104,7 +104,7 @@ footer {
 .top-bar {
   .logo {
     font-size: emCalc(22);
-    line-height: emCalc(54);
+    height: auto;
   }
   .top-bar-section {
     ul {
@@ -212,5 +212,3 @@ p {
   background-color: #FCC;
   border: solid 1px #C66;
 }
-
-

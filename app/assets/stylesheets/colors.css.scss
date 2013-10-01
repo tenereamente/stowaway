@@ -13,62 +13,62 @@ $sky: #3aa8f7;
 $bg-image: image-url("tile2.svg") repeat;
 $burgundy: #541c1e;
 
-@mixin color-one($base_color) {
+@mixin theme($base, $accent) {
   .button {
-    background-color: shade($base_color, 50);
-    color: tint($base_color, 90);
+    background-color: shade($base, 50);
+    color: tint($base, 90);
     &:hover {
-      background-color: shade($base_color, 60);
+      background-color: shade($base, 60);
     }
     &:active {
-      background-color: shade($base_color, 70);
+      background-color: shade($base, 70);
     }
   }
   .social {
     a {
-    color: shade($base_color, 50);
+    color: shade($base, 50);
       &:hover {
-        color: shade($base_color, 60);
+        color: shade($base, 60);
       }
       &:active {
-        color: shade($base_color, 70);
+        color: shade($base, 70);
       }
     }
   }
-  background: $base_color $bg-image;
-  color: shade($base_color, 20);
+  background: $base $bg-image;
+  color: shade($base, 20);
   .hero {
     h1 {
-      color: shade($base_color, 70);
+      color: shade($base, 70);
       small {
-        color: shade($base_color, 70);
+        color: shade($base, 70);
       }
     }
     h3 {
-      color: shade($base_color, 70);
+      color: shade($base, 70);
     }
-    color: shade($base_color, 50); ;
+    color: shade($base, 50); ;
   }
   input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
-    border: 1px solid tint($base_color, 70);
+    border: 1px solid tint($base, 70);
     box-shadow: 0 none;
-    background-color: tint($base_color, 97);
+    background-color: tint($base, 97);
     &:focus {
       box-shadow: none!important;
-      border-color: shade($base_color, 10);
+      border-color: shade($base, 10);
       background-color: #fff;
     }
   }
   input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button {
-    color: tint($base_color, 80);
-    background-color: shade($base_color, 20);
+    color: tint($base, 80);
+    background-color: shade($base, 20);
     &:hover {
-      color: tint($base_color, 90);
-      background-color: shade($base_color, 40);
+      color: tint($base, 90);
+      background-color: shade($base, 40);
     }
   }
   .box {
-    background: tint($base_color, 90);
+    background: tint($base, 90);
     border-radius: 3px;
     padding: 2em;
     margin-bottom: 25px;
@@ -76,20 +76,20 @@ $burgundy: #541c1e;
     color: #555;
     .input {
       label {
-        color: shade($base_color, 40);
+        color: shade($base, 40);
       }
     }
     .sidebar {
       ul {
         .active {
           .content {
-            background-color: shade($base-color, 20);
-            color: tint($base-color, 80);
+            background-color: shade($base, 20);
+            color: tint($base, 80);
           }
         }
         .inactive {
           .content {
-            background-color: tint($base-color, 80);
+            background-color: tint($base, 80);
           }
         }
       }
@@ -98,24 +98,24 @@ $burgundy: #541c1e;
       color: rgba(#555, .5);
     }
     a {
-      color: shade($base_color, 10);
+      color: shade($base, 10);
       &.button {
-        background-color: tint($base_color, 80);
+        background-color: tint($base, 80);
         &:hover {
-          background-color: tint($base_color, 70);
+          background-color: tint($base, 70);
         }
       }
       &:hover {
-        color: shade($base_color, 20);
+        color: shade($base, 20);
       }
     }
   }
   .contain-to-grid {
-    background: rgba(tint($base_color, 95),.8);
+    background: rgba(shade($base, 90),.8);
     .top-bar {
       background: none;
       .dropdown {
-        background: shade($base_color, 50);
+        background: shade($base, 50);
         li {
           a {
             &:hover {
@@ -126,28 +126,29 @@ $burgundy: #541c1e;
       a {
         transition: color 300ms ease-out;
         &:not(button) {
-          color: shade($base_color, 70);
+          color: tint($base, 90);
         }
         &:hover {
           color: #fff;
         }
         &.button {
-          color: tint($base_color, 70);
-          background-color: shade($base_color, 80);
+          color: tint($accent, 70);
+          background-color: $accent;
+          transition: all;
           &:hover {
-            background-color: shade($base_color, 70);
+            background-color: tint($accent, 5);
           }
           &:active {
-            background-color: shade($base_color, 80);
+            background-color: shade($accent, 5);
             top: 10px;
           }
         }
       }
       .brand {
         a {
-          color: shade($base_color, 70);
+          color: shade($base, 70);
           &:hover {
-            color: shade($base_color, 50);
+            color: shade($base, 50);
           }
         }
       }
@@ -155,20 +156,17 @@ $burgundy: #541c1e;
   }
 }
 
-@mixin color-two($base-color) {
- 
-}
-
 body {
-  @include color-one($sky);
-  @include color-two($orange); 
+  @include theme($sky, $orange);
 }
 
+/*
 body.storagespaces {
   @include color-one($sky);
 }
+
 body.home {
-  @include color-one($lavender);
+@include color-one($lavender);
 }
 
 body.listspace {
@@ -186,5 +184,6 @@ body.registrations {
 body.passwords, body.confirmations {
   @include color-one($peach);
 }
+*/
 
 

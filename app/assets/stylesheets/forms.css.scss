@@ -44,3 +44,11 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     top: 0;
   }
 }
+
+form {
+  .custom {
+    &.radio {
+      display: none;
+    }
+  }
+}

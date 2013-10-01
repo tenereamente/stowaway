@@ -5,5 +5,5 @@
   .form-inputs
     = f.input :email, :required => true, :autofocus => true
   .form-actions
-    = f.button :submit, "Resend unlock instructions"
+    = f.button :submit, "Resend unlock instructions", :class => 'button radius btn-primary'
 = render "devise/shared/links"

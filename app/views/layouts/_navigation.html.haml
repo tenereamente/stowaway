@@ -1,24 +1,9 @@
 .contain-to-grid
   %nav.top-bar
-    %ul.title-area
-      %li.logo
-        = link_to "stowaway.co", root_path
-      %li.toggle-topbar
-        %a{:href => "#"}
     %section.top-bar-section
-      %ul.right
-        %li
-          = link_to 'Blog', blogit_path
-        %li.mr10
-          -# We disable turbolinking of spaces page because that breaks the Google Map on initial view
-          %a.button.radius{:href => spaces_path}
-            %i.icon-search.icon-left.icon-muted
-            %span Find Space
-            
-        %li.signup
-          %a.button.radius{:href => new_space_path}
-            %i.icon-plus-sign.icon-left.icon-muted
-            List Space
+      %ul.left.common.large-3.small-6.columns
+        %li.toggle-topbar
+          %a{:href => "#"}
         - if user_signed_in?
           %li.has-dropdown
             = link_to edit_user_registration_path, id: 'account' do
@@ -43,3 +28,18 @@
         - else
           %li
             = link_to 'Sign up', new_user_registration_path
+          %li
+            = link_to 'Blog', blogit_path
+      .logo.large-6.small-12.columns.t-center
+        = link_to "stowaway.co", root_path
+      %ul.right.large-3.small-6.engage.columns
+        %li.mr10
+          -# We disable turbolinking of spaces page because that breaks the Google Map on initial view
+          %a.button.radius{:href => spaces_path}
+            %i.icon-search.icon-left.icon-muted
+            %span Find
+            
+        %li.signup
+          %a.button.radius{:href => new_space_path}
+            %i.icon-plus.icon-left.icon-muted
+            %span List

@@ -1,8 +1,16 @@
+%h2 
+  Find that Space...
 .row
-  %h2 
-    Available Spaces
+  %form.simple_form.custom
+    .input.large-9.small-9.columns
+      %label 
+        %i.icon-search.icon-left
+        try boat storage, locked, access level, etc. 
+      %input.string{type: 'text'}
+    %button.radius.button.submit.large-3.small-3.columns
+      Search
+.row
   = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
-    
 - @spaces.each do |s|
   .row.locations
     .small-2.large-2.column
@@ -18,7 +26,7 @@
         - if s.tags.any?
           - s.tags.each do |tag|
             = link_to tag.name, spaces_url(tag: tag.name)
-      .row.button-group.round
+      .row.button-group.radius
         = link_to space_path(s), {:class=>'button'} do
           %i{:class=>'icon-eye-open'}
           View
