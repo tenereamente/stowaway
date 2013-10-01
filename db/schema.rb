@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130925200644) do
+ActiveRecord::Schema.define(version: 20131001145324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,8 +88,28 @@ ActiveRecord::Schema.define(version: 20130925200644) do
     t.string   "access"
     t.string   "type"
     t.string   "title"
-    t.boolean  "complete",           default: false
-    t.boolean  "available",          default: false
+    t.boolean  "complete",            default: false
+    t.boolean  "available",           default: false
+    t.string   "photo2_file_name"
+    t.string   "photo2_content_type"
+    t.integer  "photo2_file_size"
+    t.datetime "photo2_updated_at"
+    t.string   "photo3_file_name"
+    t.string   "photo3_content_type"
+    t.integer  "photo3_file_size"
+    t.datetime "photo3_updated_at"
+    t.string   "photo4_file_name"
+    t.string   "photo4_content_type"
+    t.integer  "photo4_file_size"
+    t.datetime "photo4_updated_at"
+    t.string   "photo5_file_name"
+    t.string   "photo5_content_type"
+    t.integer  "photo5_file_size"
+    t.datetime "photo5_updated_at"
+    t.boolean  "climate_controlled",  default: false
+    t.boolean  "lockable",            default: false
+    t.boolean  "attended",            default: false
+    t.boolean  "featured",            default: false
   end
 
   create_table "taggings", force: true do |t|
