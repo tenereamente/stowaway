@@ -18,7 +18,7 @@ class Space < ActiveRecord::Base
   }
 
   def gmaps4rails_address
-    "#{self.address1}, #{self.city}, #{self.zip}"
+    "#{self.address1}, #{self.city}, #{self.state} #{self.zip}"
   end
 
   def geocode?
