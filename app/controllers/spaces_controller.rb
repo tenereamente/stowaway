@@ -17,10 +17,17 @@ class SpacesController < ApplicationController
     @resource = Space.new
   end
 
+  def space_params
+    allow = [
+      :notes, :address1, :address2, :city, :state, :zip, :country, :tag_list, :email,
+      :available, :complete, :type, :climate_controlled, :lockable, :attended, :length, :width, :height, :units
+    ]
+    params.require(:space).permit(*allow)
+  end
+
   def create
-    user_id = user_signed_in? ? current_user.id : nil
-    @space = Space.create!(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :tag_list, :email, :available, :complete).merge(user_id: user_id ))
-    if user_id
+    @space = Space.create!(space_params.merge(user_id: user_signed_in? ? current_user.id : nil ))
+    if user_signed_in?
       redirect_to spaces_path
     else
       # TODO gradual registration, take email param and create a user on the fly and log them in.
@@ -41,7 +48,7 @@ class SpacesController < ApplicationController
 
   def update
     @space = Space.find(params[:id])
-    if @space.update_attributes(params.require(:space).permit(:notes, :address1, :address2, :city, :state, :zip, :country, :photo, :tag_list, :available, :complete))
+    if @space.update_attributes(space_params)
       redirect_to spaces_path, :notice => "Space updated."
     else
       redirect_to spaces_path, :alert => "Unable to update space."
