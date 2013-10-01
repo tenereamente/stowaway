@@ -1,20 +1,46 @@
 %h2 Add a Space
 .row
   = simple_form_for(@resource, html: {class: 'custom', id: 'list-space-step1', autocomplete: 'off' }) do |f|
-    .large-8.column
-      .row
-        .small-12.column
+    .row
+      .small-12.column
+        
+        %h3 Where is your space?
+        .button-group.round.where
+          = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
+            = b.label(class: 'button') do
+              - if b.text == 'Indoor'
+                %i.icon-home
+              - else
+                %i.icon-sun
+              %span
+                = b.text
           
-          %h3 Where is your space?
-          .button-group.round
-            = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
-              = b.label(class: 'button') do
-                - if b.text == 'Indoor'
-                  %i.icon-home
-                - else
-                  %i.icon-sun
-                %span
-                  = b.text
+      .small-12.column
+        %h3 What type of space is it?
+        %ul.indoor.button-group.round.what
+          %li
+            %a.button Attic
+          %li
+            %a.button Garage
+          %li
+            %a.button Spare Rooom
+          %li
+            %a.button Basement
+          %li
+            %a.button.dropdown{'data-dropdown' => 'data1', :href => "#"} Other
+            %ul#drop1.f-dropdown
+              %li
+                %a.button Trailer
+              %li
+                %a.button Cave
+              %li
+                %a.button Treehouse
+              %li
+                %a.button Tipi
+              %li
+                %a.button Earthship
+              %li
+                %a.button Closet
             
         .small-12.column
           %h3 What type of space is it?
@@ -100,5 +126,62 @@
       .row
         .small-12.large-6.column
           = f.button :submit, 'Save', :class => 'button-primary large-6 small-12 column'
+        %ul.outdoor.button-group.round
+          %li
+            %a.button Driveway or Parking Lot
+          %li
+            %a.button Covered Space
+          %li
+            %a.button Open Area
+      .small-12.column
+        %h3 How's the access?
+        %ul.button-group.round
+          %li
+            %a.button 24 Hour
+          %li
+            %a.button Scheduled
+          %li
+            %a.button Limited
+      .small-12.column
+        %h3 Features
+        %ul.button-group.round
+          %li
+            %a.button Climate Controlled
+          %li
+            %a.button Locked or Gated
+          %li
+            %a.button Attended
+      .small-12.column
+        %h3 Space Dimensions
+        = f.input :length, autofocus: true, required: true, :label => 'length', :class => 'small-2 columns'
+        = f.input :width, autofocus: true, required: true, :label => 'width', :class => 'small-2 columns'
+        = f.input :height, autofocus: true, required: true, :label => 'height', :class => 'small-2 columns'
+        = f.input_field :units, input_html: { class: 'selectdrop' }, :label => 'units', priority: [ "United States" ], required: true
+    - unless signed_in?
+      .row
+        .small-12.column
+          = email_field_tag :user_email, { label: 'Email address', required: true }
+    .row
+      .small-12.column
+        = f.input :address1, autofocus: true, required: true, :label => 'address'
+    .row
+      .small-12.column
+        = f.input :address2, :label => 'apt / unit no.'
+    .row
+      .small-6.column
+        = f.input :city, required: true
+      .small-3.column
+        = f.input_field :state, :label => 'State', collection: us_states, input_html: {style: 'height:100px!important;'}, required: true
+      .small-3.column
+        = f.input :zip, required: true
+    .row
+      .small-12.large-6.column
+        = f.input_field :country, input_html: { class: 'selectdrop' }, :label => 'Select Country', priority: [ "United States" ], required: true
+    .row
+      .large-12.column
+        = f.input :notes, :label => 'Tell us a bit about your space.'
+    .row
+      .small-12.large-6.column
+        = f.button :submit, 'Save', class: 'button-primary large-6 small-12 column'
 
-    
+  

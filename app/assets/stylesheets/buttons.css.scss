@@ -1,7 +1,6 @@
 /* Buttons */
 
 .button, .btn {
-  border-radius: 6px;
   transition: background-color 300ms ease-out;
   font-family: "Quicksand";
   text-transform: uppercase;
@@ -21,8 +20,7 @@ button.large, .button.large {
 
 .contain-to-grid {
   .top-bar {
-    li.signup {
-      margin: 0 0 0 .5em;
+    li {
       a.button {
         padding: .25em .5em;
       }

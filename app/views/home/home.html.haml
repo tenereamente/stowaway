@@ -1,3 +1,5 @@
 .row
   .box
-    %h1 This is home
+    %form{:action => "/search/pittsburgh-pa", :method => "GET"}
+      %input{:autofocus => "", :name => "query", :placeholder => "Where do you want to store your belongings?", :type => "text"}
+        %button.btn{:type => "submit"} Let's find some storage space!
