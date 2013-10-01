@@ -27,7 +27,24 @@
         = f.input_field :country, input_html: { class: 'selectdrop' }, :label => 'Select Country', priority: [ "United States" ], required: true
     .row
       .small-12.large-6.column
+        = image_or_placeholder(@resource.photo)
         = f.file_field :photo
+    .row
+      .small-12.large-6.column
+        = image_or_placeholder(@resource.photo2)
+        = f.file_field :photo2
+    .row
+      .small-12.large-6.column
+        = image_or_placeholder(@resource.photo3)
+        = f.file_field :photo3
+    .row
+      .small-12.large-6.column
+        = image_or_placeholder(@resource.photo4)
+        = f.file_field :photo4
+    .row
+      .small-12.large-6.column
+        = image_or_placeholder(@resource.photo5)
+        = f.file_field :photo5
     .row
       .small-12.large-6.column
         = f.button :submit, 'Save', class: 'btn-primary large-6 small-12 column'

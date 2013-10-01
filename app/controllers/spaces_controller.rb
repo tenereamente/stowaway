@@ -20,7 +20,8 @@ class SpacesController < ApplicationController
   def space_params
     allow = [
       :notes, :address1, :address2, :city, :state, :zip, :country, :tag_list, :email,
-      :available, :complete, :type, :climate_controlled, :lockable, :attended, :length, :width, :height, :units
+      :available, :complete, :type, :climate_controlled, :lockable, :attended, :length, :width, :height, :units,
+      :photo, :photo2, :photo3, :photo4, :photo5
     ]
     params.require(:space).permit(*allow)
   end
