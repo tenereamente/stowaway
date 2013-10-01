@@ -14,14 +14,11 @@
 - @spaces.each do |s|
   .row.locations
     .small-2.large-2.column
-      - if s.photo.exists?
-        = image_tag s.photo.url(:thumb)
-      - else
-        %img{src: "http://placehold.it/100x100"}/
+      = link_to image_or_placeholder(s.photo, :thumb), space_path(s)
     .small-10.large-6.column
       .row
         %h4
-          = h s.normalized_address
+          = link_to(h(s.normalized_address), space_path(s))
       .row
         - if s.tags.any?
           - s.tags.each do |tag|

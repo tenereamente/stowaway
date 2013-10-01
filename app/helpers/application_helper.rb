@@ -12,13 +12,14 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def image_or_placeholder(photo, size = :square )
+  def image_or_placeholder(photo, style = :square )
     if photo.exists?
-      image_tag photo.url(size)
+      image_tag photo.url(style)
     else
       # TODO look up the correct dimensions when caller passes
       # in something other than :square
-      image_tag "http://placehold.it/200x200"
+      geometry = photo.styles[style].geometry.chomp('#')
+      image_tag "//placehold.it/#{geometry}"
     end
   end
 end
