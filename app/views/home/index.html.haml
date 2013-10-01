@@ -19,5 +19,7 @@
         In the meantime, enjoy a little
         = succeed "." do
           %a{:href => "http://www.youtube.com/watch?v=joDjwtjIQS8", :target => "_blank"} Rock'em Sock'em
-    //%p.small= Rails.env
+        Already part of the beta test?
+        = succeed "." do
+          = link_to 'Sign in here', new_user_session_path
 = render 'home/modals'
