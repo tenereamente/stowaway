@@ -6,7 +6,7 @@
           %a{:href => "#"}
         - if user_signed_in?
           %li.has-dropdown
-            = link_to edit_user_registration_path, id: 'account' do
+            = link_to user_path(current_user), id: 'account' do
               = render 'layouts/avatar.small'
               %span 
                 = current_user.name

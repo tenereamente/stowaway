@@ -9,6 +9,9 @@
     user: #{@user.name}
   %p
     email: #{@user.email if @user.email}
+
+  %p
+    = link_to edit_user_path(@user)
     
   / Linkedin URL
   / Facebook URL
