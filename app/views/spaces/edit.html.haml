@@ -11,6 +11,11 @@
         = f.text_field :tag_list
     .row
       .small-12.column
+        #monthly_price_label
+          Monthly Fee $50
+        = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "50,500", 'data-slider-step' => '25' }
+    .row
+      .small-12.column
         = f.input :address1, autofocus: true, required: true
     .row
       .small-12.column
