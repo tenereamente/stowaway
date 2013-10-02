@@ -1,124 +1,110 @@
-
 .row
   .large-4.small.12.push-8.columns
     .price
-      %form
-        .slider-volume{:style => "position: relative; -webkit-user-select: none; box-sizing: border-box; min-height: 18px; margin-left: 9px; margin-right: 9px;"}
-          .track{:style => "position: absolute; top: 50%; -webkit-user-select: none; cursor: pointer; width: 100%; margin-top: -5.5px;"}
-          .highlight-track{:style => "position: absolute; top: 50%; -webkit-user-select: none; cursor: pointer; width: 97px; margin-top: -5.5px;"}
-          .dragger{:style => "position: absolute; top: 50%; -webkit-user-select: none; cursor: pointer; margin-top: -9px; margin-left: -9px; left: 97px;"}
-        %input{"data-slider" => "true", "data-slider-highlight" => "true", "data-slider-theme" => "volume", :style => "display: none;", :type => "text", :value => "0.4"}
+      .slider-volume{:style => "position: relative; -webkit-user-select: none; box-sizing: border-box; min-height: 18px; margin-left: 9px; margin-right: 9px;"}
+        .track{:style => "position: absolute; top: 50%; -webkit-user-select: none; cursor: pointer; width: 100%; margin-top: -5.5px;"}
+        .highlight-track{:style => "position: absolute; top: 50%; -webkit-user-select: none; cursor: pointer; width: 97px; margin-top: -5.5px;"}
+        .dragger{:style => "position: absolute; top: 50%; -webkit-user-select: none; cursor: pointer; margin-top: -9px; margin-left: -9px; left: 97px;"}
   .large-8.small-12.pull-4.columns
     %h2 Add a Space
     %h3 you are well on your way to becoming a spacilist.
     %h4 Did we mention you are really good looking?
     = simple_form_for(@resource, html: {class: 'custom', id: 'list-space-step1', autocomplete: 'off' }) do |f|
-      .row
-        .small-12.column        
-          %h5 Hey! Start here and let us know whether you've got walls or wide open spaces.
-          .button-group.round.where
-            = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
-              = b.radio_button(class: 'hidden-field')
-              = b.label(class: 'button') do
-                - if b.text == 'Indoor'
-                  %i.icon-home
-                - else
-                  %i.icon-sun
-                %span
-                  = b.text
-          
-        .small-12.column
-          %h3 What would you call this space other than awesome?
-          .indoor.button-group.round.what
-            - space_type = [[:attic, 'Attic'],
-              [:garage, 'Garage'],
-              [:spare_room, 'Spare Room'],
-              [:basement, 'Basement']]
-            = f.collection_radio_buttons :type, space_type, :first, :second do |b|
-              = b.radio_button(class: 'hidden-field')
-              = b.label(class: 'button') do
-                - if b.text == 'Attic'
-                  %i.icon-home
-                - elsif b.text == 'Garage'
-                  %i.icon-home
-                - elsif b.text == 'Spare Room'
-                  %i.icon-home
-                - else
-                  %i.icon-home
-                - #if b.other
+      - unless signed_in?
+        .input
+          %label Email address
+          = email_field_tag :user_email
+      %h5 Hey! Start here and let us know whether you've got walls or wide open spaces.
+      .button-group.round.where
+        = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
+          = b.radio_button(class: 'hidden-field')
+          = b.label(class: 'button') do
+            - if b.text == 'Indoor'
+              %i.icon-home
+            - else
+              %i.icon-sun
+            %span
+              = b.text
+      %h3 What type of space is it?
+      .indoor.button-group.round.what
+        - space_type = [[:attic, 'Attic'],
+          [:garage, 'Garage'],
+          [:spare_room, 'Spare Room'],
+          [:basement, 'Basement']]
+        = f.collection_radio_buttons :type, space_type, :first, :second do |b|
+          = b.radio_button(class: 'hidden-field')
+          = b.label(class: 'button') do
+            - if b.text == 'Attic'
+              %i.icon-home
+            - elsif b.text == 'Garage'
+              %i.icon-home
+            - elsif b.text == 'Spare Room'
+              %i.icon-home
+            - else
+              %i.icon-home
+            - #if b.other
 
-                %span
-                  = b.text
-            %li
-              %a.button.dropdown{'data-dropdown' => 'data1', :href => "#"} Other
-              %ul#drop1.f-dropdown
-                %li
-                  %a.button Trailer
-                %li
-                  %a.button Cave
-                %li
-                  %a.button Treehouse
-                %li
-                  %a.button Tipi
-                %li
-                  %a.button Earthship
-                %li
-                  %a.button Closet
-            %ul.outdoor.button-group.round
-              %li
-                %a.button Driveway or Parking Lot
-              %li
-                %a.button Covered Space
-              %li
-                %a.button Open Area
-            
-          .small-12.column
-            %h3 How's the access?
-            %ul.button-group.round
-              %li
-                %a.button 24 Hour
-              %li
-                %a.button Scheduled
-              %li
-                %a.button Limited
-          .small-12.column
-            %h3 Features
-            %ul.button-group.round
-              %li= f.input :climate_controlled, label: 'Climate Controlled', label_html: { class: 'button' }
-              %li= f.input :lockable, label: 'Locked or Gated', label_html: { class: 'button' }
-              %li= f.input :attended, label: 'Attended', label_html: { class: 'button' }
-          .small-12.column
-            %h3 Space Dimensions
-            = f.input :length, autofocus: true, required: true, :label => 'length', :class => 'small-2 columns'
-            = f.input :width, autofocus: true, required: true, :label => 'width', :class => 'small-2 columns'
-            = f.input :height, autofocus: true, required: true, :label => 'height', :class => 'small-2 columns'
-            = f.input_field :units, input_html: { :class => 'selectdrop' }, :label => 'units', priority: [ "United States" ], required: true
-        - unless signed_in?
-          .row
-            .small-12.column
-              .input
-                %label Email address
-                = email_field_tag :user_email
-        .row
-          .small-12.column
-            = f.input :address1, autofocus: true, required: true, :label => 'address'
-        .row
-          .small-12.column
-            = f.input :address2, :label => 'apt / unit no.'
-        .row
-          .small-6.column
-            = f.input :city, required: true
-          .small-3.column
-            = f.input :state, :label => 'State', collection: us_states, :input_html => {:style => 'height:100px!important;'}, required: true
-          .small-3.column
-            = f.input :zip, required: true
-        .row
-          .small-12.large-6.column
-            = f.input :country, input_html: {:class => 'selectdrop'}, :label => 'Select Country', priority: [ "United States" ], required: true
-        .row
-          .large-12.column
-            = f.input :notes, :label => 'Tell us a bit about your space.'
-        .row
-          .small-12.large-6.column
-            = f.button :submit, 'Save', :class => 'button-primary button radius'
-       
+            %span
+              = b.text
+        %a.button.dropdown{'data-dropdown' => 'data1', :href => "#"} Other
+        %ul#drop1.f-dropdown
+          %li
+            %a.button Trailer
+          %li
+            %a.button Cave
+          %li
+            %a.button Treehouse
+          %li
+            %a.button Tipi
+          %li
+            %a.button Earthship
+          %li
+            %a.button Closet
+      .outdoor.button-group.round
+        %li
+          %a.button Driveway or Parking Lot
+        %li
+          %a.button Covered Space
+        %li
+          %a.button Open Area
+      %h3 How's the access?
+      %ul.button-group.round
+        %li
+          %a.button 24 Hour
+        %li
+          %a.button Scheduled
+        %li
+          %a.button Limited
+      %h3 Features
+      %ul.button-group.round
+        %li= f.input :climate_controlled, label: 'Climate Controlled', label_html: { class: 'button' }
+        %li= f.input :lockable, label: 'Locked or Gated', label_html: { class: 'button' }
+        %li= f.input :attended, label: 'Attended', label_html: { class: 'button' }
+      %h3 Space Dimensions
+      .row
+        .small-4.columns
+          = f.input :length, autofocus: true, required: true, :label => 'length'
+        .small-4.columns
+          = f.input :width, autofocus: true, required: true, :label => 'width'
+        .small-4.columns
+          = f.input :height, autofocus: true, required: true, :label => 'height'
+      .row
+        .small-12.columns
+          = f.input :address1, autofocus: true, required: true, :label => 'address'
+      .row
+        .small-12.columns
+          = f.input :address2, :label => 'apt / unit no.'
+      .row
+        .small-12.large-7.columns
+          = f.input :city, required: true
+        .small-8.large-3.columns
+          = f.input :state, :label => 'State', collection: us_states, :input_html => {:style => 'height:100px!important;'}, required: true
+        .small-4.large-2.columns
+          = f.input :zip, required: true
+      .row
+        .small-12.columns
+          = f.input :country, input_html: {:class => 'selectdrop'}, :label => 'Select Country', priority: [ "United States" ], required: true
+      
+      %h2 More detail
+      = f.input :notes, :label => 'Tell us a bit about your space.'
+      = f.button :submit, 'Save', :class => 'button-primary button radius'
