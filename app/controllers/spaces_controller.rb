@@ -21,7 +21,7 @@ class SpacesController < ApplicationController
     allow = [
       :notes, :address1, :address2, :city, :state, :zip, :country, :tag_list, :email,
       :available, :complete, :type, :climate_controlled, :lockable, :attended, :length, :width, :height, :units,
-      :photo, :photo2, :photo3, :photo4, :photo5
+      :photo, :photo2, :photo3, :photo4, :photo5, :monthly_price
     ]
     params.require(:space).permit(*allow)
   end
@@ -29,10 +29,10 @@ class SpacesController < ApplicationController
   def create
     @space = Space.create!(space_params.merge(user_id: user_signed_in? ? current_user.id : nil ))
     if user_signed_in?
-      redirect_to spaces_path
+      redirect_to space_path(@space)
     else
       # TODO gradual registration, take email param and create a user on the fly and log them in.
-      redirect_to spaces_path, :alert => "Space created without owner, need to register user"
+      redirect_to space_path(s), :alert => "Space created without owner, need to register user"
     end
   end
 

@@ -18,4 +18,3 @@
 
 $(function(){ $(document).foundation(); });
 
-$(".dollars").simpleSlider();

@@ -87,6 +87,15 @@
         .small-4.columns
           = f.input :width, autofocus: true, required: true, :label => 'width'
         .small-4.columns
+            .small-12.column
+              .input
+                %label Email address
+                = email_field_tag :user_email
+        .row
+          .small-12.column
+            #monthly_price_label
+              Monthly Fee $50
+            = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "50,500", 'data-slider-step' => '25' }
           = f.input :height, autofocus: true, required: true, :label => 'height'
       .row
         .small-12.columns

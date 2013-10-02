@@ -1,4 +1,5 @@
 class Space < ActiveRecord::Base
+  self.inheritance_column = nil
   belongs_to :user
   has_many :listings
   acts_as_taggable

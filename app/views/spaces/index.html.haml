@@ -18,6 +18,9 @@
     .small-10.large-6.column
       .row
         %h4
+          $
+          = succeed ".00" do
+            = h s.monthly_price
           = link_to(h(s.normalized_address), space_path(s))
       .row
         - if s.tags.any?

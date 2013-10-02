@@ -4,10 +4,29 @@
       %h1 
         = @space.title
     .row
+      %h2
+        $
+        = succeed ".00" do
+          = @space.monthly_price
+        = link_to @space.normalized_address, edit_space_path(@space)
+    .row
+      %h3 TAGS
+      - if @space.tags.any?
+        - @space.tags.each do |tag|
+          = link_to tag.name, spaces_url(tag: tag.name)
+      - else
+        NONE
+    .row
       = @space.environment
     .row
-      = @space.zip
-    .row
       = @space.notes
+    .row
+      = image_or_placeholder(@space.photo)
+      = image_or_placeholder(@space.photo2)
+      = image_or_placeholder(@space.photo3)
+      = image_or_placeholder(@space.photo4)
+      = image_or_placeholder(@space.photo5)
+    .row
+      = link_to "Edit this space", edit_space_path(@space)
   .large-4.columns
     = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})

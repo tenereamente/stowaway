@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001154309) do
+ActiveRecord::Schema.define(version: 20131002031557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20131001154309) do
     t.boolean  "lockable",            default: false
     t.boolean  "attended",            default: false
     t.boolean  "featured",            default: false
-    t.integer  "monthly_price"
+    t.integer  "monthly_price",       default: 50
   end
 
   create_table "taggings", force: true do |t|
