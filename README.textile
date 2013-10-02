@@ -106,7 +106,6 @@ Security scans are done by "Code Climate":https://codeclimate.com/github/stowawa
 
 TODO: https://coveralls.io/r/stowawayco/stowaway
 
-TODO: Jasmine
 
 h2. Documentation and Support
 
