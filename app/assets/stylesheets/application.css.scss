@@ -14,6 +14,7 @@
  *= require font-awesome
  *= require gmaps4rails
  *= require select2
+ *= require simple-slider
 */
 
 @import "base";
@@ -211,4 +212,8 @@ p {
 #flash_alert {
   background-color: #FCC;
   border: solid 1px #C66;
+}
+
+.price {
+  border: 0!important;
 }
