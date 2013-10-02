@@ -1,5 +1,5 @@
-.center
-  .row.hero.box
+.row.mt20
+  .box.columns.large-6.small-centered.small-11
     %h2 sign in
     = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical custom' }) do |f|
       = f.input :email, :autofocus => true

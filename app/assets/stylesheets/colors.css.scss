@@ -10,6 +10,7 @@ $red: rgb(200, 70, 57);
 $midnight: rgb(14, 41, 73);
 $orange: #f48231;
 $sky: #3aa8f7;
+$powder: #7cabd3;
 $bg-image: image-url("tile2.svg") repeat;
 $burgundy: #541c1e;
 
@@ -165,7 +166,7 @@ $burgundy: #541c1e;
 
 
 body {
-  @include theme($sky, $orange);
+  @include theme($powder, $orange);
 }
 
 /*
