@@ -83,7 +83,7 @@ At this point you should see chef run to completion and give you a fully configu
 
 7. Look at the "production":http://www.stowaway.co or "staging":http://staging.stowaway.co site.
 
-8. TODO: SSL certificates
+8. SSL certificates are managed by chef-solo.
 
 
 h2. Deploying the application
