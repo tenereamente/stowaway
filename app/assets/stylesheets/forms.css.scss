@@ -45,10 +45,14 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   }
 }
 
-form {
+form.custom {
   .custom {
-    &.radio {
+    &.radio, &.checkbox {
       display: none;
+    }
+    &.dropdown {
+      height: 4em;
+      border-radius: 3px;
     }
   }
 }

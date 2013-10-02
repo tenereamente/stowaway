@@ -5,7 +5,7 @@ $(document).ready ->
   $("#space_tag_list").select2({tags:[]})
   #$("#space_country").select2();
   $("#space_monthly_price").bind "slider:changed", (event, data) ->
-    $("#monthly_price_label").html("Monthly Fee $" + data.value)
+    $("#monthly_price_label").html("$" + data.value)
 
   $(".book-it-button").click (event) ->
     token = (res) ->
