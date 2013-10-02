@@ -2,7 +2,9 @@ class SpacesController < ApplicationController
   def index
     puts params
     if params[:user_id].present?
+      @user = User.find(params[:user_id])
       @spaces = Space.by_user(params[:user_id].to_i)
+      render 'my_index'
     elsif params[:tag].present? 
       @spaces = Space.owned.tagged_with(params[:tag])
     else 
