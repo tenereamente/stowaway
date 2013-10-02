@@ -11,9 +11,9 @@
         %link{ type: "text/css", rel: "stylesheet", href: "//fonts.googleapis.com/css?family=Quicksand:400,700|Open+Sans+Condensed:300,700|Dosis:300,400,500,600,700" }
         = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
-  #main{:role => "main"}
-    = yield
-    #f_shiv
+    #main{:role => "main"}
+      = yield
+      #f_shiv
   %footer#footer
     = render 'layouts/footer'
   / ! end of #container

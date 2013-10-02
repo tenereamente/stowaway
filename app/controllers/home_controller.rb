@@ -10,6 +10,7 @@ class HomeController < ApplicationController
       render :layout => "prelaunchlayout"
     end
   end
+  
   def dashboard
   end
 
