@@ -6,3 +6,21 @@ $(document).ready ->
   #$("#space_country").select2();
   $("#space_monthly_price").bind "slider:changed", (event, data) ->
     $("#monthly_price_label").html("Monthly Fee $" + data.value)
+
+  $(".book-it-button").click (event) ->
+    token = (res) ->
+      input = $('<input type=hidden name=stripeToken />').val(res.id)
+      $('form').append(input).submit() 
+
+    price = parseInt($(event.target).data("price"))
+
+    StripeCheckout.open
+      key: $(event.target).data("stripe_public_key")
+      address: false
+      amount: 100 * price
+      currency: 'usd'
+      name: 'Monthly storage rental'
+      description: $(event.target).data("address")
+      panelLabel: 'Checkout'
+      token: token
+    return false

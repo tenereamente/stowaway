@@ -8,6 +8,8 @@
 
 = yield :scripts
 
+= javascript_include_tag "https://checkout.stripe.com/v2/checkout.js"
+
 // Include the UserVoice JavaScript SDK (only needed once on a page)
 :javascript
   UserVoice=window.UserVoice||[];(function(){
