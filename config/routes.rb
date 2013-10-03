@@ -8,7 +8,7 @@ StowAway::Application.routes.draw do
     resources :spaces, only: [:index]
   end
 
-  post '/api/stripe_webhook' => 'charges#record_stripe_webhook' 
+  post '/api/stripe_webhook' => 'webhook#record_stripe_webhook' 
   
   resources :spaces do
     resources :listings
