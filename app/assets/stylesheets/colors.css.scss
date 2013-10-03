@@ -98,10 +98,26 @@ $burgundy: #541c1e;
     h1, h2, h3, h4, h5, h6 {
       color: rgba(#555, .5);
     }
+    label, .checkbtns > li {
+      &.button {
+        background-color: tint($base, 80);
+        transition: all;
+        color: $base;
+        &:hover {
+          background-color: $base;
+          color: tint($base, 80); 
+        }
+        &:active, &.active {
+          background-color: shade($base, 20);
+          color: tint($base, 80);
+        }
+      }
+    }
     a {
       color: shade($base, 10);
       &.button {
         background-color: tint($base, 80);
+        transition: all;
         &.book-it-button {
           background-color: $tertiary;
           color: tint($tertiary, 90);
@@ -169,9 +185,12 @@ $burgundy: #541c1e;
   .price {
     background: tint($base, 80);
   }
+  .slider > .dragger {
+    background: $green;
+    border: 0 none;
+    box-shadow: transparent none;
+  }
 }
-
-
 
 body {
   @include theme($powder, $orange, $green);

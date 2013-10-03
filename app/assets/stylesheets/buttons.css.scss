@@ -57,3 +57,24 @@ input[type="button"], input[type="submit"], input[type="reset"], input[type="fil
     cursor: pointer; 
   }
 }
+
+.box {
+  .button-group.round, .checkbtns {
+    .button {
+      height: 4em;
+      line-height: 2.75em;
+    }
+  }
+}
+
+.box {
+  .checkbtns {
+    .button {
+      .input {
+        %label {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

@@ -53,6 +53,20 @@ form.custom {
     &.dropdown {
       height: 4em;
       border-radius: 3px;
+      &:hover {
+       cursor: pointer; 
+      }
+      .selector {
+        height: 4em;
+        &:hover {
+         cursor: pointer; 
+        }
+      }
+      .current, ul {
+        font-size: 1.5em;
+        line-height: 2.5em;
+        margin-right: 0;
+      }
     }
   }
   .user_remember_me {

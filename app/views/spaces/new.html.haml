@@ -7,51 +7,32 @@
             $$
         = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "9,1000", 'data-slider-step' => '25' }
         %h5 Set Your Price:
-      %ul.small-block-grid-1.large-block-grid-2  
+      %ul.small-block-grid-1.large-block-grid-2.fitimg  
         %li
-          = f.file_field :photo
           = image_or_placeholder(@resource.photo)
-        %li
-          = f.file_field :photo2
-          = image_or_placeholder(@resource.photo2)
-        %li
-          = f.file_field :photo3
-          = image_or_placeholder(@resource.photo3)
-        %li
-          = f.file_field :photo4
-          = image_or_placeholder(@resource.photo4)
-        %li
-          = f.file_field :photo5
-          = image_or_placeholder(@resource.photo5)
-      .row.mb20
-        .small-12.large-6.column
           = f.file_field :photo
-          = image_or_placeholder(@resource.photo)
-      .row.mb20
-        .small-12.large-6.column
-          = f.file_field :photo2
+        %li
           = image_or_placeholder(@resource.photo2)
-      .row.mb20
-        .small-12.large-6.column
-          = f.file_field :photo3
+          = f.file_field :photo2
+        %li
           = image_or_placeholder(@resource.photo3)
-      .row.mb20
-        .small-12.large-6.column
-          = f.file_field :photo4
+          = f.file_field :photo3
+        %li
           = image_or_placeholder(@resource.photo4)
-      .row
-        .small-12.large-6.column
-          = f.file_field :photo5
+          = f.file_field :photo4
+        %li
           = image_or_placeholder(@resource.photo5)
+          = f.file_field :photo5
+          
     .large-8.small-12.pull-4.columns
       %h2 Add a Space
-      %h3 you are well on your way to becoming a spacilist.
-      %h4 Did we mention you are really good looking?
+      %h5 you're well on your way to becoming a spacilist.
+      /%h4 Did we mention you are really good looking?
       - unless signed_in?
         .input
           %label Email address
           = email_field_tag :user_email
-      %h3 Address
+      %hr
       .row
         .small-12.columns
           = f.input :address1, autofocus: true, required: true, :label => 'address'
@@ -62,7 +43,7 @@
         .small-12.large-7.columns
           = f.input :city, required: true
         .small-6.large-2.columns
-          = f.input :state, :label => 'State', collection: us_states, :input_html => {:style => 'height:100px!important;'}, required: true
+          = f.input :state, :label => false, collection: us_states, :input_html => { :style => 'height:100px!important;'}, required: true
         .small-6.large-3.columns
           = f.input :zip, required: true
       /
@@ -81,7 +62,7 @@
             %span
               = b.text
       %h3 What type of space is it?
-      .indoor.button-group.round.what.even-5
+      .indoor.button-group.round.what
         - space_type = [[:attic, 'Attic'],
           [:garage, 'Garage'],
           [:spare_room, 'Spare Room'],
@@ -90,13 +71,9 @@
           = b.radio_button(class: 'hidden-field')
           = b.label(class: 'button') do
             - if b.text == 'Attic'
-              %i.icon-home
             - elsif b.text == 'Garage'
-              %i.icon-home
             - elsif b.text == 'Spare Room'
-              %i.icon-home
             - else
-              %i.icon-home
             - #if b.other
 
             %span
@@ -116,13 +93,21 @@
             %a.button Earthship
           %li
             %a.button Closet
-      .outdoor.button-group.round
-        %li
-          %a.button Driveway or Parking Lot
-        %li
-          %a.button Covered Space
-        %li
-          %a.button Open Area
+      .outdoor.button-group.round.what
+        - space_type = [[:driveway, 'Driveway'],
+          [:covered, 'Covered Area'],
+          [:open, 'Uncovered Area']]
+        = f.collection_radio_buttons :type, space_type, :first, :second do |b|
+          = b.radio_button(class: 'hidden-field')
+          = b.label(class: 'button') do
+            - if b.text == 'Driveway'
+            - elsif b.text == 'Covered Area'
+            - elsif b.text == 'Uncovered Area'
+            - else
+            - #if b.other
+
+            %span
+              = b.text
       %h3 How's the access?
       %ul.button-group.round
         %li
@@ -132,10 +117,10 @@
         %li
           %a.button Limited
       %h3 Features
-      %ul
-        %li.button.radius= f.input :climate_controlled, label: 'Climate Controlled'
-        %li.button.radius= f.input :lockable, label: 'Locked or Gated'
-        %li.button.radius= f.input :attended, label: 'Attended'
+      %ul.checkbtns
+        %li.button.round= f.input :climate_controlled, label: 'Climate Controlled'
+        %li.button.round= f.input :lockable, label: 'Locked or Gated'
+        %li.button.round= f.input :attended, label: 'Attended'
       %h3 Dimensions
       .row
         .small-3.columns
