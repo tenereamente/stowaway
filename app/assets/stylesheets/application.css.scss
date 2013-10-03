@@ -107,9 +107,7 @@ footer {
   }
 }
 
-.avatar {
-  border-radius: 1000px;
-}
+
 .top-bar {
   .logo {
     font-size: emCalc(22);
@@ -123,6 +121,13 @@ footer {
           font-size: emCalc(18);
           &:not(.button) {
             background: none;
+          }
+          &#account {
+            padding: 0;
+            .avatar {
+              border-radius: 3px;
+              margin-right: 6px;
+            }
           }
         }
         .dropdown {
