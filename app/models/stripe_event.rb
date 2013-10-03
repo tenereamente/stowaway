@@ -1,3 +1,3 @@
-class Space < ActiveRecord::Base
+class StripeEvent < ActiveRecord::Base
 
 end
