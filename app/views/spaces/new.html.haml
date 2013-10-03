@@ -54,15 +54,15 @@
       .button-group.round.where
         = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
           = b.radio_button(class: 'hidden-field')
-          = b.label(class: 'button') do
+          = b.label(class: 'button', id: "#{b.text.downcase}_button_label") do
             - if b.text == 'Indoor'
               %i.icon-home
             - else
               %i.icon-sun
             %span
               = b.text
-      %h3 What type of space is it?
-      .indoor.button-group.round.what
+      %h3#what_kind_of_space{ style: "display: none" } What type of space is it?
+      #indoor_button_group.indoor.button-group.round.what{ style: "display: none" }
         - space_type = [[:attic, 'Attic'],
           [:garage, 'Garage'],
           [:spare_room, 'Spare Room'],
@@ -93,7 +93,7 @@
             %a.button Earthship
           %li
             %a.button Closet
-      .outdoor.button-group.round.what
+      #outdoor_button_group.outdoor.button-group.round.what{ style: "display: none" }
         - space_type = [[:driveway, 'Driveway'],
           [:covered, 'Covered Area'],
           [:open, 'Uncovered Area']]

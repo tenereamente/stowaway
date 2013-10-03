@@ -7,6 +7,41 @@ $(document).ready ->
   $("#space_monthly_price").bind "slider:changed", (event, data) ->
     $("#monthly_price_label").html("$" + data.value)
 
+  $("#space_environment_indoor").click (event) ->
+    # hide the outdoor options, show the indoor
+    $.showIndoorOptions()
+    $.hideOutdoorOptions()
+    $("label#indoor_button_label").toggleClass('active', true)
+    $("label#outdoor_button_label").toggleClass('active', false)
+
+
+  $("#space_environment_outdoor").click (event) ->
+    # hide the indoor options, show the outdoor
+    $.showOutdoorOptions()
+    $.hideIndoorOptions()
+    $("label#outdoor_button_label").toggleClass('active', true)
+    $("label#indoor_button_label").toggleClass('active', false)
+
+  $("#space_type_attic").click (event) ->
+    alert('clicked')
+
+  $("#space_type_garage").click (event) ->
+    alert('clicked attic')
+
+  $.showOutdoorOptions = ->
+    $("#what_kind_of_space").show()
+    $("#outdoor_button_group").show()
+
+  $.showIndoorOptions = ->
+    $("#what_kind_of_space").show()
+    $("#indoor_button_group").show()
+
+  $.hideOutdoorOptions = ->
+    $("#outdoor_button_group").hide()
+
+  $.hideIndoorOptions = ->
+    $("#indoor_button_group").hide()
+
   $(".book-it-button").click (event) ->
     token = (res) ->
       input = $('<input type=hidden name=stripeToken />').val(res.id)
