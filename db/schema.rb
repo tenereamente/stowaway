@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131003155121) do
+ActiveRecord::Schema.define(version: 20131003181613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,10 +105,12 @@ ActiveRecord::Schema.define(version: 20131003155121) do
 
   create_table "stripe_events", force: true do |t|
     t.string   "event_id"
-    t.json     "event",                      null: false
+    t.json     "data",                       null: false
     t.boolean  "handled",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
+    t.boolean  "livemode"
   end
 
   create_table "taggings", force: true do |t|
