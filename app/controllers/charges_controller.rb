@@ -22,8 +22,21 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
-  rescue Stripe::CardError => e
+    rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to charges_path
   end
+
+  def record_stripe_webhook
+    event = ActiveSupport::JSON.decode(request.body)
+
+    if StripeEvent.create(event.id, request.body)
+      # TODO handle duplicate event errors.
+      # TODO figure out where the json indexes need to go
+      render :json => "{\"r\": \"ok\"}"
+    else
+      render :json => "{\"r\": \"failed\"}"
+    end
+  end
+
 end
