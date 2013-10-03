@@ -80,6 +80,11 @@ $burgundy: #541c1e;
         color: shade($base, 40);
       }
     }
+    .bigtime {
+      h2 {
+        background: rgba(shade($accent, 40),.5);
+      }
+    }
     .sidebar {
       ul {
         .active {

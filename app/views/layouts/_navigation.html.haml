@@ -17,14 +17,14 @@
                 = link_to 'Logout', destroy_user_session_path, :method=>'delete'
               %li
                 = link_to 'Terms', terms_path
-            - if current_user.has_role? :admin
-              %li.has-dropdown
-                = link_to 'Admin', admin_path
-                %ul.dropdown
-                  %li
-                    = link_to 'Users', users_path
-                  %li
-                    = link_to 'New blog post', blogit.new_post_path
+              - if current_user.has_role? :admin
+                %li.has-dropdown
+                  = link_to 'Admin', admin_path
+                  %ul.dropdown
+                    %li
+                      = link_to 'Users', users_path
+                    %li
+                      = link_to 'New blog post', blogit.new_post_path
         - else
           %li
             = link_to 'Sign up', new_user_registration_path

@@ -1,32 +1,33 @@
-.row
-  .large-8.columns
-    .row
-      %h1 
+.bigtime{:style => "background-image: url(#{@space.photo})"}
+  .row
+    .large-8.columns
+      %h2 
         = @space.title
-    .row
-      %h2
-        $
-        = succeed ".00" do
-          = @space.monthly_price
+      %h5
         = link_to @space.normalized_address, edit_space_path(@space)
-    .row
-      %h3 TAGS
+      %h3 Amenities
       - if @space.tags.any?
         - @space.tags.each do |tag|
           = link_to tag.name, spaces_url(tag: tag.name)
       - else
         NONE
-    .row
+
       = @space.environment
-    .row
       = @space.notes
-    .row
-      = image_or_placeholder(@space.photo)
-      = image_or_placeholder(@space.photo2)
-      = image_or_placeholder(@space.photo3)
-      = image_or_placeholder(@space.photo4)
-      = image_or_placeholder(@space.photo5)
-    .row
+
+      %ul.small-block-2.large-block-grid-4.fitimg
+        %li
+          = image_or_placeholder(@space.photo2)
+        %li
+          = image_or_placeholder(@space.photo3)
+        %li
+          = image_or_placeholder(@space.photo4)
+        %li
+          = image_or_placeholder(@space.photo5)
       = link_to "Edit this space", edit_space_path(@space)
-  .large-4.columns
-    = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
+    .large-4.columns
+      .price
+        $
+        = succeed ".00" do
+          = @space.monthly_price
+      = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
