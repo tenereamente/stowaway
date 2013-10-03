@@ -2,9 +2,7 @@ class WebhookController < ApplicationController
   protect_from_forgery with: :null_session
 
   def record_stripe_webhook
-    event = ActiveSupport::JSON.decode(request.body)
-
-    if StripeEvent.create(event.id, request.body)
+    if StripeEvent.create!(event_id: params[:id], type: params[:type], data: params[:data], livemode: params[:livemode])
       # TODO handle duplicate event errors.
       # TODO figure out where the json indexes need to go
       render :json => "{\"r\": \"ok\"}"
