@@ -1,10 +1,16 @@
 .row
-  %h2 
-    %b Edit this space
+  .small-10.columns
+    %h2.title
+      = @resource.title
+    %h3 
+      = @resource.address1
+  .small-2.columns
+    = link_to space_path(s)
+    
   = simple_form_for(@resource, html: {class: 'form-vertical', id: 'list-space-step1' }) do |f|
     .row
       .small-12.column
-        = f.input :notes
+        = f.input :title
     .row
       .small-12.column
         = f.label :tags
@@ -50,6 +56,9 @@
       .small-12.large-6.column
         = image_or_placeholder(@resource.photo5)
         = f.file_field :photo5
+    .row
+      .small-12.column
+        = f.input :notes
     .row
       .small-12.large-6.column
         = f.button :submit, 'Save', class: 'btn-primary large-6 small-12 column'

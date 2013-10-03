@@ -1,5 +1,6 @@
-= @user.name
+%h2.title
+  #{@user.name}'s Spaces
 
-= image_or_placeholder(@user.avatar)
+/= image_or_placeholder(@user.avatar)
 
 = render 'listing', locals: { 'spaces' => @spaces }  

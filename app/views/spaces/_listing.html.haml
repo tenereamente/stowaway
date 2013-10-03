@@ -11,17 +11,12 @@
           - s.tags.each do |tag|
             = link_to tag.name, spaces_url(tag: tag.name)
       .row
-        %ul.button-group.radius.left.mr10
-          - if signed_in? and current_user.id == s.user_id
-            %li
-              = link_to edit_space_path(s), {:class=>'button'} do
-                %i{:class=>'icon-pencil'}
-                Edit
-            %li
-
-        %a.has-tip{"data-tooltip" => "", :title => s.notes}
+        - if signed_in? and current_user.id == s.user_id
+          = link_to edit_space_path(s), {:class=>'button round has-tip', "data-tooltip"=>"", :title => 'Edit this Listing'} do
+            %i{:class=>'icon-pencil'}
+        %a.has-tip.button.round{"data-tooltip" => "", :title => s.notes}
           %i.icon-info-sign
-        %a.has-tip{"data-tooltip" => "", :title => s.user.name, :href => user_path(s.user) }
+        %a.has-tip.button.round{"data-tooltip" => "", :title => s.user.name, :href => user_path(s.user) }
           %i.icon-user
     .small-12.large-4.column
       .price
@@ -29,6 +24,6 @@
           $
           = succeed " / Month" do
             = h s.monthly_price
-        = link_to '#', {:class=>'button book-it-button', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
+        = link_to '#', {:class=>'button radius book-it-button', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
           %i{:class=>'icon-ok'}
-          Book    
+          Book It   

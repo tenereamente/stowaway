@@ -14,7 +14,7 @@ $powder: #7cabd3;
 $bg-image: image-url("tile2.svg") repeat;
 $burgundy: #541c1e;
 
-@mixin theme($base, $accent) {
+@mixin theme($base, $accent, $tertiary) {
   .button {
     background-color: shade($base, 50);
     color: tint($base, 90);
@@ -102,6 +102,17 @@ $burgundy: #541c1e;
       color: shade($base, 10);
       &.button {
         background-color: tint($base, 80);
+        &.book-it-button {
+          background-color: $tertiary;
+          color: tint($tertiary, 90);
+          &:hover {
+            background-color: shade($tertiary, 10);
+          }
+          &:active {
+            background-color: shade($tertiary, 20);
+            top: 2px;
+          }
+        }
         &:hover {
           background-color: tint($base, 70);
         }
@@ -156,9 +167,6 @@ $burgundy: #541c1e;
     }
   }
   .price {
-    border-radius: 3px;
-    padding: 2em;
-    margin-bottom: 25px;
     background: tint($base, 80);
   }
 }
@@ -166,7 +174,7 @@ $burgundy: #541c1e;
 
 
 body {
-  @include theme($powder, $orange);
+  @include theme($powder, $orange, $green);
 }
 
 /*
