@@ -1,0 +1,17 @@
+.center
+  %h1
+    #{@events.count} billing events recorded so far
+  .row
+    %table.small-6.large-centered.columns
+      %thead
+        %tr
+          %th TYPE
+          %th DATE
+          %th DATA
+      %tbody
+        - @events.each do |e|
+          %tr
+            %td= e.type
+            %td= e.time_ago_in_words(e.created_at)
+            %td= e.data
+  = will_paginate @events
