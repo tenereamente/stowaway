@@ -133,6 +133,9 @@ $(document).ready ->
     token = (res) ->
       input = $('<input type=hidden name=stripeToken />').val(res.id)
       $('form').append(input).submit() 
+      # TODO send the space ID and token in to the charges controller
+      # we pull the price from the database inside the charges controller rather
+      # than trusting the price to be sent in from a form. Hi haters!
 
     price = parseInt($(event.target).data("price"))
 
