@@ -15,6 +15,10 @@ $bg-image: image-url("tile2.svg") repeat;
 $burgundy: #541c1e;
 
 @mixin theme($base, $accent, $tertiary) {
+  .beta {
+    color: $tertiary;
+    vertical-align: super;
+  }
   .button {
     background-color: shade($base, 50);
     color: tint($base, 90);
