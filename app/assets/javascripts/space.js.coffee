@@ -99,19 +99,18 @@ $(document).ready ->
 
   $("#space_type_limited").click (event) ->
     $("label#limited_button_label").toggleClass('active', true)
-    $("label#appointment_button_label").toggleClass('active', false)
-    $("label#attended_button_label").toggleClass('active', false)
+    $("label#by_appointment_button_label").toggleClass('active', false)
+    $("label#anytime_button_label").toggleClass('active', false)
 
   $("#space_type_appointment").click (event) ->
     $("label#limited_button_label").toggleClass('active', false)
-    $("label#appointment_button_label").toggleClass('active', true)
-    $("label#attended_button_label").toggleClass('active', false)
+    $("label#by_appointment_button_label").toggleClass('active', true)
+    $("label#anytime_button_label").toggleClass('active', false)
 
-  $("#space_type_attended").click (event) ->
-    alert('hi')
+  $("#space_type_anytime").click (event) ->
     $("label#limited_button_label").toggleClass('active', false)
-    $("label#appointment_button_label").toggleClass('active', false)
-    $("label#attended_button_label").toggleClass('active', true)
+    $("label#by_appointment_button_label").toggleClass('active', false)
+    $("label#anytime_button_label").toggleClass('active', true)
 
   $.showOutdoorOptions = ->
     $("#what_kind_of_space").show()

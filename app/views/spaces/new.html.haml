@@ -107,7 +107,7 @@
         .button-group.round.what
           = f.collection_radio_buttons :type, [[:anytime, 'Anytime'], [:appointment, 'By appointment'], [:limited, 'Limited']], :first, :second do |b|
             = b.radio_button(class: 'hidden-field')
-            = b.label(class: 'button', id: "#{b.text.downcase}_button_label") do
+            = b.label(class: 'button', id: "#{b.text.parameterize.underscore}_button_label") do
               - if b.text == 'Anytime'
               - elsif b.text == 'By appointment'
               - elsif b.text == 'Limited'
