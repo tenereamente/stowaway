@@ -10,6 +10,11 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   textarea {
     height: 7em;
   }
+  &.integer {
+    width: 100px;
+    float: left;
+    margin-right: 1em;
+  }
   label {
     position: absolute;
     z-index: 2;

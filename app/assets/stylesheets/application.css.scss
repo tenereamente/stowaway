@@ -242,3 +242,8 @@ p {
 img {
   border-radius: 3px;
 }
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -6,7 +6,7 @@
           %span
             $$
         = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "9,1000", 'data-slider-step' => '25' }
-        %h5 Set Your Price:
+        %h5 Set a Price
       %ul.small-block-grid-1.large-block-grid-2.fitimg  
         %li
           = image_or_placeholder(@resource.photo)
@@ -33,12 +33,8 @@
           %label Email address
           = email_field_tag :user_email
       %hr
-      .row
-        .small-12.columns
-          = f.input :address1, autofocus: true, required: true, :label => 'address'
-      .row
-        .small-12.columns
-          = f.input :address2, :label => 'apt / unit no.'
+      = f.input :address1, autofocus: true, required: true, :label => 'address'
+      = f.input :address2, :label => 'apt / unit no.'
       .row
         .small-12.large-7.columns
           = f.input :city, required: true
@@ -46,11 +42,8 @@
           = f.input :state, :label => false, collection: us_states, :input_html => { :style => 'height:100px!important;'}, required: true
         .small-6.large-3.columns
           = f.input :zip, required: true
-      /
-        .row
-          .small-12.columns
-            = f.input :country, input_html: {:class => 'selectdrop'}, :label => 'Select Country', priority: [ "United States" ], required: false
-      %h3 Where is it?
+      = f.input :country, input_html: {:class => 'selectdrop'}, :label => false, priority: [ "United States" ], required: false
+      %h3 In or Out?
       .button-group.round.where
         = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
           = b.radio_button(class: 'hidden-field')
@@ -108,28 +101,31 @@
 
             %span
               = b.text
-      %h3 How's the access?
-      %ul.button-group.round
-        %li
-          %a.button 24 Hour
-        %li
-          %a.button Scheduled
-        %li
-          %a.button Limited
-      %h3 Features
-      %ul.checkbtns
-        %li.button.round= f.input :climate_controlled, label: 'Climate Controlled'
-        %li.button.round= f.input :lockable, label: 'Locked or Gated'
-        %li.button.round= f.input :attended, label: 'Attended'
-      %h3 Dimensions
-      .row
-        .small-3.columns
-          = f.input :length, autofocus: true, required: true, :label => 'length'
-        .small-3.columns
-          = f.input :width, autofocus: true, required: true, :label => 'width'
-        .small-3.columns
-          = f.input :height, autofocus: true, required: true, :label => 'height'
-    
-      %h3 Description
-      = f.input :notes, :label => 'Tell us a bit about your space.'
-      = f.button :submit, 'Save', :class => 'button-primary button radius'
+      %section.access
+        %h3 How's the access?
+        %ul.button-group.round
+          %li
+            %a.button 24 Hour
+          %li
+            %a.button Scheduled
+          %li
+            %a.button Limited
+      %section.features
+        %h3 Features
+        %ul.checkbtns
+          %li.button.round= f.input :climate_controlled, label: 'Climate Controlled'
+          %li.button.round= f.input :lockable, label: 'Locked or Gated'
+          %li.button.round= f.input :attended, label: 'Attended'
+      %section.dimensions
+        %h3 
+          Dimensions
+          %small
+            (in feet)
+        = f.input :length, autofocus: true, required: true, :label => 'length', :size => '10', :maxlength => '4', :step =>"2"
+        = f.input :width, autofocus: true, required: true, :label => 'width'
+        = f.input :height, autofocus: true, required: true, :label => 'height'
+        .clearfix
+      %section.description
+        %h3 Description
+        = f.input :notes, :label => 'Tell us a bit about your space.'
+        = f.button :submit, 'Save', :class => 'button-primary button radius'
