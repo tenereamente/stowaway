@@ -1,8 +1,6 @@
 check process resque_worker_QUEUE
-  with pidfile /srv/APP_NAME/current/tmp/pids/resque_worker_QUEUE.pid
-  start program = "/usr/bin/env HOME=/home/user PATH=/usr/local/bin:/usr/local/ruby/bin:/usr/bin:/bin:$PATH /bin/sh -l -c 'cd /srv/APP_NAME/current; nohup bundle exec rake environment resque:work RAILS_ENV=production QUEUE=queue_name VERBOSE=1 PIDFILE=tmp/pids/resque_worker_QUEUE.pid >> log/resque_worker_QUEUE.log 2>&1'" as uid deploy and gid deploy
-  stop program = "/bin/sh -c 'cd /srv/APP_NAME/current && kill -9 $(cat tmp/pids/resque_worker_QUEUE.pid) && rm -f tmp/pids/resque_worker_QUEUE.pid; exit 0;'"
+  with pidfile /app/<%= stage %>/current/tmp/pids/resque_worker_QUEUE.pid
+  start program = "/usr/bin/env HOME=/home/web_user PATH=/usr/local/rbenv/shims:/usr/bin:/bin:$PATH /bin/sh -l -c 'cd /app/<%= stage %>/current; nohup bundle exec rake environment resque:work RAILS_ENV=<%= stage %> QUEUE=stowaway_workers VERBOSE=1 PIDFILE=tmp/pids/resque_worker_<%= stage %>_QUEUE.pid >> log/resque_worker_<%= stage %>_QUEUE.log 2>&1'" as uid root and gid root
+  stop program = "/bin/sh -c 'cd /app/<%= stage %>/current && kill -9 $(cat tmp/pids/resque_worker_<%= stage %>_QUEUE.pid) && rm -f tmp/pids/resque_worker_<%= stage %>_QUEUE.pid; exit 0;'"
   if totalmem is greater than 300 MB for 10 cycles then restart  # eating up memory?
   group resque_workers
-
-  <%= application %>_<%= stage %>

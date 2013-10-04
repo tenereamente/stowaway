@@ -12,7 +12,11 @@ passwords = Chef::EncryptedDataBagItem.load("custom", "secrets", secret)
 
 override_attributes(
   :postgresql => {
-	password: { postgres: passwords['prod']['postgresql'] },
+    password: { postgres: passwords['prod']['postgresql'] },
+    enable_pgdg_apt: true,
+    version: '9.3',
+    server: { packages: ['postgresql-9.3', 'postgresql-server-dev-9.3', 'postgresql-9.3-plv8', 'postgresql-9.3-postgis-2.1', 'postgresql-contrib-9.3']},
+    client: { packages: ['postgresql-client-9.3']},
     pg_hba: [
       {type: 'local', db: 'all', user: 'postgres', addr: nil, method: 'ident' },
       {type: 'host', db: 'all', user: 'all', addr: 'localhost', method: 'md5'}

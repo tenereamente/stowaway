@@ -42,6 +42,7 @@ default_attributes(
   },
   :postgresql => {
     password: { postgres: "totallyinsecure" },
+    enable_pgdg_apt: true,
     pg_hba: [
       {type: 'local', db: 'all', user: 'postgres', addr: nil, method: 'ident' },
       {type: 'host', db: 'all', user: 'postgres', addr: 'localhost', method: 'md5'}

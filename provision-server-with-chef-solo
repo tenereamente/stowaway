@@ -1,4 +1,4 @@
 #!/bin/bash
-SERVER=root@stowaway.elliotmurphy.com
+SERVER=root@www.stowaway.co
 rsync -az chef $SERVER:/tmp/chef-solo
 ssh $SERVER "chef-solo -c /tmp/chef-solo/chef/solo-config.rb -o 'role[production_server]'"

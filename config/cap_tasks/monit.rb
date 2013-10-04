@@ -1,4 +1,4 @@
-set_default(:postgresql_pid) { "/var/run/postgresql/9.1-main.pid" }
+set_default(:postgresql_pid) { "/var/run/postgresql/9.3-main.pid" }
 
 namespace :monit do
   desc "Setup all Monit configuration"
