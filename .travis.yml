@@ -14,3 +14,4 @@ before_script:
   - sudo /etc/init.d/postgresql stop
   - sudo cp ./pg_hba.conf /etc/postgresql/9.3/main
   - sudo /etc/init.d/postgresql start
+  - psql -c "CREATE USER travis WITH PASSWORD 'travis';" -U postgres
