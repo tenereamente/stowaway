@@ -1,18 +1,15 @@
 .row
-  .span-
-  %h3 user
-  %p
+  .large-4.small-12.push-8.columns
     - if @user.avatar.exists?
       = image_tag @user.avatar.url(:square)
     - else
       = image_tag "http://placehold.it/200x200"
-    user: #{@user.name}
-  %p
-    email: #{@user.email if @user.email}
-
-  %p
     = link_to edit_user_path(@user)
-    
+  .large-8.small-12.pull-4.columns
+    %h2.title #{@user.name}
+    %p
+      %i.icon-email
+      = mail_to "#{@user.email if @user.email}"
   / Linkedin URL
   / Facebook URL
    

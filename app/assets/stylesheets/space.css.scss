@@ -7,6 +7,13 @@
     height: 110px;
     width: 110px;
   }
+  .avatar {
+    img {
+      height: 32px;
+      width: 32px;
+      border-radius: 1000px; 
+    }
+  }
 }
 
 .bigtime {
