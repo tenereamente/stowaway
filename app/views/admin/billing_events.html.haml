@@ -12,6 +12,6 @@
         - @events.each do |e|
           %tr
             %td= e.type
-            %td= e.time_ago_in_words(e.created_at)
+            %td= time_ago_in_words(e.created_at)
             %td= e.data
   = will_paginate @events
