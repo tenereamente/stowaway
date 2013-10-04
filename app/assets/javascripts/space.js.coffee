@@ -112,6 +112,9 @@ $(document).ready ->
     $("label#by_appointment_button_label").toggleClass('active', false)
     $("label#anytime_button_label").toggleClass('active', true)
 
+  $("#attended").click (event) ->
+    alert('hi')
+
   $.showOutdoorOptions = ->
     $("#what_kind_of_space").show()
     $("#outdoor_button_group").show()

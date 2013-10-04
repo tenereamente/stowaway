@@ -117,9 +117,9 @@
       %section.features 
         %h3 Features
         %ul.checkbtns
-          %li.button.round= f.input :climate_controlled, label: 'Climate Controlled', id: 'climate_controlled'
-          %li.button.round= f.input :lockable, label: 'Locked or Gated', id: 'locked_or_gated'
-          %li.button.round= f.input :attended, label: 'Attended', id: 'attended'
+          %li.button.round= f.input :climate_controlled, label: 'Climate Controlled', input_html: { id: 'climate_controlled' }
+          %li.button.round= f.input :lockable, label: 'Locked or Gated', input_html: { id: 'locked_or_gated' }
+          %li.button.round= f.input :attended, label: 'Attended', input_html: { id: 'attended' }
       %section.dimensions
         %h3 
           Dimensions
