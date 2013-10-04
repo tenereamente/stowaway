@@ -116,10 +116,13 @@
                 = b.text
       %section.features 
         %h3 Features
-        %ul.checkbtns
-          %li.button.round= f.input :climate_controlled, label: 'Climate Controlled', input_html: { id: 'climate_controlled' }
-          %li.button.round= f.input :lockable, label: 'Locked or Gated', input_html: { id: 'locked_or_gated' }
-          %li.button.round= f.input :attended, label: 'Attended', input_html: { id: 'attended' }
+        %ul.checkbtns.inline-list
+          %li
+            #{f.label :climate_controlled, :class => 'checkbox button round'}#{f.check_box :climate_controlled, :class => :checkbox}
+          %li
+            #{f.label :lockable, :class => 'checkbox button round'}#{f.check_box :lockable, :class => :checkbox}
+          %li
+            #{f.label :attended, :class => 'checkbox button round'}#{f.check_box :attended, :class => :checkbox}
       %section.dimensions
         %h3 
           Dimensions
@@ -132,4 +135,4 @@
       %section.description
         %h3 Description
         = f.input :notes, :label => 'Tell us a bit about your space.'
-        = f.button :submit, 'Save', :class => 'button-primary button radius'
+        = f.button :submit, 'Preview', :class => 'button-primary button radius'

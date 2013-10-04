@@ -19,6 +19,7 @@
             = image_tag s.user.avatar.url(:thumb)
       - else
         = image_tag "http://placehold.it/32x32"
+    /
       - if s.tags.any?
         %ul.inline-list
           - s.tags.each do |tag|
