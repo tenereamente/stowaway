@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     thumb: '50x50>',
     square: '200x200#',
     medium: '300x300>'
-  }
+  }, :s3_protocol => :https
 
   # override Devise method
   # no password is required when the account is created; validate password when the user sets one
