@@ -10,7 +10,12 @@
 }
 
 .bigtime {
-  h2 {
-    padding: 1em;
+  padding: 6em 0 0;
+  margin: 0 0 2em;
+  background-position: 50%;
+  .shade {
+    padding: .75em 1.5em;
+    margin: 0 0 2em;
+    border-radius: 0 1000px 1000px 0;
   }
 }

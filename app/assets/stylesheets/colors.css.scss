@@ -8,7 +8,7 @@ $green: #87ae3a;
 $tweed: rgb(128, 98, 44);
 $red: rgb(200, 70, 57);
 $midnight: rgb(14, 41, 73);
-$orange: #f48231;
+$orange: tint(#f48231,20);
 $sky: #3aa8f7;
 $powder: #7cabd3;
 $bg-image: image-url("tile2.svg") repeat;
@@ -80,11 +80,6 @@ $burgundy: #541c1e;
         color: shade($base, 40);
       }
     }
-    .bigtime {
-      h2 {
-        background: rgba(shade($accent, 40),.5);
-      }
-    }
     .sidebar {
       ul {
         .active {
@@ -123,7 +118,18 @@ $burgundy: #541c1e;
       &.button {
         background-color: tint($base, 80);
         transition: all;
-        &.book-it-button {
+        &.warmish {
+          background-color: $accent;
+          color: tint($accent, 90);
+          &:hover {
+            background-color: shade($accent, 10);
+          }
+          &:active {
+            background-color: shade($accent, 20);
+            top: 2px;
+          }
+        }
+        &.greenie {
           background-color: $tertiary;
           color: tint($tertiary, 90);
           &:hover {
@@ -165,14 +171,14 @@ $burgundy: #541c1e;
           color: #fff;
         }
         &.button {
-          color: tint($accent, 70);
+          color: tint($accent, 90);
           background-color: $accent;
           transition: all;
           &:hover {
-            background-color: tint($accent, 5);
+            background-color: tint($accent, 10);
           }
           &:active {
-            background-color: shade($accent, 5);
+            background-color: shade($accent, 20);
             top: 10px;
           }
         }
@@ -194,6 +200,17 @@ $burgundy: #541c1e;
     background: $green;
     border: 0 none;
     box-shadow: transparent none;
+  }
+  .shade {
+    background: rgba(shade($base, 98),.7);
+  }
+  .bigtime {
+    h2 {
+      color: tint($base,90);
+    }
+    h5 {
+      color: tint($base,70);
+    }
   }
 }
 

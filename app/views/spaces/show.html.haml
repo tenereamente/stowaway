@@ -1,33 +1,62 @@
 .bigtime{:style => "background-image: url(#{@space.photo})"}
   .row
-    .large-8.columns
-      %h2 
-        = @space.title
-      %h5
-        = link_to @space.normalized_address, edit_space_path(@space)
-      %h3 Amenities
+    .large-4.small.12.push-8.columns
+      
+    .large-8.small-12.pull-4.columns
+      .shade
+        %h2 
+          = @space.title
+        %h5
+          = @space.normalized_address
+.row
+  .large-4.small.12.push-8.columns
+    .price
+      %h3
+        $
+        #{@space.monthly_price} / Month
+      = link_to '#', {:class=>'button radius greenie fullbtn has-tip', "data-tooltip"=>"", :title => 'Click & Stow', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
+        %i{:class=>'icon-ok'}
+        Book It
+      - if signed_in? and current_user.id == s.user_id or current_user.has_role? :admin
+        = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'Like a Boss'} do
+          %i{:class=>'icon-pencil'}
+          Edit Listing
+    = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
+  .large-8.small-12.pull-4.columns
+    %section.mb20
+      %h3 Overview
+      = @space.notes
+    %section.mb20
+      %h3 Features
+      %ul
+        %li
+          = @space.environment
+        %li  
+          = @space.climate_controlled
+        %li
+          = @space.lockable
+        %li
+          = @space.attended
+        %li
+          = @space.featured
+    %section.mb50
+      %h3 
+        Tags
       - if @space.tags.any?
         - @space.tags.each do |tag|
           = link_to tag.name, spaces_url(tag: tag.name)
       - else
         NONE
 
-      = @space.environment
-      = @space.notes
+    %ul.small-block-2.large-block-grid-4.fitimg
+      %li
+        = image_or_placeholder(@space.photo2)
+      %li
+        = image_or_placeholder(@space.photo3)
+      %li
+        = image_or_placeholder(@space.photo4)
+      %li
+        = image_or_placeholder(@space.photo5)
 
-      %ul.small-block-2.large-block-grid-4.fitimg
-        %li
-          = image_or_placeholder(@space.photo2)
-        %li
-          = image_or_placeholder(@space.photo3)
-        %li
-          = image_or_placeholder(@space.photo4)
-        %li
-          = image_or_placeholder(@space.photo5)
-      = link_to "Edit this space", edit_space_path(@space)
-    .large-4.columns
-      .price
-        $
-        = succeed ".00" do
-          = @space.monthly_price
-      = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
+    
+    
