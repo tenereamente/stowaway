@@ -36,7 +36,7 @@
   </fieldset>
 
   <%= actions do %>
-    <%= f.submit %> <%=t :or, scope: 'blogit.posts'%>
+    <%= f.submit :class => "button radius"%> <%=t :or, scope: 'blogit.posts'%>
     <%= link_to(t(:cancel, scope: 'blogit.posts'), @post.new_record? ? blog_root_path : post_path(@post)) %>
   <% end %>
 

@@ -14,13 +14,15 @@
       %h3
         $
         #{@space.monthly_price} / Month
-      = link_to '#', {:class=>'button radius greenie fullbtn has-tip book-it-button', "data-tooltip"=>"", :title => 'Click & Stow', 'data-address'=> @space.normalized_address, 'data-price'=> @space.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
-        %i{:class=>'icon-ok'}
-        Book It
       - if signed_in? and current_user.id == @space.user_id or current_user.has_role? :admin
         = link_to edit_space_path(@space), {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'Like a Boss'} do
           %i{:class=>'icon-pencil'}
           Edit Listing
+      - else
+        = link_to '#', {:class=>'button radius greenie fullbtn has-tip book-it-button', "data-tooltip"=>"", :title => 'Click & Stow', 'data-address'=> @space.normalized_address, 'data-price'=> @space.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
+          %i{:class=>'icon-ok'}
+          Book It
+      
     = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
   .large-8.small-12.pull-4.columns
     %section.mb20
@@ -40,13 +42,12 @@
         %li
           = @space.featured
     %section.mb50
-      %h3 
-        Tags
-      - if @space.tags.any?
-        - @space.tags.each do |tag|
-          = link_to tag.name, spaces_url(tag: tag.name)
-      - else
-        NONE
+      %h3
+        - if @space.tags.any? 
+          Tags
+
+          - @space.tags.each do |tag|
+            = link_to tag.name, spaces_url(tag: tag.name)
 
     %ul.small-block-2.large-block-grid-4.fitimg
       %li

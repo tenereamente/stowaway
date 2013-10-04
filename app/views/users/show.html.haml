@@ -4,20 +4,21 @@
       = image_tag @user.avatar.url(:square)
     - else
       = image_tag "http://placehold.it/250x250"
+
     %h2.title #{@user.name}
     %p
       %i.icon-email
       = mail_to "#{@user.email if @user.email}"
     
     - if signed_in? and current_user.id == @user.id or current_user.has_role? :admin
-      = link_to edit_user_path(@user), {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'A star is born.'} do
+      = link_to edit_user_registration_path, {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'A star is born.'} do
         %i{:class=>'icon-pencil'}
         Edit Profile
   .large-8.small-12.columns
     %p
       Hi I'm somebody! I live in Portland, Maine, love a good roller-derby match and have this awesome climate-controlled barn (that use to be where we would have underground roller derby matches) that's perfect for storage. I can fit a boat or two in my barn. Feel free to message me if you would like to talk about it.
      
-    = render 'spaces/listing', locals: { 'spaces' => @spaces } 
+    = render 'spaces/listings', locals: { 'spaces' => @spaces } 
   / Linkedin URL
   / Facebook URL
    
