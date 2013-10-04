@@ -17,8 +17,8 @@
         %a.has-tip.round.avatar{"data-tooltip" => "", :title => s.user.name, :href => user_path(s.user) }
           - if s.user.avatar.exists?
             = image_tag s.user.avatar.url(:thumb)
-        - else
-          = image_tag "http://placehold.it/32x32"
+      - else
+        = image_tag "http://placehold.it/32x32"
       - if s.tags.any?
         %ul.inline-list
           - s.tags.each do |tag|
