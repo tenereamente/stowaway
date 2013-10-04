@@ -23,10 +23,83 @@ $(document).ready ->
     $("label#indoor_button_label").toggleClass('active', false)
 
   $("#space_type_attic").click (event) ->
-    alert('clicked')
+    $("label#attic_button_label").toggleClass('active', true)
+    $("label#garage_button_label").toggleClass('active', false)
+    $("label#spare_room_button_label").toggleClass('active', false)
+    $("label#basement_button_label").toggleClass('active', false)
+    $("label#uncovered_area_button_label").toggleClass('active', false)
+    $("label#covered_area_button_label").toggleClass('active', false)
+    $("label#driveway_button_label").toggleClass('active', false)
+    $("#access_button_group").show()
 
   $("#space_type_garage").click (event) ->
-    alert('clicked attic')
+    $("label#attic_button_label").toggleClass('active', false)
+    $("label#garage_button_label").toggleClass('active', true)
+    $("label#spare_room_button_label").toggleClass('active', false)
+    $("label#basement_button_label").toggleClass('active', false)
+    $("label#uncovered_area_button_label").toggleClass('active', false)
+    $("label#covered_area_button_label").toggleClass('active', false)
+    $("label#driveway_button_label").toggleClass('active', false)
+    $("#access_button_group").show()
+
+
+  $("#space_type_spare_room").click (event) ->
+    $("label#attic_button_label").toggleClass('active', false)
+    $("label#garage_button_label").toggleClass('active', false)
+    $("label#spare_room_button_label").toggleClass('active', true)
+    $("label#basement_button_label").toggleClass('active', false)
+    $("label#uncovered_area_button_label").toggleClass('active', false)
+    $("label#covered_area_button_label").toggleClass('active', false)
+    $("label#driveway_button_label").toggleClass('active', false)
+    $("#access_button_group").show()
+
+  $("#space_type_basement").click (event) ->
+    $("label#attic_button_label").toggleClass('active', false)
+    $("label#garage_button_label").toggleClass('active', false)
+    $("label#spare_room_button_label").toggleClass('active', false)
+    $("label#basement_button_label").toggleClass('active', true)
+    $("label#uncovered_area_button_label").toggleClass('active', false)
+    $("label#covered_area_button_label").toggleClass('active', false)
+    $("label#driveway_button_label").toggleClass('active', false)
+    $("#access_button_group").show()
+
+
+  $("#space_type_driveway").click (event) ->
+    $("label#uncovered_area_button_label").toggleClass('active', false)
+    $("label#covered_area_button_label").toggleClass('active', false)
+    $("label#driveway_button_label").toggleClass('active', true)
+    $("label#attic_button_label").toggleClass('active', false)
+    $("label#garage_button_label").toggleClass('active', false)
+    $("label#spare_room_button_label").toggleClass('active', false)
+    $("label#basement_button_label").toggleClass('active', false)
+    $("#access_button_group").show()
+
+
+
+  $("#space_type_covered").click (event) ->
+    $("label#covered_area_button_label").toggleClass('active', true)
+    $("label#uncovered_area_button_label").toggleClass('active', false)
+    $("label#driveway_button_label").toggleClass('active', false)
+    $("label#attic_button_label").toggleClass('active', false)
+    $("label#garage_button_label").toggleClass('active', false)
+    $("label#spare_room_button_label").toggleClass('active', false)
+    $("label#basement_button_label").toggleClass('active', false)
+    $("#access_button_group").show()
+
+
+  $("#space_type_uncovered").click (event) ->
+    $("label#uncovered_area_button_label").toggleClass('active', true)
+    $("label#covered_area_button_label").toggleClass('active', false)
+    $("label#driveway_button_label").toggleClass('active', false)
+    $("label#attic_button_label").toggleClass('active', false)
+    $("label#garage_button_label").toggleClass('active', false)
+    $("label#spare_room_button_label").toggleClass('active', false)
+    $("label#basement_button_label").toggleClass('active', false)
+    $("#access_button_group").show()
+
+  $("input#space_attended").click (event) ->
+    alert('hi')
+    $("label#climate_controlled").toggleClass('active')
 
   $.showOutdoorOptions = ->
     $("#what_kind_of_space").show()

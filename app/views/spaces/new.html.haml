@@ -4,8 +4,8 @@
       .price
         %h2#monthly_price_label
           %span
-            Set a Price
-        = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "9,1000", 'data-slider-step' => '25' }
+            Set a price
+        = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "0,500", 'data-slider-step' => '5' }
 
       %ul.small-block-grid-1.large-block-grid-2.fitimg  
         %li
@@ -48,7 +48,7 @@
       .button-group.round.where
         = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
           = b.radio_button(class: 'hidden-field')
-          = b.label(class: 'button', id: "#{b.text.downcase}_button_label") do
+          = b.label(class: 'button', id: "#{b.text.underscore}_button_label") do
             - if b.text == 'Indoor'
               %i.icon-home
             - else
@@ -63,7 +63,7 @@
           [:basement, 'Basement']]
         = f.collection_radio_buttons :type, space_type, :first, :second do |b|
           = b.radio_button(class: 'hidden-field')
-          = b.label(class: 'button') do
+          = b.label(class: 'button', id: "#{b.text.parameterize.underscore}_button_label") do
             - if b.text == 'Attic'
             - elsif b.text == 'Garage'
             - elsif b.text == 'Spare Room'
@@ -90,10 +90,10 @@
       #outdoor_button_group.outdoor.button-group.round.what{ style: "display: none" }
         - space_type = [[:driveway, 'Driveway'],
           [:covered, 'Covered Area'],
-          [:open, 'Uncovered Area']]
+          [:uncovered, 'Uncovered Area']]
         = f.collection_radio_buttons :type, space_type, :first, :second do |b|
           = b.radio_button(class: 'hidden-field')
-          = b.label(class: 'button') do
+          = b.label(class: 'button', id: "#{b.text.parameterize.underscore}_button_label") do
             - if b.text == 'Driveway'
             - elsif b.text == 'Covered Area'
             - elsif b.text == 'Uncovered Area'
@@ -102,21 +102,24 @@
 
             %span
               = b.text
-      %section.access
+      %section.access#access_button_group{ style: "display: none"}
         %h3 How's the access?
-        %ul.button-group.round
-          %li
-            %a.button 24 Hour
-          %li
-            %a.button Scheduled
-          %li
-            %a.button Limited
-      %section.features
+        .button-group.round.what
+          = f.collection_radio_buttons :type, [[:anytime, 'Anytime'], [:appointment, 'By appointment'], [:limited, 'Limited']], :first, :second do |b|
+            = b.radio_button(class: 'hidden-field')
+            = b.label(class: 'button', id: "#{b.text.downcase}_button_label") do
+              - if b.text == 'Anytime'
+              - elsif b.text == 'By appointment'
+              - elsif b.text == 'Limited'
+
+              %span
+                = b.text
+      %section.features 
         %h3 Features
         %ul.checkbtns
-          %li.button.round= f.input :climate_controlled, label: 'Climate Controlled'
-          %li.button.round= f.input :lockable, label: 'Locked or Gated'
-          %li.button.round= f.input :attended, label: 'Attended'
+          %li.button.round= f.input :climate_controlled, label: 'Climate Controlled', id: 'climate_controlled'
+          %li.button.round= f.input :lockable, label: 'Locked or Gated', id: 'locked_or_gated'
+          %li.button.round= f.input :attended, label: 'Attended', id: 'attended'
       %section.dimensions
         %h3 
           Dimensions
