@@ -97,9 +97,21 @@ $(document).ready ->
     $("label#basement_button_label").toggleClass('active', false)
     $("#access_button_group").show()
 
-  $("input#space_attended").click (event) ->
+  $("#space_type_limited").click (event) ->
+    $("label#limited_button_label").toggleClass('active', true)
+    $("label#appointment_button_label").toggleClass('active', false)
+    $("label#attended_button_label").toggleClass('active', false)
+
+  $("#space_type_appointment").click (event) ->
+    $("label#limited_button_label").toggleClass('active', false)
+    $("label#appointment_button_label").toggleClass('active', true)
+    $("label#attended_button_label").toggleClass('active', false)
+
+  $("#space_type_attended").click (event) ->
     alert('hi')
-    $("label#climate_controlled").toggleClass('active')
+    $("label#limited_button_label").toggleClass('active', false)
+    $("label#appointment_button_label").toggleClass('active', false)
+    $("label#attended_button_label").toggleClass('active', true)
 
   $.showOutdoorOptions = ->
     $("#what_kind_of_space").show()
