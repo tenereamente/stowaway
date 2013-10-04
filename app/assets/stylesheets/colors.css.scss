@@ -195,6 +195,10 @@ $burgundy: #541c1e;
   }
   .price {
     background: tint($base, 80);
+    h2 {
+      color: shade($base, 40);
+      margin-bottom: .25em;
+    }
   }
   .slider > .dragger {
     background: $green;
