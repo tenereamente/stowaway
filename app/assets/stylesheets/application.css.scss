@@ -109,10 +109,11 @@ footer {
 
 
 .top-bar {
+  padding: 0 1.25%;
   .logo {
     font-size: emCalc(22);
     height: auto;
-    top: -3px;
+    padding: .8em .5em;
   }
   .top-bar-section {
     ul {
@@ -125,9 +126,11 @@ footer {
           }
           &#account {
             padding: 0;
-            .avatar {
+            img {
               border-radius: 3px;
               margin-right: 6px;
+              width: 48px;
+              height: 48px;
             }
           }
         }

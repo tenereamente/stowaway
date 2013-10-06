@@ -1,7 +1,15 @@
 .contain-to-grid
   %nav.top-bar
+    %ul.title-area
+      %li.name
+        .logo
+          = link_to "stowaway.co", root_path
+          %small.beta beta
+      %li.toggle-topbar.menu-icon
+        %a{:href=>'#'}
+          %span Menu
     %section.top-bar-section
-      %ul.left.common.large-3.small-6.columns
+      %ul.right
         %li.toggle-topbar
           %a{:href => "#"}
         - if user_signed_in?
@@ -31,17 +39,12 @@
             = link_to 'Sign up', new_user_registration_path
           %li
             = link_to 'Blog', blogit_path
-      .logo.large-6.small-12.columns.t-center
-        = link_to "stowaway.co", root_path
-        %small.beta beta
-      %ul.right.large-3.small-6.engage.columns
         %li.mr10
           -# We disable turbolinking of spaces page because that breaks the Google Map on initial view
           %a.button.radius{:href => spaces_path}
             %i.icon-search.icon-left.icon-muted
             %span Find
-            
-        %li.signup
+        %li
           %a.button.radius{:href => new_space_path}
             %i.icon-plus.icon-left.icon-muted
             %span List
