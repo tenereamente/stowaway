@@ -39,12 +39,12 @@
             = link_to 'Sign up', new_user_registration_path
           %li
             = link_to 'Blog', blogit_path
-        %li
+        %li.abtn
           -# We disable turbolinking of spaces page because that breaks the Google Map on initial view
           %a.button.radius{:href => spaces_path}
             %i.icon-search.icon-left.icon-muted
             %span Find
-        %li
+        %li.abtn
           %a.button.radius{:href => new_space_path}
             %i.icon-plus.icon-left.icon-muted
             %span List

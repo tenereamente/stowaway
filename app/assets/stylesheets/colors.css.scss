@@ -75,7 +75,7 @@ $burgundy: #541c1e;
     }
   }
   .box {
-    background: lighten($base, 90);
+    background: lighten($base, 32);
     border-radius: 3px;
     padding: 2em;
     margin-bottom: 25px;
@@ -156,20 +156,25 @@ $burgundy: #541c1e;
     }
   }
   .contain-to-grid {
-    background: rgba(darken($base, 90),.8);
+    background: rgba(darken($base, 60),.9);
     .top-bar {
       background: none;
-      .dropdown {
-        background: darken($base, 50);
-        li {
-          a {
-            &:hover {
+      .top-bar-section .has-dropdown {
+        padding: 0 0 0 .5em;
+        &:hover {
+          background: darken($base, 40);
+          .dropdown {
+            background: darken($base, 40);
+            li {
+              a {
+                &:hover {
+                }
+              }
             }
-          }
+          }  
         }
       }
       a {
-        transition: color 300ms ease-out;
         &:not(button) {
           color: lighten($base, 90);
         }
@@ -179,7 +184,6 @@ $burgundy: #541c1e;
         &.button {
           color: lighten($accent, 90);
           background-color: $accent;
-          transition: all;
           &:hover {
             background-color: lighten($accent, 10);
           }

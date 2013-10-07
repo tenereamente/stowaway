@@ -57,7 +57,7 @@ body {
   font-family: "Dosis";
 }
 
-a {
+* {
   transition: all 300ms ease-out;
 }
 
@@ -114,7 +114,7 @@ footer {
 
 
 .top-bar {
-  padding: 0 1.25%;
+  padding: 0 10px;
   .logo {
     font-size: emCalc(22);
     height: auto;
@@ -131,6 +131,8 @@ footer {
           }
           &#account {
             padding: 0;
+            position: relative;
+            top: -2px;
             img {
               border-radius: 3px;
               margin-right: 6px;

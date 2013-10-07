@@ -5,21 +5,22 @@
     .small-10.large-6.column
       %h3
         = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
+      - if s.user
+        %a.has-tip.avatar{"data-tooltip" => "", :title => s.user.name, :href => user_path(s.user) }
+          - if s.user.avatar.exists?
+            = image_tag s.user.avatar.url(:thumb)
+      - else
+        = image_tag "http://placehold.it/32x32"
       /
         %h5
         = link_to(h(s.normalized_address), space_path(s))
-      - if signed_in? and current_user.id == s.user_id
-        = link_to edit_space_path(s), {:class=>'button round has-tip', "data-tooltip"=>"", :title => 'Edit this Listing'} do
-          %i{:class=>'icon-pencil'}
+      /
+        - if signed_in? and current_user.id == s.user_id
+          = link_to edit_space_path(s), {:class=>'button round has-tip', "data-tooltip"=>"", :title => 'Edit this Listing'} do
+            %i{:class=>'icon-pencil'}
       /
         %a.has-tip.button.round{"data-tooltip" => "", :title => s.notes, :href => space_path(s)}
           %i.icon-info-sign
-    - if s.user
-      %a.has-tip.round.avatar{"data-tooltip" => "", :title => s.user.name, :href => user_path(s.user) }
-        - if s.user.avatar.exists?
-          = image_tag s.user.avatar.url(:thumb)
-    - else
-      = image_tag "http://placehold.it/32x32"
     /
       - if s.tags.any?
         %ul.inline-list
@@ -32,10 +33,10 @@
           $
           #{s.monthly_price} / Month
         - if signed_in? and current_user.id == s.user_id or current_user.has_role? :admin
-          = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'Like a Boss'} do
+          = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
             %i{:class=>'icon-pencil'}
             Edit Listing
         - else
-          = link_to '#', {:class=>'button radius greenie fullbtn has-tip book-it-button', "data-tooltip"=>"", :title => 'Click & Stow', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
+          = link_to '#', {:class=>'button radius greenie fullbtn', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
             %i{:class=>'icon-ok'}
             Book It
