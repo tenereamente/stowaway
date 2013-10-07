@@ -15,6 +15,7 @@
  *= require gmaps4rails
  *= require select2
  *= require simple-slider
+ *= require deviceable
 */
 
 @import "base";
@@ -56,13 +57,14 @@ body {
   font-family: "Dosis";
 }
 
+a {
+  transition: all 300ms ease-out;
+}
+
 footer {
   padding: 1.1em 0 0;
   .social {
     display: inline-block;
-    a {
-      transition: all 300ms ease-out;
-    }
   }
 }
 
@@ -86,6 +88,9 @@ footer {
 
 .mr10 {
   margin-right: emCalc(10);
+}
+.nomrg {
+  margin: 0!important;
 }
 /* Branding */
 
@@ -143,10 +148,6 @@ footer {
               border-radius: 3px;
             }
           }
-        }
-        .button {
-          line-height: auto;
-          height: auto;
         }
       }
     }

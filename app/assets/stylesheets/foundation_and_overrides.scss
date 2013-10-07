@@ -1,3 +1,7 @@
+$green: #87ae3a;
+$powder: #7cabd3;
+$orange: tint(#f48231,20);
+
 //
 // Foundation Variables
 //
@@ -1237,7 +1241,7 @@ $custom-dropdown-height: auto;
 
 // Background color for the top bar
 
-$topbar-bg: rgba(#fff,1);
+$topbar-bg: $powder;
 
 // Height and margin
 
@@ -1284,14 +1288,14 @@ $topbar-link-bg-hover: darken($topbar-bg, 3%);
 // $topbar-menu-link-font-size: emCalc(13);
 // $topbar-menu-link-weight: bold;
 $topbar-menu-link-color: #555;
-// $topbar-menu-icon-color: #fff;
-// $topbar-menu-link-color-toggled: #888;
-// $topbar-menu-icon-color-toggled: #888;
+$topbar-menu-icon-color: $green;
+$topbar-menu-link-color-toggled: white;
+$topbar-menu-icon-color-toggled: $green;
 
 // Transitions and breakpoint styles
 
 // $topbar-transition-speed: 300ms;
-// $topbar-breakpoint: emCalc(940); // Change to 9999px for always mobile layout
+$topbar-breakpoint: emCalc(768); // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 
 // Divider Styles

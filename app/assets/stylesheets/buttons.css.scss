@@ -15,39 +15,20 @@
   &.fullbtn {
     width: 100%;
   }
-} 
+}
+
+
 
 button.large, .button.large {
   padding: 1em;
 }
 
-/*.contain-to-grid {
-  .top-bar {
-    a.button {
-      padding: .5em;
-      font-size: .875em;
-      overflow: hidden;
-      i, span {
-        transition: 2 all curve;
-        position: absolute;
-      }
-      span {
-        transform: translate(200, 0);
-      }
-      &:hover {
-        i {
-          transform: translate(-200, 0);
-        }
-        span {
-          transform: translate(0, 0);
-        }
-      }
-    }
+body .contain-to-grid .top-bar {
+  a.button {
+    padding: .5em 1em;
+    margin: 0 .25em;
+    line-height: 1;
   }
-}*/
-
-body .contain-to-grid .top-bar a.button {
-  padding: .5em 1em;
 }
 input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button {
   padding: 1em;
@@ -76,5 +57,119 @@ input[type="button"], input[type="submit"], input[type="reset"], input[type="fil
         }
       }
     }
+  }
+}
+
+$size : 100%;
+$transition: .4s;
+$toggled-size : .75;
+
+$bodybg : #449a88;
+$navbg : #2a2a2a;
+$pagebg : #e7e6dd;
+
+.navicon-button {
+  display: inline-block;
+  position: relative;
+  padding: 2.0625rem 1.5rem;
+  transition: $transition;
+  cursor: pointer;
+  user-select: none;
+  opacity: .8;
+  
+  &:hover {
+    opacity: 1;
+    
+    .navicon:before, .navicon:after {
+      transition: $transition/2;
+    }
+    
+    .navicon:after { top: -.825rem; }
+    .navicon:before { top: .825rem; }
+  }
+}
+
+.navicon {
+  position: relative;
+  width: 2.5em;
+  height: .3125rem;
+  background: $pagebg;
+  transition: $transition;
+  border-radius: 2.5rem;
+  
+  &:after, &:before {
+    display: block;
+    content: "";
+    height: .3125rem;
+    width: 2.5rem;
+    background: $pagebg;
+    position: absolute;
+    z-index: -1;
+    transition: $transition ($transition/2);
+    border-radius: 1rem;
+  }
+
+  &:after { top: -.625rem; }
+  &:before { top: .625rem; }
+}
+
+.open:not(.steps) .navicon:before,
+.open:not(.steps) .navicon:after {
+  top: 0 !important;
+}
+
+.open .navicon:before,
+.open .navicon:after {
+  transition: $transition;
+}
+
+/* Minus */
+.open { transform: scale($toggled-size); }
+
+/* Arrows */
+.open.larr .navicon,
+.open.uarr .navicon {   
+    &:before, &:after {
+      width: 1.5rem;
+    }
+    
+    &:before { transform: rotate(35deg); transform-origin: left top; }
+    &:after { transform: rotate(-35deg); transform-origin: left bottom; }
+}
+.open.uarr { transform: scale($toggled-size) rotate(90deg); }
+
+/* × and + */
+.open.plus,
+.open.x {
+  .navicon {
+    background: transparent;
+    
+    &:after { transform: rotate(45deg); }  
+    &:before { transform: rotate(-45deg); }  
+  }
+}
+.open.plus { transform: scale($toggled-size) rotate(45deg) }
+
+.open.steps {
+  .navicon {
+    &:before { transform: translateX(.5rem); }
+    &:after { transform: translateX(-.5rem); }
+  }
+}
+
+.loading .navicon {
+  color: $bodybg;
+  box-shadow: inset 0 0;
+}
+
+.open.loading {
+  transform: none;
+
+  .navicon {
+    box-shadow: inset 2.5rem 0;
+    transition: $transition, box-shadow $transition*5;
+
+    
+    &:before, &:after { opacity: 0; }
   }
 }

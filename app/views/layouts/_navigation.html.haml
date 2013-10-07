@@ -6,8 +6,8 @@
           = link_to "stowaway.co", root_path
           %small.beta beta
       %li.toggle-topbar.menu-icon
-        %a{:href=>'#'}
-          %span Menu
+        %a.navicon-button.x{:href=>'#'}
+          .navicon
     %section.top-bar-section
       %ul.right
         %li.toggle-topbar
@@ -39,7 +39,7 @@
             = link_to 'Sign up', new_user_registration_path
           %li
             = link_to 'Blog', blogit_path
-        %li.mr10
+        %li
           -# We disable turbolinking of spaces page because that breaks the Google Map on initial view
           %a.button.radius{:href => spaces_path}
             %i.icon-search.icon-left.icon-muted

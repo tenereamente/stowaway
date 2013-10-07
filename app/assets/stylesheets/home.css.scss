@@ -16,3 +16,16 @@ body.home{
     }
   }
 }
+
+$break-small: 480px;
+
+body.home {
+  #main {
+    padding: 0 1%;
+    @media screen and (max-width: $break-small) {
+      .hero {
+        padding-top: 2em;
+      }
+    }
+  }
+}

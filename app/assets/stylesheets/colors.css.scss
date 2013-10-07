@@ -1,79 +1,81 @@
-/* Colors */
+$bg-image: image-url("tile2.svg") repeat;
 
+/* Colors */
+$green: #87ae3a;
+$powder: #7cabd3;
+$orange: lighten(#f48231,5);
+
+/*
 $blue: rgb(26, 101, 228);
 $peach: rgb(253, 182, 63);
 $magenta: rgb(184, 5, 146);
 $lavender: rgb(110, 94, 116); //Lavender
-$green: #87ae3a;
 $tweed: rgb(128, 98, 44);
 $red: rgb(200, 70, 57);
 $midnight: rgb(14, 41, 73);
-$orange: tint(#f48231,20);
 $sky: #3aa8f7;
-$powder: #7cabd3;
-$bg-image: image-url("tile2.svg") repeat;
 $burgundy: #541c1e;
+*/
 
 @mixin theme($base, $accent, $tertiary) {
+  background: $base $bg-image;
+  color: darken($base, 20);
+  .launch {
+    background-color: $accent;
+    box-shadow: 1px 2px 0 darken($accent,20);
+    font-weight: 600;
+    color: darken($accent,30);
+    text-shadow: 0 1px 0 lighten($accent,20);
+    &:hover {
+      background-color: darken($accent,5);  
+      color: darken($accent,30);
+    }
+    &:active {
+      background-color: darken($accent,30); 
+      top: 2px;
+    }
+  }
   .beta {
     color: $tertiary;
     vertical-align: super;
   }
-  .button {
-    background-color: shade($base, 50);
-    color: tint($base, 90);
-    &:hover {
-      background-color: shade($base, 60);
-    }
-    &:active {
-      background-color: shade($base, 70);
-    }
-  }
   .social {
     a {
-    color: shade($base, 50);
+    color: darken($base, 50);
       &:hover {
-        color: shade($base, 60);
+        color: darken($base, 60);
       }
       &:active {
-        color: shade($base, 70);
+        color: darken($base, 70);
       }
     }
   }
-  background: $base $bg-image;
-  color: shade($base, 20);
   .hero, .price {
-    h1 {
-      color: shade($base, 70);
-      small {
-        color: shade($base, 70);
-      }
+    h1, h1 small {
+      color: darken($base, 50);
     }
-    h3 {
-      color: shade($base, 70);
-    }
-    color: shade($base, 50);
+    color: darken($base, 50);
   }
   input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
-    border: 1px solid tint($base, 70);
+    border: 1px solid lighten($base, 70);
     box-shadow: 0 none;
-    background-color: tint($base, 97);
+    background-color: lighten($base, 97);
     &:focus {
       box-shadow: none!important;
-      border-color: shade($base, 10);
+      border-color: darken($base, 10);
       background-color: #fff;
     }
   }
   input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button {
-    color: tint($base, 80);
-    background-color: shade($base, 20);
+    color: lighten($base, 80);
+    background-color: darken($base, 20);
     &:hover {
-      color: tint($base, 90);
-      background-color: shade($base, 40);
+      color: lighten($base, 90);
+      background-color: darken($base, 40);
     }
   }
   .box {
-    background: tint($base, 90);
+    background: lighten($base, 90);
     border-radius: 3px;
     padding: 2em;
     margin-bottom: 25px;
@@ -81,20 +83,20 @@ $burgundy: #541c1e;
     color: #555;
     .input {
       label {
-        color: shade($base, 40);
+        color: darken($base, 40);
       }
     }
     .sidebar {
       ul {
         .active {
           .content {
-            background-color: shade($base, 20);
-            color: tint($base, 80);
+            background-color: darken($base, 20);
+            color: lighten($base, 80);
           }
         }
         .inactive {
           .content {
-            background-color: tint($base, 80);
+            background-color: lighten($base, 80);
           }
         }
       }
@@ -104,61 +106,61 @@ $burgundy: #541c1e;
     }
     label, .checkbtns > li {
       &.button {
-        background-color: tint($base, 80);
+        background-color: lighten($base, 80);
         transition: all;
         color: $base;
         &:hover {
           background-color: $base;
-          color: tint($base, 80); 
+          color: lighten($base, 80); 
         }
         &:active, &.active {
-          background-color: shade($base, 20);
-          color: tint($base, 80);
+          background-color: darken($base, 20);
+          color: lighten($base, 80);
         }
       }
     }
     a {
-      color: shade($base, 10);
+      color: darken($base, 10);
       &.button {
-        background-color: tint($base, 80);
+        background-color: lighten($base, 80);
         transition: all;
         &.warmish {
           background-color: $accent;
-          color: tint($accent, 90);
+          color: lighten($accent, 90);
           &:hover {
-            background-color: shade($accent, 10);
+            background-color: darken($accent, 10);
           }
           &:active {
-            background-color: shade($accent, 20);
+            background-color: darken($accent, 20);
             top: 2px;
           }
         }
         &.greenie {
           background-color: $tertiary;
-          color: tint($tertiary, 90);
+          color: lighten($tertiary, 90);
           &:hover {
-            background-color: shade($tertiary, 10);
+            background-color: darken($tertiary, 10);
           }
           &:active {
-            background-color: shade($tertiary, 20);
+            background-color: darken($tertiary, 20);
             top: 2px;
           }
         }
         &:hover {
-          background-color: tint($base, 70);
+          background-color: lighten($base, 70);
         }
       }
       &:hover {
-        color: shade($base, 20);
+        color: darken($base, 20);
       }
     }
   }
   .contain-to-grid {
-    background: rgba(shade($base, 90),.8);
+    background: rgba(darken($base, 90),.8);
     .top-bar {
       background: none;
       .dropdown {
-        background: shade($base, 50);
+        background: darken($base, 50);
         li {
           a {
             &:hover {
@@ -169,38 +171,38 @@ $burgundy: #541c1e;
       a {
         transition: color 300ms ease-out;
         &:not(button) {
-          color: tint($base, 90);
+          color: lighten($base, 90);
         }
         &:hover {
           color: #fff;
         }
         &.button {
-          color: tint($accent, 90);
+          color: lighten($accent, 90);
           background-color: $accent;
           transition: all;
           &:hover {
-            background-color: tint($accent, 10);
+            background-color: lighten($accent, 10);
           }
           &:active {
-            background-color: shade($accent, 20);
+            background-color: darken($accent, 20);
             top: 10px;
           }
         }
       }
       .brand {
         a {
-          color: shade($base, 70);
+          color: darken($base, 70);
           &:hover {
-            color: shade($base, 50);
+            color: darken($base, 50);
           }
         }
       }
     }
   }
   .price {
-    background: tint($base, 80);
+    background: lighten($base, 80);
     h2 {
-      color: shade($base, 40);
+      color: darken($base, 40);
       margin-bottom: .25em;
     }
   }
@@ -209,15 +211,15 @@ $burgundy: #541c1e;
     border: 0 none;
     box-shadow: transparent none;
   }
-  .shade {
-    background: rgba(shade($base, 98),.7);
+  .darken {
+    background: rgba(darken($base, 98),.7);
   }
   .bigtime {
     h2 {
-      color: tint($base,90);
+      color: lighten($base,90);
     }
     h5 {
-      color: tint($base,70);
+      color: lighten($base,70);
     }
   }
 }
