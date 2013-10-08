@@ -204,9 +204,9 @@ $burgundy: #541c1e;
     }
   }
   .price {
-    background: lighten($base, 80);
+    background: rgba(darken($base, 50),.05);
+    color: darken($base, 40);
     h2 {
-      color: darken($base, 40);
       margin-bottom: .25em;
     }
   }
@@ -215,10 +215,11 @@ $burgundy: #541c1e;
     border: 0 none;
     box-shadow: transparent none;
   }
-  .darken {
-    background: rgba(darken($base, 98),.7);
+  .shade {
+    background: rgba(darken($base, 60),.7);
   }
   .bigtime {
+    border-radius: 3px;
     h2 {
       color: lighten($base,90);
     }

@@ -3,7 +3,7 @@
     Edit #{resource_name.to_s.humanize}
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f|
     .row
-      .large-4.small-12.columns
+      .large-3.small-12.columns
         - if resource.avatar.exists?
           = image_tag resource.avatar.url(:square)
         - else
@@ -15,12 +15,7 @@
         %p
           %i.icon-email
           = mail_to "#{@user.email if @user.email}"
-        /
-          - if signed_in? and current_user.id == @user.id or current_user.has_role? :admin
-            = link_to edit_user_registration_path, {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'A star is born.'} do
-              %i{:class=>'icon-pencil'}
-            Edit Profile
-      .large-8.small-12.columns
+      .large-9.small-12.columns
         %p
           Hi I'm somebody! I live in Portland, Maine, love a good roller-derby match and have this awesome climate-controlled barn (that use to be where we would have underground roller derby matches) that's perfect for storage. I can fit a boat or two in my barn. Feel free to message me if you would like to talk about it.
           = f.label :name

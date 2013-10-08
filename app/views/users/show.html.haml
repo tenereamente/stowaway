@@ -1,25 +1,60 @@
 .row
-  .large-4.small-12.columns
+  .large-3.small-12.columns.fitimg
     - if @user.avatar.exists?
       = image_tag @user.avatar.url(:square)
     - else
       = image_tag "http://placehold.it/250x250"
 
-    %h2.title #{@user.name}
-    %p
-      %i.icon-email
+    %h3.title #{@user.name}
+    %p.small
+    /
+      %i.icon-envelope-alt.pull-left
       = mail_to "#{@user.email if @user.email}"
-    
+    = link_to '#', {:class=>'button radius fullbtn has-tip', "data-tooltip"=>"", :title => 'Send a note.'} do
+      %i{:class=>'icon-envelope'}
+      Message
+      
     - if signed_in? and current_user.id == @user.id or current_user.has_role? :admin
       = link_to edit_user_registration_path, {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'A star is born.'} do
         %i{:class=>'icon-pencil'}
         Edit Profile
-  .large-8.small-12.columns
+  .large-9.small-12.columns
     %p
       Hi I'm somebody! I live in Portland, Maine, love a good roller-derby match and have this awesome climate-controlled barn (that use to be where we would have underground roller derby matches) that's perfect for storage. I can fit a boat or two in my barn. Feel free to message me if you would like to talk about it.
-     
-    = render 'spaces/listings', locals: { 'spaces' => @spaces } 
-  / Linkedin URL
-  / Facebook URL
+    - @spaces.each do |s|
+      .row
+        .small-8.column
+          %h3
+            = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
+          %h5
+            %i.icon-map-marker.pull-left
+            = s.normalized_address
+          %ul.small-block-2.large-block-grid-5.fitimg
+            %li
+              = image_or_placeholder(s.photo)
+            %li
+              = image_or_placeholder(s.photo2)
+            %li
+              = image_or_placeholder(s.photo3)
+            %li
+              = image_or_placeholder(s.photo4)
+            %li
+              = image_or_placeholder(s.photo5)
+
+        .small-4.column
+          .price
+            %h3
+              $
+              #{s.monthly_price} / Month
+            - if signed_in? and current_user.id == s.user_id or current_user.has_role? :admin
+              = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
+                %i{:class=>'icon-pencil'}
+                Edit Listing
+            - else
+              = link_to '#', {:class=>'button radius greenie fullbtn', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
+                %i{:class=>'icon-ok'}
+                Book It
+    / Linkedin URL
+    / Facebook URL
    
 

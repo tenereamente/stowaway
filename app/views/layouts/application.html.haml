@@ -10,8 +10,8 @@
         %link{ type: "text/css", rel: "stylesheet", href: "//fonts.googleapis.com/css?family=Quicksand:400,700|Open+Sans+Condensed:300,700|Dosis:300,400,500,600,700" }
         = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
+    = render 'layouts/navigation'
     #main{:role => "main"}
-      = render 'layouts/navigation'
       .row
         .columns
           .box

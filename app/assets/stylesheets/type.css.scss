@@ -1,6 +1,9 @@
 /* Type is gorgeous */
 
 p {
+  &.small {
+    font-size: 1em;
+  }
   font-size: 1.2875em
 }
 
@@ -34,3 +37,4 @@ h2 {
     margin-bottom: .25em;
   }
 }
+
