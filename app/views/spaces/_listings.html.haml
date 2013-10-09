@@ -16,7 +16,7 @@
         %h2
           $
           #{s.monthly_price} / Month
-        - if signed_in? and current_user.id == s.user_id or current_user.has_role? :admin
+        - if signed_in? and ((current_user.id == s.user_id) or (current_user.has_role? :admin))
           = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
             %i{:class=>'icon-pencil'}
             Edit Listing
