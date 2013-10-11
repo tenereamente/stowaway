@@ -1,3 +1,4 @@
+
 = simple_form_for(@resource, html: {class: 'form-vertical custom', id: 'list-space-step1' }) do |f|
   .row
     .large-4.small-12.push-8.columns
@@ -26,32 +27,10 @@
           = image_or_placeholder(@resource.photo5)
           = f.file_field :photo5
     .small-12.large-8.pull-4.columns
-      .row
-        .small-12.column
-          = f.input :title
-      .row
-        .small-12.column
-          = f.input :address1, autofocus: true, required: true
-      .row
-        .small-12.column
-          = f.input :address2
-      .row
-        .small-6.column
-          = f.input :city, required: true
-        .small-3.column
-          = f.input_field :state, :label => 'State', collection: us_states, autofocus: true, input_html: {style: 'height:100px!important;'}, required: true
-        .small-3.column
-          = f.input :zip, required: true
+      %h2 Edit a Space
+      = render 'address'
+      %hr
+      = render 'features'
       .row
         .small-12.large-6.column
-          = f.input_field :country, input_html: { class: 'selectdrop' }, :label => 'Select Country', priority: [ "United States" ], required: true
-      .row
-        .small-12.column
-          = f.label :tags
-          = f.text_field :tag_list
-      .row
-        .small-12.column
-          = f.input :notes
-      .row
-        .small-12.large-6.column
-          = f.button :submit, 'Save', class: 'btn-primary button radius'
+          = f.button :submit, 'Update', class: 'btn-primary button greenie radius'

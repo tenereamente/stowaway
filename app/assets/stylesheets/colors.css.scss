@@ -57,7 +57,7 @@ $burgundy: #541c1e;
     color: darken($base, 50);
   }
   input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
-    border: 1px solid lighten($base, 70);
+    border: 1px solid lighten($base, 20);
     box-shadow: 0 none;
     background-color: lighten($base, 97);
     &:focus {
@@ -121,46 +121,6 @@ $burgundy: #541c1e;
     }
     a {
       color: darken($base, 10);
-      &.button {
-        background-color: lighten($base, 80);
-        transition: all;
-        &.warmish {
-          background-color: $accent;
-          color: lighten($accent, 90);
-          &:hover {
-            background-color: darken($accent, 10);
-          }
-          &:active {
-            background-color: darken($accent, 20);
-            top: 2px;
-          }
-        }
-        &.greenie {
-          background-color: $tertiary;
-          color: lighten($tertiary, 90);
-          &:hover {
-            background-color: darken($tertiary, 10);
-          }
-          &:active {
-            background-color: darken($tertiary, 20);
-            top: 2px;
-          }
-        }
-        &.standard {
-          background-color: $base;
-          color: lighten($base, 90);
-          &:hover {
-            background-color: darken($base, 10);
-          }
-          &:active {
-            background-color: darken($base, 20);
-            top: 2px;
-          }
-        }
-        &:hover {
-          background-color: lighten($base, 70);
-        }
-      }
       &:hover {
         color: darken($base, 20);
       }
@@ -236,6 +196,46 @@ $burgundy: #541c1e;
     }
     h5 {
       color: lighten($base,70);
+    }
+  }
+  .button {
+    background-color: lighten($base, 80);
+    transition: all;
+    &.warmish {
+      background-color: $accent;
+      color: lighten($accent, 90);
+      &:hover {
+        background-color: darken($accent, 10);
+      }
+      &:active {
+        background-color: darken($accent, 20);
+        top: 2px;
+      }
+    }
+    &.greenie {
+      background-color: $tertiary;
+      color: lighten($tertiary, 90);
+      &:hover {
+        background-color: darken($tertiary, 10);
+      }
+      &:active {
+        background-color: darken($tertiary, 20);
+        top: 2px;
+      }
+    }
+    &.standard {
+      background-color: $base;
+      color: lighten($base, 90);
+      &:hover {
+        background-color: darken($base, 10);
+      }
+      &:active {
+        background-color: darken($base, 20);
+        top: 2px;
+      }
+    }
+    &:hover {
+      background-color: lighten($base, 70);
     }
   }
 }
