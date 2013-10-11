@@ -2,18 +2,17 @@
 %h2 
   Find a Space
 
-  = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
-  .well
-    %h3 Filter Results
-    .row
-      .column.large-3.small-6.environment
-        %h4 Environment
-      .column.large-3.small-6.type
-        %h4 Type
-      .column.large-3.small-6.access
-        %h4 Access
-      .column.large-3.small-6.features
-        %h4 Features
-  %hr     
-  = render 'listings', locals: { 'spaces' => @spaces } 
-  
+= gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
+.well
+  %h3 Filter Results
+  .row
+    .column.large-3.small-6.environment
+      %h4 Environment
+    .column.large-3.small-6.type
+      %h4 Type
+    .column.large-3.small-6.access
+      %h4 Access
+    .column.large-3.small-6.features
+      %h4 Features
+%hr     
+= render 'listings', locals: { 'spaces' => @spaces } 

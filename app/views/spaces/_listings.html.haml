@@ -20,6 +20,9 @@
     .small-12.large-4.column
       .price
         %h2
+          $
+          = succeed " / Month" do
+            = h s.monthly_price
         - if signed_in? and current_user.id == s.user_id or current_user.has_role? :admin
           = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
             %i{:class=>'icon-pencil'}
