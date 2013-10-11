@@ -7,13 +7,16 @@
         = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
       %h5
         %i.icon-map-marker.pull-left
-        #{s.normalized_address}
+        #{s.address1}, #{s.city} #{s.state}
       %ul.inline-list
         %li{:class=>'has-tip', "data-tooltip" => "", :title => s.environment}
+          %i.icon-globe.pull-left
           #{s.environment}
-        %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
+        %li{:class=>'has-tip', "data-tooltip" => "", :title => s.type}
+          %i.icon-building.pull-left
           #{s.type}
         %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
+          %i.icon-time.pull-left
           #{s.access}
 
           
