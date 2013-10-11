@@ -6,10 +6,16 @@
       %h3
         = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
       %h5
+        %i.icon-map-marker.pull-left
         #{s.normalized_address}
-      %ul
+      %ul.inline-list
+        %li{:class=>'has-tip', "data-tooltip" => "", :title => s.environment}
+          #{s.environment}
+        %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
+          #{s.type}
         %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
           #{s.access}
+
           
     .small-12.large-4.column
       .price

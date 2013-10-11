@@ -10,7 +10,7 @@
     /
       %i.icon-envelope-alt.pull-left
       = mail_to "#{@user.email if @user.email}"
-    = link_to '#', {:class=>'button radius fullbtn has-tip', "data-tooltip"=>"", :title => 'Send a note.'} do
+    = link_to '#', {:class=>'button radius fullbtn has-tip standard', "data-tooltip"=>"", :title => 'Send a note.'} do
       %i{:class=>'icon-envelope'}
       Message
       
@@ -24,22 +24,22 @@
     - @spaces.each do |s|
       .row
         .small-8.column
-          %h3
-            = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
-          %h5
-            %i.icon-map-marker.pull-left
-            = s.normalized_address
-          %ul.small-block-2.large-block-grid-5.fitimg
-            %li
-              = image_or_placeholder(s.photo)
-            %li
-              = image_or_placeholder(s.photo2)
-            %li
-              = image_or_placeholder(s.photo3)
-            %li
-              = image_or_placeholder(s.photo4)
-            %li
-              = image_or_placeholder(s.photo5)
+          .row
+            .small-3.column.fitimg
+              = link_to image_or_placeholder(s.photo, :thumb), space_path(s)
+            .small-9.column
+              %h3
+                = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
+              %h5
+                %i.icon-map-marker.pull-left
+                #{s.address1}, #{s.city} #{s.state}
+              %ul.inline-list
+                %li{:class=>'has-tip', "data-tooltip" => "", :title => s.environment}
+                  #{s.environment}
+                %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
+                  #{s.type}
+                %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
+                  #{s.access}
 
         .small-4.column
           .price

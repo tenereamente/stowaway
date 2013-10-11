@@ -238,6 +238,10 @@ $burgundy: #541c1e;
       background-color: lighten($base, 70);
     }
   }
+  .well {
+    padding: 1em;
+    background-color: lighten($base, 70);
+  }
 }
 
 body {

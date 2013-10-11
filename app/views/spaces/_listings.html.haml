@@ -1,29 +1,30 @@
 - @spaces.each do |s|
-  .mb20.smalltime{:style => "background: url(#{s.photo}) 50% no-repeat; background-size: 100%"}
-    .row
-      .small-8.column
-        .shade.endround
-          .row
-            .small-10.column
-              %h3
-                = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
-              %h5
-                #{s.address1}, #{s.city} #{s.state}
-            .small-2.column
-              - if s.user
-                %a.has-tip.avatar{"data-tooltip" => "", :title => s.user.name, :href => user_path(s.user) }
-                  - if s.user.avatar.exists?
-                    = image_tag s.user.avatar.url(:thumb)
-              - else
-                = image_tag "http://placehold.it/32x32"
-      .small-4.column
-        .price
-          %h2
-          - if signed_in? and current_user.id == s.user_id or current_user.has_role? :admin
-            = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
-              %i{:class=>'icon-pencil'}
-              Edit
-          - else
-            = link_to '#', {:class=>'button radius greenie fullbtn', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
-              %i{:class=>'icon-ok'}
-              Book It
+  .row.locations
+    .small-2.large-2.column
+      = link_to image_or_placeholder(s.photo, :square), space_path(s)
+    .small-10.large-6.column
+      %h3
+        = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
+      %h5
+        %i.icon-map-marker.pull-left
+        #{s.normalized_address}
+      %ul.inline-list
+        %li{:class=>'has-tip', "data-tooltip" => "", :title => s.environment}
+          #{s.environment}
+        %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
+          #{s.type}
+        %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
+          #{s.access}
+
+          
+    .small-12.large-4.column
+      .price
+        %h2
+        - if signed_in? and current_user.id == s.user_id or current_user.has_role? :admin
+          = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
+            %i{:class=>'icon-pencil'}
+            Edit
+        - else
+          = link_to '#', {:class=>'button radius greenie fullbtn', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
+            %i{:class=>'icon-ok'}
+            Book It
