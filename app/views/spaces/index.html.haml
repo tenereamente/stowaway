@@ -1,17 +1,20 @@
+
 %h2 
   Find that Space...
-  /
-    %form.simple_form.custom
-      .row
-        .large-9.small-9.columns
-          .input
-            %label 
-              %i.icon-search.icon-left
-              try boat storage, locked, access level, etc. 
-            %input.string{type: 'text'}
-        .large-3.small-3.columns
-          %button.radius.button
-            Search
-  = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
-
-= render 'listings', locals: { 'spaces' => @spaces } 
+%form.simple_form.custom
+  .row
+    .column.small-8
+      .input
+        %label.string.control-label
+          %i.icon-search.icon-left
+          try boat storage, locked, access level, etc. 
+        %input.string{type: 'text'}
+    .column.small-4
+      %a.submit.button.radius.standard.fullbtn
+        Search
+.row
+  .columns.large-4.push-8
+    = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
+  .columns.large-8.pull-4
+    = render 'listings', locals: { 'spaces' => @spaces } 
+  

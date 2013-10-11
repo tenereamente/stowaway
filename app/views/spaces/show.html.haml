@@ -7,7 +7,8 @@
         %h2 
           = @space.title
         %h5
-          = @space.normalized_address
+          #{@space.address1}, #{@space.city} #{@space.state}
+            
 .row
   .large-4.small.12.push-8.columns
     .price

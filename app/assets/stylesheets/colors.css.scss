@@ -146,6 +146,17 @@ $burgundy: #541c1e;
             top: 2px;
           }
         }
+        &.standard {
+          background-color: $base;
+          color: lighten($base, 90);
+          &:hover {
+            background-color: darken($base, 10);
+          }
+          &:active {
+            background-color: darken($base, 20);
+            top: 2px;
+          }
+        }
         &:hover {
           background-color: lighten($base, 70);
         }
@@ -218,7 +229,7 @@ $burgundy: #541c1e;
   .shade {
     background: rgba(darken($base, 60),.7);
   }
-  .bigtime {
+  .bigtime, .smalltime {
     border-radius: 3px;
     h2 {
       color: lighten($base,90);

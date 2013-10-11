@@ -5,6 +5,12 @@
     .small-10.large-6.column
       %h3
         = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
+      %h5
+        #{s.normalized_address}
+      %ul
+        %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
+          #{s.access}
+          
     .small-12.large-4.column
       .price
         %h2
