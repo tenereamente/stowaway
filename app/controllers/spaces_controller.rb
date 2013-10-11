@@ -52,9 +52,9 @@ class SpacesController < ApplicationController
   def update
     @space = Space.find(params[:id])
     if @space.update_attributes(space_params)
-      redirect_to spaces_path, :notice => "Space updated."
+      redirect_to space_path(@space), :notice => "Space updated."
     else
-      redirect_to spaces_path, :alert => "Unable to update space."
+      redirect_to edit_space_path(@space), :alert => "Unable to update space."
     end
   end
 
