@@ -1,33 +1,55 @@
-.row
-  %h2
-    Edit #{resource_name.to_s.humanize}
-  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f|
-    .row
-      .large-3.small-12.columns
-        - if resource.avatar.exists?
-          = image_tag resource.avatar.url(:square)
-        - else
-          = image_tag "http://placehold.it/250x250"
-        = f.file_field :avatar
-        %h2.title #{@user.name}
-        %p
-          A Spacilist since #{@user.created_at}
-        %p
-          %i.icon-email
-          = mail_to "#{@user.email if @user.email}"
-      .large-9.small-12.columns
-        %p
-          Hi I'm somebody! I live in Portland, Maine, love a good roller-derby match and have this awesome climate-controlled barn (that use to be where we would have underground roller derby matches) that's perfect for storage. I can fit a boat or two in my barn. Feel free to message me if you would like to talk about it.
+%h2
+  Edit Profile
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f|
+  .row
+    .large-3.columns.fitimg
+      - if resource.avatar.exists?
+        = image_tag resource.avatar.url(:square)
+      - else
+        = image_tag "http://placehold.it/250x250"
+      = f.file_field :avatar
+      %p.small
+        Joined #{@user.created_at}
+    .large-9.columns
+      .row
+        .large-3.column
+          %h4 Your Name
+        .large-9.column
           = f.label :name
           = f.input :name, :autofocus => true
+      %hr
+      .row
+        .large-3.column
+          %h4 Email
+        .large-9.column
           = f.input :email, :required => true
-          = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
-          = f.input :password_confirmation, :required => false
-          = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
-          = f.button :submit, 'Update', :class => 'button radius btn-primary'
-        %h3 Unhappy?
-        %p
-          Cancel anytime #{link_to "Close My Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
-        = link_to "View Profile", :back, {:class=>'hastip button radius', "data-tooltip"=>"", :title => 'How the world will see you.'}
-     
+      %hr
+      .row
+        .large-3.column
+          %h4 About You
+        .large-9.column
+          %p
+            Hi I'm somebody! I live in Portland, Maine, love a good roller-derby match and have this awesome climate-controlled barn (that use to be where we would have underground roller derby matches) that's perfect for storage. I can fit a boat or two in my barn. Feel free to message me if you would like to talk about it.
+      %hr
+      .row
+        .large-3.column
+          %h4 Change Password
+        .large-9.column
+          = f.input :password, :autocomplete => "off", :label => 'New Password', :required => false
+          = f.input :password_confirmation, :label => 'Again', :required => false
+      %hr
+      .row
+        .large-3.column
+          %h4 Confirm Changes
+        .large-9.column
+          = f.input :current_password, :required => true
+          = f.button :submit, 'Update Profile', :class => 'fullbtn button radius btn-primary greenie'
+      %hr
+      .row
+        .large-3.column
+          %h4 Cancel Account
+        .large-9.column
+          #{link_to "Close My Account", registration_path(resource_name), :data => { :confirm => "Are you sure?", :class => 'button btn-primary red radius' }, :method => :delete}.
+      
    
+ 

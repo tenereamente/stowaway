@@ -7,10 +7,7 @@
 
     %h3.title #{@user.name}
     %p.small
-    /
-      %i.icon-envelope-alt.pull-left
-      = mail_to "#{@user.email if @user.email}"
-    = link_to '#', {:class=>'button radius fullbtn has-tip standard', "data-tooltip"=>"", :title => 'Send a note.'} do
+    = mail_to "#{@user.email if @user.email}", {:class=>'button radius fullbtn has-tip standard', "data-tooltip"=>"", :title => 'Send a note.'} do
       %i{:class=>'icon-envelope'}
       Message
       
