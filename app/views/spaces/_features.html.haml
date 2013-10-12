@@ -69,7 +69,7 @@
       %h4 How's the access?
     .column.large-9
       .button-group.round.what
-        = f.collection_radio_buttons :type, [[:anytime, 'Anytime'], [:appointment, 'By appointment'], [:limited, 'Limited']], :first, :second do |b|
+        = f.collection_radio_buttons :access, [[:anytime, 'Anytime'], [:appointment, 'By appointment'], [:limited, 'Limited']], :first, :second do |b|
           = b.radio_button(class: 'hidden-field')
           = b.label(class: 'button', id: "#{b.text.parameterize.underscore}_button_label") do
             - if b.text == 'Anytime'
@@ -85,11 +85,11 @@
     .column.large-9
       %ul.checkbtns.inline-list
         %li
-          #{f.label :climate_controlled, :class => 'checkbox button round'}#{f.check_box :climate_controlled, :class => :checkbox}
+          #{f.label :climate_controlled, :class => 'checkbox button round', id: 'climate_checkbox_label'}#{f.check_box :climate_controlled, :class => :checkbox}
         %li
-          #{f.label :lockable, :class => 'checkbox button round'}#{f.check_box :lockable, :class => :checkbox}
+          #{f.label :lockable, :class => 'checkbox button round', id: 'lockable_checkbox_label'}#{f.check_box :lockable, :class => :checkbox}
         %li
-          #{f.label :attended, :class => 'checkbox button round'}#{f.check_box :attended, :class => :checkbox}
+          #{f.label :attended, :class => 'checkbox button round', id: 'attended_checkbox_label'}#{f.check_box :attended, :class => :checkbox}
 %section.dimensions
   .row
     .column.large-3

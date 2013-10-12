@@ -97,23 +97,29 @@ $(document).ready ->
     $("label#basement_button_label").toggleClass('active', false)
     $("#access_button_group").show()
 
-  $("#space_type_limited").click (event) ->
+  $("#space_access_limited").click (event) ->
     $("label#limited_button_label").toggleClass('active', true)
     $("label#by_appointment_button_label").toggleClass('active', false)
     $("label#anytime_button_label").toggleClass('active', false)
 
-  $("#space_type_appointment").click (event) ->
+  $("#space_access_appointment").click (event) ->
     $("label#limited_button_label").toggleClass('active', false)
     $("label#by_appointment_button_label").toggleClass('active', true)
     $("label#anytime_button_label").toggleClass('active', false)
 
-  $("#space_type_anytime").click (event) ->
+  $("#space_access_anytime").click (event) ->
     $("label#limited_button_label").toggleClass('active', false)
     $("label#by_appointment_button_label").toggleClass('active', false)
     $("label#anytime_button_label").toggleClass('active', true)
 
-  $("#attended").click (event) ->
-    alert('hi')
+  $("#climate_checkbox_label").click (event) ->
+    $(event.target).toggleClass('active')
+
+  $("#lockable_checkbox_label").click (event) ->
+    $(event.target).toggleClass('active')
+
+  $("#attended_checkbox_label").click (event) ->
+    $(event.target).toggleClass('active')
 
   $.showOutdoorOptions = ->
     $("#what_kind_of_space").show()

@@ -34,15 +34,19 @@
       %h3 Features
       %ul
         %li
-          = @space.environment
+          Environment is: #{@space.environment}
+        %li
+          Type is: #{@space.type}
+        %li
+          Access is: #{@space.access}
         %li  
-          = @space.climate_controlled
+          Climate controlled:  #{@space.climate_controlled}
         %li
-          = @space.lockable
+          Lockable: #{@space.lockable}
         %li
-          = @space.attended
+          Attended: #{@space.attended}
         %li
-          = @space.featured
+          Featured: #{@space.featured}
     %section.mb50
       %h3
         - if @space.tags.any? 
