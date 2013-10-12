@@ -25,7 +25,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'paperclip', '~> 3.0'
 gem 'fog'
 gem 'aws-sdk', '~> 1.5.7'
-gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+gem "resque", "~> 2.0.0.pre.1", :git => "https://github.com/resque/resque"
 gem 'whenever'
 gem 'blogit', git: 'https://github.com/KatanaCode/blogit.git', branch: 'master'
 gem 'select2-rails'
@@ -44,6 +44,7 @@ group :development do
   gem 'librarian-chef', require: false
   gem 'letter_opener'
   gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
 end
 
 gem 'hooves', require: 'hooves/default' # make unicorn the default for rails s
