@@ -22,4 +22,12 @@ module ApplicationHelper
       image_tag "//placehold.it/#{geometry}"
     end
   end
+
+  def can_edit_space?(space)
+    signed_in? and ((current_user.id == space.user_id) or (current_user.has_role? :admin))
+  end
+
+  def can_edit_user?(user)
+    signed_in? and ((current_user.id == user.id) or (current_user.has_role? :admin))
+  end
 end

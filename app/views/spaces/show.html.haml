@@ -16,7 +16,7 @@
       %h3
         $
         #{@space.monthly_price} / Month
-      - if signed_in? and current_user.id == @space.user_id or current_user.has_role? :admin
+      - if can_edit_space?(@space)
         = link_to edit_space_path(@space), {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'Like a Boss'} do
           %i{:class=>'icon-pencil'}
           Edit Listing

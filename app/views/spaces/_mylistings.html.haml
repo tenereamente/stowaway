@@ -23,7 +23,7 @@
           $
           = succeed " / Month" do
             = h s.monthly_price
-        - if signed_in? and current_user.id == s.user_id or current_user.has_role? :admin
+        - if can_edit_space?(s)
           = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
             %i{:class=>'icon-pencil'}
             Edit Listing
