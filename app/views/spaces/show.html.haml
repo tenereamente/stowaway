@@ -47,6 +47,10 @@
           Attended: #{@space.attended}
         %li
           Featured: #{@space.featured}
+        %li
+          Completed listing: #{@space.complete}
+        %li
+          Space Available: #{@space.available}
     %section.mb50
       %h3
         - if @space.tags.any? 
