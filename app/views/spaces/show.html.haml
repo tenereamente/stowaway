@@ -49,8 +49,25 @@
           Featured: #{@space.featured}
         %li
           Completed listing: #{@space.complete}
+          - if can_edit_space?(@space) and (not @space.complete)
+            %li
+              Are you done with describing your space?
+              = simple_form_for @space do |f|
+                = f.hidden_field :complete, :value => true
+                = f.hidden_field :available, :value => true
+                = f.button :submit, 'Looks good, list it!', class: 'btn-primary button greenie radius'
         %li
           Space Available: #{@space.available}
+          - if @space.available
+            Want to take your space off the market for now?
+            = simple_form_for @space do |f|
+              = f.hidden_field :available, :value => false
+              = f.button :submit, 'Yep, mark space as unavailable', class: 'btn-primary button greenie radius'
+          - else 
+            Want to mark your space as available again?
+            = simple_form_for @space do |f|
+              = f.hidden_field :available, :value => true
+              = f.button :submit, 'Yep, mark space as available', class: 'btn-primary button greenie radius'
     %section.mb50
       %h3
         - if @space.tags.any? 
