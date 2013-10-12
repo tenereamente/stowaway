@@ -28,9 +28,9 @@
           = f.file_field :photo5
     .small-12.large-8.pull-4.columns
       %h2 Edit a Space
-      = render 'address'
+      = render partial: 'address', :locals => { f: f }
       %hr
-      = render 'features'
+      = render partial: 'features', :locals => { f: f }
       .row
         .small-12.large-6.column
           = f.button :submit, 'Update', class: 'btn-primary button greenie radius'

@@ -33,7 +33,7 @@
           %label Email address
           = email_field_tag :user_email
       %hr
-      = render 'address'
+      = render partial: 'address', :locals => { f: f }
       %hr
-      = render 'features'
+      = render partial: 'features', :locals => { f: f }
       = f.button :submit, 'Preview', :class => 'button-primary greenie button radius'
