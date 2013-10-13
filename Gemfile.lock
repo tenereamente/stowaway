@@ -1,4 +1,19 @@
 GIT
+  remote: git://github.com/bcardarella/client_side_validations.git
+  revision: 9461cb92e1dfb64895d590c6d435cdf48fcede45
+  branch: 4-0-beta
+  specs:
+    client_side_validations (3.2.2)
+
+GIT
+  remote: git://github.com/saveritemedical/client_side_validations-simple_form.git
+  revision: b97c938be745de1134169026425aa0c990b8b072
+  specs:
+    client_side_validations-simple_form (2.1.0)
+      client_side_validations (~> 3.2.1)
+      simple_form (>= 2.1.0, < 4.0)
+
+GIT
   remote: https://github.com/KatanaCode/blogit.git
   revision: 13656da509c3f9528971c616c46b92eef8f81945
   branch: master
@@ -445,6 +460,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    strip_attributes (1.4.4)
+      activemodel (>= 3.0, < 5.0)
     systemu (2.5.2)
     temple (0.6.6)
     terminal-table (1.4.5)
@@ -510,6 +527,8 @@ DEPENDENCIES
   capistrano-notifier
   capistrano_colors
   capybara
+  client_side_validations!
+  client_side_validations-simple_form!
   coffee-rails (~> 4.0.0)
   compass-rails (~> 2.0.alpha.0)
   country_select
@@ -554,6 +573,7 @@ DEPENDENCIES
   select2-rails
   sentry-raven!
   simple_form (>= 3.0.0.rc)
+  strip_attributes
   stripe!
   therubyracer
   travis

@@ -17,6 +17,8 @@ gem 'haml-rails'
 gem 'pg'
 gem 'rolify'
 gem 'simple_form', '>= 3.0.0.rc'
+gem 'client_side_validations', git: 'git://github.com/bcardarella/client_side_validations.git', branch: '4-0-beta'
+gem 'client_side_validations-simple_form', git: 'git://github.com/saveritemedical/client_side_validations-simple_form.git'
 gem 'will_paginate'
 gem 'acts-as-taggable-on'
 gem 'gmaps4rails'
@@ -30,10 +32,7 @@ gem 'whenever'
 gem 'blogit', git: 'https://github.com/KatanaCode/blogit.git', branch: 'master'
 gem 'select2-rails'
 gem 'sentry-raven', :git => "https://github.com/getsentry/raven-ruby.git"
-# For client side validations later
-#gem 'strip_attributes'                 # clean spaces from model attrs
-#gem 'client_side_validations'          # client side form validation
-#gem 'client_side_validations-simple_form'
+gem 'strip_attributes'                 # clean spaces from model attrs
 gem 'unicorn'
 group :development do
   gem 'better_errors'

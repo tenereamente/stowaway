@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     medium: '300x300>'
   }, :s3_protocol => :https
 
+  strip_attributes :collapse_spaces => true
+  validates :email, :uniqueness => { :case_sensitive => false }
+  validates_email :email # client side validation of email address
+
   # override Devise method
   # no password is required when the account is created; validate password when the user sets one
   validates_confirmation_of :password

@@ -14,7 +14,10 @@
 //= require jquery_ujs
 //= require select2
 //= require foundation
+//= require rails.validations
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+window.ClientSideValidations.remote_validators_prefix = null;
 

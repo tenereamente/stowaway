@@ -2,8 +2,8 @@
   %h3 Coming soon...
   %h2 Storage Redefined.
   %p.lead Leave an email and zip to become part of our beta group.
-  = simple_form_for(@resource, html: {class: 'custom nomrg', id: 'request-invitation', autocomplete: 'off' }, remote: true) do |f|
-    = f.input :email, required: true
+  = simple_form_for @resource, :validate => true, html: {class: 'custom nomrg', id: 'request-invitation', autocomplete: 'off' }, remote: true do |f|
+    = f.input :email, required: true, :validate => { presence: true }
     = f.input :zip, required: true
     = f.button :submit, 'Be Notified', class: 'nomrg fullbtn button radius'
   %a.close-reveal-modal

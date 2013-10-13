@@ -5,7 +5,6 @@ class ChargesController < ApplicationController
   end
 
   def create
-    # Amount in cents
     @space = Space.find(params[:space_id])
     @amount = @space.monthly_price * 100 # price is stored in dollars, convert to cents
     
@@ -15,13 +14,17 @@ class ChargesController < ApplicationController
     # TODO: check to see if the current user already has a customer ID, if so, use that one rather
     # than creating a new one.
 
+    # TODO: consider moving to stripe connect to enable more of a marketplace model where the
+    # stripe customer is on our top-level account and can purchase from multiple providers.
+    # Currently a customer can only rent a single space.
+
     customer = Stripe::Customer.create(
       email: current_user.email, 
       card:  params[:stripeToken],
       plan:  plan
     )
 
-    # TODO add last month rent as a deposit on the invoice?
+    # TODO add last month rent as a deposit on the invoice
 
     # TODO save customer ID in the user record, mark the space as booked
 

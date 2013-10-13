@@ -1,6 +1,6 @@
 %h2
   Edit Profile
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f|
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true, :html => { :method => :put, :class => 'form-vertical' }) do |f|
   .row
     .large-3.columns.fitimg
       - if resource.avatar.exists?
@@ -9,7 +9,7 @@
         = image_tag "http://placehold.it/250x250"
       = f.file_field :avatar
       %p.small
-        Joined #{@user.created_at}
+        Joined #{time_ago_in_words @user.created_at} ago.
     .large-9.columns
       .row
         .large-3.column

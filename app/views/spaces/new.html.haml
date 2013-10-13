@@ -1,11 +1,11 @@
 .row
-  = simple_form_for(@resource, html: {class: 'custom', id: 'list-space-step1', autocomplete: 'off' }) do |f|
+  = simple_form_for(@resource, validate: true, html: {class: 'custom', id: 'list-space-step1', autocomplete: 'off' }) do |f|
     .large-4.small-12.push-8.columns
       .price
         %h2#monthly_price_label
           %span
             Set a price
-        = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "0,500", 'data-slider-step' => '5' }
+        = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "0,500", 'data-slider-step' => '5', value: 50 }
 
       %ul.small-block-grid-1.large-block-grid-2.fitimg  
         %li
