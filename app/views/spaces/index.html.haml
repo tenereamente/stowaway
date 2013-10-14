@@ -3,7 +3,10 @@
   Find a Space
 
 = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
-%form.custom.nomrg
+%a#filter_btn.button.large.standard.expand.radius
+  %i.icon-filter
+  Filter Results
+%form.filter.custom.nomrg.hide
   %h2 Filter Results
   .row
     .column.small-12.large-3.environment
