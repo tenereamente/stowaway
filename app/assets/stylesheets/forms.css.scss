@@ -74,13 +74,24 @@ form.custom {
       }
     }
   }
-  .select2-choices {
-    margin-bottom: 1em;
+  .select2-container.select2-container-multi {
+    width: 100%;
+    .select2-choices {
+      border: 1px solid #c8dced;
+      padding: 0 .5em;
+      font-size: 1.5em;
+      border-radius: 5px;
+      background-image: none;
+      &:focus {
+       outline: none;      
+      }
+    }
   }
   .user_remember_me {
     .checkbox {
       .custom.checkbox {
         display: inline-block;
+        margin-right: 5px;
       }
     }
   }
