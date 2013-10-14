@@ -3,16 +3,34 @@
   Find a Space
 
 = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
-.well
-  %h3 Filter Results
+%form.custom.nomrg
+  %h2 Filter Results
   .row
-    .column.large-3.small-6.environment
-      %h4 Environment
-    .column.large-3.small-6.type
-      %h4 Type
-    .column.large-3.small-6.access
-      %h4 Access
-    .column.large-3.small-6.features
-      %h4 Features
+    .column.small-12.large-3.environment
+      %select
+        %option Environment:
+        %option Indoor
+        %option Outdoor
+    .column.small-12.large-3.type
+      %select
+        %option Space Type:
+        %option Attic
+        %option Garage
+        %option Spare Room
+        %option Basement
+        %option Driveway
+        %option Covered Area
+        %option Uncovered Area
+    .column.small-12.large-3.access
+      %select
+        %option Access:
+        %option Anytime
+        %option Appointment
+        %option Onetime
+    .column.small-12.large-3.access
+      %a.button.large.radius.expand.greenie 
+        %i.icon-rocket
+        Search
+      
 %hr     
 = render 'listings', locals: { 'spaces' => @spaces } 

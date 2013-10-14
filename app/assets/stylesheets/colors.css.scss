@@ -136,12 +136,6 @@ $burgundy: #541c1e;
           background: darken($base, 40);
           .dropdown {
             background: darken($base, 40);
-            li {
-              a {
-                &:hover {
-                }
-              }
-            }
           }  
         }
       }
@@ -149,14 +143,11 @@ $burgundy: #541c1e;
         &:not(button) {
           color: lighten($base, 90);
         }
-        &:hover {
-          color: #fff;
-        }
         &.button {
           color: lighten($accent, 90);
           background-color: $accent;
           &:hover {
-            background-color: lighten($accent, 10);
+            background-color: darken($accent, 10);
           }
           &:active {
             background-color: darken($accent, 20);
@@ -198,9 +189,10 @@ $burgundy: #541c1e;
       color: lighten($base,70);
     }
   }
-  .button {
-    background-color: lighten($base, 80);
-    transition: all;
+  .button, a.button {
+    background-color: darken($base, 20);
+    transition: background-color 300ms ease-out;
+    color: #fff;
     &.warmish {
       background-color: $accent;
       color: lighten($accent, 90);
@@ -236,6 +228,7 @@ $burgundy: #541c1e;
     }
     &:hover {
       background-color: lighten($base, 70);
+      color: #fff;
     }
   }
   .well {

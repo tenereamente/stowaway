@@ -7,12 +7,12 @@
 
     %h3.title #{@user.name}
     %p.small
-    = mail_to "#{@user.email if @user.email}", {:class=>'button radius fullbtn has-tip standard', "data-tooltip"=>"", :title => 'Send a note.'} do
+    = mail_to "#{@user.email if @user.email}", {:class=>'button radius fullbtn standard'} do
       %i{:class=>'icon-envelope'}
       Message
       
     - if can_edit_user?(@user)
-      = link_to edit_user_registration_path, {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'A star is born.'} do
+      = link_to edit_user_registration_path, {:class=>'button radius fullbtn warmish'} do
         %i{:class=>'icon-pencil'}
         Edit Profile
   .large-9.small-12.columns
