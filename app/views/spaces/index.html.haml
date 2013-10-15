@@ -6,34 +6,21 @@
 %a#filter_btn.button.large.standard.expand.radius
   %i.icon-filter
   Filter Results
-%form.filter.custom.nomrg.hide
+%form.filter.custom.nomrg.hide{ action: spaces_path, method: "get" } 
   %h2 Filter Results
   .row
     .column.small-12.large-3.environment
-      %select
-        %option Environment:
-        %option Indoor
-        %option Outdoor
+      = select_tag "environment", options_for_select(["Indoor", "Outdoor"], params[:environment] || "Indoor")
     .column.small-12.large-3.type
-      %select
-        %option Space Type:
-        %option Attic
-        %option Garage
-        %option Spare Room
-        %option Basement
-        %option Driveway
-        %option Covered Area
-        %option Uncovered Area
+      - # TODO Space Type: is not a valid option, how to do some kind of infield label?
+      = select_tag "type", options_for_select([ "Attic", "Garage", "Spare Room", "Basement", "Driveway", "Covered Area", "Uncovered Area" ], params[:type] || "Attic")
     .column.small-12.large-3.access
-      %select
-        %option Access:
-        %option Anytime
-        %option Appointment
-        %option Onetime
+      = select_tag "access", options_for_select(["Anytime", "Appointment", "Onetime"], params[:access] || "Anytime")
     .column.small-12.large-3.access
-      %a.button.large.radius.expand.greenie 
+      = button_tag type: "submit", name: nil, :class => "button large radius expand greenie" do
         %i.icon-rocket
         Search
-      
+
+
 %hr     
 = render 'listings', locals: { 'spaces' => @spaces } 
