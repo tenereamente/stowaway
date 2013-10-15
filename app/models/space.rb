@@ -13,6 +13,9 @@ class Space < ActiveRecord::Base
 
 
   scope :owned, -> { where('user_id is not null')}
+  scope :available, -> { where('available is true')}
+  scope :complete, -> { where('complete is true')}
+  # TODO scopes for all features, environment types
 
   scope :by_user, lambda { |id|
     where(:user_id => id)
