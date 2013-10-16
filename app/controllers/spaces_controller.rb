@@ -1,14 +1,30 @@
 class SpacesController < ApplicationController
   def index
-    puts params
     if params[:user_id].present?
       @user = User.find(params[:user_id])
       @spaces = Space.by_user(params[:user_id].to_i)
       render 'my_index'
-    elsif params[:tag].present? 
-      @spaces = Space.owned.tagged_with(params[:tag])
     else 
-      @spaces = Space.owned.all
+      @spaces = Space.owned
+      if params[:tag].present? 
+        @spaces = @spaces.tagged_with(params[:tag])
+      end
+      if params[:bounds].present?
+        # TODO: bounds is a pair of LatLng pairs that form a box, only include addresses inside the box
+        # address is ignored, just included in URL to make humans more comfortable, bounds defines the geo bounds
+        # http://ngauthier.com/2013/08/postgis-and-rails-a-simple-approach.html
+      end
+      if params[:environment].present?
+        # 'All' is code for don't filter
+        @spaces = @spaces.where('environment LIKE ?',  params[:environment].downcase) unless params[:environment] == 'All'
+      end
+      if params[:type].present?
+        @spaces = @spaces.where('type LIKE ?',  params[:type].downcase) unless params[:type] == 'All'
+      end
+      if params[:access].present?
+        @spaces = @spaces.where('access LIKE ?', params[:access].downcase) unless params[:downcase] == 'All'
+      end
+      @spaces = @spaces.load
     end 
     @json = @spaces.to_gmaps4rails do |space, marker|
       marker.json({ :id => space.id, :notes => space.notes })

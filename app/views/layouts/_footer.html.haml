@@ -66,9 +66,11 @@
   ga('send', 'pageview');
   
 :javascript
-  google.maps.visualRefresh=true
   $(document).ready(function() { 
-    if( $('.gmaps4rails_map').length > 0 ) { Gmaps.loadMaps(); } 
+    if( $('.gmaps4rails_map').length > 0 ) { 
+      google.maps.visualRefresh=true;
+      Gmaps.loadMaps(); 
+    } 
   });
 
 :javascript

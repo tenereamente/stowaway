@@ -2,6 +2,30 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
+
+  if $('.gmaps4rails_map').length > 0
+
+    $.updateAddressAndBounds = ->
+      geocoder = new google.maps.Geocoder
+      position = Gmaps.map.map.getCenter()
+      bounds = Gmaps.map.map.getBounds()
+      $('#address_search_bounds').val(bounds)
+      geocoder.geocode({ 'location': position }, (results, status) ->
+        if status == google.maps.GeocoderStatus.OK
+          # alert(results[0].formatted_address)
+          $('#address_search_field').val(results[0].formatted_address)
+      )
+
+    Gmaps.map.callback = () ->
+      # hook the idle event rather than center changed or bounds changed to
+      # avoid callback floods
+      google.maps.event.addListener Gmaps.map.map, 'idle', ->
+        $.updateAddressAndBounds()
+        #alert('map moved, now idle')
+      
+      
+      
+
   $("#space_tag_list").select2({tags:["red", "green", "blue"], tokenSeparators: [",", " "]})
   #$("#space_country").select2();
   $("#space_monthly_price").bind "slider:changed", (event, data) ->
@@ -120,6 +144,8 @@ $(document).ready ->
 
   $("#attended_checkbox_label").click (event) ->
     $(event.target).toggleClass('active')
+
+  $
 
   $.showOutdoorOptions = ->
     $("#what_kind_of_space").show()
