@@ -1,4 +1,4 @@
-mate$(document).ready ->
+$(document).ready ->
   $("#filter_btn").click (event) ->
     $("form.filter").toggle("slow")
     
