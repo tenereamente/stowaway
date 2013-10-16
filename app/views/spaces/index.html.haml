@@ -8,9 +8,8 @@
   Filter Results
 %form.filter.custom.nomrg.hide{ action: spaces_path, method: "get" }
   %h2 Search near
-  .row
-    = search_field_tag "address", "", id: "address_search_field", disabled: true
-    = hidden_field_tag "bounds", "", id: "address_search_bounds"
+  = search_field_tag "address", "", id: "address_search_field", disabled: true
+  = hidden_field_tag "bounds", "", id: "address_search_bounds"
   %h2 Filter Results
   .row
     .column.small-12.large-3.environment
