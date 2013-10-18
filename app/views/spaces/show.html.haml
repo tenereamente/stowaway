@@ -63,7 +63,7 @@
             = simple_form_for @space do |f|
               = f.hidden_field :available, :value => false
               = f.button :submit, 'Yep, mark space as unavailable', class: 'btn-primary button greenie radius'
-          - else 
+          - elsif @space.complete
             Want to mark your space as available again?
             = simple_form_for @space do |f|
               = f.hidden_field :available, :value => true
