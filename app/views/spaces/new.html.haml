@@ -30,7 +30,7 @@
       /%h4 Did we mention you are really good looking?
       - unless signed_in?
         .input
-          %label Email address
+          %label.string.required.control-label.user_email{ :for => 'user_email'} Email address
           = email_field_tag :user_email
       %hr
       = render partial: 'address', :locals => { f: f }

@@ -45,13 +45,15 @@ class SpacesController < ApplicationController
   end
 
   def create
-    @space = Space.create!(space_params.merge(user_id: user_signed_in? ? current_user.id : nil ))
     if user_signed_in?
-      redirect_to space_path(@space)
+      u = current_user
+    elsif space_params[:email].exists?
+      u = User.find_or_create_by_email({ email: space_params[:email]})  
     else
-      # TODO gradual registration, take email param and create a user on the fly and log them in.
-      redirect_to space_path(s), :alert => "Space created without owner, need to register user"
+      redirect_to new_space_path, :error => "Must be signed in or provide email address to list a space"
     end
+    @space = Space.create!(space_params.merge(user_id: u.id))
+    redirect_to space_path(@space)
   end
 
   def show
