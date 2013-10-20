@@ -4,6 +4,21 @@ class ChargesController < ApplicationController
   def new
   end
 
+  # We have plans for every $5 increment, named as 10_monthly, 15_monthly, etc.
+  # so that we don't have to spend a ton of time pre-creating the plancs, just
+  # create them on the fly as needed.
+  def get_or_create_plan(price)
+    plan = Stripe::Plan.retrieve("#{price}_monthly")
+  rescue
+    plan = Stripe::Plan.create(
+      :amount => price * 100, # convert from dollars to cents to match stripe API
+      :interval => 'month',
+      :name => "#{price} monthly",
+      :currency => 'usd',
+      :id => "#{price}_monthly"
+    )
+  end
+
   def create
     @space = Space.find(params[:space_id])
     @amount = @space.monthly_price * 100 # price is stored in dollars, convert to cents
@@ -11,9 +26,9 @@ class ChargesController < ApplicationController
     # protocols defined yet. It is better to not catch the exceptions and let them go
     # up the stack to be logged in sentry rather than catching and ignoring them here.
     begin
-      plan = Stripe::Plan.retrieve("#{@space.monthly_price}_monthly")
-      # TODO: catch the exception when the plan doesn't exist and create a snowflake plan on the fly?
 
+      plan = get_or_create_plan(@space.monthly_price)
+      
       # TODO: consider moving to stripe connect to enable more of a marketplace model where the
       # stripe customer is on our top-level account and can purchase from multiple providers.
       # Currently a customer can only rent a single space.
@@ -36,12 +51,13 @@ class ChargesController < ApplicationController
         :description => "Stowaway.co last months rent for #{@space.normalized_address}",
         :currency    => 'usd'
       )
-    #rescue Stripe::CardError => e
-      # Since it's a decline, Stripe::CardError will be caught
-      #body = e.json_body
-      #err  = body[:error]
 
       redirect_to space_path(@space), alert: 'Congratulations, you have booked this space'
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to space_path(@space)
+    end
 
       #puts "Status is: #{e.http_status}"
       #puts "Type is: #{err[:type]}"
@@ -63,10 +79,7 @@ class ChargesController < ApplicationController
     # Something else happened, completely unrelated to Stripe
     #end
 
-    rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to charges_path # TODO redirect to a better spot
-    end
+    
   end
 
 end
