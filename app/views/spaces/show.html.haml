@@ -20,7 +20,7 @@
         = link_to edit_space_path(@space), {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'Like a Boss'} do
           %i{:class=>'icon-pencil'}
           Edit Listing
-      - elsif not @space.available
+      - if not @space.available
         = link_to '#', {:class=>'button radius fullbtn'} do
           %i{:class=>'icon-thumbs-down'}
           NOT AVAILABLE
@@ -30,10 +30,10 @@
           Sign in & Book It
       - else
         = form_tag(user_charges_path(current_user), method: :post) do  
-            = hidden_field_tag 'space_id', @space.id
-            = button_tag type: "submit", name: nil, :class => "button book-it-button radius has-tip fullbtn greenie", 'data-address'=> @space.normalized_address, 'data-price'=> @space.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key], 'data-image'=>@space.photo.url(:thumb)  do
-              %i.icon-ok
-              Book It
+          = hidden_field_tag 'space_id', @space.id
+          = button_tag type: "submit", name: nil, :class => "button book-it-button radius has-tip fullbtn greenie", 'data-address'=> @space.normalized_address, 'data-price'=> @space.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key], 'data-image'=>@space.photo.url(:thumb)  do
+            %i.icon-ok
+            Book It
       
     = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
   .large-8.small-12.pull-4.columns
