@@ -162,7 +162,6 @@ $(document).ready ->
     $("#indoor_button_group").hide()
 
   $(".book-it-button").click (event) ->
-    #event.preventDefault()
     token = (res) ->
       input = $('<input type=hidden name=stripeToken />').val(res.id)
       $(event.target).closest("form").append(input).submit() 
@@ -175,7 +174,7 @@ $(document).ready ->
     StripeCheckout.open
       key: $(event.target).data("stripe_public_key")
       address: false
-      amount: 100 * price
+      amount: (100 * price) * 2 # convert to cents, charge first and last months rent
       currency: 'usd'
       name: 'Monthly storage rental'
       description: $(event.target).data("address")
