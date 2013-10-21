@@ -5,7 +5,7 @@ class SpacesController < ApplicationController
       @spaces = Space.by_user(params[:user_id].to_i)
       render 'my_index'
     else 
-      @spaces = Space.owned
+      @spaces = Space.owned.complete.available
       if params[:tag].present? 
         @spaces = @spaces.tagged_with(params[:tag])
       end
@@ -22,7 +22,7 @@ class SpacesController < ApplicationController
         @spaces = @spaces.where('type LIKE ?',  params[:type].downcase) unless params[:type] == 'All'
       end
       if params[:access].present?
-        @spaces = @spaces.where('access LIKE ?', params[:access].downcase) unless params[:downcase] == 'All'
+        @spaces = @spaces.where('access LIKE ?', params[:access].downcase) unless params[:access] == 'All'
       end
       @spaces = @spaces.load
     end 
