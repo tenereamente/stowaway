@@ -46,7 +46,7 @@ group :development do
   gem 'bundler-audit', require: false
 end
 
-gem 'hooves', require: 'hooves/default' # make unicorn the default for rails s
+gem 'hooves' #, require: 'hooves/default' # make unicorn the default for rails s
 gem 'therubyracer'
 
 
