@@ -162,9 +162,10 @@ $(document).ready ->
     $("#indoor_button_group").hide()
 
   $(".book-it-button").click (event) ->
+    #event.preventDefault()
     token = (res) ->
       input = $('<input type=hidden name=stripeToken />').val(res.id)
-      $('form').append(input).submit() 
+      $(event.target).closest("form").append(input).submit() 
       # TODO send the space ID and token in to the charges controller
       # we pull the price from the database inside the charges controller rather
       # than trusting the price to be sent in from a form. Hi haters!
@@ -179,5 +180,6 @@ $(document).ready ->
       name: 'Monthly storage rental'
       description: $(event.target).data("address")
       panelLabel: 'Checkout'
+      image: $(event.target).data('image')
       token: token
     return false

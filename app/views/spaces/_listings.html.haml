@@ -40,6 +40,8 @@
             %i{:class=>'icon-ok'}
             Sign in & Book It
         - else
-          = link_to '#', {:class=>'button radius greenie fullbtn book-it-button', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
-            %i{:class=>'icon-ok'}
-            Book It
+          = form_tag(user_charges_path(current_user), method: :post) do  
+            = hidden_field_tag 'space_id', s.id
+            = button_tag type: "submit", name: nil, :class => "button book-it-button radius fullbtn greenie", 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key], 'data-image'=>s.photo.url(:thumb)  do
+              %i.icon-ok
+              Book It
