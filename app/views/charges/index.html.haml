@@ -1,0 +1,17 @@
+.row
+  - if @customer
+    %p
+      The current account balance owed is $#{@customer.account_balance}.
+    %p
+      Account delinquent: #{@customer.delinquent}
+    %p
+      Current monthly storage subscription plan is "#{@customer.subscription.plan.name}" for a monthly cost of $#{@customer.subscription.plan.amount.to_i/100}, started #{time_ago_in_words(Time.at(@customer.subscription.start))} ago. This subscription will renew in #{distance_of_time_in_words_to_now(Time.at(@customer.subscription.current_period_end))}.
+
+    %p Current credit card on file with Stripe secure data vault is #{@customer.cards.data[0].type} ending in #{@customer.cards.data[0].last4}
+
+  - else
+    Looks like you haven't booked any storage space yet.
+
+%p
+  The current storage spaces making up this monthly subscription are:
+= render 'spaces/listings', locals: { 'spaces' => @spaces } 

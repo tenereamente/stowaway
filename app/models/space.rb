@@ -11,6 +11,9 @@ class Space < ActiveRecord::Base
     has_attached_file p, styles: { thumb: '100x100>', square: '200x200#', medium: '300x300>' }, :s3_protocol => :https
   end
 
+  has_many :space_rentals
+  has_many :renters, :source => :user, :through => :space_rentals
+
 
   scope :owned, -> { where('user_id is not null')}
   scope :available, -> { where('available is true')}

@@ -1,6 +1,16 @@
 class ChargesController < ApplicationController
   before_filter :authenticate_user!
   
+  def index
+    if params[:user_id].present?
+      @user = User.find(params[:user_id])
+      if @user.stripe_customer_id
+        @customer = Stripe::Customer.retrieve(@user.stripe_customer_id)
+        @subscription = @customer.subscription
+      end
+      @spaces = @user.rentals
+    end
+  end
   def new
   end
 
@@ -33,7 +43,6 @@ class ChargesController < ApplicationController
       # stripe customer is on our top-level account and can purchase from multiple providers.
       # Currently a customer can only rent a single space.
 
-      # TODO: debug customer creation
       customer = Stripe::Customer.create(
         email: current_user.email, 
         card:  params[:stripeToken],
@@ -43,6 +52,7 @@ class ChargesController < ApplicationController
       # save customer ID in the user record, mark the space as booked
       current_user.update_attribute(:stripe_customer_id, customer.id)
       @space.update_attribute(:available, false)
+      @space.renters << current_user
 
       # add last month rent as a deposit on the invoice
       charge = Stripe::Charge.create(

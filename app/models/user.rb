@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
     medium: '300x300>'
   }, :s3_protocol => :https
 
+  has_many :space_rentals
+  has_many :rentals, :source => :space, :through => :space_rentals
+
   strip_attributes :collapse_spaces => true
   validates :email, :uniqueness => { :case_sensitive => false }
   validates_email :email # client side validation of email address
