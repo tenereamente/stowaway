@@ -10,9 +10,7 @@ StowAway::Application.routes.draw do
 
   post '/api/stripe_webhook' => 'webhook#record_stripe_webhook' 
   
-  resources :spaces do
-    resources :listings
-  end
+  resources :spaces
 
   # post launch, this will be served on root instead of the prelaunch page
   get 'home' => 'home#home'
