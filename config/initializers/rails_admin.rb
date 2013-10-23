@@ -8,6 +8,6 @@ RailsAdmin.config do |config|
   #Rails.application.reload_routes!
   config.navigation_static_links = {
     'Billing Events' => '/admin/billing_events',
-    'New Blog Post' => '/posts/new'
+    'New Blog Post' => '/blog/posts/new'
   }
 end
