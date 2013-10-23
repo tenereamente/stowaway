@@ -7,6 +7,8 @@ class Space < ActiveRecord::Base
                   :normalized_address => "normalized_address",
                   :msg => "Sorry, not even Google could figure out where that is"
 
+  has_paper_trail
+
   [:photo, :photo1, :photo2, :photo3, :photo4, :photo5].each do |p|
     has_attached_file p, styles: { thumb: '100x100>', square: '200x200#', medium: '300x300>' }, :s3_protocol => :https
   end

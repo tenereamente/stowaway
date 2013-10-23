@@ -25,6 +25,8 @@ gem 'gmaps4rails'
 gem 'geocoder'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'paperclip', '~> 3.0'
+gem 'rails_admin'
+gem 'paper_trail', '>= 3.0.0.beta1'
 gem 'fog'
 gem 'aws-sdk', '~> 1.5.7'
 gem "resque", "~> 2.0.0.pre.1", :git => "https://github.com/resque/resque"
@@ -79,7 +81,7 @@ gem 'figaro'
 gem 'travis'
 gem 'compass-rails', "~> 2.0.alpha.0"
 gem 'zurb-foundation', "~> 4.3.1"
-gem 'google-webfonts'
+gem 'google-webfonts', require: false
 gem 'customerio'
 gem 'font-awesome-rails'
 gem 'country_select'

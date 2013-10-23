@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   scope :invitation_pending, -> { where(sign_in_count: 0, invitation_sent_at: nil) }
 
   blogs
+  has_paper_trail
 
   has_attached_file :avatar, styles: {
     thumb: '50x50>',
