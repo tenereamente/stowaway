@@ -35,9 +35,9 @@ class User < ActiveRecord::Base
   end
 
   # override Devise method so that people joining the waiting list don't get invited yet
-  def confirmation_required?
-    false
-  end
+  #def confirmation_required?
+  #  false
+  #end
 
   # override Devise method
   def active_for_authentication?
