@@ -28,14 +28,9 @@
               %li
                 = link_to 'Terms', terms_path
               - if current_user.has_role? :admin
-                %li.has-dropdown
-                  = link_to 'Admin', admin_path # TODO should this be clickable?
-                  %ul.dropdown
-                    %li= link_to 'Admin dashboard', admin_path
-                    %li
-                      = link_to 'Billing events', admin_billing_events_path
-                    %li
-                      = link_to 'New blog post', blogit.new_post_path
+                %li
+                  = link_to 'Admin', rails_admin_path
+                  
         - else
           %li
             = link_to 'Sign up', new_user_registration_path

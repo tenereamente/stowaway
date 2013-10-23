@@ -1,4 +1,9 @@
 StowAway::Application.routes.draw do
+  
+  
+  get '/admin/billing_events' => 'admin#billing_events' # TODO move to rails_admin custom action
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   root :to => "home#index"
   
   devise_for :users, :controllers => {:registrations => "registrations"}
@@ -16,8 +21,6 @@ StowAway::Application.routes.draw do
 
   get 'search' => 'search#index'
 
-  get 'admin' => 'admin#index'
-  get '/admin/billing_events' => 'admin#billing_events'
   get "/login" => redirect("/users/sign_in")
  
   mount Blogit::Engine => "/blog"
