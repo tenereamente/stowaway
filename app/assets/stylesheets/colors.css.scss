@@ -193,7 +193,7 @@ $burgundy: #541c1e;
     background-color: darken($base, 20);
     transition: background-color 300ms ease-out;
     color: #fff;
-    &.warmish {
+    &.warmish, &.launch {
       background-color: $accent;
       color: lighten($accent, 90);
       &:hover {
