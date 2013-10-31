@@ -1,6 +1,7 @@
+/* Colors */
 $green: #87ae3a;
 $powder: #7cabd3;
-$orange: tint(#f48231,20);
+$orange: lighten(#f48231,5);
 
 //
 // Foundation Variables
@@ -1287,7 +1288,7 @@ $topbar-link-bg-hover: darken($topbar-bg, 3%);
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: emCalc(13);
 // $topbar-menu-link-weight: bold;
-$topbar-menu-link-color: #555;
+$topbar-menu-link-color: white;
 $topbar-menu-icon-color: $green;
 $topbar-menu-link-color-toggled: white;
 $topbar-menu-icon-color-toggled: $green;
