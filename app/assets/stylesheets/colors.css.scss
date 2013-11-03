@@ -235,6 +235,22 @@ $burgundy: #541c1e;
     padding: 1em;
     background-color: lighten($base, 70);
   }
+  #flash_notice, #flash_alert {
+    padding: 1em;
+    margin: 10px 0;
+    border-radius: 3px;
+    text-align: center;
+  }
+  #flash_notice {
+    background-color: lighten($tertiary, 40);
+    border: solid 1px $tertiary;
+    color: $tertiary;
+  }
+  #flash_alert {
+    background-color: lighten($accent, 40);
+    border: solid 1px $accent;
+    color: $accent;
+  }
 }
 
 body {

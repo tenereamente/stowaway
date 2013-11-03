@@ -24,4 +24,6 @@ StowAway::Application.routes.draw do
   get "/login" => redirect("/users/sign_in")
  
   mount Blogit::Engine => "/blog"
+  
+  get '/orders/subregion_options' => 'orders#subregion_options'
 end

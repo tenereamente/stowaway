@@ -84,5 +84,5 @@ gem 'zurb-foundation', "~> 4.3.1"
 gem 'google-webfonts', require: false
 gem 'customerio'
 gem 'font-awesome-rails'
-gem 'country_select'
+gem 'carmen-rails', github: 'jim/carmen-rails'
 

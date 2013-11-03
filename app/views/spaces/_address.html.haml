@@ -8,18 +8,16 @@
   .large-3.column
     %h4 Address
   .large-9.column
-    .row
-      .small-12.column
-        = f.input :address1, required: true
-        = f.input :address2
+    = f.country_select :country_code, priority: %w(US), prompt: 'Select a country'
+    = f.input :address1, required: true
+    = f.input :address2
     .row
       .small-6.column
         = f.input :city, required: true
       .small-3.column
+        = render partial: 'subregion_select', locals: {parent_region: f.object.country_code}
         = f.input_field :state, :label => 'State', collection: us_states, autofocus: true, input_html: {style: 'height:100px!important;'}, required: true
       .small-3.column
         = f.input :zip, required: true
-    .row
-      .small-12.large-6.column
-        = f.input_field :country, input_html: { class: 'selectdrop' }, :label => 'Select Country', priority: [ "United States" ], required: true
+
   

@@ -81,5 +81,9 @@ class SpacesController < ApplicationController
     space.destroy
     redirect_to spaces_path, :notice => "Space deleted."
   end
+  
+  def subregion_options
+    render partial: 'subregion_select'
+  end
 
 end
