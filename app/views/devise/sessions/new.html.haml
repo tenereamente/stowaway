@@ -7,4 +7,4 @@
       = f.input :remember_me, :class => 'checkbox', :label => false, :inline_label => 'remember me', :as => :boolean if devise_mapping.rememberable? 
       = f.button :submit, "Sign in", :class => 'radius button btn-primary'
 
-    - #= render "devise/shared/links" don't show these links for now
+      = render "devise/shared/links"
