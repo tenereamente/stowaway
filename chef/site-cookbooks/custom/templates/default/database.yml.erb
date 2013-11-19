@@ -12,7 +12,7 @@
 
 staging:
   adapter: postgresql
-  database: <%= node['custom']['database'] %>
+  database: stowaway_staging
   username: <%= node['custom']['database_user'] %>
 <% if node['custom']['database_password'] %>
   password: <%= node['custom']['database_password'] %>
