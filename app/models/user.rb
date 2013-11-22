@@ -27,13 +27,13 @@ class User < ActiveRecord::Base
   # override Devise method
   # no password is required when the account is created; validate password when the user sets one
   validates_confirmation_of :password
-  def password_required?
-    if !persisted?
-      !(password != "")
-    else
-      !password.nil? || !password_confirmation.nil?
-    end
-  end
+  #def password_required?
+  #  if !persisted?
+  #    !(password != "")
+  #  else
+  #    !password.nil? || !password_confirmation.nil?
+  #  end
+  #end
 
   # override Devise method so that people joining the waiting list don't get invited yet
   #def confirmation_required?
