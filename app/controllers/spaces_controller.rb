@@ -47,8 +47,9 @@ class SpacesController < ApplicationController
   def create
     if user_signed_in?
       u = current_user
-    elsif space_params[:email].exists?
-      u = User.find_or_create_by_email({ email: space_params[:email]})  
+    elsif params[:user_email]
+      u = User.find_or_create_by_email({ email: params[:user_email]})
+      u.send_confirmation_instructions  
     else
       redirect_to new_space_path, :error => "Must be signed in or provide email address to list a space"
     end
