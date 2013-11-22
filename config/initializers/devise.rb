@@ -7,7 +7,12 @@ Devise.setup do |config|
   config.mailer_sender = "hello@stowaway.co"
 
   # Configure the class responsible to send e-mails.
-  config.mailer = "CustomerioDeviseMailer"
+  # only use Customer.io in production / staging, not in dev and test
+  unless Rails.env.test? or Rails.env.development?
+
+    config.mailer = "CustomerioDeviseMailer"
+
+  end
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
