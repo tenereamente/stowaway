@@ -36,9 +36,9 @@ default_attributes(
     "mail" => nil
   },
   :rbenv => {
-    rubies: "2.0.0-p247",
-    global: "2.0.0-p247",
-    gems: {'2.0.0-p247' => [{ name: 'bundler' }]}
+    rubies: "2.0.0-p353",
+    global: "2.0.0-p353",
+    gems: {'2.0.0-p353' => [{ name: 'bundler' }]}
   },
   :postgresql => {
     password: { postgres: "totallyinsecure" },
