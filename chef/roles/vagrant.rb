@@ -35,6 +35,7 @@ default_attributes(
     "allowed_origins" => ['${distro_id}:${distro_codename}-security'],
     "mail" => nil
   },
+  :ruby_build => { upgrade: "sync"},
   :rbenv => {
     rubies: "2.0.0-p353",
     global: "2.0.0-p353",
