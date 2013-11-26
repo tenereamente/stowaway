@@ -18,6 +18,15 @@ $burgundy: #541c1e;
 */
 
 @mixin theme($base, $accent, $tertiary) {
+  background: $base $bg-image;
+  color: darken($base, 20);
+  &.sessions {
+    background-color: darken($base,50);
+  }
+  .center-logo {
+    a {
+    }
+  }
   blockquote {
     color: darken($tertiary, 10);
     background: lighten($tertiary, 50);
@@ -26,8 +35,6 @@ $burgundy: #541c1e;
       text-decoration: underline;
     }
   }
-  background: $base $bg-image;
-  color: darken($base, 20);
   .launch {
     background-color: $accent;
     box-shadow: 1px 2px 0 darken($accent,20);
@@ -135,7 +142,7 @@ $burgundy: #541c1e;
     }
   }
   .contain-to-grid {
-    background: rgba(darken($base, 60),.9);
+    background: darken($base, 50);
     .top-bar {
       background: none;
       .top-bar-section .has-dropdown {
