@@ -29,7 +29,7 @@ set :repository,  'https://github.com/stowawayco/stowaway.git'
 set :branch, :master
 set :deploy_via, :remote_cache
 
-set :bundle_flags, '--deployment --quiet --binstubs --shebang ruby-local-exec'
+set :bundle_flags, '--deployment --binstubs --shebang ruby-local-exec'
 
 set :use_sudo, false
 set :group_writeable, false
