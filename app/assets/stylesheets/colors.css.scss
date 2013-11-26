@@ -18,6 +18,14 @@ $burgundy: #541c1e;
 */
 
 @mixin theme($base, $accent, $tertiary) {
+  blockquote {
+    color: darken($tertiary, 10);
+    background: lighten($tertiary, 50);
+    border: 1px solid lighten($tertiary, 20);
+    a {
+      text-decoration: underline;
+    }
+  }
   background: $base $bg-image;
   color: darken($base, 20);
   .launch {

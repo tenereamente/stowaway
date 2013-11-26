@@ -1,7 +1,15 @@
 
 %h2 
   Find a Space
-
+%blockquote
+  %strong What is Stowaway?
+  It's a web app that helps you find and offer storage with ease. Do you have too much stuff and need place to store it?
+  %a{:href => "#", :title => "Right in Portland, Maine"} Search for storage.
+  Perhaps you have extra space and would to offer it as storage?
+  %a{:href => "#", :title => "Create a Listing"} Create a listing.
+  We are currenly in beta and only operational in Portland, Maine.
+  %a{:href => "#", :title => "Read more about beta"} Here's a blog post explaining the whole thing.
+  
 = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
 %a#filter_btn.button.large.standard.expand.radius
   %i.icon-filter
