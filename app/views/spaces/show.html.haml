@@ -25,18 +25,18 @@
             = simple_form_for @space do |f|
               = f.hidden_field :complete, :value => true
               = f.hidden_field :available, :value => true
-              = f.button :submit, 'Looks good, list it!', class: 'btn-primary button greenie radius'
+              = f.button :submit, 'Looks good, list it!', class: 'btn-primary fullbtn button greenie radius'
       %li
         - if @space.available
           Take your space off the market for now?
           = simple_form_for @space do |f|
             = f.hidden_field :available, :value => false
-            = f.button :submit, "Deactivate", class: 'btn-primary button standard radius'
+            = f.button :submit, "Deactivate", class: 'btn-primary fullbtn button standard radius'
         - elsif @space.complete
           Mark your space as available again?
           = simple_form_for @space do |f|
             = f.hidden_field :available, :value => true
-            = f.button :submit, "Active", class: 'btn-primary button greenie radius'
+            = f.button :submit, "Active", class: 'btn-primary fullbtn button greenie radius'
     .price
       %h3
         $
@@ -62,21 +62,35 @@
     = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
   .large-8.small-12.pull-4.columns
     %section.mb20
-      %ul.small-block-2.large-block-grid-3.features
-        %li.entypo-home 
-          #{@space.environment}
-        %li.maki-campsite
-          #{@space.type}
-        %li.icon-calendar.fa-calendar
-          #{@space.access} Access
+      %ul.small-block-3.large-block-grid-6.features
         %li
-          - if @space.climate_controlled
+          - if @space.environment == "indoor"
+            .typicons-home Indoor
+          - elsif @space.environment == "outdoor"
+            .maki-tree-1 Outdoor
+        %li
+          - if @space.type == "attic"
+            .entypo-flashlight Attic Space
+          - elsif @space.type == "spare room"
+            .maki-lodging Spare Room
+          - elsif @space.type == "garage"
+            .maki-warehouse Garage
+        %li
+          - if @space.access == "anytime"
+            .typicons-repeat Anytime Access
+          - elsif @space.access == "by appointment"
+            .typicons-shuffle Appointment Access
+          - elsif @space.access == "limited"
+            .typicons-loop One-Time Access
+  
+        - if @space.climate_controlled
+          %li
             .entypo-thermometer Climate Controlled
-        %li
-          - if @space.lockable
+        - if @space.lockable
+          %li
             .entypo-lock Lockable
-        %li
-          - if @space.attended
+        - if @space.attended
+          %li
             .maki-police Attended 
       /
         %li
@@ -86,12 +100,16 @@
           -else
             Not featured
     %ul.small-block-2.large-block-grid-4.fitimg
+    -if @space.photo2?
       %li
         = image_or_placeholder(@space.photo2)
+    -if @space.photo3?
       %li
         = image_or_placeholder(@space.photo3)
+    -if @space.photo4?
       %li
         = image_or_placeholder(@space.photo4)
+    -if @space.photo5?
       %li
         = image_or_placeholder(@space.photo5)
     %section.mb20
@@ -101,10 +119,9 @@
     %section.mb50
       %h3
         - if @space.tags.any? 
-          Tags
-
-          - @space.tags.each do |tag|
-            = link_to tag.name, spaces_url(tag: tag.name)
+          .entypo-tag
+            - @space.tags.each do |tag|
+              = link_to tag.name, spaces_url(tag: tag.name)
 
     
     

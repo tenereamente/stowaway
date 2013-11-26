@@ -187,8 +187,16 @@ $burgundy: #541c1e;
       margin-bottom: .25em;
     }
   }
+  ul.features {
+    li {
+      :before {
+        color: darken($base, 10);
+      }
+      color: darken($base, 40);
+    }
+  }
   .slider > .dragger {
-    background: $green;
+    background: $tertiary;
     border: 0 none;
     box-shadow: transparent none;
   }
@@ -197,6 +205,7 @@ $burgundy: #541c1e;
   }
   .bigtime, .smalltime {
     border-radius: 3px;
+    background-image: url(http://www.destateparks.com/irimarina/images/Drystack_Example_Forklift.jpg);
     h2 {
       color: lighten($base,90);
     }
