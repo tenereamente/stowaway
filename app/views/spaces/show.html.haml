@@ -12,6 +12,31 @@
             
 .row
   .large-4.small.12.push-8.columns
+    %ul
+      %li
+        Status:
+        - if @space.complete
+          Active
+        - else
+          Inactive
+        - if can_edit_space?(@space) and (not @space.complete)
+          %li
+            Done with describing your space?
+            = simple_form_for @space do |f|
+              = f.hidden_field :complete, :value => true
+              = f.hidden_field :available, :value => true
+              = f.button :submit, 'Looks good, list it!', class: 'btn-primary button greenie radius'
+      %li
+        - if @space.available
+          Take your space off the market for now?
+          = simple_form_for @space do |f|
+            = f.hidden_field :available, :value => false
+            = f.button :submit, "Deactivate", class: 'btn-primary button standard radius'
+        - elsif @space.complete
+          Mark your space as available again?
+          = simple_form_for @space do |f|
+            = f.hidden_field :available, :value => true
+            = f.button :submit, "Active", class: 'btn-primary button greenie radius'
     .price
       %h3
         $
@@ -34,58 +59,32 @@
           = button_tag type: "submit", name: nil, :class => "button book-it-button radius has-tip fullbtn greenie", 'data-address'=> @space.normalized_address, 'data-price'=> @space.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key], 'data-image'=>@space.photo.url(:thumb)  do
             %i.icon-ok
             Book It
-      
     = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
   .large-8.small-12.pull-4.columns
     %section.mb20
-      %h3 Overview
-      %p= @space.notes
-    %section.mb20
-      %h3 Features
-      %ul
+      %ul.small-block-2.large-block-grid-3.features
+        %li.entypo-home 
+          #{@space.environment}
+        %li.maki-campsite
+          #{@space.type}
+        %li.icon-calendar.fa-calendar
+          #{@space.access} Access
         %li
-          Environment is: #{@space.environment}
+          - if @space.climate_controlled
+            .entypo-thermometer Climate Controlled
         %li
-          Type is: #{@space.type}
+          - if @space.lockable
+            .entypo-lock Lockable
         %li
-          Access is: #{@space.access}
-        %li  
-          Climate controlled:  #{@space.climate_controlled}
+          - if @space.attended
+            .maki-police Attended 
+      /
         %li
-          Lockable: #{@space.lockable}
-        %li
-          Attended: #{@space.attended}
-        %li
-          Featured: #{@space.featured}
-        %li
-          Completed listing: #{@space.complete}
-          - if can_edit_space?(@space) and (not @space.complete)
-            %li
-              Are you done with describing your space?
-              = simple_form_for @space do |f|
-                = f.hidden_field :complete, :value => true
-                = f.hidden_field :available, :value => true
-                = f.button :submit, 'Looks good, list it!', class: 'btn-primary button greenie radius'
-        %li
-          Space Available: #{@space.available}
-          - if @space.available
-            Want to take your space off the market for now?
-            = simple_form_for @space do |f|
-              = f.hidden_field :available, :value => false
-              = f.button :submit, 'Yep, mark space as unavailable', class: 'btn-primary button greenie radius'
-          - elsif @space.complete
-            Want to mark your space as available again?
-            = simple_form_for @space do |f|
-              = f.hidden_field :available, :value => true
-              = f.button :submit, 'Yep, mark space as available', class: 'btn-primary button greenie radius'
-    %section.mb50
-      %h3
-        - if @space.tags.any? 
-          Tags
-
-          - @space.tags.each do |tag|
-            = link_to tag.name, spaces_url(tag: tag.name)
-
+          -if @space.featured
+            %i.icon-star
+            Featured!
+          -else
+            Not featured
     %ul.small-block-2.large-block-grid-4.fitimg
       %li
         = image_or_placeholder(@space.photo2)
@@ -95,6 +94,17 @@
         = image_or_placeholder(@space.photo4)
       %li
         = image_or_placeholder(@space.photo5)
+    %section.mb20
+      %h3 Overview
+      %p= @space.notes
+    
+    %section.mb50
+      %h3
+        - if @space.tags.any? 
+          Tags
+
+          - @space.tags.each do |tag|
+            = link_to tag.name, spaces_url(tag: tag.name)
 
     
     

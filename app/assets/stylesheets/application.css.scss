@@ -21,10 +21,25 @@
 @import "base";
 
 @include sticky-footer(83px, "#main", "#f_shiv", "#footer");
+@import url(http://weloveiconfonts.com/api/?family=entypo|maki|typicons);
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
 
-$small-screen: 480px;
-$medium-screen: 42.66667em;
-$large-screen: 1440px;
+/* maki */
+[class*="maki-"]:before {
+  font-family: 'maki', sans-serif;
+}
+
+/* typicons */
+[class*="typicons-"]:before {
+  font-family: 'Typicons', sans-serif;
+}
+
+$small-screen: 30em;
+$medium-screen: 42em;
+$large-screen: 90em;
 
 $em-base: 18 !default;
 
@@ -261,6 +276,9 @@ blockquote {
   padding: 1em;
   border-radius: 6px;
   font-size: 1.2em;
+  @media screen and (max-width: $medium-screen) {
+    font-size: 1em;
+  }
 }
 
 .center-logo {

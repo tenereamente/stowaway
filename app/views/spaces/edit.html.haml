@@ -33,5 +33,5 @@
       = render partial: 'features', :locals => { f: f }
       .row
         .small-12.large-6.column
-          = f.button :submit, 'Update', class: 'btn-primary button greenie radius'
+          = f.button :submit, 'Update & Preview', class: 'btn-primary button greenie radius'
       #{link_to "Delete Listing", space_path(@resource), :data => { :confirm => "Are you sure?", :class => 'button btn-primary red radius' }, :method => :delete}.
