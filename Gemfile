@@ -86,6 +86,5 @@ gem 'google-webfonts', require: false
 gem 'customerio'
 gem 'font-awesome-rails'
 gem 'carmen-rails', github: 'jim/carmen-rails'
-gem 'messaging'
 gem 'mailboxer'
 
