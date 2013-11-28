@@ -57,7 +57,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'knife-solo_data_bag'
-  gem 'capistrano'
+  gem 'capistrano', '~> 2.15.0'
   gem 'capistrano-ext'
   gem 'pry-byebug'
   gem 'gemedit'
@@ -72,7 +72,7 @@ group :test do
 end
 
 group :deployment do
-  gem 'capistrano'
+  gem 'capistrano', '~> 2.15.0'
   gem 'capistrano_colors'
   gem 'capistrano-notifier'
 end
