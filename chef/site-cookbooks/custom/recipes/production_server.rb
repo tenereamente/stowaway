@@ -133,7 +133,8 @@ template "#{node['custom']['deploy_to']}/shared/config/application.yml" do
             stripe_pk: passwords['prod']['stripe_live_pk'],
             stripe_sk: passwords['prod']['stripe_live_sk'],
             getsentry_key: passwords['prod']['getsentry_key'],
-            customerio_api_key: passwords['prod']['customerio_api_key']
+            customerio_api_key: passwords['prod']['customerio_api_key'],
+            devise_secret_key: passwords['prod']['devise_secret_key']
 
 end
 

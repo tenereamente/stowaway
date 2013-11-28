@@ -14,6 +14,12 @@ Devise.setup do |config|
 
   end
 
+  if Rails.env.development? or Rails.env.test?
+    config.secret_key = 'deviseinsecurekeyonlyforuseonlocalhostdevelopmentnotonrealservers'
+  else
+    config.secret_key = ENV['DEVISE_SECRET_KEY']
+  end
+
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be

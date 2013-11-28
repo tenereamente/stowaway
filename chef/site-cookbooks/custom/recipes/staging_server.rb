@@ -81,7 +81,9 @@ template "/app/staging/shared/config/application.yml" do
             aws_bucket: "stowawayco-staging",
             stripe_pk: passwords['prod']['stripe_test_pk'],
             stripe_sk: passwords['prod']['stripe_test_sk'],
-            getsentry_key: passwords['prod']['getsentry_key']
+            getsentry_key: passwords['prod']['getsentry_key'],
+            customerio_api_key: passwords['prod']['customerio_api_key'],
+            devise_secret_key: passwords['prod']['devise_secret_key']
 end
 
 directory "/etc/nginx/ssl" do
