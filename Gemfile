@@ -21,10 +21,11 @@ gem 'client_side_validations', git: 'git://github.com/bcardarella/client_side_va
 gem 'client_side_validations-simple_form', git: 'git://github.com/saveritemedical/client_side_validations-simple_form.git'
 gem 'will_paginate'
 gem 'acts-as-taggable-on'
-gem 'gmaps4rails'
+gem 'gmaps4rails', "~> 1.5.0"
 gem 'geocoder'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'paperclip', '~> 3.0'
+gem 'unf' # used by AWS/FOG
 gem 'rails_admin'
 gem 'paper_trail', '>= 3.0.0.beta1'
 gem 'fog'
@@ -85,4 +86,5 @@ gem 'google-webfonts', require: false
 gem 'customerio'
 gem 'font-awesome-rails'
 gem 'carmen-rails', github: 'jim/carmen-rails'
+gem 'mailboxer'
 

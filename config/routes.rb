@@ -16,14 +16,16 @@ StowAway::Application.routes.draw do
   post '/api/stripe_webhook' => 'webhook#record_stripe_webhook' 
   
   resources :spaces
+  resources :messages, as: 'messages'
 
   get 'terms' => 'home#terms'
 
   get 'search' => 'search#index'
 
   get "/login" => redirect("/users/sign_in")
- 
+
   mount Blogit::Engine => "/blog"
+
   
   get '/orders/subregion_options' => 'orders#subregion_options'
 end

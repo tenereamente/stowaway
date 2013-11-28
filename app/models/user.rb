@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
 
   scope :invitation_pending, -> { where(sign_in_count: 0, invitation_sent_at: nil) }
 
-  blogs
+  has_many :blog_posts, :as => "blogger", :class_name => "Blogit::Post"
   has_paper_trail
+  acts_as_messageable
 
   has_attached_file :avatar, styles: {
     thumb: '50x50>',
@@ -51,6 +52,14 @@ class User < ActiveRecord::Base
     else
       errors.add :base, "You must receive an invitation before you set your password."
     end
+  end
+
+  def mailboxer_email(object)
+    # TODO check user preferences to see if they want notifications
+    # if wants_notifications
+    return email
+    # else
+    #   nil
   end
   
 end
