@@ -18,11 +18,11 @@
       %th
     - @messages.each do |m|
       %tr{ class: "#{ 'unread' if m.is_unread?(current_user) }" }
-        - unless @box == 'trash'
+        - unless true # @box == 'trash' # TODO decide whether to support message deletion
           %td= check_box_tag '', m.id, false, class: 'delete_multiple_checkbox', name: "conversations[]"
         %td= link_to m.last_sender.name, message_path(m)
         %td= link_to m.subject, message_path(m)
         %td= link_to m.count_messages, message_path(m)
         %td= link_to truncate(m.last_message.body), message_path(m)
-  - unless @box == 'trash'
+  - unless true # @box == 'trash' # TODO decide whether to support message deletion
     = submit_tag "Delete checked messages", id: 'delete_multiple_button'

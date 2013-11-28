@@ -53,5 +53,13 @@ class User < ActiveRecord::Base
       errors.add :base, "You must receive an invitation before you set your password."
     end
   end
+
+  def mailboxer_email(object)
+    # TODO check user preferences to see if they want notifications
+    # if wants_notifications
+    return email
+    # else
+    #   nil
+  end
   
 end

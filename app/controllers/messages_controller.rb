@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(params.require(:message).permit(:conversation_id, :body))
+    @message = Message.new(params.require(:message).permit(:conversation_id, :body, :subject).merge(sender: current_user))
 
     if @message.conversation_id
       @conversation = Conversation.find(@message.conversation_id)
