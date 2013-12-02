@@ -1,11 +1,16 @@
-.row.collapse
-  %h2 sign up
-  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
-    = f.error_notification
-    = display_base_errors resource
-    = f.input :name, :autofocus => true
-    = f.input :email, :required => true
-    = f.input :password, :required => true
-    = f.input :password_confirmation, :required => true
-    = f.button :submit, 'Sign up', :class => 'button radius btn-primary'
-  = render "devise/shared/links"
+.row
+  .logo.center-logo
+    = link_to "stowaway.co", root_path
+    %small.beta beta
+.row
+  .box.columns.large-6.small-centered.small-11
+    %h2 Sign Up
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
+      = f.error_notification
+      = display_base_errors resource
+      = f.input :name, :autofocus => true
+      = f.input :email, :required => true
+      = f.input :password, :required => true
+      = f.input :password_confirmation, :required => true
+      = f.button :submit, 'Sign up', :class => 'button radius btn-primary'
+    = render "devise/shared/links"

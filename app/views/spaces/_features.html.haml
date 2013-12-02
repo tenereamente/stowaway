@@ -7,9 +7,9 @@
         = b.radio_button(class: 'hidden-field')
         = b.label(class: 'button', id: "#{b.text.underscore}_button_label") do
           - if b.text == 'Indoor'
-            %i.icon-home
+            %span.typicons-home
           - else
-            %i.icon-sun
+            %span.maki-tree-1
           %span
             = b.text
 .row
@@ -32,21 +32,6 @@
 
           %span
             = b.text
-    /        
-      %a.button.dropdown{'data-dropdown' => 'data1', :href => "#"} Other
-      %ul#drop1.f-dropdown
-        %li
-          %a.button Trailer
-        %li
-          %a.button Cave
-        %li
-          %a.button Treehouse
-        %li
-          %a.button Tipi
-        %li
-          %a.button Earthship
-        %li
-          %a.button Closet
     #outdoor_button_group.outdoor.button-group.round.what{ style: "display: none" }
       - space_type = [[:driveway, 'Driveway'],
         [:covered, 'Covered Area'],

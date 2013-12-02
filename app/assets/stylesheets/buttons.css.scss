@@ -27,6 +27,10 @@ body .contain-to-grid .top-bar {
     @media screen and (max-width: 680px) {
       float: left;
       width: 48%;
+      margin: 0 1%;
+    }
+    @media screen and (max-width: 320px) {
+      width: 100%;
     }
     a.button {
       padding: 1em;

@@ -37,7 +37,7 @@
           = simple_form_for @space do |f|
             = f.hidden_field :available, :value => true
             = f.button :submit, "Active", class: 'btn-primary fullbtn button greenie radius'
-    .price
+    .well
       %h3
         $
         #{@space.monthly_price} / Month
@@ -92,13 +92,7 @@
         - if @space.attended
           %li
             .maki-police Attended 
-      /
-        %li
-          -if @space.featured
-            %i.icon-star
-            Featured!
-          -else
-            Not featured
+     
     %ul.small-block-2.large-block-grid-4.fitimg
     -if @space.photo2?
       %li

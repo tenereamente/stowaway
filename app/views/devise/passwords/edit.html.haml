@@ -1,6 +1,10 @@
-.row.mt20
+.row
+  .logo.center-logo
+    = link_to "stowaway.co", root_path
+    %small.beta beta
+.row
   .box.columns.large-6.small-centered.small-11
-    %h2 Change your password
+    %h2 Password Change
     = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
       = f.error_notification
       = f.input :reset_password_token, :as => :hidden

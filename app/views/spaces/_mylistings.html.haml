@@ -1,28 +1,39 @@
 - @spaces.each do |s|
   .row.locations
-    .small-2.large-2.column
+    .large-8.column
       = link_to image_or_placeholder(s.photo, :square), space_path(s)
-    .small-10.large-6.column
       %h3
         = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
       %h5
         %i.icon-map-marker.pull-left
         #{s.normalized_address}
-      %ul.inline-list
+      %ul
         %li
-          %i.icon-globe.pull-left
-          #{s.environment}
+          - if s.type == "attic"
+            .entypo-flashlight Attic Space
+          - elsif s.type == "spare room"
+            .maki-lodging Spare Room
+          - elsif s.type == "garage"
+            .maki-warehouse Garage
+          - elsif s.type == "basement"
+            .maki-lodging Basement
+          - elsif s.type == "covered area"
+            .icon-umbrella Covered Area
+          - elsif s.type == "uncovered area"
+            .maki-warehouse Uncovered Area
+          - elsif s.type == "driveway"
+            .icon-road Driveway
         %li
-          %i.icon-building.pull-left
-          #{s.type}
-        %li
-          %i.icon-time.pull-left
-          #{s.access}
+          - if s.access == "anytime"
+            .typicons-repeat Anytime Access
+          - elsif s.access == "by appointment"
+            .typicons-shuffle Appointment Access
+          - elsif s.access == "limited"
+            .typicons-loop One-Time Access
 
-          
     .small-12.large-4.column
-      .price
-        %h2
+      .well
+        %h3
           $
           = succeed " / Month" do
             = h s.monthly_price

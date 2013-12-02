@@ -20,12 +20,8 @@ $burgundy: #541c1e;
 @mixin theme($base, $accent, $tertiary) {
   background: $base $bg-image;
   color: darken($base, 20);
-  &.sessions {
+  &.sessions, &.registrations, &.passwords, &.confirmations {
     background-color: darken($base,50);
-  }
-  .center-logo {
-    a {
-    }
   }
   blockquote {
     color: darken($tertiary, 10);
@@ -91,10 +87,6 @@ $burgundy: #541c1e;
   }
   .box {
     background: lighten($base, 32);
-    border-radius: 3px;
-    padding: 2em;
-    margin-bottom: 25px;
-    box-shadow: 0 0 0 10px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
     color: #555;
     .input {
       label {
@@ -240,7 +232,7 @@ $burgundy: #541c1e;
       }
     }
     &.standard {
-      background-color: $base;
+      background-color: darken($base,20);
       color: lighten($base, 90);
       &:hover {
         background-color: darken($base, 10);
@@ -256,8 +248,7 @@ $burgundy: #541c1e;
     }
   }
   .well {
-    padding: 1em;
-    background-color: lighten($base, 70);
+    background-color: lighten($base, 30);
   }
   #flash_notice, #flash_alert {
     padding: 1em;

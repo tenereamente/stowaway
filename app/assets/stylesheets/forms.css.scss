@@ -1,6 +1,6 @@
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
-  padding: 0 .5em;
-  font-size: 1.5em;
+  padding: 1.25em .5em;
+  font-size: 1em;
   border-radius: 5px;
   text-transform: auto;
 }
@@ -18,10 +18,8 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   label {
     position: absolute;
     z-index: 2;
-    top: 16px;
-    right: 15px;
-    left: 15px;
-    color: #9a9da1;
+    top: .75em;
+    left: .75em;
     line-height: 1;
     margin: 0;
     overflow: hidden;

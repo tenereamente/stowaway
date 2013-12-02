@@ -15,7 +15,6 @@
  *= require gmaps4rails
  *= require select2
  *= require simple-slider
- *= require deviceable
 */
 
 @import "base";
@@ -117,7 +116,7 @@ footer {
 
 .box, .reveal-modal {
   background: #fff;
-  border-radius: 5px;
+  @include border-radius(3px);
   padding: 2em;
   margin-bottom: 25px;
   box-shadow: 0 0 0 10px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
@@ -246,11 +245,22 @@ p {
   }
 }
 
-.price {
+// Layout Elements
+
+.box {
+  padding: 1em 2%;
+  margin-bottom: 25px;
+  box-shadow: 0 0 0 10px rgba(5,55,88,0.1),0 1px 3px rgba(0,0,0,0.1);
+}
+
+.well {
   border: 0!important;
   border-radius: 3px;
   margin-bottom: 1.5em;
-  padding: 1em 1em 1.75em;
+  padding: 1em 1em 0 1em;
+  h3 {
+    text-align:center;
+  }
 }
 
 .fitimg {
@@ -260,6 +270,8 @@ p {
 }
 img {
   border-radius: 3px;
+  max-width: 100%;
+  height: auto;
 }
 .clearfix:after {
   content: "";
@@ -285,4 +297,8 @@ blockquote {
   text-align: center;
   margin: 2em 0;
   font-size: 200%;
+  @media screen and (max-width: 320px) {
+    margin: 1em 0;
+    font-size: 150%;
+  }
 }

@@ -6,6 +6,28 @@
   img {
     height: 110px;
     width: 110px;
+    float: left;
+    margin-right: 1em;
+    @media screen and (max-width: 320px) {
+      width: 100%;
+      height: auto;
+      margin-right: 0;
+      margin-bottom: 1em;
+    }
+  }
+  ul {
+    margin-bottom: 1em;
+    float: left;
+    li {
+      float: left;
+      margin-right: 1em;
+      :before {
+        margin-right: .5em;
+      }
+    }
+  }
+  form {
+    margin: 0;
   }
   .avatar {
     img {
