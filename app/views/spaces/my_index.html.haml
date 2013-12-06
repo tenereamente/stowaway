@@ -1,6 +1,8 @@
 %h2.title
-  My Spaces
+  Listed Spaces
 
 /= image_or_placeholder(@user.avatar)
-
 = render 'mylistings', locals: { 'spaces' => @spaces }  
+
+%h2.title
+  Booked Spaces

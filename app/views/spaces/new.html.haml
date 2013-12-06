@@ -2,16 +2,16 @@
   .row
     .large-8.small-12.columns
       %h2 Add a Space
-      %h5 you're well on your way to becoming a spacilist.
       - unless signed_in?
         .input
           %label.string.required.control-label.user_email{ :for => 'user_email'} Email address
           = email_field_tag :user_email
+  /
     .large-4.small-12.columns
-      .price
-        %h2#monthly_price_label
+      .well
+        %h3#monthly_price_label
           %span
-            Set a montly price
+            Montly Price
         = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "0,500", 'data-slider-step' => '5', value: 50 }
   .row
     .large-8.small-12.columns
