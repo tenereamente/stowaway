@@ -18,4 +18,4 @@
   = simple_form_for @message do |f|
     = f.input :conversation_id, as: :hidden
     = f.input_field :body, as: :text, label: 'Reply'
-    = f.button :submit, 'Reply to conversation'
+    = f.button :submit, 'Reply to conversation', class: "button greenie radius"

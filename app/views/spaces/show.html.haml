@@ -12,6 +12,13 @@
             
 .row
   .large-4.small.12.push-8.columns
+    = link_to user_path(@space.user), id: 'account' do
+      - if @space.user.avatar.exists?
+        = image_tag @space.user.avatar.url(:thumb)
+      - else
+        = image_tag "//placehold.it/32x32", :class => "avatar"
+      = @space.user.name
+
     %ul
       %li
         Status:
@@ -26,17 +33,17 @@
               = f.hidden_field :complete, :value => true
               = f.hidden_field :available, :value => true
               = f.button :submit, 'Looks good, list it!', class: 'btn-primary fullbtn button greenie radius'
-      %li
-        - if @space.available
-          Take your space off the market for now?
-          = simple_form_for @space do |f|
-            = f.hidden_field :available, :value => false
-            = f.button :submit, "Deactivate", class: 'btn-primary fullbtn button standard radius'
-        - elsif @space.complete
-          Mark your space as available again?
-          = simple_form_for @space do |f|
-            = f.hidden_field :available, :value => true
-            = f.button :submit, "Active", class: 'btn-primary fullbtn button greenie radius'
+          %li
+            - if @space.available
+              Take your space off the market for now?
+              = simple_form_for @space do |f|
+                = f.hidden_field :available, :value => false
+                = f.button :submit, "Deactivate", class: 'btn-primary fullbtn button standard radius'
+            - elsif @space.complete
+              Mark your space as available again?
+              = simple_form_for @space do |f|
+                = f.hidden_field :available, :value => true
+                = f.button :submit, "Active", class: 'btn-primary fullbtn button greenie radius'
     .well
       %h3
         $
@@ -57,8 +64,8 @@
         = form_tag(user_charges_path(current_user), method: :post) do  
           = hidden_field_tag 'space_id', @space.id
           = button_tag type: "submit", name: nil, :class => "button book-it-button radius has-tip fullbtn greenie", 'data-address'=> @space.normalized_address, 'data-price'=> @space.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key], 'data-image'=>@space.photo.url(:thumb)  do
-            %i.icon-ok
-            Book It
+            %i.icon-credit-card
+            Pay by Card
     = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
   .large-8.small-12.pull-4.columns
     %section.mb20
@@ -116,6 +123,12 @@
           .entypo-tag
             - @space.tags.each do |tag|
               = link_to tag.name, spaces_url(tag: tag.name)
+    %h3 Message the Owner
+    = simple_form_for Message.new do |f|
+      = f.input :recipient, as: :hidden, input_html: { value: s.user }
+      = f.input :subject, as: :hidden, input_html: { value: "Inquiry about #{s.title}" }
+      = f.input_field :body, as: :text, label: 'Message'
+      = f.button :submit, 'Send', class: "button fullbtn radius"
 
     
     

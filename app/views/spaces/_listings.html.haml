@@ -8,7 +8,8 @@
         - if can_edit_space?(s)
           = link_to edit_space_path(s), {:class=>'edit'} do
             EDIT
-      %h5 #{s.user.name}
+      %h5
+        = link_to s.user.name, user_path(s.user)
       %h5
         %i.icon-map-marker.pull-left
         #{s.address1}, #{s.city} #{s.state}
@@ -51,12 +52,12 @@
           = link_to new_user_session_path, {:class=>'button radius greenie fullbtn hast-tip', :title => 'Sign in and book'} do
             %i{:class=>'icon-ok'}
             Sign in & Book It
-        - else
-          = form_tag(user_charges_path(current_user), method: :post) do  
-            = hidden_field_tag 'space_id', s.id
-            = button_tag type: "submit", name: nil, :class => "button book-it-button radius fullbtn greenie", 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key], 'data-image'=>s.photo.url(:thumb)  do
-              %i.icon-ok
-              Book It
-        
-        = link_to 'Contact owner', 'javascript:;', class: 'button fullbtn radius', "data-reveal-id" => "messageModal"
-= render 'spaces/modals'
+        - elsif can_edit_space?(s)
+          = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
+            %i{:class=>'icon-pencil'}
+            Edit Listing
+        - elsif not can_edit_space?(s)
+          = link_to space_path(s), {:class=>'button radius fullbtn greenie'} do
+            %i.icon-ok
+            Book It
+

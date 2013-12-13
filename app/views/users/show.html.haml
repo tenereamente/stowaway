@@ -6,8 +6,7 @@
       = image_tag "http://placehold.it/250x250"
 
     %h3.title #{@user.name}
-    %p.small
-    = mail_to "#{@user.email if @user.email}", {:class=>'button radius fullbtn standard'} do
+    = link_to 'javascript:;', {class: 'button fullbtn radius', "data-reveal-id" => "messageModal"} do
       %i{:class=>'icon-envelope'}
       Message
       
@@ -22,24 +21,22 @@
       .row
         .small-8.column
           .row
-            .small-3.column.fitimg
-              = link_to image_or_placeholder(s.photo, :thumb), space_path(s)
-            .small-9.column
-              %h3
-                = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
-              %h5
-                %i.icon-map-marker.pull-left
-                #{s.address1}, #{s.city} #{s.state}
-              %ul.inline-list
-                %li{:class=>'has-tip', "data-tooltip" => "", :title => s.environment}
-                  #{s.environment}
-                %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
-                  #{s.type}
-                %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
-                  #{s.access}
+            = link_to image_or_placeholder(s.photo, :thumb), space_path(s)
+            %h3
+              = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
+            %h5
+              %i.icon-map-marker.pull-left
+              #{s.address1}, #{s.city} #{s.state}
+            %ul.inline-list
+              %li{:class=>'has-tip', "data-tooltip" => "", :title => s.environment}
+                #{s.environment}
+              %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
+                #{s.type}
+              %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
+                #{s.access}
 
         .small-4.column
-          .price
+          .well
             %h3
               $
               #{s.monthly_price} / Month
@@ -51,4 +48,6 @@
               = link_to '#', {:class=>'button radius greenie fullbtn', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
                 %i{:class=>'icon-ok'}
                 Book It
-
+                
+= render 'users/modals'
+        
