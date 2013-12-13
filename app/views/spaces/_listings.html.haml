@@ -8,7 +8,7 @@
         - if can_edit_space?(s)
           = link_to edit_space_path(s), {:class=>'edit'} do
             EDIT
-      %h5 #{s.user}
+      %h5 #{s.user.name}
       %h5
         %i.icon-map-marker.pull-left
         #{s.address1}, #{s.city} #{s.state}
