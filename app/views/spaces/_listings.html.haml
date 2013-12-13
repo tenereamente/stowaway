@@ -8,16 +8,11 @@
         - if can_edit_space?(s)
           = link_to edit_space_path(s), {:class=>'edit'} do
             EDIT
+      %h5 #{s.user}
       %h5
         %i.icon-map-marker.pull-left
         #{s.address1}, #{s.city} #{s.state}
       %ul
-        / 
-          %li
-            - if s.environment == "indoor"
-              .typicons-home Indoor
-            - elsif s.environment == "outdoor"
-              .maki-tree-1 Outdoor
         %li
           - if s.type == "attic"
             .entypo-flashlight Attic Space
@@ -63,11 +58,5 @@
               %i.icon-ok
               Book It
         
-        = link_to 'Contact owner', 'javascript:;', class: 'contact modal',
-          'data-modal-target' => 'owner'
-        .modal{ data: { 'modal-name' => 'owner' } }
-          = simple_form_for Message.new do |f|
-            = f.input :recipient, as: :hidden, input_html: { value: s.user }
-            = f.input :subject, as: :hidden, input_html: { value: "Inquiry about #{s.title}" }
-            = f.input_field :body, as: :text, label: 'Message'
-            = f.button :submit, 'Contact owner'
+        = link_to 'Contact owner', 'javascript:;', class: 'button fullbtn radius', "data-reveal-id" => "messageModal"
+= render 'spaces/modals'
