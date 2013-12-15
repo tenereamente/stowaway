@@ -64,13 +64,6 @@
   :javascript    
     UserVoice.push(['identify', { 
       email: '#{current_user_email}',
-      created_at: '#{current_user_created_at}',
-      outdoor_listing_count: '#{outdoor_listing_count}',
-      indoor_listing_count: '#{indoor_listing_count}',
-      total_listing_count: '#{total_listing_count}',
-      active_listing_count: '#{active_listing_count}',
-      has_avatar: '#{has_avatar}',
-      sent_message_count: '#{sent_message_count}',
       name: '#{current_user_name}'}
     ]);
     // Identify the user and pass traits
@@ -92,7 +85,18 @@
     //}]); 
 
     // customer.io identification
-    _cio.identify({ id: '#{current_user_id}', email: '#{current_user_email}', created_at: '#{current_user_created_at}', name: '#{current_user_name}' });
+    _cio.identify({ 
+      id: '#{current_user_id}', 
+      email: '#{current_user_email}',
+      created_at: '#{current_user_created_at}',
+      name: '#{current_user_name}',
+      outdoor_listing_count: '#{outdoor_listing_count}',
+      indoor_listing_count: '#{indoor_listing_count}',
+      total_listing_count: '#{total_listing_count}',
+      active_listing_count: '#{active_listing_count}',
+      has_avatar: '#{has_avatar}',
+      sent_message_count: '#{sent_message_count}' 
+    });
     
 :javascript
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
