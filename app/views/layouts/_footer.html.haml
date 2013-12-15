@@ -55,8 +55,24 @@
   - current_user_name = current_user.name
   - current_user_created_at = current_user.created_at.to_i
   - current_user_id = current_user.id
+  - outdoor_listing_count = Space.by_user_outdoor(current_user).count
+  - indoor_listing_count = Space.by_user_indoor(current_user).count
+  - total_listing_count = Space.by_user(current_user).count
+  - active_listing_count = Space.by_user(current_user).available.count
+  - has_avatar = current_user.avatar.exists?
+  - sent_message_count = current_user.mailbox.sentbox.count
   :javascript    
-    UserVoice.push(['identify', { email: '#{current_user_email}', name: '#{current_user_name}'}]);
+    UserVoice.push(['identify', { 
+      email: '#{current_user_email}',
+      created_at: '#{current_user_created_at}',
+      outdoor_listing_count: '#{outdoor_listing_count}',
+      indoor_listing_count: '#{indoor_listing_count}',
+      total_listing_count: '#{total_listing_count}',
+      active_listing_count: '#{active_listing_count}',
+      has_avatar: '#{has_avatar}',
+      sent_message_count: '#{sent_message_count}',
+      name: '#{current_user_name}'}
+    ]);
     // Identify the user and pass traits
     // To enable, replace sample data with actual user traits and uncomment the line
     //UserVoice.push(['identify', {
