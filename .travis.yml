@@ -7,3 +7,8 @@ addons:
 before_script:
   - psql -c "create database stowaway_test;" -U postgres
 
+notifications:
+  webhooks:
+    - https://infinitedigitalnow.slack.com/services/hooks/travis?token=9YDDTGeOtgTqImEeDmERGzhc
+
+
