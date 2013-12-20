@@ -101,18 +101,18 @@
             .maki-police Attended 
      
     %ul.small-block-2.large-block-grid-4.fitimg
-    -if @space.photo2?
-      %li
-        = image_or_placeholder(@space.photo2)
-    -if @space.photo3?
-      %li
-        = image_or_placeholder(@space.photo3)
-    -if @space.photo4?
-      %li
-        = image_or_placeholder(@space.photo4)
-    -if @space.photo5?
-      %li
-        = image_or_placeholder(@space.photo5)
+      -if @space.photo2?
+        %li
+          = image_or_placeholder(@space.photo2)
+      -if @space.photo3?
+        %li
+          = image_or_placeholder(@space.photo3)
+      -if @space.photo4?
+        %li
+          = image_or_placeholder(@space.photo4)
+      -if @space.photo5?
+        %li
+          = image_or_placeholder(@space.photo5)
     %section.mb20
       %h3 Overview
       %p= @space.notes

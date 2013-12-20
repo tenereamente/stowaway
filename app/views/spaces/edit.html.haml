@@ -2,8 +2,8 @@
 = simple_form_for(@resource, html: {class: 'form-vertical custom', id: 'list-space-step1' }) do |f|
   .row
     .large-4.small-12.push-8.columns
-      .price
-        %h2#monthly_price_label
+      .well
+        %h3#monthly_price_label
           %span
             $
             = succeed " / Month" do
@@ -27,11 +27,11 @@
           = image_or_placeholder(@resource.photo5)
           = f.file_field :photo5
     .small-12.large-8.pull-4.columns
-      %h2 Edit a Space
+      %h2 Edit #{@resource.address1}
       = render partial: 'address', :locals => { f: f }
       %hr
       = render partial: 'features', :locals => { f: f }
       .row
         .small-12.large-6.column
           = f.button :submit, 'Update & Preview', class: 'btn-primary button greenie radius'
-      #{link_to "Delete Listing", space_path(@resource), :data => { :confirm => "Are you sure?", :class => 'button btn-primary red radius' }, :method => :delete}.
+          #{link_to "Delete Listing", space_path(@resource), :data => { :confirm => "Are you sure?", :class => 'button btn-primary red radius' }, :method => :delete}
