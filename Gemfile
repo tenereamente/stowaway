@@ -80,7 +80,7 @@ end
 gem 'gibbon'
 gem 'figaro'
 gem 'travis'
-gem 'compass-rails', "~> 2.0.alpha.0"
+gem 'compass-rails', "~> 1.1.2"
 gem 'zurb-foundation', "~> 4.3.1"
 gem 'google-webfonts', require: false
 gem 'customerio'

@@ -25,6 +25,14 @@ class Space < ActiveRecord::Base
     where(:user_id => id)
   }
 
+  scope :by_user_indoor, lambda { |id| 
+    where(:user_id => id, :environment => "indoor")
+  }
+
+  scope :by_user_outdoor, lambda { |id| 
+    where(:user_id => id, :environment => "outdoor")
+  }
+
   def gmaps4rails_address
     "#{self.address1}, #{self.city}, #{self.state} #{self.zip}"
   end
