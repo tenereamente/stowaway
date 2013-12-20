@@ -55,7 +55,7 @@
       - if not @space.available
         = link_to '#', {:class=>'button radius fullbtn'} do
           %i{:class=>'icon-thumbs-down'}
-          NOT AVAILABLE
+          Make Unavailable
       - elsif not user_signed_in?
         = link_to sign_in_path, {:class=>'button radius greenie fullbtn hast-tip', :title => 'Sign in and book'} do
           %i{:class=>'icon-ok'}
