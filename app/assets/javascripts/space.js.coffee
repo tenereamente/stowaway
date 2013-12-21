@@ -31,7 +31,7 @@ $(document).ready ->
   $("#space_monthly_price").bind "slider:changed", (event, data) ->
     $("#monthly_price_label").html("$" + data.value)
 
-  $("#space_environment_indoor").click (event) ->
+  $("#indoor_button_label").click (event) ->
     # hide the outdoor options, show the indoor
     $.showIndoorOptions()
     $.hideOutdoorOptions()
@@ -39,14 +39,14 @@ $(document).ready ->
     $("label#outdoor_button_label").toggleClass('active', false)
 
 
-  $("#space_environment_outdoor").click (event) ->
+  $("#outdoor_button_label").click (event) ->
     # hide the indoor options, show the outdoor
     $.showOutdoorOptions()
     $.hideIndoorOptions()
     $("label#outdoor_button_label").toggleClass('active', true)
     $("label#indoor_button_label").toggleClass('active', false)
 
-  $("#space_type_attic").click (event) ->
+  $("#attic_button_label").click (event) ->
     $("label#attic_button_label").toggleClass('active', true)
     $("label#garage_button_label").toggleClass('active', false)
     $("label#spare_room_button_label").toggleClass('active', false)
@@ -56,7 +56,7 @@ $(document).ready ->
     $("label#driveway_button_label").toggleClass('active', false)
     $("#access_button_group").show()
 
-  $("#space_type_garage").click (event) ->
+  $("#garage_button_label").click (event) ->
     $("label#attic_button_label").toggleClass('active', false)
     $("label#garage_button_label").toggleClass('active', true)
     $("label#spare_room_button_label").toggleClass('active', false)
@@ -67,7 +67,7 @@ $(document).ready ->
     $("#access_button_group").show()
 
 
-  $("#space_type_spare_room").click (event) ->
+  $("#spare_room_button_label").click (event) ->
     $("label#attic_button_label").toggleClass('active', false)
     $("label#garage_button_label").toggleClass('active', false)
     $("label#spare_room_button_label").toggleClass('active', true)
@@ -77,7 +77,7 @@ $(document).ready ->
     $("label#driveway_button_label").toggleClass('active', false)
     $("#access_button_group").show()
 
-  $("#space_type_basement").click (event) ->
+  $("#basement_button_label").click (event) ->
     $("label#attic_button_label").toggleClass('active', false)
     $("label#garage_button_label").toggleClass('active', false)
     $("label#spare_room_button_label").toggleClass('active', false)
@@ -88,7 +88,7 @@ $(document).ready ->
     $("#access_button_group").show()
 
 
-  $("#space_type_driveway").click (event) ->
+  $("#driveway_button_label").click (event) ->
     $("label#uncovered_area_button_label").toggleClass('active', false)
     $("label#covered_area_button_label").toggleClass('active', false)
     $("label#driveway_button_label").toggleClass('active', true)
@@ -100,7 +100,7 @@ $(document).ready ->
 
 
 
-  $("#space_type_covered").click (event) ->
+  $("#covered_area_button_label").click (event) ->
     $("label#covered_area_button_label").toggleClass('active', true)
     $("label#uncovered_area_button_label").toggleClass('active', false)
     $("label#driveway_button_label").toggleClass('active', false)
@@ -111,7 +111,7 @@ $(document).ready ->
     $("#access_button_group").show()
 
 
-  $("#space_type_uncovered").click (event) ->
+  $("#uncovered_area_button_label").click (event) ->
     $("label#uncovered_area_button_label").toggleClass('active', true)
     $("label#covered_area_button_label").toggleClass('active', false)
     $("label#driveway_button_label").toggleClass('active', false)
@@ -121,17 +121,17 @@ $(document).ready ->
     $("label#basement_button_label").toggleClass('active', false)
     $("#access_button_group").show()
 
-  $("#space_access_limited").click (event) ->
+  $("#limited_button_label").click (event) ->
     $("label#limited_button_label").toggleClass('active', true)
     $("label#by_appointment_button_label").toggleClass('active', false)
     $("label#anytime_button_label").toggleClass('active', false)
 
-  $("#space_access_appointment").click (event) ->
+  $("#by_appointment_button_label").click (event) ->
     $("label#limited_button_label").toggleClass('active', false)
     $("label#by_appointment_button_label").toggleClass('active', true)
     $("label#anytime_button_label").toggleClass('active', false)
 
-  $("#space_access_anytime").click (event) ->
+  $("#anytime_button_label").click (event) ->
     $("label#limited_button_label").toggleClass('active', false)
     $("label#by_appointment_button_label").toggleClass('active', false)
     $("label#anytime_button_label").toggleClass('active', true)
@@ -145,7 +145,6 @@ $(document).ready ->
   $("#attended_checkbox_label").click (event) ->
     $(event.target).toggleClass('active')
 
-  $
 
   $.showOutdoorOptions = ->
     $("#what_kind_of_space").show()
