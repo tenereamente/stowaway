@@ -8,14 +8,14 @@
   .large-3.column
     %h4 Address
   .large-9.column
-    = f.input :address1, required: true
-    = f.input :address2
+    = f.input :address1, required: true, label: 'street name & number'
+    = f.input :address2, label: 'apt, floor, or suite'
     .row
       .small-6.column
         = f.input :city, required: true
       .small-3.column
         = subregion_select(:order, :state_code, 'US')
       .small-3.column
-        = f.input :zip, required: true
+        = f.input :zip, required: true, label: 'zip code'
 
   
