@@ -19,7 +19,7 @@ module ApplicationHelper
       # TODO look up the correct dimensions when caller passes
       # in something other than :square
       geometry = photo.styles[style].geometry.chomp('#')
-      image_tag "//placehold.it/#{geometry}"
+      image_tag "http://placehold.it/#{geometry}"
     end
   end
 

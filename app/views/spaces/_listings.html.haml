@@ -1,7 +1,10 @@
 - @spaces.each do |s|
   .row.locations
     .large-8.column
-      = link_to image_or_placeholder(s.photo, :square), space_path(s)
+      - if s.photo.exists?
+        = link_to image_or_placeholder(s.photo, :square), space_path(s)
+      - else
+        = image_tag "http://placehold.it/282x282"
       %h3
         = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
       /
@@ -37,7 +40,7 @@
           - elsif s.access == "limited"
             .typicons-loop One-Time Access
 
-          
+
     .small-12.large-4.column
       .well
         %h3
