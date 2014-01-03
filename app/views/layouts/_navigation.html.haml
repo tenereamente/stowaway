@@ -12,34 +12,42 @@
       %ul.right
         %li.toggle-topbar
           %a{:href => "#"}
+        %li
+          = link_to 'Blog', blogit_path
         - if user_signed_in?
           %li.has-dropdown
             = link_to user_path(current_user), id: 'account' do
               = render 'layouts/avatar.small'
-              %span 
+              %span
                 = current_user.name
             %ul.dropdown
               %li
-                = link_to 'My Spaces', user_spaces_path(current_user)
+                = link_to 'Dashboard', user_path(current_user)
               %li
-                = link_to 'Messages', messages_path 
+                = link_to 'My Listings', user_spaces_path(current_user)
               %li
-                = link_to 'My subscriptions', user_charges_path(current_user)
+                = link_to 'My Charges', user_charges_path(current_user)
               %li
-                = link_to 'Logout', destroy_user_session_path, :method=>'delete'
-              %li
-                = link_to 'FAQ', 'http://stowaway.uservoice.com/'
-              %li
-                = link_to 'Terms', terms_path
+                = link_to 'Edit Profile', edit_user_registration_path(current_user)
               - if current_user.has_role? :admin
                 %li
                   = link_to 'Admin', rails_admin_path
-                  
+              %li
+                = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+          %li
+            = link_to messages_path do
+              %i.icon-envelope
         - else
           %li
             = link_to 'Sign up', new_user_registration_path
-          %li
-            = link_to 'Blog', blogit_path
+
+        %li.has-dropdown
+          = link_to 'Help', 'http://stowaway.uservoice.com/'
+          %ul.dropdown
+            %li
+              = link_to 'FAQ', 'http://stowaway.uservoice.com/'
+            %li
+              = link_to 'Terms', terms_path
         %li.abtn
           -# We disable turbolinking of spaces page because that breaks the Google Map on initial view
           %a.button.radius{:href => spaces_path}
