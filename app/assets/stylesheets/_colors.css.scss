@@ -38,11 +38,11 @@ $burgundy: #541c1e;
     color: darken($accent,30);
     text-shadow: 0 1px 0 lighten($accent,20);
     &:hover {
-      background-color: darken($accent,5);  
+      background-color: darken($accent,5);
       color: darken($accent,30);
     }
     &:active {
-      background-color: darken($accent,30); 
+      background-color: darken($accent,30);
       top: 2px;
     }
   }
@@ -113,16 +113,11 @@ $burgundy: #541c1e;
     }
     label, .checkbtns > li {
       &.button {
-        background-color: lighten($base, 80);
+        background-color: $base;
         transition: all;
-        color: $base;
-        &:hover {
-          background-color: $base;
-          color: lighten($base, 80); 
-        }
-        &:active, &.active {
+        color: lighten($base, 80);
+        &:hover, &:active, &.active {
           background-color: darken($base, 20);
-          color: lighten($base, 80);
         }
       }
     }
@@ -143,7 +138,7 @@ $burgundy: #541c1e;
           background: darken($base, 40);
           .dropdown {
             background: darken($base, 40);
-          }  
+          }
         }
       }
       a {

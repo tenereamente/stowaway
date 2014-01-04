@@ -1,0 +1,81 @@
+@import "mixins";
+
+@include font-face(stowaway, 'icons/stowaway', normal, $asset-pipeline: true);
+
+[class^="ico-"], [class*=" ico-"] {
+	font-family: 'stowaway';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ico-thermometer:before {
+	content: "\e600";
+}
+.ico-bike:before {
+	content: "\e601";
+}
+.ico-magnifier:before {
+	content: "\e602";
+}
+.ico-locked:before {
+	content: "\e603";
+}
+.ico-unlocked:before {
+	content: "\e604";
+}
+.ico-shipping:before {
+	content: "\e605";
+}
+.ico-tag:before {
+	content: "\e606";
+}
+.ico-box:before {
+	content: "\e607";
+}
+.ico-home:before {
+	content: "\e60a";
+}
+.ico-route:before {
+	content: "\e60c";
+}
+.ico-info:before {
+	content: "\e60d";
+}
+.ico-tie:before {
+	content: "\e60e";
+}
+.ico-duck:before {
+	content: "\e60f";
+}
+.ico-flashlight:before {
+	content: "\e610";
+}
+.ico-acorn:before {
+	content: "\e60b";
+}
+.ico-tree:before {
+	content: "\e614";
+}
+.ico-carriage:before {
+	content: "\e615";
+}
+.ico-paperairplane:before {
+	content: "\e616";
+}
+.ico-leaf:before {
+	content: "\e611";
+}
+.ico-pencil:before {
+	content: "\e612";
+}
+.ico-key:before {
+	content: "\e617";
+}

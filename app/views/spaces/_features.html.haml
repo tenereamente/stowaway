@@ -3,90 +3,86 @@
   .column.large-3
     %h4 In or Out?
   .column.large-9
-    .button-group.round.where
+    .where
       = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
         = b.radio_button
-        = b.label(class: 'button', id: "#{b.text.underscore}_button_label") do
+        = b.label(class: 'button radius', id: "#{b.text.underscore}_button_label") do
           - if b.text == 'Indoor'
-            %span.typicons-home
+            %span.ico-home
           - else
-            %span.maki-tree-1
+            %span.ico-tree
           %span
             = b.text
-.row
-  .column.large-3
-    %h4#what_kind_of_space{ style: display_style } What type of space is it?
-  .column.large-9
-    #indoor_button_group.indoor.button-group.round.what{ style: display_style }
-      - space_type = [[:attic, 'Attic'],
-        [:garage, 'Garage'],
-        [:spare_room, 'Spare Room'],
-        [:basement, 'Basement']]
-      = f.collection_radio_buttons :type, space_type, :first, :second do |b|
-        = b.radio_button
-        = b.label(class: 'button standard', id: "#{b.text.parameterize.underscore}_button_label") do
-          - if b.text == 'Attic'
-          - elsif b.text == 'Garage'
-          - elsif b.text == 'Spare Room'
-          - else
-          - #if b.other
 
-          %span
-            = b.text
-    #outdoor_button_group.outdoor.button-group.round.what{ style: display_style }
-      - space_type = [[:driveway, 'Driveway'],
-        [:covered, 'Covered Area'],
-        [:uncovered, 'Uncovered Area']]
-      = f.collection_radio_buttons :type, space_type, :first, :second do |b|
-        = b.radio_button
-        = b.label(class: 'button', id: "#{b.text.parameterize.underscore}_button_label") do
-          - if b.text == 'Driveway'
-          - elsif b.text == 'Covered Area'
-          - elsif b.text == 'Uncovered Area'
-          - else
-          - #if b.other
+%h4#what_kind_of_space{ style: display_style } What type of space is it?
+#indoor_button_group.indoor.what{ style: display_style }
+  - space_type = [[:attic, 'Attic'],
+    [:garage, 'Garage'],
+    [:spare_room, 'Spare Room'],
+    [:basement, 'Basement']]
+  = f.collection_radio_buttons :type, space_type, :first, :second do |b|
+    = b.radio_button
+    = b.label(class: 'button radius', id: "#{b.text.parameterize.underscore}_button_label") do
+      - if b.text == 'Attic'
+        %span.ico-flashlight
+      - elsif b.text == 'Garage'
+        %span.ico-bike
+      - elsif b.text == 'Spare Room'
+        %span.ico-shipping
+      - else
+      %span
+        = b.text
+#outdoor_button_group.outdoor.what{ style: display_style }
+  - space_type = [[:driveway, 'Driveway'],
+    [:covered, 'Covered Area'],
+    [:uncovered, 'Uncovered Area']]
+  = f.collection_radio_buttons :type, space_type, :first, :second do |b|
+    = b.radio_button
+    = b.label(class: 'button radius', id: "#{b.text.parameterize.underscore}_button_label") do
+      - if b.text == 'Driveway'
+        %span.ico-flashlight
+      - elsif b.text == 'Covered Area'
+        %span.ico-flashlight
+      - elsif b.text == 'Uncovered Area'
+        %span.ico-flashlight
+      - else
+      %span
+        = b.text
 
-          %span
-            = b.text
-   
 %section.access#access_button_group{ style: display_style }
-  .row
-    .column.large-3
-      %h4 How's the access?
-    .column.large-9
-      .button-group.round.what
-        = f.collection_radio_buttons :access, [[:anytime, 'Anytime'], [:appointment, 'By appointment'], [:limited, 'Limited']], :first, :second do |b|
-          = b.radio_button
-          = b.label(class: 'button', id: "#{b.text.parameterize.underscore}_button_label") do
-            - if b.text == 'Anytime'
-            - elsif b.text == 'By appointment'
-            - elsif b.text == 'Limited'
+  %h4 How's the access?
+  .what
+    = f.collection_radio_buttons :access, [[:anytime, 'Anytime'], [:appointment, 'Appointment'], [:limited, 'Limited']], :first, :second do |b|
+      = b.radio_button
+      = b.label(class: 'button', id: "#{b.text.parameterize.underscore}_button_label") do
+        - if b.text == 'Anytime'
 
-            %span
-              = b.text
+        - elsif b.text == 'By appointment'
+
+        - elsif b.text == 'Onetime'
+
+        %span
+          = b.text
 %section.features
-  .row
-    .column.large-3
-      %h4 Features
-    .column.large-9
-      %ul.checkbtns.inline-list
-        %li
-          - active = f.object.climate_controlled ? 'active' : ''
-          = f.label :climate_controlled, {:class => 'checkbox button round ' + active, id: 'climate_checkbox_label'}
-          = f.check_box :climate_controlled, :class => :checkbox
-        %li
-          - active = f.object.lockable ? 'active' : ''
-          = f.label :lockable, :class => 'checkbox button round ' + active, id: 'lockable_checkbox_label'
-          = f.check_box :lockable, :class => :checkbox
-        %li
-          - active = f.object.attended ? 'active' : ''
-          = f.label :attended, :class => 'checkbox button round ' + active, id: 'attended_checkbox_label'
-          = f.check_box :attended, :class => 'checkbox '
+  %h4 Features
+  %ul.checkbtns.inline-list
+    %li
+      - active = f.object.climate_controlled ? 'active' : ''
+      = f.label :climate_controlled, {:class => 'checkbox button radius' + active, id: 'climate_checkbox_label'}
+      = f.check_box :climate_controlled, :class => 'checkbox'
+    %li
+      - active = f.object.lockable ? 'active' : ''
+      = f.label :lockable, :class => 'checkbox button radius ' + active, id: 'lockable_checkbox_label'
+      = f.check_box :lockable, :class => 'checkbox'
+    %li
+      - active = f.object.attended ? 'active' : ''
+      = f.label :attended, :class => 'checkbox button radius ' + active, id: 'attended_checkbox_label'
+      = f.check_box :attended, :class => 'checkbox '
 
 %section.dimensions
   .row
     .column.large-3
-      %h4 
+      %h4
         Dimensions
         %small
           (in feet)

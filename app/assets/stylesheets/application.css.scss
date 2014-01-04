@@ -20,21 +20,6 @@
 @import "base";
 
 @include sticky-footer(83px, "#main", "#f_shiv", "#footer");
-@import url(http://weloveiconfonts.com/api/?family=entypo|maki|typicons);
-/* entypo */
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-}
-
-/* maki */
-[class*="maki-"]:before {
-  font-family: 'maki', sans-serif;
-}
-
-/* typicons */
-[class*="typicons-"]:before {
-  font-family: 'Typicons', sans-serif;
-}
 
 $small-screen: 30em;
 $medium-screen: 42em;
@@ -69,7 +54,7 @@ $em-base: 18 !default;
 }
 
 ::selection {
- background: rgba(0,0,0,.1); 
+ background: rgba(0,0,0,.1);
 }
 body {
   font-family: "Dosis";
@@ -215,7 +200,7 @@ footer {
           margin: 4px;
           background: #000;
         }
-      
+
       }
       .icon-ok-sign {
         display: none;
