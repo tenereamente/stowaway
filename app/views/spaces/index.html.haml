@@ -6,10 +6,6 @@
   %a{:href => "#", :title => "Create a Listing"} Create a listing.
   We are currently in beta and operational only in Portland, Maine.
   %a{:href => "#", :title => "Read more about beta"} Here's a blog post explaining the whole thing.
-
-%h2 
-  Find a Space
-= render 'listings', locals: { 'spaces' => @spaces }
 %a#filter_btn.button.large.standard.expand.radius
   %i.icon-filter
   Filter Results
@@ -31,5 +27,7 @@
       = button_tag type: "submit", name: nil, :class => "button radius expand greenie" do
         %i.icon-rocket
         Search
-
+%h2
+  Find a Space
+= render 'listings', locals: { 'spaces' => @spaces }
 = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})

@@ -1,8 +1,4 @@
-.row
-  .large-3.column
-    %h4 Space Title
-  .large-9.column
-    = f.input :title, required: true, autofocus: true
+= f.input :title, required: true, autofocus: true, label: 'Give Your Space a Title'
 %hr
 .row
   .large-3.column
@@ -18,4 +14,3 @@
       .small-3.column
         = f.input :zip, required: true, label: 'zip code'
 
-  

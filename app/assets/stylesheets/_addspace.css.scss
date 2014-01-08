@@ -1,0 +1,27 @@
+.where, .what {
+  label {
+    float: left;
+  }
+}
+
+.where {
+  label {
+    width: 48%;
+    &#indoor_button_label {
+      margin-right: 4%;
+    }
+  }
+}
+
+.what {
+  &.indoor {
+    label {
+      width: 22%;
+      margin-right: 4%;
+      &#basement_button_label {
+        margin-right: 0;
+      }
+    }
+  }
+}
+

@@ -1,18 +1,15 @@
 - display_style = f.object.new_record? ? 'display: none' : ''
-.row
-  .column.large-3
-    %h4 In or Out?
-  .column.large-9
-    .where
-      = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
-        = b.radio_button
-        = b.label(class: 'button radius', id: "#{b.text.underscore}_button_label") do
-          - if b.text == 'Indoor'
-            %span.ico-home
-          - else
-            %span.ico-tree
-          %span
-            = b.text
+%h4 Tell us where the space is located.
+.where
+  = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
+    = b.radio_button
+    = b.label(class: 'button radius', id: "#{b.text.underscore}_button_label") do
+      - if b.text == 'Indoor'
+        %span.ico-home
+      - else
+        %span.ico-tree
+      %span
+        = b.text
 
 %h4#what_kind_of_space{ style: display_style } What type of space is it?
 #indoor_button_group.indoor.what{ style: display_style }
@@ -29,7 +26,8 @@
         %span.ico-bike
       - elsif b.text == 'Spare Room'
         %span.ico-shipping
-      - else
+      - elsif b.text == 'Basement'
+        %span.ico-shipping
       %span
         = b.text
 #outdoor_button_group.outdoor.what{ style: display_style }
@@ -51,32 +49,40 @@
 
 %section.access#access_button_group{ style: display_style }
   %h4 How's the access?
+  %p.small Specify here how often you would like to be contacted.
   .what
-    = f.collection_radio_buttons :access, [[:anytime, 'Anytime'], [:appointment, 'Appointment'], [:limited, 'Limited']], :first, :second do |b|
+    = f.collection_radio_buttons :access, [[:anytime, 'Open Anytime'], [:appointment, 'By Appointment'], [:limited, 'Onetime']], :first, :second do |b|
       = b.radio_button
-      = b.label(class: 'button', id: "#{b.text.parameterize.underscore}_button_label") do
-        - if b.text == 'Anytime'
-
-        - elsif b.text == 'By appointment'
-
+      = b.label(class: 'button radius', id: "#{b.text.parameterize.underscore}_button_label") do
+        - if b.text == 'Open Anytime'
+          %span.ico-open
+        - elsif b.text == 'By Appointment'
+          %span.ico-clock
         - elsif b.text == 'Onetime'
-
+          %span.ico-bolt
         %span
           = b.text
+
 %section.features
   %h4 Features
   %ul.checkbtns.inline-list
     %li
       - active = f.object.climate_controlled ? 'active' : ''
-      = f.label :climate_controlled, {:class => 'checkbox button radius' + active, id: 'climate_checkbox_label'}
+      = f.label :climate_controlled, :class => 'checkbox button radius' + active, id: 'climate_checkbox_label' do
+        %span.ico-equalizer
+        Climate Controlled
       = f.check_box :climate_controlled, :class => 'checkbox'
     %li
       - active = f.object.lockable ? 'active' : ''
-      = f.label :lockable, :class => 'checkbox button radius ' + active, id: 'lockable_checkbox_label'
+      = f.label :lockable, :class => 'checkbox button radius ' + active, id: 'lockable_checkbox_label' do
+        %span.ico-locked
+        Lockable
       = f.check_box :lockable, :class => 'checkbox'
     %li
       - active = f.object.attended ? 'active' : ''
-      = f.label :attended, :class => 'checkbox button radius ' + active, id: 'attended_checkbox_label'
+      = f.label :attended, :class => 'checkbox button radius ' + active, id: 'attended_checkbox_label' do
+        %span.ico-tie
+        Attended
       = f.check_box :attended, :class => 'checkbox '
 
 %section.dimensions

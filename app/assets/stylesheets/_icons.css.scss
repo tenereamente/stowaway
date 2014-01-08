@@ -16,11 +16,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+
 .ico-thermometer:before {
 	content: "\e600";
-}
-.ico-bike:before {
-	content: "\e601";
 }
 .ico-magnifier:before {
 	content: "\e602";
@@ -31,14 +29,35 @@
 .ico-unlocked:before {
 	content: "\e604";
 }
-.ico-shipping:before {
-	content: "\e605";
-}
 .ico-tag:before {
 	content: "\e606";
 }
 .ico-box:before {
 	content: "\e607";
+}
+.ico-pictures:before {
+	content: "\e601";
+}
+.ico-open:before {
+	content: "\e605";
+}
+.ico-soccer:before {
+	content: "\e608";
+}
+.ico-lamp:before {
+	content: "\e609";
+}
+.ico-cord:before {
+	content: "\e613";
+}
+.ico-info:before {
+	content: "\e618";
+}
+.ico-rocket:before {
+	content: "\e619";
+}
+.ico-clipboard:before {
+	content: "\e61a";
 }
 .ico-home:before {
 	content: "\e60a";
@@ -67,8 +86,23 @@
 .ico-carriage:before {
 	content: "\e615";
 }
-.ico-paperairplane:before {
+.ico-mail:before {
 	content: "\e616";
+}
+.ico-clock:before {
+	content: "\e61b";
+}
+.ico-check-alt:before {
+	content: "\e61c";
+}
+.ico-plus-alt:before {
+	content: "\e61d";
+}
+.ico-bolt:before {
+	content: "\e61e";
+}
+.ico-equalizer:before {
+	content: "\e61f";
 }
 .ico-leaf:before {
 	content: "\e611";
@@ -78,4 +112,16 @@
 }
 .ico-key:before {
 	content: "\e617";
+}
+.ico-refresh:before {
+	content: "\e620";
+}
+.ico-truck:before {
+	content: "\e621";
+}
+.ico-check:before {
+	content: "\e622";
+}
+.ico-remove:before {
+	content: "\e623";
 }

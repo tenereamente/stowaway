@@ -1,27 +1,18 @@
 = simple_form_for(@resource, validate: true, html: {class: 'custom', id: 'list-space-step1', autocomplete: 'off' }) do |f|
+  %h2 List a Space
+  - unless signed_in?
+    .input
+      %label.string.required.control-label.user_email{ :for => 'user_email'} Email address
+      = email_field_tag :user_email
   .row
-    .large-8.small-12.columns
-      %h2 Add a Space
-      - unless signed_in?
-        .input
-          %label.string.required.control-label.user_email{ :for => 'user_email'} Email address
-          = email_field_tag :user_email
-  /
-    .large-4.small-12.columns
+    .large-4.push-8.small-12.columns
       .well
         %h3#monthly_price_label
           %span
-            Montly Price
+            Set Your Price
         = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "0,500", 'data-slider-step' => '5', value: 50 }
-  .row
-    .large-8.small-12.columns
-      %hr
-      = render partial: 'address', :locals => { f: f }
-      %hr
-      = render partial: 'features', :locals => { f: f }
-      = f.button :submit, 'Preview', :class => 'button-primary greenie button radius'
-    .large-4.small-12.columns
-      %ul.small-block-grid-2.fitimg  
+      %h4 Add Photos
+      %ul.small-block-grid-2.fitimg
         %li
           = image_or_placeholder(@resource.photo)
           = f.file_field :photo
@@ -37,4 +28,9 @@
         %li
           = image_or_placeholder(@resource.photo5)
           = f.file_field :photo5
-        
+    .large-8.pull-4.small-12.columns
+      = render partial: 'address', :locals => { f: f }
+      %hr
+      = render partial: 'features', :locals => { f: f }
+      = f.button :submit, 'Preview', :class => 'button-primary greenie button radius'
+
