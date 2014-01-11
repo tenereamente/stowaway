@@ -1,11 +1,26 @@
-%blockquote
-  %strong What is Stowaway?
-  It's a web app that helps you find and offer storage with ease. Do you have too much stuff and need a place to store it?
-  %a{:href => "#", :title => "Right in Portland, Maine"} Search for storage.
-  Or do you have extra space and would like to offer it as storage?
-  %a{:href => "#", :title => "Create a Listing"} Create a listing.
-  We are currently in beta and operational only in Portland, Maine.
-  %a{:href => "#", :title => "Read more about beta"} Here's a blog post explaining the whole thing.
+- if user_signed_in?
+  - if current_user.sign_in_count == 1
+    - unless session[:display_welcome]
+      - session[:display_welcome] = true
+      %blockquote
+        %strong Welcome first time user!
+        Here you can find and offer storage with ease. Do you have too much stuff and need a place to store it?
+        %a{:href => "#", :title => "Right in Portland, Maine"} Search for storage.
+        Or do you have extra space and would like to offer it as storage?
+        %a{:href => "#", :title => "Create a Listing"} Create a listing.      
+- else
+  %blockquote
+    %strong What is Stowaway?
+    It's a web app that helps you find and offer storage with ease. Do you have too much stuff and need a place to store it?
+    %a{:href => "#", :title => "Right in Portland, Maine"} Search for storage.
+    Or do you have extra space and would like to offer it as storage?
+    %a{:href => "#", :title => "Create a Listing"} Create a listing.
+    We are currently in beta and operational only in Portland, Maine.
+    %a{:href => "#", :title => "Read more about beta"} Here's a blog post explaining the whole thing.
+
+%h2 
+  Find a Space
+
 %a#filter_btn.button.large.standard.expand.radius
   %i.icon-filter
   Filter Results
