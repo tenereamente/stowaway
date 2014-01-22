@@ -10,7 +10,7 @@
       .small-6.column
         = f.input :city, required: true
       .small-3.column
-        = subregion_select(:order, :state_code, 'US')
+        = subregion_select(:space, :state, 'US')
       .small-3.column
         = f.input :zip, required: true, label: 'zip code'
 
