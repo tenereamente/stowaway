@@ -12,6 +12,7 @@
         = yield(:head)
   %body{:class => "prelaunch #{controller_name} #{action_name}"}
     #main{:role => "main"}
+      = render 'layouts/messages'
       = yield
       #f_shiv
   %footer#footer
