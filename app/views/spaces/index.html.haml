@@ -7,7 +7,7 @@
         Here you can find and offer storage with ease. Do you have too much stuff and need a place to store it?
         %a{:href => "#", :title => "Right in Portland, Maine"} Search for storage.
         Or do you have extra space and would like to offer it as storage?
-        %a{:href => "#", :title => "Create a Listing"} Create a listing.      
+        %a{:href => "#", :title => "Create a Listing"} Create a listing.
 - else
   %blockquote
     %strong What is Stowaway?
@@ -18,31 +18,10 @@
     We are currently in beta and operational only in Portland, Maine.
     %a{:href => "#", :title => "Read more about beta"} Here's a blog post explaining the whole thing.
 
-%h2 
-  Find a Space
-
-%a#filter_btn.button.large.standard.expand.radius
-  %i.icon-filter
-  Filter Results
-%form.filter.custom.nomrg.hide{ action: spaces_path, method: "get" }
-  %h2 Search near
-  = search_field_tag "address", "", id: "address_search_field", disabled: true
-  = hidden_field_tag "bounds", "", id: "address_search_bounds"
-  .row
-    .column.small-12.large-3.environment
-      %h3 Environment
-      = select_tag "environment", options_for_select(["Indoor", "Outdoor", "All"], params[:environment] || "All")
-    .column.small-12.large-3.type
-      %h3 Space Type
-      = select_tag "type", options_for_select([ "Attic", "Garage", "Spare Room", "Basement", "Driveway", "Covered Area", "Uncovered Area", "All"], params[:type] || "All")
-    .column.small-12.large-3.access
-      %h3 Access Level
-      = select_tag "access", options_for_select(["Anytime", "Appointment", "Onetime", "All"], params[:access] || "All")
-    .column.small-12.large-3.access
-      = button_tag type: "submit", name: nil, :class => "button radius expand greenie" do
-        %i.icon-rocket
-        Search
 %h2
   Find a Space
+
+= render 'filterresults'
+
 = render 'listings', locals: { 'spaces' => @spaces }
 = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})

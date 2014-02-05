@@ -5,6 +5,11 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   text-transform: auto;
 }
 
+#space_length, #space_width, #space_height {
+padding: 0 1em;
+text-align: center;
+}
+
 .input {
   position: relative;
   textarea {
@@ -57,12 +62,12 @@ form.custom {
       height: 4em;
       border-radius: 3px;
       &:hover {
-       cursor: pointer; 
+       cursor: pointer;
       }
       .selector {
         height: 4em;
         &:hover {
-         cursor: pointer; 
+         cursor: pointer;
         }
       }
       .current, ul {
@@ -81,7 +86,7 @@ form.custom {
       border-radius: 5px;
       background-image: none;
       &:focus {
-       outline: none;      
+       outline: none;
       }
     }
   }

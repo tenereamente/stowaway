@@ -7,29 +7,25 @@
         = image_tag "http://placehold.it/282x282"
       %h3
         = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
-      /
-        - if can_edit_space?(s)
-          = link_to edit_space_path(s), {:class=>'edit'} do
-            EDIT
-      %h5
-        = link_to s.user.name, user_path(s.user)
       %h5
         %i.icon-map-marker.pull-left
-        #{s.address1}, #{s.city} #{s.state}
+        #{s.city}, #{s.state}
+      %h5
+        = link_to s.user.name, user_path(s.user)
       %ul
         %li
           - if s.type == "attic"
-            .entypo-flashlight Attic Space
+            .ico-flashlight Attic Space
           - elsif s.type == "spare room"
-            .maki-lodging Spare Room
+            .ico-dolly Spare Room
           - elsif s.type == "garage"
-            .maki-warehouse Garage
+            .ico-drill Garage
           - elsif s.type == "basement"
-            .maki-lodging Basement
+            .ico-travel Basement
           - elsif s.type == "covered area"
-            .icon-umbrella Covered Area
+            .ico-trailer Covered Area
           - elsif s.type == "uncovered area"
-            .maki-warehouse Uncovered Area
+            .icon-acorn Uncovered Area
           - elsif s.type == "driveway"
             .icon-road Driveway
         %li
