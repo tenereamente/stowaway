@@ -44,7 +44,7 @@ input[type="button"], input[type="submit"], input[type="reset"], input[type="fil
   font-size: 1em;
   border: 0 none;
   &:hover {
-    cursor: pointer; 
+    cursor: pointer;
   }
 }
 
@@ -88,11 +88,11 @@ $pagebg : #e7e6dd;
   text-indent: 0;
   &:hover {
     opacity: 1;
-    
+
     .navicon:before, .navicon:after {
       transition: $transition/2;
     }
-    
+
     .navicon:after { top: -.825rem; }
     .navicon:before { top: .825rem; }
   }
@@ -105,7 +105,7 @@ $pagebg : #e7e6dd;
   background: $pagebg;
   transition: $transition;
   border-radius: 2.5rem;
-  
+
   &:after, &:before {
     display: block;
     content: "";
@@ -120,65 +120,4 @@ $pagebg : #e7e6dd;
 
   &:after { top: -.625rem; }
   &:before { top: .625rem; }
-}
-
-.open:not(.steps) .navicon:before,
-.open:not(.steps) .navicon:after {
-  top: 0 !important;
-}
-
-.open .navicon:before,
-.open .navicon:after {
-  transition: $transition;
-}
-
-/* Minus */
-.open { transform: scale($toggled-size); }
-
-/* Arrows */
-.open.larr .navicon,
-.open.uarr .navicon {   
-    &:before, &:after {
-      width: 1.5rem;
-    }
-    
-    &:before { transform: rotate(35deg); transform-origin: left top; }
-    &:after { transform: rotate(-35deg); transform-origin: left bottom; }
-}
-.open.uarr { transform: scale($toggled-size) rotate(90deg); }
-
-/* × and + */
-.open.plus,
-.open.x {
-  .navicon {
-    background: transparent;
-    
-    &:after { transform: rotate(45deg); }  
-    &:before { transform: rotate(-45deg); }  
-  }
-}
-.open.plus { transform: scale($toggled-size) rotate(45deg) }
-
-.open.steps {
-  .navicon {
-    &:before { transform: translateX(.5rem); }
-    &:after { transform: translateX(-.5rem); }
-  }
-}
-
-.loading .navicon {
-  color: $bodybg;
-  box-shadow: inset 0 0;
-}
-
-.open.loading {
-  transform: none;
-
-  .navicon {
-    box-shadow: inset 2.5rem 0;
-    transition: $transition, box-shadow $transition*5;
-
-    
-    &:before, &:after { opacity: 0; }
-  }
 }
