@@ -1,0 +1,15 @@
+%li
+  - if s.type == "attic"
+    .ico-flashlight Attic Space
+  - elsif s.type == "spare room"
+    .ico-dolly Spare Room
+  - elsif s.type == "garage"
+    .ico-drill Garage
+  - elsif s.type == "basement"
+    .ico-travel Basement
+  - elsif s.type == "covered area"
+    .ico-trailer Covered Area
+  - elsif s.type == "uncovered area"
+    .ico-acorn Uncovered Area
+  - elsif s.type == "driveway"
+    .icon-road Driveway
