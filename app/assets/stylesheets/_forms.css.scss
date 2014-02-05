@@ -10,6 +10,14 @@ padding: 0 1em;
 text-align: center;
 }
 
+#address_search_field {
+  background: none;
+  border: 0;
+  font-weight: bold;
+  font-size: 125%;
+  box-shadow: none;
+}
+
 .input {
   position: relative;
   textarea {

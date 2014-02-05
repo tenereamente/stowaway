@@ -20,8 +20,8 @@
 
 %h2
   Find a Space
-
-= render 'filterresults'
-
+%label Your Location
+= search_field_tag "address", "", id: "address_search_field"
 = render 'listings', locals: { 'spaces' => @spaces }
+= render 'filterresults'
 = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})

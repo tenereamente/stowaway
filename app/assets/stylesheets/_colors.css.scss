@@ -31,6 +31,9 @@ $burgundy: #541c1e;
       text-decoration: underline;
     }
   }
+  #address_search_field {
+    color: $tertiary;
+  }
   .launch {
     background-color: $accent;
     box-shadow: 1px 2px 0 darken($accent,20);

@@ -2,7 +2,7 @@
   %i.icon-filter
   Filter Results
 %form.filter.custom.nomrg.hide{ action: spaces_path, method: "get" }
-  = search_field_tag "address", "", id: "address_search_field", disabled: true
+  %i.icon-location
   = hidden_field_tag "bounds", "", id: "address_search_bounds"
   .row
     .column.small-12.large-3.environment
