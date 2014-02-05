@@ -23,11 +23,11 @@
       - if b.text == 'Attic'
         %span.ico-flashlight
       - elsif b.text == 'Garage'
-        %span.ico-bike
+        %span.ico-drill
       - elsif b.text == 'Spare Room'
-        %span.ico-shipping
+        %span.ico-dolly
       - elsif b.text == 'Basement'
-        %span.ico-shipping
+        %span.ico-travel
       %span
         = b.text
 #outdoor_button_group.outdoor.what{ style: display_style }
@@ -38,11 +38,11 @@
     = b.radio_button
     = b.label(class: 'button radius', id: "#{b.text.parameterize.underscore}_button_label") do
       - if b.text == 'Driveway'
-        %span.ico-flashlight
+        %span.icon-road
       - elsif b.text == 'Covered Area'
-        %span.ico-flashlight
+        %span.ico-trailer
       - elsif b.text == 'Uncovered Area'
-        %span.ico-flashlight
+        %span.ico-acorn
       - else
       %span
         = b.text
@@ -54,7 +54,7 @@
     = f.collection_radio_buttons :access, [[:anytime, 'Open Anytime'], [:appointment, 'By Appointment'], [:limited, 'Onetime']], :first, :second do |b|
       = b.radio_button
       = b.label(class: 'button radius', id: "#{b.text.parameterize.underscore}_button_label") do
-        - if b.text == 'Open Anytime'
+        - if b.text == 'Anytime'
           %span.ico-open
         - elsif b.text == 'By Appointment'
           %span.ico-clock

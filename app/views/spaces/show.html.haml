@@ -72,33 +72,35 @@
       %ul.small-block-3.large-block-grid-6.features
         %li
           - if @space.environment == "indoor"
-            .typicons-home Indoor
+            .ico-home Indoors
           - elsif @space.environment == "outdoor"
-            .maki-tree-1 Outdoor
-        %li
-          - if @space.type == "attic"
-            .entypo-flashlight Attic Space
-          - elsif @space.type == "spare room"
-            .maki-lodging Spare Room
-          - elsif @space.type == "garage"
-            .maki-warehouse Garage
-        %li
-          - if @space.access == "anytime"
-            .typicons-repeat Anytime Access
-          - elsif @space.access == "by appointment"
-            .typicons-shuffle Appointment Access
-          - elsif @space.access == "limited"
-            .typicons-loop One-Time Access
+            .ico-tree Outdoors
+        - if @space.type?
+          %li
+            - if @space.type == "attic"
+              .ico-flashlight Attic Space
+            - elsif @space.type == "spare room"
+              .ico-dolly Spare Room
+            - elsif @space.type == "garage"
+              .ico-drill Garage
+        - if @space.access?
+          %li
+            - if @space.access == "anytime"
+              .ico-open Anytime Access
+            - elsif @space.access == "by appointment"
+              .ico-clock Appointment Access
+            - elsif @space.access == "limited"
+              .ico-bolt One-Time Access
 
-        - if @space.climate_controlled
+        - if @space.climate_controlled?
           %li
-            .entypo-thermometer Climate Controlled
-        - if @space.lockable
+            .ico-equalizer Climate Controlled
+        - if @space.lockable?
           %li
-            .entypo-lock Lockable
-        - if @space.attended
+            .ico-lock Lockable
+        - if @space.attended?
           %li
-            .maki-police Attended
+            .ico-tie Attended
 
     %ul.small-block-2.large-block-grid-4.fitimg
       -if @space.photo2?

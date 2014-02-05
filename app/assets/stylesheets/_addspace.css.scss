@@ -1,32 +1,34 @@
 body.spaces {
-  .where, .what {
-    label {
-      float: left;
-    }
-  }
-
-  .where {
-    label {
-      width: 48%;
-      &#indoor_button_label {
-        margin-right: 4%;
+  #main {
+    .where, .what {
+      label {
+        float: left;
       }
     }
-  }
 
-  .what {
-    &.indoor {
+    .where {
       label {
-        width: 22%;
-        margin-right: 4%;
-        &#basement_button_label {
-          margin-right: 0;
+        width: 48%;
+        &#indoor_button_label {
+          margin-right: 4%;
         }
       }
     }
-  }
-  section {
-    clear: both;
+
+    .what {
+      &.indoor {
+        label {
+          width: 22%;
+          margin-right: 4%;
+          &#basement_button_label {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    section {
+      clear: both;
+    }
   }
 }
 

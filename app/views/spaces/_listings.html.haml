@@ -13,29 +13,10 @@
       %h5
         = link_to s.user.name, user_path(s.user)
       %ul
-        %li
-          - if s.type == "attic"
-            .ico-flashlight Attic Space
-          - elsif s.type == "spare room"
-            .ico-dolly Spare Room
-          - elsif s.type == "garage"
-            .ico-drill Garage
-          - elsif s.type == "basement"
-            .ico-travel Basement
-          - elsif s.type == "covered area"
-            .ico-trailer Covered Area
-          - elsif s.type == "uncovered area"
-            .icon-acorn Uncovered Area
-          - elsif s.type == "driveway"
-            .icon-road Driveway
-        %li
-          - if s.access == "anytime"
-            .typicons-repeat Anytime Access
-          - elsif s.access == "by appointment"
-            .typicons-shuffle Appointment Access
-          - elsif s.access == "limited"
-            .typicons-loop One-Time Access
-
+        - if s.type?
+          = render 'spaces/detail/type'
+        - if s.access?
+          = render 'spaces/detail/access'
 
     .small-12.large-4.column
       .well
