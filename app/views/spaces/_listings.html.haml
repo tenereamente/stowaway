@@ -35,7 +35,7 @@
         - elsif can_edit_space?(s)
           = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
             %i{:class=>'icon-pencil'}
-            Edit Listing
+            Edit
         - elsif not can_edit_space?(s)
           = link_to space_path(s), {:class=>'button radius fullbtn greenie'} do
             %i.icon-ok
