@@ -128,7 +128,7 @@
     %h3 Message the Owner
     = simple_form_for Message.new do |f|
       = f.input :recipient, as: :hidden, input_html: { value: @space.user }
-      = f.input :subject, as: :hidden, input_html: { value: "Inquiry about #{@space.title}" }
+      = f.input :subject, as: :hidden, input_html: { value: "Something about #{@space.title}" }
       = f.input_field :body, as: :text, label: 'Message'
       = f.button :submit, 'Send', class: "button fullbtn radius"
 
