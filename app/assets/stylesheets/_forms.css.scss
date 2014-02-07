@@ -1,13 +1,9 @@
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
-  padding: .25em;
+  padding: .75em 1em;
   font-size: 1em;
   border-radius: 5px;
   text-transform: auto;
-}
-
-#space_length, #space_width, #space_height {
-padding: 0 1em;
-text-align: center;
+  height: auto;
 }
 
 #address_search_field {
@@ -32,8 +28,8 @@ text-align: center;
     position: absolute;
     z-index: 2;
     top: .75em;
-    left: .75em;
-    line-height: 1;
+    left: 1em;
+    line-height: 1.5;
     margin: 0;
     overflow: hidden;
     font-size: 1em;

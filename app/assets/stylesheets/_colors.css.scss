@@ -74,6 +74,7 @@ $burgundy: #541c1e;
     border: 1px solid lighten($base, 20);
     box-shadow: 0 none;
     background-color: lighten($base, 97);
+    color: darken($base, 40);
     &:focus {
       box-shadow: none!important;
       border-color: darken($base, 10);
@@ -93,7 +94,7 @@ $burgundy: #541c1e;
     color: #555;
     .input {
       label {
-        color: darken($base, 40);
+        color: $base;
       }
     }
     .sidebar {
