@@ -70,37 +70,68 @@
   .large-8.small-12.pull-4.columns
     %section.mb20
       %ul.small-block-3.large-block-grid-6.features
-        %li
-          - if @space.environment == "indoor"
-            .ico-home Indoors
-          - elsif @space.environment == "outdoor"
-            .ico-tree Outdoors
+        - if @space.environment?
+          %li
+            - if @space.environment == "indoor"
+              .ico-home
+              Indoors
+            - elsif @space.environment == "outdoor"
+              .ico-tree
+              Outdoors
         - if @space.type?
-          %li
-            - if @space.type == "attic"
-              .ico-flashlight Attic Space
-            - elsif @space.type == "spare room"
-              .ico-dolly Spare Room
-            - elsif @space.type == "garage"
-              .ico-drill Garage
+          - if @space.type == "attic"
+            %li
+              .ico-flashlight
+              Attic Space
+          - elsif @space.type == "spare_room"
+            %li
+              .ico-dolly
+              Spare Room
+          - elsif @space.type == "garage"
+            %li
+              .ico-drill
+              Garage
+          - elsif @space.type == "basement"
+            %li
+              .ico-travel
+              Basement
+          - elsif @space.type == "covered"
+            %li
+              .ico-trailer
+              Covered Area
+          - elsif @space.type == "uncovered"
+            %li
+              .ico-acorn
+              Uncovered Area
+          - elsif @space.type == "driveway"
+            %li
+              .icon-road
+              Driveway
         - if @space.access?
-          %li
-            - if @space.access == "anytime"
-              .ico-open Anytime Access
-            - elsif @space.access == "by appointment"
-              .ico-clock Appointment Access
-            - elsif @space.access == "limited"
-              .ico-bolt One-Time Access
-
+          - if @space.access == "anytime"
+            %li
+              .ico-open
+              Anytime Access
+          - elsif @space.access == "appointment"
+            %li
+              .ico-clock
+              By Appointment Access
+          - elsif @space.access == "limited"
+            %li
+              .ico-bolt
+              One-Time Access
         - if @space.climate_controlled?
           %li
-            .ico-equalizer Climate Controlled
+            .ico-equalizer
+            Climate Controlled
         - if @space.lockable?
           %li
-            .ico-lock Lockable
+            .ico-locked
+            Lockable
         - if @space.attended?
           %li
-            .ico-tie Attended
+            .ico-tie
+            Attended
 
     %ul.small-block-2.large-block-grid-4.fitimg
       -if @space.photo2?
