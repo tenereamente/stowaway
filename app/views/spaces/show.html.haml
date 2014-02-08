@@ -119,15 +119,22 @@
       %h3 Overview
       %p= @space.notes
 
-    %section.mb50
-      %h3
-        - if @space.tags.any?
-          .entypo-tag
-            - @space.tags.each do |tag|
+    - if @space.tags.any?
+      %section.mb50#tags
+        %h3
+          Great for
+          - @space.tags.each do |tag|
+            %span
               = link_to tag.name, spaces_url(tag: tag.name)
-    %h3 Message the Owner
+
+    %h3
+      Send
+      = succeed "a message." do
+        %strong
+          #{@space.user.name}
     = simple_form_for Message.new do |f|
       = f.input :recipient, as: :hidden, input_html: { value: @space.user }
+      = f.input :avatar, as: :hidden, input_html: { value: @space.user.avatar.url(:thumb)}
       = f.input :subject, as: :hidden, input_html: { value: "Something about #{@space.title}" }
       = f.input_field :body, as: :text, label: 'Message'
       = f.button :submit, 'Send', class: "button fullbtn radius"

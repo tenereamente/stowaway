@@ -9,7 +9,7 @@
     = link_to 'javascript:;', {class: 'button fullbtn radius', "data-reveal-id" => "messageModal"} do
       %i{:class=>'icon-envelope'}
       Message
-      
+
     - if can_edit_user?(@user)
       = link_to edit_user_registration_path, {:class=>'button radius fullbtn warmish'} do
         %i{:class=>'icon-pencil'}
@@ -18,22 +18,23 @@
     %p
       =@user.bio
     - @spaces.each do |s|
-      .row
+      .row.locations
         .small-8.column
-          .row
-            = link_to image_or_placeholder(s.photo, :thumb), space_path(s)
-            %h3
-              = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
-            %h5
-              %i.icon-map-marker.pull-left
-              #{s.address1}, #{s.city} #{s.state}
-            %ul.inline-list
-              %li{:class=>'has-tip', "data-tooltip" => "", :title => s.environment}
-                #{s.environment}
-              %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
-                #{s.type}
-              %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
-                #{s.access}
+          = link_to image_or_placeholder(s.photo, :square), space_path(s)
+          %h3
+            = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
+          %h5
+            %i.icon-map-marker.pull-left
+            #{s.address1}, #{s.city} #{s.state}
+          %ul.inline-list
+            - if s.environment?
+              = render 'spaces/detail/environment'
+            - if s.type?
+              = render 'spaces/detail/type'
+            - if s.access?
+              = render 'spaces/detail/access'
+            = render 'spaces/detail/options'
+
 
         .small-4.column
           .well
@@ -48,6 +49,6 @@
               = link_to '#', {:class=>'button radius greenie fullbtn', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
                 %i{:class=>'icon-ok'}
                 Book It
-                
+
 = render 'users/modals'
-        
+
