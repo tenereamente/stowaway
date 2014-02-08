@@ -1,7 +1,12 @@
-%li
-  - if s.access == "anytime"
-    .ico-open Anytime Access
-  - elsif s.access == "by appointment"
-    .ico-clock Appointment Access
-  - elsif s.access == "limited"
-    .ico-bolt One-Time Access
+- if s.access == "anytime"
+  %li
+    .ico-open
+    Anytime Access
+- elsif s.access == "appointment"
+  %li
+    .ico-clock
+    Appointment Access
+- elsif s.access == "limited"
+  %li
+    .ico-bolt
+    One-Time Access

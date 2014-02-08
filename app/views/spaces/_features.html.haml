@@ -31,9 +31,7 @@
       %span
         = b.text
 #outdoor_button_group.outdoor.what{ style: display_style }
-  - space_type = [[:driveway, 'Driveway'],
-    [:covered, 'Covered Area'],
-    [:uncovered, 'Uncovered Area']]
+  - space_type = [[:driveway, 'Driveway'], [:covered, 'Covered Area'], [:uncovered, 'Uncovered Area']]
   = f.collection_radio_buttons :type, space_type, :first, :second do |b|
     = b.radio_button
     = b.label(class: 'button radius', id: "#{b.text.parameterize.underscore}_button_label") do
@@ -54,7 +52,7 @@
     = f.collection_radio_buttons :access, [[:anytime, 'Open Anytime'], [:appointment, 'By Appointment'], [:limited, 'Onetime']], :first, :second do |b|
       = b.radio_button
       = b.label(class: 'button radius', id: "#{b.text.parameterize.underscore}_button_label") do
-        - if b.text == 'Anytime'
+        - if b.text == 'Open Anytime'
           %span.ico-open
         - elsif b.text == 'By Appointment'
           %span.ico-clock

@@ -6,10 +6,11 @@
       = image_tag "http://placehold.it/250x250"
 
     %h3.title #{@user.name}
-    = link_to 'javascript:;', {class: 'button fullbtn radius', "data-reveal-id" => "messageModal"} do
-      %i{:class=>'icon-envelope'}
-      Message
-      
+    - if @user != current_user
+      = link_to 'javascript:;', {class: 'button fullbtn radius standard', "data-reveal-id" => "messageModal"} do
+        %i{:class=>'icon-envelope'}
+        Message
+
     - if can_edit_user?(@user)
       = link_to edit_user_registration_path, {:class=>'button radius fullbtn warmish'} do
         %i{:class=>'icon-pencil'}
@@ -18,22 +19,61 @@
     %p
       =@user.bio
     - @spaces.each do |s|
-      .row
+      .row.locations
         .small-8.column
-          .row
-            = link_to image_or_placeholder(s.photo, :thumb), space_path(s)
-            %h3
-              = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
-            %h5
-              %i.icon-map-marker.pull-left
-              #{s.address1}, #{s.city} #{s.state}
-            %ul.inline-list
-              %li{:class=>'has-tip', "data-tooltip" => "", :title => s.environment}
-                #{s.environment}
-              %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
-                #{s.type}
-              %li{:class=>'has-tip', "data-tooltip" => "", :title => s.access}
-                #{s.access}
+          = link_to image_or_placeholder(s.photo, :square), space_path(s)
+          %h3
+            = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
+          %h5
+            %i.icon-map-marker.pull-left
+            #{s.address1}, #{s.city} #{s.state}
+          %ul
+            - if s.environment == "indoor"
+              %li
+                %i.ico-home{:class=>'has-tip', "data-tooltip" => "Indoors", :title => "Indoors"}
+            - elsif s.environment == "outdoor"
+              %li
+                .ico-tree{:class=>'has-tip', "data-tooltip" => "Outdoors", :title => "Outdoors"}
+            - if s.type == "attic"
+              %li
+                .ico-flashlight{:class=>'has-tip', "data-tooltip" => "Attic Space", :title => "Attic Space"}
+            - elsif s.type == "spare_room"
+              %li
+                .ico-dolly{:class=>'has-tip', "data-tooltip" => "Spare Room", :title => "Spare Room"}
+            - elsif s.type == "garage"
+              %li
+                .ico-drill{:class=>'has-tip', "data-tooltip" => "Garage", :title => "Garage"}
+            - elsif s.type == "basement"
+              %li
+                .ico-travel{:class=>'has-tip', "data-tooltip" => "Basement", :title => "Basement"}
+            - elsif s.type == "covered"
+              %li
+                .ico-trailer{:class=>'has-tip', "data-tooltip" => "Covered Area", :title => "Covered Area"}
+            - elsif s.type == "uncovered"
+              %li
+                .ico-acorn{:class=>'has-tip', "data-tooltip" => "Uncovered Area", :title => "Uncovered Area"}
+            - elsif s.type == "driveway"
+              %li
+                .icon-road{:class=>'has-tip', "data-tooltip" => "Driveway", :title => "Driveway"}
+            - if s.access == "anytime"
+              %li
+                .ico-open{:class=>'has-tip', "data-tooltip" => "Anytime Access", :title => "Anytime Access"}
+            - elsif s.access == "appointment"
+              %li
+                .ico-clock{:class=>'has-tip', "data-tooltip" => "Appointment Access", :title => "Appointment Access"}
+            - elsif s.access == "limited"
+              %li
+                .ico-bolt{:class=>'has-tip', "data-tooltip" => "One-Time Access", :title => "One-Time Access"}
+            - if s.climate_controlled?
+              %li
+                .ico-equalizer{:class=>'has-tip', "data-tooltip" => "Climate Controlled", :title => "Climate Controlled"}
+            - if s.lockable?
+              %li
+                .ico-lock{:class=>'has-tip', "data-tooltip" => "Lockable", :title => "Lockable"}
+            - if s.attended?
+              %li
+                .ico-tie{:class=>'has-tip', "data-tooltip" => "Attended", :title => "Attended"}
+
 
         .small-4.column
           .well
@@ -48,6 +88,6 @@
               = link_to '#', {:class=>'button radius greenie fullbtn', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
                 %i{:class=>'icon-ok'}
                 Book It
-                
+
 = render 'users/modals'
-        
+

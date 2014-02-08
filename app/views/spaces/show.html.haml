@@ -66,41 +66,72 @@
           = button_tag type: "submit", name: nil, :class => "button book-it-button radius has-tip fullbtn greenie", 'data-address'=> @space.normalized_address, 'data-price'=> @space.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key], 'data-image'=>@space.photo.url(:thumb)  do
             %i.icon-credit-card
             Pay by Card
-    = gmaps(:map_options => {:detect_location => true, :center_on_user => true, :auto_zoom => false, :zoom => 12, :auto_adjust => true}, :markers => {:data => @json})
+
   .large-8.small-12.pull-4.columns
     %section.mb20
       %ul.small-block-3.large-block-grid-6.features
-        %li
-          - if @space.environment == "indoor"
-            .ico-home Indoors
-          - elsif @space.environment == "outdoor"
-            .ico-tree Outdoors
+        - if @space.environment?
+          %li
+            - if @space.environment == "indoor"
+              .ico-home
+              Indoors
+            - elsif @space.environment == "outdoor"
+              .ico-tree
+              Outdoors
         - if @space.type?
-          %li
-            - if @space.type == "attic"
-              .ico-flashlight Attic Space
-            - elsif @space.type == "spare room"
-              .ico-dolly Spare Room
-            - elsif @space.type == "garage"
-              .ico-drill Garage
+          - if @space.type == "attic"
+            %li
+              .ico-flashlight
+              Attic Space
+          - elsif @space.type == "spare_room"
+            %li
+              .ico-dolly
+              Spare Room
+          - elsif @space.type == "garage"
+            %li
+              .ico-drill
+              Garage
+          - elsif @space.type == "basement"
+            %li
+              .ico-travel
+              Basement
+          - elsif @space.type == "covered"
+            %li
+              .ico-trailer
+              Covered Area
+          - elsif @space.type == "uncovered"
+            %li
+              .ico-acorn
+              Uncovered Area
+          - elsif @space.type == "driveway"
+            %li
+              .icon-road
+              Driveway
         - if @space.access?
-          %li
-            - if @space.access == "anytime"
-              .ico-open Anytime Access
-            - elsif @space.access == "by appointment"
-              .ico-clock Appointment Access
-            - elsif @space.access == "limited"
-              .ico-bolt One-Time Access
-
+          - if @space.access == "anytime"
+            %li
+              .ico-open
+              Anytime Access
+          - elsif @space.access == "appointment"
+            %li
+              .ico-clock
+              By Appointment Access
+          - elsif @space.access == "limited"
+            %li
+              .ico-bolt
+              One-Time Access
         - if @space.climate_controlled?
           %li
-            .ico-equalizer Climate Controlled
+            .ico-equalizer
+            Climate Controlled
         - if @space.lockable?
           %li
-            .ico-lock Lockable
+            .ico-locked
+            Lockable
         - if @space.attended?
           %li
-            .ico-tie Attended
+            .ico-tie
+            Attended
 
     %ul.small-block-2.large-block-grid-4.fitimg
       -if @space.photo2?
@@ -119,15 +150,22 @@
       %h3 Overview
       %p= @space.notes
 
-    %section.mb50
-      %h3
-        - if @space.tags.any?
-          .entypo-tag
-            - @space.tags.each do |tag|
+    - if @space.tags.any?
+      %section.mb50#tags
+        %h3
+          Great for
+          - @space.tags.each do |tag|
+            %span
               = link_to tag.name, spaces_url(tag: tag.name)
-    %h3 Message the Owner
+
+    %h3
+      Send
+      = succeed "a message." do
+        %strong
+          #{@space.user.name}
     = simple_form_for Message.new do |f|
       = f.input :recipient, as: :hidden, input_html: { value: @space.user }
+      = f.input :avatar, as: :hidden, input_html: { value: @space.user.avatar.url(:thumb)}
       = f.input :subject, as: :hidden, input_html: { value: "Something about #{@space.title}" }
       = f.input_field :body, as: :text, label: 'Message'
       = f.button :submit, 'Send', class: "button fullbtn radius"
