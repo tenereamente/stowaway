@@ -1,5 +1,5 @@
-%h3 Filter Results
 .panel
+  %h3 Filter Results
   %form.filter.custom.nomrg{ action: spaces_path, method: "get" }
     %i.icon-location
     = hidden_field_tag "bounds", "", id: "address_search_bounds"
@@ -12,6 +12,6 @@
     .access
       %label Access Level
       = select_tag "access", options_for_select(["Anytime", "Appointment", "Onetime", "All"], params[:access] || "All")
-    = button_tag type: "submit", name: nil, :class => "button radius expand greenie" do
-      %i.icon-rocket
+    = button_tag type: "submit", name: nil, :class => "button radius expand standard" do
+      %i.icon-search
       Search
