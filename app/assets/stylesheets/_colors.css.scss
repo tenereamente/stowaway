@@ -90,12 +90,15 @@ $burgundy: #541c1e;
     }
   }
   .box {
-    background: lighten($base, 32);
+    background: lighten($base, 35);
     color: #555;
     .input {
       label {
         color: $base;
       }
+    }
+    .bigtime {
+      background-color: lighten($base, 5);
     }
     .sidebar {
       ul {

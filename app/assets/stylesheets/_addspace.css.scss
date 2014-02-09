@@ -1,11 +1,51 @@
+$small-screen: 30em;
+$medium-screen: 42em;
+$large-screen: 90em;
+
 body.spaces {
+  &.index {
+    @media screen and (max-width: 50em) {
+      #content, aside {
+        width: 100%;
+      }
+      aside {
+        .environment, .type, .access {
+          float: left;
+          width: 31%;
+          margin-right: 3.5%;
+        }
+        .access {
+          margin-right: 0;
+        }
+      }
+    }
+    @media screen and (max-width: $small-screen) {
+      aside {
+        .environment, .type, .access {
+          width: 100%;
+          margin-right: 0%;
+          float: none;
+        }
+        .custom {
+          &.dropdown {
+            height: 3em;
+            .current {
+              line-height: 2em;
+            }
+            .selector {
+              height: 3em;
+            }
+          }
+        }
+      }
+    }
+  }
   #main {
     .where, .what {
       label {
         float: left;
       }
     }
-
     .where {
       label {
         width: 48%;

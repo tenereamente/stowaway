@@ -7,10 +7,8 @@
     = f.input :address1, required: true, label: 'street name & number'
     = f.input :address2, label: 'apt, floor, or suite'
     .row
-      .small-6.column
-        = f.input :city, required: true
-      .small-3.column
-        = subregion_select(:space, :state, 'US')
-      .small-3.column
+      .small-8.column
+        = f.input :city, required: true, label: 'city'
+      .small-4.column
         = f.input :zip, required: true, label: 'zip code'
 
