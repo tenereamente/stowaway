@@ -1296,7 +1296,7 @@ $topbar-menu-icon-color-toggled: $green;
 // Transitions and breakpoint styles
 
 // $topbar-transition-speed: 300ms;
-$topbar-breakpoint: emCalc(768); // Change to 9999px for always mobile layout
+$topbar-breakpoint: 48em;
 // $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 
 // Divider Styles
@@ -1307,9 +1307,7 @@ $topbar-breakpoint: emCalc(768); // Change to 9999px for always mobile layout
 // Sticky Class
 
 // $topbar-sticky-class: ".sticky";
-
-@import 'foundation';
-
+@import "foundation";
 @import "foundation/variables";
 @import "foundation/components/global";
 @import "foundation/components/buttons";

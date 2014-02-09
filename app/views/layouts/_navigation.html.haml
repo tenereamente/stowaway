@@ -22,21 +22,34 @@
                 = current_user.name
             %ul.dropdown
               %li
-                = link_to 'Dashboard', user_path(current_user)
+                = link_to user_path(current_user) do
+                  %i.icon-dashboard
+                  Dashboard
               %li
-                = link_to 'My Listings', user_spaces_path(current_user)
+                = link_to user_spaces_path(current_user) do
+                  %i.icon-tasks
+                  My Listings
               %li
-                = link_to 'My Charges', user_charges_path(current_user)
+                = link_to messages_path do
+                  %i.icon-envelope
+                  My Messages
               %li
-                = link_to 'Edit Profile', edit_user_registration_path(current_user)
+                = link_to user_charges_path(current_user) do
+                  %i.icon-money
+                  My Charges
+              %li
+                = link_to edit_user_registration_path(current_user) do
+                  %i.icon-pencil
+                  Edit Profile
               - if current_user.has_role? :admin
                 %li
-                  = link_to 'Admin', rails_admin_path
+                  = link_to rails_admin_path do
+                    %i.icon-cogs
+                    Admin
               %li
-                = link_to 'Logout', destroy_user_session_path, :method=>'delete'
-          %li
-            = link_to messages_path do
-              %i.icon-envelope
+                = link_to destroy_user_session_path, :method=>'delete' do
+                  %i.icon-power-off
+                  Sign Out
         - else
           %li
             = link_to 'Sign up', new_user_registration_path
@@ -49,7 +62,6 @@
             %li
               = link_to 'Terms', terms_path
         %li.abtn
-          -# We disable turbolinking of spaces page because that breaks the Google Map on initial view
           %a.button.radius{:href => spaces_path}
             %i.icon-search.icon-left.icon-muted
             %span Find

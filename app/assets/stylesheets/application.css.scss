@@ -1,63 +1,39 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- //= require foundation_and_overrides
  *= require_self
- *= require_tree .
  *= require font-awesome
- *= require gmaps4rails
  *= require select2
- *= require simple-slider
 */
 
-@import "base";
+@import "compass";
 
-@include sticky-footer(83px, "#main", "#f_shiv", "#footer");
+@import "base/foundation_overrides";
+@import "base/variables";
+@import "base/colors";
+@import "base/mixins";
 
-$small-screen: 30em;
-$medium-screen: 42em;
-$large-screen: 90em;
+@import "partials/forms";
+@import "partials/typography";
+@import "partials/icons";
+@import "partials/nav";
+@import "partials/buttons";
 
-$em-base: 18 !default;
+@import "vendor/gmaps4rails";
+@import "vendor/simple-slider";
+@import "vendor/simple-slider-volume";
 
-// It strips the unit of measure and returns it
-@function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
-}
+@import "compass/layout/sticky-footer";
 
-// Converts "px" to "em" using the ($)em-base
-@function convert-to-em($value)  {
-  $value: strip-unit($value) / strip-unit($em-base) * 1em;
-  @if ($value == 0em) { $value: 0; } // Turn 0em into 0
-  @return $value;
-}
+@import "partials/pages/space";
+@import "partials/pages/addspace";
 
-@function emCalc($values...) {
-  $max: length($values); // Get the total number of parameters passed
-
-  // If there is only 1 parameter, then return it as an integer.
-  // This is done because a list can't be multiplied or divided even if it contains a single value
-  @if $max == 1 { @return convert-to-em(nth($values, 1)); }
-
-  $emValues: (); // This will eventually store the converted $values in a list
-  @for $i from 1 through $max {
-    $emValues: append($emValues, convert-to-em(nth($values, $i)));
-  }
-  @return $emValues;
-}
+@include sticky-footer(5.188em, "#main", "#f_shiv", "#footer");
 
 ::selection {
  background: rgba(0,0,0,.1);
 }
+
 body {
-  font-family: "Dosis";
+  font-family: $base-font;
 }
 
 footer {
@@ -91,13 +67,7 @@ footer {
 .nomrg {
   margin: 0!important;
 }
-/* Branding */
 
-.logo {
-  font-family: "Quicksand";
-  font-weight: normal;
-  letter-spacing: -1px;
-}
 
 .box, .reveal-modal {
   background: #fff;
@@ -110,64 +80,6 @@ footer {
     color: rgba(#555, .5);
   }
 }
-
-
-.top-bar {
-  padding: 0 10px;
-  .logo {
-    font-size: emCalc(22);
-    height: auto;
-    padding: .8em .5em;
-  }
-  &.expanded{
-    .title-area {
-      background: transparent;
-    }
-  }
-  .top-bar-section {
-    ul {
-      background: none;
-      @media screen and (max-width: $medium-screen) {
-        padding: 0 0 .75em 0;
-      }
-      li {
-        a {
-          font-size: emCalc(18);
-          &:not(.button) {
-            background: none;
-          }
-          &#account {
-            padding: 0;
-            position: relative;
-            top: -2px;
-            @media screen and (max-width: $medium-screen) {
-              top: 0;
-              margin: 0 0 .75em 0;
-            }
-            img {
-              border-radius: 3px;
-              margin-right: 6px;
-              width: 48px;
-              height: 48px;
-            }
-          }
-        }
-        .dropdown {
-          padding: 0 .5em .5em;
-          border-radius: 0 0 3px 3px ;
-          li {
-            a {
-              padding: .5em;
-              border-radius: 3px;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-/* Icons */
 
 .sidebar {
   padding: 0 1em 0 0;
@@ -185,7 +97,7 @@ footer {
       color: #666;
       font-weight: 700;
       text-transform: uppercase;
-      border-radius: 3px;
+      @include border-radius($radius);
       line-height: 20px;
       .num-container {
         width: 20px;
@@ -196,7 +108,7 @@ footer {
           display: none;
           width: 8px;
           height: 8px;
-          border-radius: 4px;
+          @include border-radius($radius);
           margin: 4px;
           background: #000;
         }
@@ -206,27 +118,6 @@ footer {
         display: none;
       }
     }
-  }
-}
-/* Type */
-
-.center {
-  text-align: center;
-}
-nav {
-  text-transform: lowercase;
-  font-weight: normal;
-}
-h1 {
-  font-weight: 500;
-  text-transform: uppercase;
-}
-li {
-  list-style-type: none;
-}
-p {
-  a {
-    border-bottom: 1px solid;
   }
 }
 
@@ -240,7 +131,7 @@ p {
 
 .well {
   border: 0!important;
-  border-radius: 3px;
+  @include border-radius($radius);
   margin-bottom: 1.5em;
   padding: 1em 1em 0 1em;
   h3 {
@@ -253,8 +144,9 @@ p {
     width: 100%;
   }
 }
+
 img {
-  border-radius: 3px;
+  @include border-radius($radius);
   max-width: 100%;
   height: auto;
 }
@@ -265,31 +157,15 @@ img {
 }
 
 .endround {
-  border-radius: 0 1000px 1000px 0;
+  border-radius: 0 62em 62em 0;
 }
 
 blockquote {
   border-left: 0 none;
   padding: 1em;
-  border-radius: 6px;
-  font-size: 1.2em;
+  @include border-radius($radius);
+  font-size: 120%;
   @media screen and (max-width: $medium-screen) {
-    font-size: 1em;
-  }
-}
-
-.center-logo {
-  text-align: center;
-  margin: 2em 0;
-  font-size: 200%;
-  @media screen and (max-width: 320px) {
-    margin: 1em 0;
-    font-size: 150%;
-  }
-}
-
-.new_blog_post {
-  textarea {
-    height: 20em;
+    font-size: 100%;
   }
 }

@@ -9,9 +9,7 @@
         = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
       %h5
         %i.icon-map-marker.pull-left
-        #{s.city}, #{s.state}
-      %h5
-        = link_to s.user.name, user_path(s.user)
+        #{s.city}, ME
       %ul
         - if s.environment == "indoor"
           %li
@@ -79,6 +77,6 @@
             Edit
         - elsif not can_edit_space?(s)
           = link_to space_path(s), {:class=>'button radius fullbtn greenie'} do
-            %i.icon-ok
-            Book It
+            %i.icon-eye-open
+            View
 

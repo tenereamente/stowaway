@@ -1,0 +1,85 @@
+/* Branding */
+
+.logo {
+  font-family: $alt-font;
+  font-weight: normal;
+  letter-spacing: -1px;
+}
+
+.center-logo {
+  text-align: center;
+  margin: 2em 0;
+  font-size: 200%;
+  @media screen and (max-width: 320px) {
+    margin: 1em 0;
+    font-size: 150%;
+  }
+}
+
+.top-bar {
+  padding: 0 10px;
+  .logo {
+    font-size: emCalc(22);
+    height: auto;
+    padding: .8em .5em;
+  }
+  &.expanded{
+    .title-area {
+      background: transparent;
+    }
+  }
+  .top-bar-section {
+    ul {
+      background: none;
+      @media screen and (max-width: $medium-screen) {
+        padding: 0 0 .75em 0;
+      }
+      .has-dropdown {
+        a {
+          &:after {
+            margin-right: 1em;
+          }
+        }
+      }
+      li {
+        a {
+          font-size: emCalc(18);
+          @include transition(all);
+          &:not(.button) {
+            background: none;
+            padding: 0 .5em;
+          }
+
+          &#account {
+            @media screen and (max-width: $medium-screen) {
+              margin: 0 0 .75em 0;
+            }
+            img {
+              @include border-radius(62em);
+              margin-right: .5em;
+              width: 3em;
+              height: 3em;
+              position: relative;
+              top: -.15em;
+            }
+          }
+        }
+        .dropdown {
+          padding: 0 .5em .5em;
+          border-radius: 0 0 $radius $radius;
+          @include transition(all);
+          li {
+            a {
+              padding: .5em;
+              @include border-radius($radius);
+              i {
+                margin-right: 1em;
+                opacity: .8;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
