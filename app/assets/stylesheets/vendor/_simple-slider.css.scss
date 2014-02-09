@@ -1,0 +1,40 @@
+.slider {
+  width: 96%;
+  .dragger {
+    background: #8DCA09;
+    background: -webkit-linear-gradient(top, #8DCA09, #72A307);
+    background: -moz-linear-gradient(top, #8DCA09, #72A307);
+    background: linear-gradient(top, #8DCA09, #72A307);
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+    border: 1px solid #496805;
+    width: 16px;
+    height: 16px;
+    &:hover {
+      background: -webkit-linear-gradient(top, #8DCA09, #8DCA09);
+    }
+  }
+  .track, .highlight-track {
+    background: #ccc;
+    background: -webkit-linear-gradient(top, #bbb, #ddd);
+    background: -moz-linear-gradient(top, #bbb, #ddd);
+    background: linear-gradient(top, #bbb, #ddd);
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+
+    border: 1px solid #aaa;
+    height: 4px;
+  }
+  .highlight-track {
+  	background-color: #8DCA09;
+  	background: -webkit-linear-gradient(top, #8DCA09, #72A307);
+  	background: -moz-linear-gradient(top, #8DCA09, #72A307);
+  	background: linear-gradient(top, #8DCA09, #72A307);
+  	border-color: #496805;
+  }
+}

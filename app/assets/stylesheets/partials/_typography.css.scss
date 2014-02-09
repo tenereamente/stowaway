@@ -1,18 +1,23 @@
-/* Type is gorgeous */
+h1, h2, h3 {
+  font-weight: 500;
+}
+
+h4, h5 {
+  font-family: $alt-font;
+}
 
 p {
+  font-size: 125%;
+  a {
+    border-bottom: 1px solid;
+  }
   &.small {
     font-size: 1em;
   }
-  font-size: 1.2875em
 }
 
 .t-center {
   text-align: center;
-}
-
-h2 {
-  font-weight: 600;
 }
 
 .price {
@@ -36,6 +41,18 @@ h2 {
   .button.round {
     margin-bottom: .25em;
   }
+}
+nav {
+  text-transform: lowercase;
+  font-weight: normal;
+}
+.has-tip {
+  font-weight: normal;
+}
+
+
+li {
+  list-style-type: none;
 }
 
 

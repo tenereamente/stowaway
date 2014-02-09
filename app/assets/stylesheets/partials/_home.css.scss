@@ -2,8 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body.home{
+body.home {
   #main {
+    padding: 0 1%;
+    @media screen and (max-width: $small-screen) {
+      .hero {
+        padding-top: 2em;
+      }
+    }
     .hero {
       padding: 6.66em 0 0;
       h1 {
@@ -13,19 +19,6 @@ body.home{
     }
     .launch {
       font-size: 150%;
-    }
-  }
-}
-
-$break-small: 480px;
-
-body.home {
-  #main {
-    padding: 0 1%;
-    @media screen and (max-width: $break-small) {
-      .hero {
-        padding-top: 2em;
-      }
     }
   }
 }

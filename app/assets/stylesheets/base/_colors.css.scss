@@ -5,18 +5,6 @@ $green: #87ae3a;
 $powder: #7cabd3;
 $orange: lighten(#f48231,5);
 
-/*
-$blue: rgb(26, 101, 228);
-$peach: rgb(253, 182, 63);
-$magenta: rgb(184, 5, 146);
-$lavender: rgb(110, 94, 116); //Lavender
-$tweed: rgb(128, 98, 44);
-$red: rgb(200, 70, 57);
-$midnight: rgb(14, 41, 73);
-$sky: #3aa8f7;
-$burgundy: #541c1e;
-*/
-
 @mixin theme($base, $accent, $tertiary) {
   background: $base $bg-image;
   color: darken($base, 20);
@@ -143,6 +131,7 @@ $burgundy: #541c1e;
         padding: 0 0 0 .5em;
         &:hover {
           background: darken($base, 40);
+          color: $tertiary;
           .dropdown {
             background: darken($base, 40);
           }
@@ -271,31 +260,5 @@ $burgundy: #541c1e;
 body {
   @include theme($powder, $orange, $green);
 }
-
-/*
-body.storagespaces {
-  @include color-one($sky);
-}
-
-body.home {
-@include color-one($lavender);
-}
-
-body.listspace {
-  @include color-one($blue);
-}
-
-body.sessions {
-  @include color-one($green);
-}
-
-body.registrations {
-  @include color-one($orange);
-}
-
-body.passwords, body.confirmations {
-  @include color-one($peach);
-}
-*/
 
 
