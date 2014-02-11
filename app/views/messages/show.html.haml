@@ -5,7 +5,11 @@
     /= link_to "Trash", trash_message_path(@conversation), class: :button, method: :delete
 %h2
   Re:
-  = link_to @conversation.subject
+  - space = Space.where(title: @conversation.subject.split("Something about ")[1]).first
+  - if space 
+    = link_to @conversation.subject, space_path(space)
+  - else
+    = @conversation.subject
 #conversation
   - @conversation.messages.each do |message|
     .row
@@ -14,7 +18,7 @@
           %ul
             %li
               %strong From:
-              = link_to message.sender.name
+              = link_to message.sender.name, user_path(message.sender)
             %li
               %strong Sent:
               #{time_ago_in_words(message.created_at)} ago
