@@ -1,4 +1,30 @@
 @include font-face(stowaway, 'icons/stowaway', normal, $asset-pipeline: true);
+@include font-face(sp, 'icons/startup_portland', normal, $asset-pipeline: true);
+
+[class^="sp-"], [class*=" sp-"] {
+	font-family: 'sp';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.sp-icon:before {
+	content: "\69";
+}
+.sp-type:before {
+	content: "\74";
+}
+.sp-logo:before {
+	content: "\6c";
+}
+
 
 [class^="ico-"], [class*=" ico-"] {
 	font-family: 'stowaway';

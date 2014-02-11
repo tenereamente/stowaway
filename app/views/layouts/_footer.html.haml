@@ -1,8 +1,11 @@
-.row.center
+.row.text-center
   %ul.inline-list.social
     %li.github
       %a{:href => "https://github.com/stowawayco/stowaway", :target => "_blank"}
-        %i.icon-github.icon-3x
+        %i.icon-github
+    %li.startup_portland
+      %a{:href => "http://startupportland.com", :target => "_blank"}
+        %i.sp-icon
 
 = yield :scripts
 
@@ -61,8 +64,8 @@
   - active_listing_count = Space.by_user(current_user).available.count
   - has_avatar = current_user.avatar.exists?
   - sent_message_count = current_user.mailbox.sentbox.count
-  :javascript    
-    UserVoice.push(['identify', { 
+  :javascript
+    UserVoice.push(['identify', {
       email: '#{current_user_email}',
       name: '#{current_user_name}'}
     ]);
@@ -82,11 +85,11 @@
       //  ltv:          1495.00, // Decimal; lifetime value of the account
       //  plan:         'Enhanced' // Plan name for the account
       //}
-    //}]); 
+    //}]);
 
     // customer.io identification
-    _cio.identify({ 
-      id: '#{current_user_id}', 
+    _cio.identify({
+      id: '#{current_user_id}',
       email: '#{current_user_email}',
       created_at: '#{current_user_created_at}',
       name: '#{current_user_name}',
@@ -95,9 +98,9 @@
       total_listing_count: '#{total_listing_count}',
       active_listing_count: '#{active_listing_count}',
       has_avatar: '#{has_avatar}',
-      sent_message_count: '#{sent_message_count}' 
+      sent_message_count: '#{sent_message_count}'
     });
-    
+
 :javascript
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -106,18 +109,18 @@
 
   ga('create', 'UA-43750203-1', 'stowaway.co');
   ga('send', 'pageview');
-  
+
 :javascript
-  $(document).ready(function() { 
-    if( $('.gmaps4rails_map').length > 0 ) { 
+  $(document).ready(function() {
+    if( $('.gmaps4rails_map').length > 0 ) {
       google.maps.visualRefresh=true;
-      Gmaps.loadMaps(); 
-    } 
+      Gmaps.loadMaps();
+    }
   });
 
 :javascript
   $(document).ready(function(){
-    $("label").inFieldLabels({ 
-      pollDuration: 100 
+    $("label").inFieldLabels({
+      pollDuration: 100
     });
   });
