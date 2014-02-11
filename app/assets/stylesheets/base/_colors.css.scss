@@ -4,8 +4,9 @@ $bg-image: image-url("tile2.svg") repeat;
 $green: #87ae3a;
 $powder: #7cabd3;
 $orange: lighten(#f48231,5);
+$gray: rgba(85, 85, 85, 0.5);
 
-@mixin theme($base, $accent, $tertiary) {
+@mixin theme($base, $accent, $tertiary, $ordinary) {
   background: $base $bg-image;
   color: darken($base, 20);
   &.sessions, &.registrations, &.passwords, &.confirmations {
@@ -21,6 +22,19 @@ $orange: lighten(#f48231,5);
   }
   #address_search_field {
     color: $tertiary;
+  }
+
+  .feature-icons {
+    li {
+      i {
+        &:hover {
+          color: $tertiary;
+        }
+        &:before {
+          color: $ordinary;
+        }
+      }
+    }
   }
   .launch {
     background-color: $accent;
@@ -138,11 +152,13 @@ $orange: lighten(#f48231,5);
         }
       }
       a {
+        @include transition();
         &:not(button) {
           color: lighten($base, 90);
         }
         &.button {
           color: lighten($accent, 90);
+
           background-color: $accent;
           &:hover {
             background-color: darken($accent, 10);
@@ -258,7 +274,7 @@ $orange: lighten(#f48231,5);
 }
 
 body {
-  @include theme($powder, $orange, $green);
+  @include theme($powder, $orange, $green, $gray);
 }
 
 
