@@ -158,7 +158,6 @@ $gray: rgba(85, 85, 85, 0.5);
         }
         &.button {
           color: lighten($accent, 90);
-
           background-color: $accent;
           &:hover {
             background-color: darken($accent, 10);
