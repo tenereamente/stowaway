@@ -1,7 +1,7 @@
 Mailboxer.setup do |config|
 
   #Configures if you applications uses or no the email sending for Notifications and Messages
-  config.uses_emails = true
+  config.uses_emails = true # mailboxer emails are not working, we are doing it manually
 
   #Configures the default from for the email sent for Messages and Notifications of Mailboxer
   config.default_from = "hello@stowaway.co"
@@ -9,6 +9,9 @@ Mailboxer.setup do |config|
   #Configures the methods needed by mailboxer
   config.email_method = :mailboxer_email
   config.name_method = :name
+
+  #config.notification_mailer = CustomerioMailboxerNotificationMailer
+  config.message_mailer = CustomerioMailboxerNotificationMailer
 
   #Configures if you use or not a search engine and wich one are you using
   #Supported enignes: [:solr,:sphinx]

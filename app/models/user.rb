@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   def mailboxer_email(object)
     # TODO check user preferences to see if they want notifications
     # if wants_notifications
-    return email
+    return self.email
     # else
     #   nil
   end

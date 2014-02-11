@@ -51,7 +51,8 @@ class MessagesController < ApplicationController
       unless @message.valid?
         return render :new
       end
-      receipt = current_user.send_message(@message.recipients, @message.body, @message.subject, true, @message.attachment)
+      @recipient = User.find(params.require(:message)[:recipient])
+      receipt = current_user.send_message(@recipient, @message.body, @message.subject, true, @message.attachment)
     end
     flash[:notice] = "Message sent."
 
@@ -93,4 +94,5 @@ class MessagesController < ApplicationController
     @messages = current_user.search_messages(@search)
     render :index
   end
+
 end
