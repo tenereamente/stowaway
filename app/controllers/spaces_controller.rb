@@ -70,7 +70,12 @@ class SpacesController < ApplicationController
 
   def update
     @space = Space.find(params[:id])
+    space_confirm = params[:available] == true
     if @space.update_attributes(space_params)
+      listing_title = @space.title
+      listing_url = space_path(@space)
+      "listed_space_confirmation"
+      # send listed_space_Confirmation trigger.
       redirect_to space_path(@space), :notice => "Space updated."
     else
       redirect_to edit_space_path(@space), :alert => "Unable to update space."
