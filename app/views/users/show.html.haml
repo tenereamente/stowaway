@@ -27,52 +27,52 @@
           %h5
             %i.icon-map-marker.pull-left
             #{s.address1}, #{s.city} #{s.state}
-          %ul
+          %ul.feature-icons
             - if s.environment == "indoor"
               %li
                 %i.ico-home{:class=>'has-tip', "data-tooltip" => "Indoors", :title => "Indoors"}
             - elsif s.environment == "outdoor"
               %li
-                .ico-tree{:class=>'has-tip', "data-tooltip" => "Outdoors", :title => "Outdoors"}
+                %i.ico-tree{:class=>'has-tip', "data-tooltip" => "Outdoors", :title => "Outdoors"}
             - if s.type == "attic"
               %li
-                .ico-flashlight{:class=>'has-tip', "data-tooltip" => "Attic Space", :title => "Attic Space"}
+                %i.ico-flashlight{:class=>'has-tip', "data-tooltip" => "Attic Space", :title => "Attic Space"}
             - elsif s.type == "spare_room"
               %li
-                .ico-dolly{:class=>'has-tip', "data-tooltip" => "Spare Room", :title => "Spare Room"}
+                %i.ico-dolly{:class=>'has-tip', "data-tooltip" => "Spare Room", :title => "Spare Room"}
             - elsif s.type == "garage"
               %li
-                .ico-drill{:class=>'has-tip', "data-tooltip" => "Garage", :title => "Garage"}
+                %i.ico-drill{:class=>'has-tip', "data-tooltip" => "Garage", :title => "Garage"}
             - elsif s.type == "basement"
               %li
-                .ico-travel{:class=>'has-tip', "data-tooltip" => "Basement", :title => "Basement"}
+                %i.ico-travel{:class=>'has-tip', "data-tooltip" => "Basement", :title => "Basement"}
             - elsif s.type == "covered"
               %li
-                .ico-trailer{:class=>'has-tip', "data-tooltip" => "Covered Area", :title => "Covered Area"}
+                %i.ico-trailer{:class=>'has-tip', "data-tooltip" => "Covered Area", :title => "Covered Area"}
             - elsif s.type == "uncovered"
               %li
-                .ico-acorn{:class=>'has-tip', "data-tooltip" => "Uncovered Area", :title => "Uncovered Area"}
+                %i.ico-acorn{:class=>'has-tip', "data-tooltip" => "Uncovered Area", :title => "Uncovered Area"}
             - elsif s.type == "driveway"
               %li
-                .icon-road{:class=>'has-tip', "data-tooltip" => "Driveway", :title => "Driveway"}
+                %i.icon-road{:class=>'has-tip', "data-tooltip" => "Driveway", :title => "Driveway"}
             - if s.access == "anytime"
               %li
-                .ico-open{:class=>'has-tip', "data-tooltip" => "Anytime Access", :title => "Anytime Access"}
+                %i.ico-open{:class=>'has-tip', "data-tooltip" => "Anytime Access", :title => "Anytime Access"}
             - elsif s.access == "appointment"
               %li
-                .ico-clock{:class=>'has-tip', "data-tooltip" => "Appointment Access", :title => "Appointment Access"}
+                %i.ico-clock{:class=>'has-tip', "data-tooltip" => "Appointment Access", :title => "Appointment Access"}
             - elsif s.access == "limited"
               %li
-                .ico-bolt{:class=>'has-tip', "data-tooltip" => "One-Time Access", :title => "One-Time Access"}
+                %i.ico-bolt{:class=>'has-tip', "data-tooltip" => "One-Time Access", :title => "One-Time Access"}
             - if s.climate_controlled?
               %li
-                .ico-equalizer{:class=>'has-tip', "data-tooltip" => "Climate Controlled", :title => "Climate Controlled"}
+                %i.ico-equalizer{:class=>'has-tip', "data-tooltip" => "Climate Controlled", :title => "Climate Controlled"}
             - if s.lockable?
               %li
-                .ico-lock{:class=>'has-tip', "data-tooltip" => "Lockable", :title => "Lockable"}
+                %i.ico-lock{:class=>'has-tip', "data-tooltip" => "Lockable", :title => "Lockable"}
             - if s.attended?
               %li
-                .ico-tie{:class=>'has-tip', "data-tooltip" => "Attended", :title => "Attended"}
+                %i.ico-tie{:class=>'has-tip', "data-tooltip" => "Attended", :title => "Attended"}
 
 
         .small-4.column

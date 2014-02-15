@@ -169,3 +169,11 @@ blockquote {
     font-size: 100%;
   }
 }
+
+.has-tip {
+  border-bottom: 0 none;
+  &:hover, &:focus {
+   cursor: default;
+   border-bottom: 0 none;
+  }
+}
