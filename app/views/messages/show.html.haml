@@ -23,7 +23,7 @@
               %strong Sent:
               #{time_ago_in_words(message.created_at)} ago
       .small-8.column
-        = message.body
+        = simple_format(message.body)
         - if message.attachment.url
           .attachment
             = link_to message.attachment_identifier, message.attachment.url
