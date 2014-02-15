@@ -19,7 +19,7 @@ class Space < ActiveRecord::Base
   validates :user_id, presence: true
   validates :address1, presence: true
   validates :city, presence: true
-  validates :state, presence: true # later make this conditional based on country
+  #validates :state, presence: true # later make this conditional based on country
   validates :zip, presence: true # later make this conditional based on country.
   validates :notes, presence: true
   # TODO: catch Gmaps4rails address validation failure exception,
