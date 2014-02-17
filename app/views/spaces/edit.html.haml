@@ -5,7 +5,10 @@
     %strong
       #{@resource.title}
   .row
-    .medium-4.medium-push-8.columns
+    .medium-8.columns
+      = render partial: 'address', :locals => { f: f }
+      = render partial: 'features', :locals => { f: f }
+    .medium-4.columns
       .panel
         %h3#monthly_price_label.text-center
           %span
@@ -38,7 +41,3 @@
           = f.file_field :photo5
       = f.button :submit, 'Update & Preview', class: 'btn-primary fullbtn button greenie radius'
       #{link_to "Delete Listing", space_path(@resource), :class => 'button fullbtn btn-primary warning radius', :data => { :confirm => "Are you sure?" }, :method => :delete}
-
-    .medium-8.medium-pull-4.columns
-      = render partial: 'address', :locals => { f: f }
-      = render partial: 'features', :locals => { f: f }

@@ -67,6 +67,12 @@ body.spaces {
           &#basement_button_label {
             margin-right: 0;
           }
+          @media screen and (max-width: $medium-screen) {
+            width: 49%;
+            &#garage_button_label {
+              margin-right: 0;
+            }
+          }
         }
       }
       &.outdoor {
@@ -75,6 +81,14 @@ body.spaces {
           margin-right: 2%;
           &#uncovered_area_button_label {
             margin-right: 0;
+          }
+          @media screen and (max-width: $medium-screen) {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: .25em;
+            i {
+              display: inline;
+            }
           }
         }
       }
@@ -85,6 +99,23 @@ body.spaces {
         margin-right: 2%;
         &#onetime_button_label {
           margin-right: 0;
+        }
+        @media screen and (max-width: $medium-screen) {
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: .25em;
+          i {
+            display: inline;
+          }
+        }
+      }
+      .features {
+        ul {
+          li {
+            @media screen and (max-width: $medium-screen) {
+              margin-bottom: .25em;
+            }
+          }
         }
       }
     }

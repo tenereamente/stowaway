@@ -23,9 +23,6 @@ $(document).ready ->
         $.updateAddressAndBounds()
         #alert('map moved, now idle')
 
-
-
-
   $("#space_tag_list").select2({tags:[]})
   $("#space_monthly_price").bind "slider:changed", (event, data) ->
     $("#monthly_price_label").html("$" + data.value)
@@ -36,7 +33,6 @@ $(document).ready ->
     $.hideOutdoorOptions()
     $("label#indoor_button_label").toggleClass('active', true)
     $("label#outdoor_button_label").toggleClass('active', false)
-
 
   $("#outdoor_button_label").click (event) ->
     # hide the indoor options, show the outdoor
@@ -65,7 +61,6 @@ $(document).ready ->
     $("label#driveway_button_label").toggleClass('active', false)
     $("#access_button_group").show()
 
-
   $("#spare_room_button_label").click (event) ->
     $("label#attic_button_label").toggleClass('active', false)
     $("label#garage_button_label").toggleClass('active', false)
@@ -86,7 +81,6 @@ $(document).ready ->
     $("label#driveway_button_label").toggleClass('active', false)
     $("#access_button_group").show()
 
-
   $("#driveway_button_label").click (event) ->
     $("label#uncovered_area_button_label").toggleClass('active', false)
     $("label#covered_area_button_label").toggleClass('active', false)
@@ -97,8 +91,6 @@ $(document).ready ->
     $("label#basement_button_label").toggleClass('active', false)
     $("#access_button_group").show()
 
-
-
   $("#covered_area_button_label").click (event) ->
     $("label#covered_area_button_label").toggleClass('active', true)
     $("label#uncovered_area_button_label").toggleClass('active', false)
@@ -108,7 +100,6 @@ $(document).ready ->
     $("label#spare_room_button_label").toggleClass('active', false)
     $("label#basement_button_label").toggleClass('active', false)
     $("#access_button_group").show()
-
 
   $("#uncovered_area_button_label").click (event) ->
     $("label#uncovered_area_button_label").toggleClass('active', true)
@@ -143,7 +134,6 @@ $(document).ready ->
 
   $("#attended_checkbox_label").click (event) ->
     $(event.target).toggleClass('active')
-
 
   $.showOutdoorOptions = ->
     $("#what_kind_of_space").show()
