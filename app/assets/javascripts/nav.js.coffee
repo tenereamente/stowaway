@@ -1,3 +1,3 @@
-$(".navicon-button").click ->
-  alert "Gsfs!"
-  $(this).toggleClass "open"
+$(document).ready ->
+  $("#toggle").click (event) ->
+    $("form.filter").toggle("slow")

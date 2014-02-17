@@ -28,19 +28,17 @@
               %li
                 = link_to user_spaces_path(current_user) do
                   %i.icon-tasks
-                  My Listings
+                  Listings
+                  %sup.badge #{@spaces.count}
               %li
                 = link_to messages_path do
                   %i.icon-envelope
-                  My Messages
-              %li
-                = link_to user_charges_path(current_user) do
-                  %i.icon-money
-                  My Charges
+                  Messages
+                  %sup.badge 12
               %li
                 = link_to edit_user_registration_path(current_user) do
-                  %i.icon-pencil
-                  Edit Profile
+                  %i.icon-gear
+                  Account
               - if current_user.has_role? :admin
                 %li
                   = link_to rails_admin_path do
@@ -61,11 +59,11 @@
               = link_to 'FAQ', 'http://stowaway.uservoice.com/'
             %li
               = link_to 'Terms', terms_path
-        %li.abtn
-          %a.button.radius{:href => spaces_path}
+        %li
+          = link_to spaces_path, class: 'button radius standard' do
             %i.icon-search.icon-left.icon-muted
             %span Find
-        %li.abtn
-          %a.button.radius{:href => new_space_path}
+        %li
+          = link_to new_space_path, class: 'button radius standard' do
             %i.icon-plus.icon-left.icon-muted
             %span List
