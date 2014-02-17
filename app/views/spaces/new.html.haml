@@ -8,14 +8,18 @@
     %strong Congratulations on listing your first space!
     If you'd like to check out our handy guide on listing an awesome space feel free! Otherwise, enjoy building you listing and if you get stuck or have feedback, just hit us up and we'll get back to you real fastlike.
   .row
-    .medium-4.push-8.columns
-      .well
+    .medium-8.columns
+      = render partial: 'address', :locals => { f: f }
+      %hr
+      = render partial: 'features', :locals => { f: f }
+    .medium-4.columns
+      .panel
         %h3#monthly_price_label
           %span
             Set Your Price
         = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "0,500", 'data-slider-step' => '5', value: 50 }
       %h4 Add Photos
-      %ul.small-block-grid-2.fitimg
+      %ul.small-block-grid-2.medium-block-grid-3.large-block-grid-2.fitimg
         %li
           = image_or_placeholder(@resource.photo)
           = f.file_field :photo
@@ -31,9 +35,7 @@
         %li
           = image_or_placeholder(@resource.photo5)
           = f.file_field :photo5
-    .large-8.pull-4.small-12.columns
-      = render partial: 'address', :locals => { f: f }
-      %hr
-      = render partial: 'features', :locals => { f: f }
-      = f.button :submit, 'Preview', :class => 'button-primary greenie button radius'
+
+  = f.button :submit, 'Preview', :class => 'button-primary fullbtn greenie button radius'
+
 
