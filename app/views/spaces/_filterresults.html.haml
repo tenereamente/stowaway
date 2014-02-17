@@ -1,17 +1,19 @@
 .panel
-  %h3 Filter Results
+  %p.lead.text-center
+    %i.icon-filter
+    Filter Results
   %form.filter.custom.nomrg{ action: spaces_path, method: "get" }
     %i.icon-location
     = hidden_field_tag "bounds", "", id: "address_search_bounds"
     .environment
       %label Environment
-      = select_tag "environment", options_for_select(["Indoor", "Outdoor", "All"], params[:environment] || "All")
+      = select_tag "environment", options_for_select(["Indoor", "Outdoor", "Any"], params[:environment] || "Any")
     .type
       %label Space Type
-      = select_tag "type", options_for_select([ "Attic", "Garage", "Spare Room", "Basement", "Driveway", "Covered Area", "Uncovered Area", "All"], params[:type] || "All")
+      = select_tag "type", options_for_select([ "Attic", "Garage", "Spare Room", "Basement", "Driveway", "Covered Area", "Uncovered Area", "Any"], params[:type] || "Any")
     .access
       %label Access Level
-      = select_tag "access", options_for_select(["Anytime", "Appointment", "Onetime", "All"], params[:access] || "All")
-    = button_tag type: "submit", name: nil, :class => "button radius expand standard" do
+      = select_tag "access", options_for_select(["Anytime", "Appointment", "Onetime", "Any"], params[:access] || "Any")
+    = button_tag type: "submit", name: nil, :class => "no-mrg button radius expand standard" do
       %i.icon-search
       Search

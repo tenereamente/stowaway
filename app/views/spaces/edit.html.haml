@@ -1,37 +1,44 @@
 
 = simple_form_for(@resource, html: {class: 'form-vertical custom', id: 'list-space-step1' }) do |f|
+  %h2
+    Edit:
+    %strong
+      #{@resource.title}
   .row
-    .large-4.small-12.push-8.columns
-      .well
-        %h3#monthly_price_label
+    .medium-4.medium-push-8.columns
+      .panel
+        %h3#monthly_price_label.text-center
           %span
             $
             = succeed " / Month" do
               = h @resource.monthly_price
-        
+
         = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "5,500", 'data-slider-step' => '5', :value => @resource.monthly_price }
-      %ul.small-block-grid-1.large-block-grid-2.fitimg  
+      %ol.small-block-grid-3.large-block-grid-2.fitimg
         %li
-          = image_or_placeholder(@resource.photo)
-          = f.file_field :photo
+          - if @resource.photo.exists?
+            = image_or_placeholder(@resource.photo)
+          = f.file_field :photo, class: 'btn radius'
+
         %li
-          = image_or_placeholder(@resource.photo2)
+          - if @resource.photo2.exists?
+            = image_or_placeholder(@resource.photo2)
           = f.file_field :photo2
         %li
-          = image_or_placeholder(@resource.photo3)
+          - if @resource.photo3.exists?
+            = image_or_placeholder(@resource.photo3)
           = f.file_field :photo3
         %li
-          = image_or_placeholder(@resource.photo4)
+          - if @resource.photo4.exists?
+            = image_or_placeholder(@resource.photo4)
           = f.file_field :photo4
         %li
-          = image_or_placeholder(@resource.photo5)
+          - if @resource.photo5.exists?
+            = image_or_placeholder(@resource.photo5)
           = f.file_field :photo5
-    .small-12.large-8.pull-4.columns
-      %h2 Edit #{@resource.address1}
+      = f.button :submit, 'Update & Preview', class: 'btn-primary fullbtn button greenie radius'
+      #{link_to "Delete Listing", space_path(@resource), :class => 'button fullbtn btn-primary warning radius', :data => { :confirm => "Are you sure?" }, :method => :delete}
+
+    .medium-8.medium-pull-4.columns
       = render partial: 'address', :locals => { f: f }
-      %hr
       = render partial: 'features', :locals => { f: f }
-      .row
-        .small-12.large-6.column
-          = f.button :submit, 'Update & Preview', class: 'btn-primary button greenie radius'
-          #{link_to "Delete Listing", space_path(@resource), :data => { :confirm => "Are you sure?", :class => 'button btn-primary red radius' }, :method => :delete}

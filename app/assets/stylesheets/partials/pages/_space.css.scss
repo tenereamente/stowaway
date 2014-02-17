@@ -5,9 +5,8 @@
     float: left;
     margin-right: 1em;
     @media screen and (max-width: 320px) {
-      width: 100%;
+      width: 33%;
       height: auto;
-      margin-right: 0;
       margin-bottom: 1em;
     }
   }
@@ -20,6 +19,11 @@
       :before {
         margin-right: .5em;
       }
+    }
+  }
+  ul.icons {
+    li {
+      margin-right: .25em;
     }
   }
   form {
@@ -82,5 +86,19 @@ ul.features {
         margin-left: -.175em;
       }
     }
+  }
+}
+
+.panel {
+  @include border-radius($radius);
+  .icon-filter {
+    opacity: .6;
+  }
+  label {
+    font-size: .8375em;
+    margin-bottom: .5em;
+  }
+  button {
+    margin-bottom: 0;
   }
 }

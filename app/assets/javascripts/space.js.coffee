@@ -22,9 +22,9 @@ $(document).ready ->
       google.maps.event.addListener Gmaps.map.map, 'idle', ->
         $.updateAddressAndBounds()
         #alert('map moved, now idle')
-      
-      
-      
+
+
+
 
   $("#space_tag_list").select2({tags:[]})
   $("#space_monthly_price").bind "slider:changed", (event, data) ->
@@ -120,20 +120,20 @@ $(document).ready ->
     $("label#basement_button_label").toggleClass('active', false)
     $("#access_button_group").show()
 
-  $("#limited_button_label").click (event) ->
-    $("label#limited_button_label").toggleClass('active', true)
+  $("#onetime_button_label").click (event) ->
+    $("label#onetime_button_label").toggleClass('active', true)
     $("label#by_appointment_button_label").toggleClass('active', false)
-    $("label#anytime_button_label").toggleClass('active', false)
+    $("label#open_anytime_button_label").toggleClass('active', false)
 
   $("#by_appointment_button_label").click (event) ->
-    $("label#limited_button_label").toggleClass('active', false)
+    $("label#onetime_button_label").toggleClass('active', false)
     $("label#by_appointment_button_label").toggleClass('active', true)
-    $("label#anytime_button_label").toggleClass('active', false)
+    $("label#open_anytime_button_label").toggleClass('active', false)
 
-  $("#anytime_button_label").click (event) ->
-    $("label#limited_button_label").toggleClass('active', false)
+  $("#open_anytime_button_label").click (event) ->
+    $("label#onetime_button_label").toggleClass('active', false)
     $("label#by_appointment_button_label").toggleClass('active', false)
-    $("label#anytime_button_label").toggleClass('active', true)
+    $("label#open_anytime_button_label").toggleClass('active', true)
 
   $("#climate_checkbox_label").click (event) ->
     $(event.target).toggleClass('active')
@@ -162,7 +162,7 @@ $(document).ready ->
   $(".book-it-button").click (event) ->
     token = (res) ->
       input = $('<input type=hidden name=stripeToken />').val(res.id)
-      $(event.target).closest("form").append(input).submit() 
+      $(event.target).closest("form").append(input).submit()
       # TODO send the space ID and token in to the charges controller
       # we pull the price from the database inside the charges controller rather
       # than trusting the price to be sent in from a form. Hi haters!
@@ -180,7 +180,7 @@ $(document).ready ->
       image: $(event.target).data('image')
       token: token
     return false
-    
+
   $('select#order_country_code').change (event) ->
     select_wrapper = $('#order_state_code_wrapper')
 
