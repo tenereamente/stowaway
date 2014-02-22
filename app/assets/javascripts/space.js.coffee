@@ -28,14 +28,12 @@ $(document).ready ->
     $("#monthly_price_label").html("$" + data.value)
 
   $("#indoor_button_label").click (event) ->
-    # hide the outdoor options, show the indoor
     $.showIndoorOptions()
     $.hideOutdoorOptions()
     $("label#indoor_button_label").toggleClass('active', true)
     $("label#outdoor_button_label").toggleClass('active', false)
 
   $("#outdoor_button_label").click (event) ->
-    # hide the indoor options, show the outdoor
     $.showOutdoorOptions()
     $.hideIndoorOptions()
     $("label#outdoor_button_label").toggleClass('active', true)
@@ -49,7 +47,7 @@ $(document).ready ->
     $("label#uncovered_area_button_label").toggleClass('active', false)
     $("label#covered_area_button_label").toggleClass('active', false)
     $("label#driveway_button_label").toggleClass('active', false)
-    $("#access_button_group").show()
+    $("#access_button_group").slideDown(300)
 
   $("#garage_button_label").click (event) ->
     $("label#attic_button_label").toggleClass('active', false)
@@ -59,7 +57,7 @@ $(document).ready ->
     $("label#uncovered_area_button_label").toggleClass('active', false)
     $("label#covered_area_button_label").toggleClass('active', false)
     $("label#driveway_button_label").toggleClass('active', false)
-    $("#access_button_group").show()
+    $("#access_button_group").slideDown(300)
 
   $("#spare_room_button_label").click (event) ->
     $("label#attic_button_label").toggleClass('active', false)
@@ -69,7 +67,7 @@ $(document).ready ->
     $("label#uncovered_area_button_label").toggleClass('active', false)
     $("label#covered_area_button_label").toggleClass('active', false)
     $("label#driveway_button_label").toggleClass('active', false)
-    $("#access_button_group").show()
+    $("#access_button_group").slideDown(300)
 
   $("#basement_button_label").click (event) ->
     $("label#attic_button_label").toggleClass('active', false)
@@ -79,7 +77,7 @@ $(document).ready ->
     $("label#uncovered_area_button_label").toggleClass('active', false)
     $("label#covered_area_button_label").toggleClass('active', false)
     $("label#driveway_button_label").toggleClass('active', false)
-    $("#access_button_group").show()
+    $("#access_button_group").slideDown(300)
 
   $("#driveway_button_label").click (event) ->
     $("label#uncovered_area_button_label").toggleClass('active', false)
@@ -89,7 +87,7 @@ $(document).ready ->
     $("label#garage_button_label").toggleClass('active', false)
     $("label#spare_room_button_label").toggleClass('active', false)
     $("label#basement_button_label").toggleClass('active', false)
-    $("#access_button_group").show()
+    $("#access_button_group").slideDown(300)
 
   $("#covered_area_button_label").click (event) ->
     $("label#covered_area_button_label").toggleClass('active', true)
@@ -99,7 +97,7 @@ $(document).ready ->
     $("label#garage_button_label").toggleClass('active', false)
     $("label#spare_room_button_label").toggleClass('active', false)
     $("label#basement_button_label").toggleClass('active', false)
-    $("#access_button_group").show()
+    $("#access_button_group").slideDown(300)
 
   $("#uncovered_area_button_label").click (event) ->
     $("label#uncovered_area_button_label").toggleClass('active', true)
@@ -109,22 +107,25 @@ $(document).ready ->
     $("label#garage_button_label").toggleClass('active', false)
     $("label#spare_room_button_label").toggleClass('active', false)
     $("label#basement_button_label").toggleClass('active', false)
-    $("#access_button_group").show()
+    $("#access_button_group").slideDown(300)
 
   $("#onetime_button_label").click (event) ->
     $("label#onetime_button_label").toggleClass('active', true)
     $("label#by_appointment_button_label").toggleClass('active', false)
     $("label#open_anytime_button_label").toggleClass('active', false)
+    $("section.features").slideDown(300)
 
   $("#by_appointment_button_label").click (event) ->
     $("label#onetime_button_label").toggleClass('active', false)
     $("label#by_appointment_button_label").toggleClass('active', true)
     $("label#open_anytime_button_label").toggleClass('active', false)
+    $("section.features").slideDown(300)
 
   $("#open_anytime_button_label").click (event) ->
     $("label#onetime_button_label").toggleClass('active', false)
     $("label#by_appointment_button_label").toggleClass('active', false)
     $("label#open_anytime_button_label").toggleClass('active', true)
+    $("section.features").slideDown(300)
 
   $("#climate_checkbox_label").click (event) ->
     $(event.target).toggleClass('active')
@@ -136,18 +137,18 @@ $(document).ready ->
     $(event.target).toggleClass('active')
 
   $.showOutdoorOptions = ->
-    $("#what_kind_of_space").show()
-    $("#outdoor_button_group").show()
+    $("#what_kind_of_space").slideDown(300)
+    $("#outdoor_button_group").slideDown(300)
 
   $.showIndoorOptions = ->
-    $("#what_kind_of_space").show()
-    $("#indoor_button_group").show()
+    $("#what_kind_of_space").slideDown(300)
+    $("#indoor_button_group").slideDown(300)
 
   $.hideOutdoorOptions = ->
-    $("#outdoor_button_group").hide()
+    $("#outdoor_button_group").slideUp(300)
 
   $.hideIndoorOptions = ->
-    $("#indoor_button_group").hide()
+    $("#indoor_button_group").slideUp(300)
 
   $(".book-it-button").click (event) ->
     token = (res) ->
@@ -180,3 +181,22 @@ $(document).ready ->
 
     url = "/orders/subregion_options?parent_region=#{country_code}"
     select_wrapper.load(url)
+
+  what = $('.what')
+  what_feature = $(what.find('span'))
+
+  what_feature.change ->
+
+    el = $(this)
+    label_el = $(el.find('label') )
+    input_el = $(el.find('input') )
+
+    if input_el.is(':checked')
+      label_el.addClass 'checked'
+    else
+      label_el.removeClass 'checked'
+
+  what_feature.change()
+
+
+

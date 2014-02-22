@@ -4,7 +4,7 @@ $large-screen: 90em;
 
 body.spaces {
   &.index {
-    @media screen and (max-width: 50em) {
+    @media screen and (max-width: calc(41.947em)) {
       #content, aside {
         width: 100%;
       }
@@ -45,6 +45,10 @@ body.spaces {
       label {
         float: left;
         padding: 1em;
+        transition: $transition;
+        &.checked {
+          background: red;
+        }
         i {
           display: block;
           margin: 0 auto 1em;
