@@ -4,6 +4,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   border-radius: 5px;
   text-transform: auto;
   height: auto;
+  margin-bottom: 0;
 }
 
 #address_search_field {
@@ -63,20 +64,23 @@ form.custom {
       display: none;
     }
     &.dropdown {
-      height: 4em;
-      border-radius: 3px;
-      &:hover {
-       cursor: pointer;
+      height: 3em;
+      @include border-radius($radius);
+      font-family: $alt-font;
+      a {
+        &:hover {
+         cursor: pointer;
+        }
       }
       .selector {
-        height: 4em;
+        height: 3em;
         &:hover {
          cursor: pointer;
         }
       }
       .current, ul {
-        font-size: 1.5em;
-        line-height: 2.5em;
+        font-size: 1.25em;
+        line-height: 2.25em;
         margin-right: 0;
       }
     }
@@ -106,4 +110,18 @@ form.custom {
 
 #message_body {
   height: 20em;
+}
+
+span.error {
+  display: block;
+  padding: .5em;
+  margin-bottom: 0.88889em;
+  font-size: 1em;
+  background: $red;
+  color: white;
+
+  @include border-radius(0 0 $radius $radius);
+  margin-top: -3px;
+  font-family: $alt-font;
+
 }

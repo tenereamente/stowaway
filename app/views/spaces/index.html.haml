@@ -21,9 +21,9 @@
 %h2
   Find a Space
 .row
-  %aside.large-3.column
+  %aside.medium-4.medium-push-8.column
     = render 'filterresults'
-  #content.large-9.column
+  #content.medium-8.medium-pull-4.column
     = render 'listings', locals: { 'spaces' => @spaces }
 
 /= search_field_tag "address", "", id: "address_search_field", disabled: true
