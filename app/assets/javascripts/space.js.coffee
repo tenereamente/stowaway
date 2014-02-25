@@ -25,7 +25,7 @@ $(document).ready ->
 
   $("#space_tag_list").select2({tags:[]})
   $("#space_monthly_price").bind "slider:changed", (event, data) ->
-    $("#monthly_price_label").html("$" + data.value)
+    $("#monthly_price_label").html("$" + data.value + " /month")
 
   $("#indoor_button_label").click (event) ->
     $.showIndoorOptions()
