@@ -192,11 +192,41 @@ $(document).ready ->
     input_el = $(el.find('input') )
 
     if input_el.is(':checked')
-      label_el.addClass 'checked'
+      label_el.addClass 'active'
     else
-      label_el.removeClass 'checked'
+      label_el.removeClass 'active'
 
   what_feature.change()
 
+  where = $('.where')
+  where_feature = $(where.find('span'))
 
+  where_feature.change ->
+
+    el = $(this)
+    label_el = $(el.find('label') )
+    input_el = $(el.find('input') )
+
+    if input_el.is(':checked')
+      label_el.addClass 'active'
+    else
+      label_el.removeClass 'active'
+
+  where_feature.change()
+
+  how = $('.how')
+  how_feature = $(how.find('span'))
+
+  how_feature.change ->
+
+    el = $(this)
+    label_el = $(el.find('label') )
+    input_el = $(el.find('input') )
+
+    if input_el.is(':checked')
+      label_el.addClass 'active'
+    else
+      label_el.removeClass 'active'
+
+  how_feature.change()
 
