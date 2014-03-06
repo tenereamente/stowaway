@@ -8,8 +8,8 @@
         %i.icon-map-marker.pull-left
         #{s.normalized_address}
       %ul
-        = render 'spaces/detail/type', locals: { 's' => s }
-        = render 'spaces/detail/access', locals: { 's' => s }
+        = render 'spaces/detail/type', s: s
+        = render 'spaces/detail/access', s: s
 
     .small-12.large-4.column
       .well
