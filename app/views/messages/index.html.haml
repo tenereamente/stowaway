@@ -1,41 +1,28 @@
-
-- if @search
-  %h2 Search results for '#{@search}'
-- if @box == 'inbox'
-  %h2 Inbox
-- if @box == 'sent'
-  %h2 Sent
-- if @box == 'trash'
-  %h2 Trash
-.row
-  .large-3.small-2.columns
-    %ul
-      %li
-        = link_to messages_path({box: 'inbox'}) do
-          %span Inbox 
-          %em (#{@inbox_thread_count})
-      %li
-        = link_to messages_path({box: 'sent'}) do
-          %span Sent 
-          %em (#{@sent_thread_count})
-  .large-9.small-8.columns
-  = form_tag messages_path, method: :delete do
-    = hidden_field_tag 'current_box', @box
-    %table#box
-      %tr
-        - unless @box == 'trash'
-          %th
-        %th Sender
-        %th Subject
-        %th Messages
-        %th
-      - @messages.each do |m|
-        %tr{ class: "#{ 'unread' if m.is_unread?(current_user) }" }
-          - unless true # @box == 'trash' # TODO decide whether to support message deletion
-            %td= check_box_tag '', m.id, false, class: 'delete_multiple_checkbox', name: "conversations[]"
-          %td= link_to m.last_sender.name, message_path(m)
-          %td= link_to m.subject, message_path(m)
-          %td= link_to m.count_messages, message_path(m)
-          %td= link_to truncate(m.last_message.body), message_path(m)
-    - unless true # @box == 'trash' # TODO decide whether to support message deletion
-      = submit_tag "Delete checked messages", id: 'delete_multiple_button'
+.section-container.vertical-tabs{ data: { section: "vertical-tabs" } }
+  - if @search
+    %section
+      %p.title{ data: { "section-title" => true } }
+        = link_to '#' do
+          Results for '#{@search}'
+      .content{ data: { "section-content" => true  } }
+        %p Content of section 1
+  %section.active
+    %p.title{ data: { "section-title" => true } }
+      = link_to '#' do
+        Inbox
+        %sup.badge (#{@inbox_thread_count})
+    .content{ data: { "section-content" => true } }
+      %p Some content for the inbox.
+  %section
+    %p.title{ data: { "section-title" => true } }
+      = link_to '#' do
+        Sent
+        %sup.badge (#{@sent_thread_count})
+    .content{ data: { "section-content" => true } }
+      %p Content of Sent
+  %section
+    %p.title{ data: { "section-title" => true } }
+      = link_to '#' do
+        Trash
+    .content{ data: { "section-content" => true } }
+      %p Content of Trash

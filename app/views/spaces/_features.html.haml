@@ -109,12 +109,12 @@
 %hr
 %section.dimensions
   .row
-    .column.large-3
+    .column.large-4
       %h4
         Dimensions
-        %small
+        %sup
           (in feet)
-    .column.large-9
+    .column.large-8
       = f.input :length, :label => 'length', input_html: { min: 5, max: 500, :step =>"2" }
       = f.input :width, :label => 'width', input_html: { min: 5, max: 500 }
       = f.input :height, :label => 'height', input_html: { min: 5, max: 500 }
