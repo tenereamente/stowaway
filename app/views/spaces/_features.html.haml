@@ -19,10 +19,18 @@
 %h4
   - if @resource.created_at.nil?
     #what_kind_of_space{ style: display_style } What type of space is it?
+    - indoor_button_display_style = display_style
+    - outdoor_button_display_style = display_style
   - else
     #what_kind_of_space{ style: display_style } Space Type
+    - if @resource.environment == 'outdoor'
+      - indoor_button_display_style = 'display: none'
+      - outdoor_button_display_style = ''
+    - else
+      - indoor_button_display_style = ''
+      - outdoor_button_display_style = 'display: none'
 
-#indoor_button_group.indoor.what{ style: display_style }
+#indoor_button_group.indoor.what{ style: indoor_button_display_style }
   - space_type = [[:attic, 'Attic'],
     [:garage, 'Garage'],
     [:spare_room, 'Spare Room'],
@@ -41,7 +49,7 @@
       %span
         = b.text
 
-#outdoor_button_group.outdoor.what{ style: display_style }
+#outdoor_button_group.outdoor.what{ style: outdoor_button_display_style }
   - space_type = [[:driveway, 'Driveway'], [:covered, 'Covered Area'], [:uncovered, 'Uncovered Area']]
   = f.collection_radio_buttons :type, space_type, :first, :second do |b|
     = b.radio_button

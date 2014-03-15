@@ -15,14 +15,14 @@ class SpacesController < ApplicationController
         # http://ngauthier.com/2013/08/postgis-and-rails-a-simple-approach.html
       end
       if params[:environment].present?
-        # 'All' is code for don't filter
-        @spaces = @spaces.where('environment LIKE ?',  params[:environment].downcase) unless params[:environment] == 'All'
+        # 'Any' is code for don't filter
+        @spaces = @spaces.where('environment LIKE ?',  params[:environment].downcase) unless params[:environment] == 'Any'
       end
       if params[:type].present?
-        @spaces = @spaces.where('type LIKE ?',  params[:type].downcase) unless params[:type] == 'All'
+        @spaces = @spaces.where('type LIKE ?',  params[:type].downcase) unless params[:type] == 'Any'
       end
       if params[:access].present?
-        @spaces = @spaces.where('access LIKE ?', params[:access].downcase) unless params[:access] == 'All'
+        @spaces = @spaces.where('access LIKE ?', params[:access].downcase) unless params[:access] == 'Any'
       end
       @spaces = @spaces.load
     end 
