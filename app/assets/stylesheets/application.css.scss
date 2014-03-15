@@ -178,3 +178,11 @@ blockquote {
    border-bottom: 0 none;
   }
 }
+
+h2 {
+  sup {
+    font-family: $alt-font;
+    font-size: 50%;
+    letter-spacing: 0px;
+  }
+}

@@ -1,5 +1,7 @@
 = simple_form_for(@resource, validate: true, html: {class: 'custom', id: 'list-space-step1', autocomplete: 'off' }) do |f|
-  %h2 List a Space
+  %h2
+    List a Space
+    %sup (in or near Portland, ME.)
   - unless signed_in?
     .input
       %label.string.required.control-label.user_email{ :for => 'user_email'} Email address
