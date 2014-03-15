@@ -6,10 +6,6 @@
       .shade
         %h2
           = @space.title
-        %h5
-          %i.icon-map-marker.pull-left
-          #{@space.address1}, #{@space.city} #{@space.state}
-
 .row
   .large-4.small.12.push-8.columns
     = link_to user_path(@space.user), id: 'account' do
@@ -147,8 +143,11 @@
         %li
           = image_or_placeholder(@space.photo5)
     %section.mb20
-      %h3 Overview
-      %p= @space.notes
+      %h3
+        %i.icon-map-marker.pull-left
+        #{@space.address1}, #{@space.city} #{@space.state}
+        %h3 Overview
+        %p= @space.notes
 
     - if @space.tags.any?
       %section.mb50#tags
