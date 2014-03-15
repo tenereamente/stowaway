@@ -2,23 +2,43 @@
   %section.active
     %p.title{ data: { "section-title" => true } }
       = link_to '#' do
+        %i.ico-mail
         Inbox
         %sup.badge (#{@inbox_thread_count})
     .content{ data: { "section-content" => true } }
-      %p Some content for the inbox.
+      = form_tag messages_path, method: :delete do
+        = hidden_field_tag 'current_box', @box
+        %table#box
+          %thead
+            %tr
+              %th Sender
+              %th Subject
+              %th Messages
+          %tbody
+            - @messages.each do |m|
+              %tr{ class: "#{ 'unread' if m.is_unread?(current_user) }" }
+                - unless true # @box == 'trash' # TODO decide whether to support message deletion
+                  %td= check_box_tag '', m.id, false, class: 'delete_multiple_checkbox', name: "conversations[]"
+                %td= link_to m.last_sender.name, message_path(m)
+                %td= link_to m.subject, message_path(m)
+                %td= link_to m.count_messages, message_path(m)
+                %td= link_to truncate(m.last_message.body), message_path(m)
+          - unless true # @box == 'trash' # TODO decide whether to support message deletion
+            = submit_tag "Delete checked messages", id: 'delete_multiple_button'
   %section
     %p.title{ data: { "section-title" => true } }
       = link_to '#' do
+        %i.ico-paperplane
         Sent
         %sup.badge (#{@sent_thread_count})
     .content{ data: { "section-content" => true } }
-      %p Content of Sent
+      %p Sent Messages
   %section
     %p.title{ data: { "section-title" => true } }
       = link_to '#' do
         Trash
     .content{ data: { "section-content" => true } }
-      %p Content of Trash
+      %p Deleted Messages
   - if @search
     %section
       %p.title{ data: { "section-title" => true } }

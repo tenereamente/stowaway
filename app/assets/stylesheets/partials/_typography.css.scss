@@ -4,10 +4,6 @@ h1, h2, h3 {
 
 p {
   font-family: $alt-font;
-  font-size: 125%;
-  a {
-    border-bottom: 1px solid;
-  }
   &.small {
     font-size: 1em;
     line-height: 1.25em;
