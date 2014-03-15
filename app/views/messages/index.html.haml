@@ -1,11 +1,4 @@
 .section-container.vertical-tabs{ data: { section: "vertical-tabs" } }
-  - if @search
-    %section
-      %p.title{ data: { "section-title" => true } }
-        = link_to '#' do
-          Results for '#{@search}'
-      .content{ data: { "section-content" => true  } }
-        %p Content of section 1
   %section.active
     %p.title{ data: { "section-title" => true } }
       = link_to '#' do
@@ -26,3 +19,10 @@
         Trash
     .content{ data: { "section-content" => true } }
       %p Content of Trash
+  - if @search
+    %section
+      %p.title{ data: { "section-title" => true } }
+        = link_to '#' do
+          Results for '#{@search}'
+      .content{ data: { "section-content" => true  } }
+        %p Content of section 1
