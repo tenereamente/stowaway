@@ -16,13 +16,13 @@ class SpacesController < ApplicationController
       end
       if params[:environment].present?
         # 'Any' is code for don't filter
-        @spaces = @spaces.where('environment LIKE ?',  params[:environment].downcase) unless params[:environment] == 'Any'
+        @spaces = @spaces.where('environment LIKE ?',  params[:environment].delete(' ').underscore) unless params[:environment] == 'Any'
       end
       if params[:type].present?
-        @spaces = @spaces.where('type LIKE ?',  params[:type].downcase) unless params[:type] == 'Any'
+        @spaces = @spaces.where('type LIKE ?',  params[:type].delete(' ').underscore) unless params[:type] == 'Any'
       end
       if params[:access].present?
-        @spaces = @spaces.where('access LIKE ?', params[:access].downcase) unless params[:access] == 'Any'
+        @spaces = @spaces.where('access LIKE ?', params[:access].delete(' ').underscore) unless params[:access] == 'Any'
       end
       @spaces = @spaces.load
     end 
