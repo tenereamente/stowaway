@@ -1,14 +1,13 @@
 .section-container.vertical-tabs{ data: { section: "vertical-tabs" } }
   %section.active
     %p.title{ data: { "section-title" => true } }
-      = link_to '#' do
+      = link_to '#inbox' do
         %i.ico-mail
         Inbox
         %sup.badge (#{@inbox_thread_count})
     .content{ data: { "section-content" => true } }
-      = form_tag messages_path, method: :delete do
-        = hidden_field_tag 'current_box', @box
-        %table#box
+      .row
+        %table
           %thead
             %tr
               %th Sender
@@ -17,17 +16,12 @@
           %tbody
             - @messages.each do |m|
               %tr{ class: "#{ 'unread' if m.is_unread?(current_user) }" }
-                - unless true # @box == 'trash' # TODO decide whether to support message deletion
-                  %td= check_box_tag '', m.id, false, class: 'delete_multiple_checkbox', name: "conversations[]"
                 %td= link_to m.last_sender.name, message_path(m)
                 %td= link_to m.subject, message_path(m)
                 %td= link_to m.count_messages, message_path(m)
-                %td= link_to truncate(m.last_message.body), message_path(m)
-          - unless true # @box == 'trash' # TODO decide whether to support message deletion
-            = submit_tag "Delete checked messages", id: 'delete_multiple_button'
   %section
-    %p.title{ data: { "section-title" => true } }
-      = link_to '#' do
+    %p.title{ data: { 'section-title' => true } }
+      = link_to '#sent' do
         %i.ico-paperplane
         Sent
         %sup.badge (#{@sent_thread_count})
@@ -35,14 +29,7 @@
       %p Sent Messages
   %section
     %p.title{ data: { "section-title" => true } }
-      = link_to '#' do
+      = link_to '#trash' do
         Trash
     .content{ data: { "section-content" => true } }
       %p Deleted Messages
-  - if @search
-    %section
-      %p.title{ data: { "section-title" => true } }
-        = link_to '#' do
-          Results for '#{@search}'
-      .content{ data: { "section-content" => true  } }
-        %p Content of section 1
