@@ -1,12 +1,11 @@
 .bigtime{:style => "background-image: url(#{@space.photo if @space.photo.exists?})"}
   .row
-    .large-4.small.12.push-8.columns
-    .large-8.small-12.pull-4.columns
+    .large-8.small-12.columns
       .shade
         %h2
           = @space.title
 .row
-  .large-4.small.12.push-8.columns
+  .large-4.small-12.push-8.columns
     = link_to user_path(@space.user), id: 'account' do
       - if @space.user.avatar.exists?
         = image_tag @space.user.avatar.url(:thumb)
