@@ -15,6 +15,7 @@ override_attributes(
     password: { postgres: passwords['prod']['postgresql'] },
     enable_pgdg_apt: true,
     version: '9.3',
+    config: { ssl_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key", ssl_cert_file: "/etc/ssl/certs/ssl-cert-snakeoil.pem" },
     server: { packages: ['postgresql-9.3', 'postgresql-server-dev-9.3', 'postgresql-9.3-plv8', 'postgresql-9.3-postgis-2.1', 'postgresql-contrib-9.3']},
     client: { packages: ['postgresql-client-9.3']},
     pg_hba: [
