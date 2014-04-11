@@ -55,7 +55,12 @@
   .shade {
     padding: .75em 1.5em;
     margin: 0 0 2em;
-    border-radius: 0 1000px 1000px 0;
+    img {
+      @include border-round($round);
+      margin-right: .5em;
+      height: 2em;
+      width: 2em;
+    }
   }
 }
 
@@ -100,5 +105,31 @@ ul.features {
   }
   button {
     margin-bottom: 0;
+  }
+}
+
+.bigprice {
+  color: darken($green, 20);
+  @include border-round($round);
+  background: $green;
+  float: right;
+  height: 6em;
+  width: 6em;
+  padding: 1.5em .5em 0;
+  text-align: center;
+  margin-right: 1.5em;
+  margin-top: -3em;
+  border: 4px solid rgba(white, .5);
+  .dollars {
+    color: white;
+    font-size: 175%;
+    font-weight: bold;
+    sup {
+      font-size: 50%;
+      color: darken($green, 20);
+    }
+  }
+  .small {
+    font-size: 80%;
   }
 }

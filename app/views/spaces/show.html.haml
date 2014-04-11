@@ -1,25 +1,21 @@
 .bigtime{:style => "background-image: url(#{@space.photo if @space.photo.exists?})"}
-  .row
-    .large-8.small-12.columns
-      .shade
-        %h2
-          = @space.title
+  .bigprice
+    .dollars
+      %sup $
+      #{@space.monthly_price}
+    .small per month
+  .shade
+    %h2
+      = @space.title
+    %h4
+      = link_to user_path(@space.user), id: 'account' do
+        - if @space.user.avatar.exists?
+          = image_tag @space.user.avatar.url(:thumb)
+        = @space.user.name
 .row
-  .large-4.small-12.push-8.columns
-    = link_to user_path(@space.user), id: 'account' do
-      - if @space.user.avatar.exists?
-        = image_tag @space.user.avatar.url(:thumb)
-      - else
-        = image_tag "http://placehold.it/32x32", :class => "avatar"
-      = @space.user.name
-
+  .large-4.small-6.columns
     %ul
       %li
-        Status:
-        - if @space.complete
-          Active
-        - else
-          Inactive
         - if can_edit_space?(@space) and (not @space.complete)
           %li
             Done with describing your space?
@@ -39,9 +35,6 @@
                 = f.hidden_field :available, :value => true
                 = f.button :submit, "Active", class: 'btn-primary fullbtn button greenie radius'
     .well
-      %h3
-        $
-        #{@space.monthly_price} / Month
       - if can_edit_space?(@space)
         = link_to edit_space_path(@space), {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'Like a Boss'} do
           %i{:class=>'icon-pencil'}
@@ -60,8 +53,7 @@
           = button_tag type: "submit", name: nil, :class => "button book-it-button radius has-tip fullbtn greenie", 'data-address'=> @space.normalized_address, 'data-price'=> @space.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key], 'data-image'=>@space.photo.url(:thumb)  do
             %i.icon-credit-card
             Pay by Card
-
-  .large-8.small-12.pull-4.columns
+  .large-8.small-12.columns
     %section.mb20
       %ul.small-block-3.large-block-grid-6.features
         - if @space.environment?
