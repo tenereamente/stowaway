@@ -1,135 +1,163 @@
-.locations {
-  img {
-    height: 110px;
-    width: 110px;
-    float: left;
-    margin-right: 1em;
-    @media screen and (max-width: 320px) {
-      width: 33%;
-      height: auto;
-      margin-bottom: 1em;
-    }
-  }
-  ul {
-    margin-bottom: 1em;
-    float: left;
-    li {
+body.spaces {
+  .locations {
+    img {
+      height: 110px;
+      width: 110px;
       float: left;
       margin-right: 1em;
-      :before {
-        margin-right: .5em;
+      @media screen and (max-width: 320px) {
+        width: 33%;
+        height: auto;
+        margin-bottom: 1em;
+      }
+    }
+    ul {
+      margin-bottom: 1em;
+      float: left;
+      li {
+        float: left;
+        margin-right: 1em;
+        :before {
+          margin-right: .5em;
+        }
+      }
+    }
+    ul.icons {
+      li {
+        margin-right: .25em;
+      }
+    }
+    form {
+      margin: 0;
+    }
+    .avatar {
+      img {
+        height: 32px;
+        width: 32px;
+        border-radius: 1000px;
       }
     }
   }
-  ul.icons {
-    li {
-      margin-right: .25em;
-    }
-  }
-  form {
-    margin: 0;
-  }
-  .avatar {
-    img {
-      height: 32px;
-      width: 32px;
-      border-radius: 1000px;
-    }
-  }
-}
 
-.bigtime {
-  padding: 6em 0 0;
-  margin: 0 0 2em;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
+  .bigtime {
+    padding: 6em 0 0;
+    margin: 0 0 .75em;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
 
-.smalltime {
-  padding: 2em 0 0;
-  margin: 0 0 2em;
-}
-
-.bigtime, .smalltime {
-  .shade {
-    padding: .75em 1.5em;
+  .smalltime {
+    padding: 2em 0 0;
     margin: 0 0 2em;
-    img {
-      @include border-round($round);
+  }
+
+  .bigtime, .smalltime {
+    .shade {
+      padding: .75em 1.5em;
+      img {
+        @include border-round($round);
+        margin-right: .5em;
+        height: 2em;
+        width: 2em;
+      }
+    }
+  }
+
+  ul.features {
+    float: right;
+    @media screen and (max-width: $tablet-screen) {
+      display: inline-block;
+      float: none;
+    }
+    li {
+      text-align: center;
+      float: left;
+      display: inline;
       margin-right: .5em;
-      height: 2em;
-      width: 2em;
+      font-size: 75%;
+      div {
+        display: block;
+        font-size: 175%;
+        height: 2.5em;
+        width: 2.5em;
+        line-height: 2.4em;
+        text-align: center;
+        border: 2px solid $gray;
+        @include border-round($round);
+      }
     }
   }
-}
 
-ul.features {
-  li {
+  #tags {
+    span {
+      &:last-of-type {
+        &:before {
+          content: 'and ';
+        }
+        &:after {
+          content: '.';
+          margin-left: -.175em;
+        }
+      }
+      &:nth-last-of-type(3) {
+        &:after {
+          content: ',';
+          margin-left: -.175em;
+        }
+      }
+    }
+  }
+
+  .panel {
+    @include border-radius($radius);
+    .icon-filter {
+      opacity: .6;
+    }
+    label {
+      font-size: .8375em;
+      margin-bottom: .5em;
+    }
+    button {
+      margin-bottom: 0;
+    }
+  }
+
+  .bigprice {
+    color: darken($green, 20);
+    @include border-round($round);
+    background: $green;
+    float: right;
+    height: 6em;
+    width: 6em;
+    padding: 1.5em .5em 0;
     text-align: center;
-    :before {
-      display: block;
-      font-size: 200%;
-    }
-  }
-}
-
-#tags {
-  span {
-    &:last-of-type {
-      &:before {
-        content: 'and ';
-      }
-      &:after {
-        content: '.';
-        margin-left: -.175em;
+    margin-right: 1.5em;
+    margin-top: -3em;
+    border: 4px solid rgba(white, .5);
+    .dollars {
+      color: white;
+      font-size: 175%;
+      font-weight: bold;
+      sup {
+        font-size: 50%;
+        color: darken($green, 20);
       }
     }
-    &:nth-last-of-type(3) {
-      &:after {
-        content: ',';
-        margin-left: -.175em;
-      }
+    .small {
+      font-size: 80%;
     }
   }
-}
-
-.panel {
-  @include border-radius($radius);
-  .icon-filter {
-    opacity: .6;
-  }
-  label {
-    font-size: .8375em;
-    margin-bottom: .5em;
-  }
-  button {
-    margin-bottom: 0;
-  }
-}
-
-.bigprice {
-  color: darken($green, 20);
-  @include border-round($round);
-  background: $green;
-  float: right;
-  height: 6em;
-  width: 6em;
-  padding: 1.5em .5em 0;
-  text-align: center;
-  margin-right: 1.5em;
-  margin-top: -3em;
-  border: 4px solid rgba(white, .5);
-  .dollars {
-    color: white;
-    font-size: 175%;
-    font-weight: bold;
-    sup {
-      font-size: 50%;
-      color: darken($green, 20);
+  .address {
+    float: left;
+    font-size: 150%;
+    line-height: 2.4em;
+    margin-right: 1em;
+    i {
+      line-height: 2.4em;
     }
-  }
-  .small {
-    font-size: 80%;
+    @media screen and (max-width: $tablet-screen) {
+      float: none;
+    }
   }
 }
