@@ -1,9 +1,10 @@
 .row
-  .large-3.small-12.columns.fitimg
-    - if @user.avatar.exists?
-      = image_tag @user.avatar.url(:square)
-    - else
-      = image_tag "http://placehold.it/250x250"
+  .large-3.medium-4.small-8.columns
+    .avatar
+      - if @user.avatar.exists?
+        = image_tag @user.avatar.url(:square)
+      - else
+        = image_tag "http://placehold.it/250x250"
 
     %h3.title #{@user.name}
     - if @user != current_user
@@ -12,7 +13,7 @@
         Message
 
     - if can_edit_user?(@user)
-      = link_to edit_user_registration_path, {:class=>'button radius fullbtn warmish'} do
+      = link_to edit_user_registration_path, {:class=>'button radius fullbtn'} do
         %i{:class=>'icon-pencil'}
         Edit Profile
   .large-9.small-12.columns

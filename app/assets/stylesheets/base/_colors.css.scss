@@ -5,6 +5,7 @@ $green: #87ae3a;
 $powder: #7cabd3;
 $orange: lighten(#f48231,5);
 $gray: rgba(85, 85, 85, 0.5);
+$ltgray: lighten($gray,50);
 
 $red: #D44B4E;
 
@@ -163,13 +164,13 @@ $red: #D44B4E;
           color: lighten($base, 90);
         }
         &.button {
-          color: lighten($accent, 90);
-          background-color: $accent;
+          color: lighten($base, 90);
+          background-color: $base;
           &:hover {
-            background-color: darken($accent, 10);
+            background-color: darken($base, 10);
           }
           &:active {
-            background-color: darken($accent, 20);
+            background-color: darken($base, 20);
             top: 10px;
           }
         }
@@ -205,11 +206,9 @@ $red: #D44B4E;
     box-shadow: transparent none;
   }
   .shade {
-    background: rgba(darken($base, 60),.7);
+    background: rgba(darken($base, 60),.8);
   }
   .bigtime, .smalltime {
-    border-radius: 3px;
-    background-image: url(http://www.destateparks.com/irimarina/images/Drystack_Example_Forklift.jpg);
     h2 {
       color: lighten($base,90);
     }

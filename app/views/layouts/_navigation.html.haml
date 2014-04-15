@@ -12,8 +12,6 @@
       %ul.right
         %li.toggle-topbar
           %a{:href => "#"}
-        %li
-          = link_to 'Blog', blogit_path
         - if user_signed_in?
           %li.has-dropdown
             = link_to user_path(current_user), id: 'account' do
@@ -65,7 +63,7 @@
           %a.button.radius{:href => spaces_path}
             %i.icon-search.icon-left.icon-muted
             %span Find
-        %li.abtn
+        %li.abtn.last
           %a.button.radius{:href => new_space_path}
             %i.icon-plus.icon-left.icon-muted
             %span List

@@ -4,9 +4,9 @@ class SpacesController < ApplicationController
       @user = User.find(params[:user_id])
       @spaces = Space.by_user(params[:user_id].to_i)
       render 'my_index'
-    else 
+    else
       @spaces = Space.owned.complete.available
-      if params[:tag].present? 
+      if params[:tag].present?
         @spaces = @spaces.tagged_with(params[:tag])
       end
       if params[:bounds].present?
@@ -25,7 +25,7 @@ class SpacesController < ApplicationController
         @spaces = @spaces.where('access LIKE ?', params[:access].delete(' ').underscore) unless params[:access] == 'Any'
       end
       @spaces = @spaces.load
-    end 
+    end
     @json = @spaces.to_gmaps4rails do |space, marker|
       marker.json({ :id => space.id, :notes => space.notes })
     end
@@ -49,7 +49,7 @@ class SpacesController < ApplicationController
       u = current_user
     elsif params[:user_email]
       u = User.find_or_create_by_email({ email: params[:user_email]})
-      u.send_confirmation_instructions  
+      u.send_confirmation_instructions
     else
       redirect_to new_space_path, :error => "Must be signed in or provide email address to list a space"
     end
@@ -71,7 +71,7 @@ class SpacesController < ApplicationController
   def update
     @space = Space.find(params[:id])
     if @space.update_attributes(space_params)
-      redirect_to space_path(@space), :notice => "Space updated."
+      redirect_to space_path(@space)
     else
       redirect_to edit_space_path(@space), :alert => "Unable to update space."
     end
@@ -82,7 +82,7 @@ class SpacesController < ApplicationController
     space.destroy
     redirect_to spaces_path, :notice => "Space deleted."
   end
-  
+
   def subregion_options
     render partial: 'subregion_select'
   end

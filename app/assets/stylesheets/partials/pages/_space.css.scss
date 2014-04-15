@@ -30,18 +30,11 @@ body.spaces {
     form {
       margin: 0;
     }
-    .avatar {
-      img {
-        height: 32px;
-        width: 32px;
-        border-radius: 1000px;
-      }
-    }
   }
 
   .bigtime {
     padding: 6em 0 0;
-    margin: 0 0 .75em;
+    margin: 0 0 1em;
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -53,29 +46,43 @@ body.spaces {
   }
 
   .bigtime, .smalltime {
+    @include border-radius($radius);
     .shade {
       padding: .75em 1.5em;
-      img {
-        @include border-round($round);
-        margin-right: .5em;
-        height: 2em;
-        width: 2em;
+      @include border-radius(0 0 $radius $radius);
+      #tags {
+        color: darken(white,.8);
+      }
+      @media screen and (max-width: $tablet-screen) {
+        %h2 {
+          %sup {
+            display: block;
+          }
+        }
       }
     }
   }
-
   ul.features {
-    float: right;
     @media screen and (max-width: $tablet-screen) {
       display: inline-block;
       float: none;
     }
     li {
+      &:hover {
+        div {
+          &:before {
+            color: white;
+          }
+        }
+      }
       text-align: center;
       float: left;
       display: inline;
       margin-right: .5em;
-      font-size: 75%;
+      font-size: 70%;
+      @media screen and (max-width: $tablet-screen) {
+        font-size: 50%;
+      }
       div {
         display: block;
         font-size: 175%;
@@ -83,8 +90,11 @@ body.spaces {
         width: 2.5em;
         line-height: 2.4em;
         text-align: center;
-        border: 2px solid $gray;
+        border: 2px solid $ltgray;
         @include border-round($round);
+        &:before {
+          color: $ltgray;
+        }
       }
     }
   }
@@ -124,9 +134,9 @@ body.spaces {
   }
 
   .bigprice {
-    color: darken($green, 20);
+    color: darken($orange, 20);
     @include border-round($round);
-    background: $green;
+    background: $orange;
     float: right;
     height: 6em;
     width: 6em;
@@ -141,7 +151,7 @@ body.spaces {
       font-weight: bold;
       sup {
         font-size: 50%;
-        color: darken($green, 20);
+        color: darken($orange, 20);
       }
     }
     .small {
@@ -158,6 +168,51 @@ body.spaces {
     }
     @media screen and (max-width: $tablet-screen) {
       float: none;
+      margin-right: 0;
+    }
+  }
+  #owner {
+    img {
+      min-width: 100%;
+    }
+  }
+  blockquote {
+    .icon-lightbulb {
+      font-size: 125%;
+      border: 2px solid;
+      border-radius: 1000px;
+      padding: .5em;
+      width: 2em;
+      height: 2em;
+      text-align: center;
+      margin-right: .5em;
+    }
+  }
+  table {
+    .value {
+      font-weight: bold;
+      text-align: right;
+    }
+  }
+
+  .clearing-thumbs {
+    margin-bottom: 1em;
+    li {
+      img {
+        max-width: 100%!important;
+      }
+      width: 23.5%;
+      margin: 0 2% .5em 0;
+      &:last-of-type {
+        margin-right: 0!important;
+      }
+      @media screen and (max-width: $small-screen) {
+        width: 49%;
+        margin-right: 2%;
+        &:nth-of-type(2){
+          margin-right: 0!important;
+        }
+      }
     }
   }
 }

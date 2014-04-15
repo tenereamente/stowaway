@@ -113,7 +113,6 @@ footer {
           margin: 4px;
           background: #000;
         }
-
       }
       .icon-ok-sign {
         display: none;
@@ -133,7 +132,7 @@ footer {
 .well {
   border: 0!important;
   @include border-radius($radius);
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
   padding: 1em 1em 0 1em;
   h3 {
     text-align:center;
@@ -189,4 +188,11 @@ h2 {
 
 .center-small {
   text-align: center;
+}
+
+.avatar {
+  img {
+    @include border-round($round);
+    border: 1px solid whitesmoke;
+  }
 }

@@ -6,19 +6,15 @@
     .small per month
   .shade
     %h2
-      = @space.title
-    %h4
-      = link_to user_path(@space.user), id: 'account' do
-        - if @space.user.avatar.exists?
-          = image_tag @space.user.avatar.url(:thumb)
-        = @space.user.name
-.row.mb20
-  .medium-6.columns.center-small
-    .address
-      %i.icon-map-marker
-      #{@space.address1}, #{@space.city} #{@space.state}
-  .medium-6.columns.center-small
-    %ul.features
+      #{@space.title}
+      %sup
+        %i.icon-map-marker
+        #{@space.city}, #{@space.state}
+        - if can_edit_space?(@space)
+          |
+          = link_to edit_space_path(@space), { :class=>'icon-btn has-tip', :title => 'Edit Your Listing' } do
+            Edit
+    %ul.features.clearfix
       - if @space.environment? == "indoor"
         %li.has-tip{ data: { tooltip: 'Indoors' }, title: 'Indoors' }
           .ico-home
@@ -66,21 +62,87 @@
       - if @space.attended?
         %li.has-tip{ data: { tooltip: 'Attended' }, title: 'Attended' }
           .ico-tie
-.row
-  .large-8.medium-6.columns
-    %section.mb20
-      - if @space.tags.any?
-        %section.mb50#tags
-          %h3
-            Great for
-            - @space.tags.each do |tag|
-              %span
-                = link_to tag.name, spaces_url(tag: tag.name)
-      %p.lead= @space.notes
-  .large-4.medium-6.columns
-    %ul
-      %li
-        - if can_edit_space?(@space) and (not @space.complete)
+
+.row.mb20
+  .large-8.medium-7.columns
+    %ul.clearing-thumbs{"data-clearing" => ""}
+      - if @space.photo?
+        %li
+          %a{:href => "#{@space.photo}"}
+            = image_or_placeholder(@space.photo)
+      - if @space.photo2?
+        %li
+          %a{:href => "#{@space.photo2}"}
+            = image_or_placeholder(@space.photo2)
+      - if @space.photo3?
+        %li
+          %a{:href => "#{@space.photo3}"}
+            = image_or_placeholder(@space.photo3)
+      - if @space.photo4?
+        %li.last
+          %a{:href => "#{@space.photo4}"}
+            = image_or_placeholder(@space.photo4)
+    .panel
+      .row
+        .large-7.columns
+          %p
+            = @space.notes
+        .large-5.columns
+          %table
+            %tbody
+              %tr
+                %td Space Type:
+                %td.value
+                  - if @space.type == "attic"
+                    Attic
+                  - elsif @space.type == "spare_room"
+                    Spare Room
+                  - elsif @space.type == "garage"
+                    Garage
+                  - elsif @space.type == "basement"
+                    Basement
+                  - elsif @space.type == "covered"
+                    Covered Area
+                  - elsif @space.type == "uncovered"
+                    Uncovered Area
+                  - elsif @space.type == "driveway"
+                    Driveway
+              %tr
+                %td Access:
+                %td.value
+                  - if @space.access == "anytime"
+                    Anytime
+                  - elsif @space.access == "appointment"
+                    Appointment
+                  - elsif @space.access == "limited"
+                    Limited
+              - if @space.climate_controlled?
+                %tr
+                  %td Climate Control
+                  %td.value
+                    %i.icon-check
+              - if @space.lockable?
+                %tr
+                  %td Lockable
+                  %td.value
+                    %i.icon-check
+              - if @space.attended?
+                %tr
+                  %td Attended
+                  %td.value
+                    %i.icon-check
+    - if @space.tags.any?
+      %blockquote
+        %i.icon-lightbulb.pull-left
+        %h4#tags
+          Great for
+          - @space.tags.each do |tag|
+            %span
+              = link_to tag.name, spaces_url(tag: tag.name)
+  .large-4.medium-5.columns
+    .well
+      - if can_edit_space?(@space) and (not @space.complete)
+        %ul
           %li
             Done with describing your space?
             = simple_form_for @space do |f|
@@ -98,46 +160,34 @@
               = simple_form_for @space do |f|
                 = f.hidden_field :available, :value => true
                 = f.button :submit, "Active", class: 'btn-primary fullbtn button greenie radius'
-    .well
-      - if can_edit_space?(@space)
-        = link_to edit_space_path(@space), { :class=>'button radius fullbtn warmish', :title => 'Edit Space' } do
-          %i{:class=>'icon-pencil'}
-          Edit Listing
       - if not @space.available
         = link_to '#', {:class=>'button radius fullbtn standard'} do
           %i{:class=>'icon-thumbs-down'}
           Make Unavailable
-      - elsif not user_signed_in?
-        = link_to sign_in_path, { :class=>'button radius greenie fullbtn', :title => 'Sign in and book' } do
-          %i{:class=>'icon-ok'}
-          Sign in & Book It
       - else
-        = form_tag(user_charges_path(current_user), method: :post) do
-          = hidden_field_tag 'space_id', @space.id
-          = button_tag type: "submit", name: nil, :class => "button book-it-button radius has-tip fullbtn greenie", 'data-address'=> @space.normalized_address, 'data-price'=> @space.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key], 'data-image'=>@space.photo.url(:thumb)  do
-            %i.icon-credit-card
-            Pay by Card
-    %ul.small-block-2.large-block-grid-4.fitimg
-      -if @space.photo2?
-        %li
-          = image_or_placeholder(@space.photo2)
-      -if @space.photo3?
-        %li
-          = image_or_placeholder(@space.photo3)
-      -if @space.photo4?
-        %li
-          = image_or_placeholder(@space.photo4)
-      -if @space.photo5?
-        %li
-          = image_or_placeholder(@space.photo5)
-%h3
-  Send
-  = succeed "a message." do
-    %strong
-      #{@space.user.name}
-= simple_form_for Message.new do |f|
-  = f.input :recipient, as: :hidden, input_html: { value: @space.user }
-  = f.input :avatar, as: :hidden, input_html: { value: @space.user.avatar.url(:thumb)}
-  = f.input :subject, as: :hidden, input_html: { value: "Something about #{@space.title}" }
-  = f.input_field :body, as: :text, label: 'Message'
-  = f.button :submit, 'Send', class: "button fullbtn radius"
+        %a.button.radius.fullbtn.greenie{id: 'space-inquiry', :href => "#", "data-reveal-id" => "inquiryModal"}
+          %i.icon-message
+          Ask about this Space
+    #owner.well.clearfix
+      = link_to user_path(@space.user), id: 'account' do
+        - if @space.user.avatar.exists?
+          = image_tag @space.user.avatar.url(:square)
+        %h3
+          = @space.user.name
+      %p.small.text-center.mb20 Space Owner
+#inquiryModal.reveal-modal
+  %h2
+    Inquire about #{@space.title}
+  = simple_form_for Message.new do |f|
+    = f.input :recipient, as: :hidden, input_html: { value: @space.user }
+    %label
+      To:
+      - if @space.user.avatar.exists?
+        = image_tag @space.user.avatar.url(:thumb)
+      %strong
+        #{@space.user.name}
+    = f.input :avatar, as: :hidden, input_html: { value: @space.user.avatar.url(:thumb)}
+    %label Re:
+    = f.input :subject, input_label: "Re:", input_html: { value: "I would like to inquire about #{@space.title}" }
+    = f.input_field :body, as: :text, label: 'Message'
+    = f.button :submit, 'Send', class: "button fullbtn radius"
