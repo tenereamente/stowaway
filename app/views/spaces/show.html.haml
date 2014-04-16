@@ -118,17 +118,17 @@
                     Limited
               - if @space.climate_controlled?
                 %tr
-                  %td Climate Control
+                  %td Climate Control:
                   %td.value
                     %i.icon-check
               - if @space.lockable?
                 %tr
-                  %td Lockable
+                  %td Lockable:
                   %td.value
                     %i.icon-check
               - if @space.attended?
                 %tr
-                  %td Attended
+                  %td Attended:
                   %td.value
                     %i.icon-check
     - if @space.tags.any?

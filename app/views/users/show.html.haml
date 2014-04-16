@@ -1,94 +1,92 @@
 .row
-  .large-3.medium-4.small-8.columns
-    .avatar
+  .large-4.medium-5.columns
+    #owner.well.clearfix
       - if @user.avatar.exists?
         = image_tag @user.avatar.url(:square)
-      - else
-        = image_tag "http://placehold.it/250x250"
+      %h3
+        = @user.name
+      - if @user != current_user
+        = link_to 'javascript:;', {class: 'button fullbtn radius standard', "data-reveal-id" => "messageModal"} do
+          %i{:class=>'icon-envelope'}
+          Message
 
-    %h3.title #{@user.name}
-    - if @user != current_user
-      = link_to 'javascript:;', {class: 'button fullbtn radius standard', "data-reveal-id" => "messageModal"} do
-        %i{:class=>'icon-envelope'}
-        Message
-
-    - if can_edit_user?(@user)
-      = link_to edit_user_registration_path, {:class=>'button radius fullbtn'} do
-        %i{:class=>'icon-pencil'}
-        Edit Profile
-  .large-9.small-12.columns
-    %p
+      - if can_edit_user?(@user)
+        = link_to edit_user_registration_path, {:class=>'button radius fullbtn standard'} do
+          %i{:class=>'icon-pencil'}
+          Edit Profile
+    %p.show-for-medium-down
       =@user.bio
+  .large-8.medium-7.columns
+    .hide-for-medium-down
+      %p
+        =@user.bio
+      %hr
     - @spaces.each do |s|
-      .row.locations
-        .small-8.column
-          = link_to image_or_placeholder(s.photo, :square), space_path(s)
-          %h3
-            = link_to(h(s.title), space_path(s), {:class=>'has-tip', "data-tooltip" => "", :title => s.notes})
-          %h5
-            %i.icon-map-marker.pull-left
-            #{s.address1}, #{s.city} #{s.state}
-          %ul.feature-icons
-            - if s.environment == "indoor"
-              %li
-                %i.ico-home{:class=>'has-tip', "data-tooltip" => "Indoors", :title => "Indoors"}
+      .bigtime{:style => "background-image: url(#{s.photo if s.photo.exists?})"}
+        = link_to space_path(s) do
+          .bigprice
+            .dollars
+              %sup $
+              #{s.monthly_price}
+            .small per month
+        .shade
+          %h2
+            = link_to space_path(s) do
+              #{s.title}
+            %sup
+              %i.icon-map-marker
+              #{s.city}, #{s.state}
+              - if can_edit_space?(s)
+                |
+                = link_to edit_space_path(s), { :class=>'icon-btn has-tip', :title => 'Edit Your Listing' } do
+                  Edit
+          %ul.features.clearfix
+            - if s.environment? == "indoor"
+              %li.has-tip{ data: { tooltip: 'Indoors' }, title: 'Indoors' }
+                .ico-home
             - elsif s.environment == "outdoor"
-              %li
-                %i.ico-tree{:class=>'has-tip', "data-tooltip" => "Outdoors", :title => "Outdoors"}
-            - if s.type == "attic"
-              %li
-                %i.ico-flashlight{:class=>'has-tip', "data-tooltip" => "Attic Space", :title => "Attic Space"}
-            - elsif s.type == "spare_room"
-              %li
-                %i.ico-dolly{:class=>'has-tip', "data-tooltip" => "Spare Room", :title => "Spare Room"}
-            - elsif s.type == "garage"
-              %li
-                %i.ico-drill{:class=>'has-tip', "data-tooltip" => "Garage", :title => "Garage"}
-            - elsif s.type == "basement"
-              %li
-                %i.ico-travel{:class=>'has-tip', "data-tooltip" => "Basement", :title => "Basement"}
-            - elsif s.type == "covered"
-              %li
-                %i.ico-trailer{:class=>'has-tip', "data-tooltip" => "Covered Area", :title => "Covered Area"}
-            - elsif s.type == "uncovered"
-              %li
-                %i.ico-acorn{:class=>'has-tip', "data-tooltip" => "Uncovered Area", :title => "Uncovered Area"}
-            - elsif s.type == "driveway"
-              %li
-                %i.icon-road{:class=>'has-tip', "data-tooltip" => "Driveway", :title => "Driveway"}
-            - if s.access == "anytime"
-              %li
-                %i.ico-open{:class=>'has-tip', "data-tooltip" => "Anytime Access", :title => "Anytime Access"}
-            - elsif s.access == "appointment"
-              %li
-                %i.ico-clock{:class=>'has-tip', "data-tooltip" => "Appointment Access", :title => "Appointment Access"}
-            - elsif s.access == "limited"
-              %li
-                %i.ico-bolt{:class=>'has-tip', "data-tooltip" => "One-Time Access", :title => "One-Time Access"}
+              %li.has-tip{ data: { tooltip: 'Outdoors' }, title: 'Outdoors' }
+                .ico-tree
+            - if s.type?
+              - if s.type == "attic"
+                %li.has-tip{ data: { tooltip: 'Attic' }, title: 'Attic' }
+                  .ico-flashlight
+              - elsif s.type == "spare_room"
+                %li.has-tip{ data: { tooltip: 'Spare Room' }, title: 'Spare Room' }
+                  .ico-dolly
+              - elsif s.type == "garage"
+                %li.has-tip{ data: { tooltip: 'Garage' }, title: 'Garage' }
+                  .ico-drill
+              - elsif s.type == "basement"
+                %li.has-tip{ data: { tooltip: 'Basement' }, title: 'Basement' }
+                  .ico-travel
+              - elsif s.type == "covered"
+                %li.has-tip{ data: { tooltip: 'Covered' }, title: 'Covered' }
+                  .ico-trailer
+              - elsif s.type == "uncovered"
+                %li.has-tip{ data: { tooltip: 'Uncovered' }, title: 'Uncovered' }
+                  .ico-acorn
+              - elsif s.type == "driveway"
+                %li.has-tip{ data: { tooltip: 'Driveway' }, title: 'Driveway' }
+                  .icon-road
+            - if s.access?
+              - if s.access == "anytime"
+                %li.has-tip{ data: { tooltip: 'Anytime Access' }, title: 'Anytime Access' }
+                  .ico-open
+              - elsif s.access == "appointment"
+                %li.has-tip{ data: { tooltip: 'Appointment Access' }, title: 'Appointment Access' }
+                  .ico-clock
+              - elsif s.access == "limited"
+                %li.has-tip{ data: { tooltip: 'Limited Access' }, title: 'Limited Access' }
+                  .ico-bolt
             - if s.climate_controlled?
-              %li
-                %i.ico-equalizer{:class=>'has-tip', "data-tooltip" => "Climate Controlled", :title => "Climate Controlled"}
+              %li.has-tip{ data: { tooltip: 'Climate Controlled' }, title: 'Climate Controlled' }
+                .ico-equalizer
             - if s.lockable?
-              %li
-                %i.ico-lock{:class=>'has-tip', "data-tooltip" => "Lockable", :title => "Lockable"}
+              %li.has-tip{ data: { tooltip: 'Lockable' }, title: 'Lockable' }
+                .ico-locked
             - if s.attended?
-              %li
-                %i.ico-tie{:class=>'has-tip', "data-tooltip" => "Attended", :title => "Attended"}
-
-
-        .small-4.column
-          .well
-            %h3
-              $
-              #{s.monthly_price} / Month
-            - if can_edit_space?(s)
-              = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
-                %i{:class=>'icon-pencil'}
-                Edit Listing
-            - else
-              = link_to '#', {:class=>'button radius greenie fullbtn', 'data-address'=> s.normalized_address, 'data-price'=> s.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key] } do
-                %i{:class=>'icon-ok'}
-                Book It
-
+              %li.has-tip{ data: { tooltip: 'Attended' }, title: 'Attended' }
+                .ico-tie
 = render 'users/modals'
 

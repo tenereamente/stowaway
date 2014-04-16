@@ -103,7 +103,7 @@ $red: #D44B4E;
       }
     }
     .bigtime {
-      background-color: lighten($base, 5);
+      background-color: $ltgray;
     }
     .sidebar {
       ul {
@@ -208,7 +208,7 @@ $red: #D44B4E;
   .shade {
     background: rgba(darken($base, 60),.8);
   }
-  .bigtime, .smalltime {
+  .bigtime {
     h2 {
       color: lighten($base,90);
     }

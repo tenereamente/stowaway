@@ -1,16 +1,5 @@
 body.spaces {
   .locations {
-    img {
-      height: 110px;
-      width: 110px;
-      float: left;
-      margin-right: 1em;
-      @media screen and (max-width: 320px) {
-        width: 33%;
-        height: auto;
-        margin-bottom: 1em;
-      }
-    }
     ul {
       margin-bottom: 1em;
       float: left;
@@ -31,74 +20,6 @@ body.spaces {
       margin: 0;
     }
   }
-
-  .bigtime {
-    padding: 6em 0 0;
-    margin: 0 0 1em;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: 100%;
-  }
-
-  .smalltime {
-    padding: 2em 0 0;
-    margin: 0 0 2em;
-  }
-
-  .bigtime, .smalltime {
-    @include border-radius($radius);
-    .shade {
-      padding: .75em 1.5em;
-      @include border-radius(0 0 $radius $radius);
-      #tags {
-        color: darken(white,.8);
-      }
-      @media screen and (max-width: $tablet-screen) {
-        %h2 {
-          %sup {
-            display: block;
-          }
-        }
-      }
-    }
-  }
-  ul.features {
-    @media screen and (max-width: $tablet-screen) {
-      display: inline-block;
-      float: none;
-    }
-    li {
-      &:hover {
-        div {
-          &:before {
-            color: white;
-          }
-        }
-      }
-      text-align: center;
-      float: left;
-      display: inline;
-      margin-right: .5em;
-      font-size: 70%;
-      @media screen and (max-width: $tablet-screen) {
-        font-size: 50%;
-      }
-      div {
-        display: block;
-        font-size: 175%;
-        height: 2.5em;
-        width: 2.5em;
-        line-height: 2.4em;
-        text-align: center;
-        border: 2px solid $ltgray;
-        @include border-round($round);
-        &:before {
-          color: $ltgray;
-        }
-      }
-    }
-  }
-
   #tags {
     span {
       &:last-of-type {
@@ -132,32 +53,6 @@ body.spaces {
       margin-bottom: 0;
     }
   }
-
-  .bigprice {
-    color: darken($orange, 20);
-    @include border-round($round);
-    background: $orange;
-    float: right;
-    height: 6em;
-    width: 6em;
-    padding: 1.5em .5em 0;
-    text-align: center;
-    margin-right: 1.5em;
-    margin-top: -3em;
-    border: 4px solid rgba(white, .5);
-    .dollars {
-      color: white;
-      font-size: 175%;
-      font-weight: bold;
-      sup {
-        font-size: 50%;
-        color: darken($orange, 20);
-      }
-    }
-    .small {
-      font-size: 80%;
-    }
-  }
   .address {
     float: left;
     font-size: 150%;
@@ -169,11 +64,6 @@ body.spaces {
     @media screen and (max-width: $tablet-screen) {
       float: none;
       margin-right: 0;
-    }
-  }
-  #owner {
-    img {
-      min-width: 100%;
     }
   }
   blockquote {
@@ -189,12 +79,13 @@ body.spaces {
     }
   }
   table {
+    width: 100%;
+    margin-bottom: 0;
     .value {
       font-weight: bold;
       text-align: right;
     }
   }
-
   .clearing-thumbs {
     margin-bottom: 1em;
     li {
