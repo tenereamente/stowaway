@@ -1,4 +1,6 @@
 class SpacesController < ApplicationController
+  include ApplicationHelper
+
   def index
     if params[:user_id].present?
       @user = User.find(params[:user_id])
