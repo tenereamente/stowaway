@@ -70,7 +70,20 @@ class SpacesController < ApplicationController
 
   def update
     @space = Space.find(params[:id])
+    unless can_edit_space?(@space)
+      redirect_to space_path(@space), :error => "Don't have permission to edit this space"
+    end
+    
     if @space.update_attributes(space_params)
+      # if this was an update flipping a space to completed status,
+      # trigger a customer.io event notification so that the user
+      # gets a gorgeous email.
+      if should_notify_listing_complete?(space_params)
+        listing_url = space_path(@space)
+        listing_title = @space.title
+        image_count = @space.get_photo_count
+        $customerio.track(current_user.id, "listed_space_confirmation", listing_url: listing_url, listing_title: listing_title, listing_image_count: image_count)
+      end
       redirect_to space_path(@space)
     else
       redirect_to edit_space_path(@space), :alert => "Unable to update space."
@@ -85,6 +98,22 @@ class SpacesController < ApplicationController
 
   def subregion_options
     render partial: 'subregion_select'
+  end
+
+  private
+
+  def should_notify_listing_complete?(space_params)
+    # if we got an update and it was only setting available and complete
+    # to true, this is a case where we want to notify that the listing
+    # was completed.
+    if space_params.size == 2
+      if space_params[:available] == "true"
+        if space_params[:complete] == "true"
+          return true
+        end
+      end
+    end
+    return false
   end
 
 end
