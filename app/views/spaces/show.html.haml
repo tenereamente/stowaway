@@ -11,9 +11,15 @@
         %i.icon-map-marker
         #{@space.city}, #{@space.state}
         - if can_edit_space?(@space)
+          - if is_space_owner?(@space)
+            - title = 'Edit Your Listing'
+            - link_text = 'Edit'
+          - else
+            - title = 'Admin Edit Listing'
+            - link_text = 'Admin Edit'
           |
-          = link_to edit_space_path(@space), { :class=>'icon-btn has-tip', :title => 'Edit Your Listing' } do
-            Edit
+          = link_to edit_space_path(@space), { :class=>'icon-btn has-tip', :title => title } do
+            = link_text
     %ul.features.clearfix
       - if @space.environment? == "indoor"
         %li.has-tip{ data: { tooltip: 'Indoors' }, title: 'Indoors' }
@@ -141,7 +147,7 @@
               = link_to tag.name, spaces_url(tag: tag.name)
   .large-4.medium-5.columns
     .well
-      - if can_edit_space?(@space)
+      - if is_space_owner?(@space)
         %ul
           - unless @space.complete
             %li
