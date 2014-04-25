@@ -141,29 +141,32 @@
               = link_to tag.name, spaces_url(tag: tag.name)
   .large-4.medium-5.columns
     .well
-      - if can_edit_space?(@space) and (not @space.complete)
+      - if can_edit_space?(@space)
         %ul
-          %li
-            Done with describing your space?
-            = simple_form_for @space do |f|
-              = f.hidden_field :complete, :value => true
-              = f.hidden_field :available, :value => true
-              = f.button :submit, 'Looks good, list it!', class: 'btn-primary fullbtn button greenie radius'
+          - unless @space.complete
+            %li
+              Done with describing your space?
+              = simple_form_for @space do |f|
+                = f.hidden_field :complete, :value => true
+                = f.hidden_field :available, :value => true
+                = button_tag(type: 'submit', class: 'btn-primary fullbtn button greenie radius') do
+                  %i{:class => 'icon-thumbs-up'}
+                  Looks good, list it!
           %li
             - if @space.available
-              Take your space off the market for now?
+              Is your space full for now?
               = simple_form_for @space do |f|
                 = f.hidden_field :available, :value => false
-                = f.button :submit, "Deactivate", class: 'btn-primary fullbtn button standard radius'
+                = button_tag(type: 'submit', class: 'btn-primary fullbtn button standard radius') do
+                  %i{:class=>'icon-thumbs-down'}
+                  Make unavailable
             - elsif @space.complete
               Mark your space as available again?
               = simple_form_for @space do |f|
                 = f.hidden_field :available, :value => true
-                = f.button :submit, "Active", class: 'btn-primary fullbtn button greenie radius'
-      - if not @space.available
-        = link_to '#', {:class=>'button radius fullbtn standard'} do
-          %i{:class=>'icon-thumbs-down'}
-          Make Unavailable
+                = button_tag(type: 'submit', class: 'btn-primary fullbtn button standard radius') do
+                  %i{:class => 'icon-thumbs-up'}
+                  Make available.
       - else
         %a.button.radius.fullbtn.greenie{id: 'space-inquiry', :href => "#", "data-reveal-id" => "inquiryModal"}
           %i.icon-message
