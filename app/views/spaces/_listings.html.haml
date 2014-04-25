@@ -14,9 +14,15 @@
           %i.icon-map-marker
           #{s.city}, #{s.state}
           - if can_edit_space?(s)
+            - if is_space_owner?(s)
+              - link_text = 'Edit'
+              - title = 'Edit Your Listing'
+            - else
+              - link_text = 'Admin Edit'
+              - title = 'Admin Edit Listing'
             |
-            = link_to edit_space_path(s), { :class=>'icon-btn has-tip', :title => 'Edit Your Listing' } do
-              Edit
+            = link_to edit_space_path(s), { :class=>'icon-btn has-tip', :title => title } do
+              = link_text
       %ul.features.clearfix
         - if s.environment? == "indoor"
           %li.has-tip{ data: { tooltip: 'Indoors' }, title: 'Indoors' }
