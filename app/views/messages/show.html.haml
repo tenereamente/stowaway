@@ -31,9 +31,9 @@
   %h4 Your Reply
   = simple_form_for @message do |f|
     .row
-      .small-8.column.large-push-8
+      .small-8.column.large-8
         = f.input :conversation_id, as: :hidden
         = f.input_field :body, as: :text, label: 'Reply'
-      .small-4.column.large-pull-4
+      .small-4.column.large-4
         = f.button :submit, 'Send Message', class: "button greenie fullbtn radius"
 

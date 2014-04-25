@@ -46,17 +46,19 @@ class MessagesController < ApplicationController
         flash[:alert] = "You do not have permission to view that conversation."
         return redirect_to root_path
       end
-      receipt = current_user.reply_to_conversation(@conversation, @message.body, nil, true, true, @message.attachment)
+      receipt = current_user.reply_to_conversation(@conversation, @message.body, @message.subject)
+      conversation_id = @message.conversation_id
     else
       unless @message.valid?
         return render :new
       end
       @recipient = User.find(params.require(:message)[:recipient])
-      receipt = current_user.send_message(@recipient, @message.body, @message.subject, true, @message.attachment)
+      receipt = current_user.send_message(@recipient, @message.body, @message.subject, sanitize_text = false)
+      conversation_id = receipt.conversation
     end
     flash[:notice] = "Message sent."
 
-    redirect_to message_path(receipt.conversation)
+    redirect_to message_path(conversation_id)
   end
 
   def show

@@ -188,7 +188,7 @@
   %h2
     Inquire about #{@space.title}
   = simple_form_for Message.new do |f|
-    = f.input :recipient, as: :hidden, input_html: { value: @space.user }
+    = f.input :recipient, as: :hidden, input_html: { value: @space.user.id }
     %label
       To:
       - if @space.user.avatar.exists?
@@ -200,4 +200,4 @@
     = f.input :subject, input_label: "Re:", input_html: { value: "I would like to inquire about #{@space.title}" }
     = f.input_field :body, as: :text, label: 'Message'
     = f.button :submit, 'Send', class: "button fullbtn radius"
-  
+
