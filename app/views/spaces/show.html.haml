@@ -159,7 +159,7 @@
                   %i{:class => 'icon-thumbs-up'}
                   Looks good, list it!
           %li
-            - if @space.available
+            - if @space.available and @space.complete
               Is your space full for now?
               = simple_form_for @space do |f|
                 = f.hidden_field :available, :value => false
