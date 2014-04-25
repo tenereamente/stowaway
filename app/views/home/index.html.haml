@@ -18,11 +18,12 @@
       %i.icon-ok-sign.icon-left.icon-muted
       BOOYA!
     .row.mb20
-      %h4.small.large-6.large-offset-3.columns
+      %h4.small.text-center
         In the meantime, enjoy a little
         = succeed "." do
           %a{:href => "http://www.youtube.com/watch?v=joDjwtjIQS8", :target => "_blank"} Rock'em Sock'em
-        Already part of the beta test?
+        %br
+        Already part of the beta test group?
         = succeed "." do
           = link_to 'Sign in here', new_user_session_path
 = render 'home/modals'

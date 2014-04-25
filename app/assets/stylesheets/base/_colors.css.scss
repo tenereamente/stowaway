@@ -5,8 +5,11 @@ $green: #87ae3a;
 $powder: #7cabd3;
 $orange: lighten(#f48231,5);
 $gray: rgba(85, 85, 85, 0.5);
+$ltgray: lighten($gray,50);
 
-@mixin theme($base, $accent, $tertiary, $ordinary) {
+$red: #D44B4E;
+
+@mixin theme($base, $accent, $tertiary, $ordinary, $warning) {
   background: $base $bg-image;
   color: darken($base, 20);
   &.sessions, &.registrations, &.passwords, &.confirmations {
@@ -100,7 +103,7 @@ $gray: rgba(85, 85, 85, 0.5);
       }
     }
     .bigtime {
-      background-color: lighten($base, 5);
+      background-color: $ltgray;
     }
     .sidebar {
       ul {
@@ -123,10 +126,14 @@ $gray: rgba(85, 85, 85, 0.5);
     label, .checkbtns > li {
       &.button {
         background-color: $base;
-        transition: all;
         color: lighten($base, 80);
-        &:hover, &:active, &.active {
+        box-shadow: 0 3px 0 darken($base, 40);
+        &:hover {
           background-color: darken($base, 20);
+        }
+        &:active, &.active {
+          background-color: $tertiary;
+          box-shadow: inset 0 3px 0 darken($tertiary, 20);
         }
       }
     }
@@ -157,13 +164,13 @@ $gray: rgba(85, 85, 85, 0.5);
           color: lighten($base, 90);
         }
         &.button {
-          color: lighten($accent, 90);
-          background-color: $accent;
+          color: lighten($base, 90);
+          background-color: $base;
           &:hover {
-            background-color: darken($accent, 10);
+            background-color: darken($base, 10);
           }
           &:active {
-            background-color: darken($accent, 20);
+            background-color: darken($base, 20);
             top: 10px;
           }
         }
@@ -199,11 +206,9 @@ $gray: rgba(85, 85, 85, 0.5);
     box-shadow: transparent none;
   }
   .shade {
-    background: rgba(darken($base, 60),.7);
+    background: rgba(darken($base, 60),.8);
   }
-  .bigtime, .smalltime {
-    border-radius: 3px;
-    background-image: url(http://www.destateparks.com/irimarina/images/Drystack_Example_Forklift.jpg);
+  .bigtime {
     h2 {
       color: lighten($base,90);
     }
@@ -250,6 +255,18 @@ $gray: rgba(85, 85, 85, 0.5);
         top: 2px;
       }
     }
+    &.warning {
+      background-color: $warning;
+      color: lighten($warning, 90);
+      box-shadow: 0px 3px darken($warning, 20);
+      &:hover {
+        background-color: lighten($warning, 5);
+      }
+      &:active {
+        background-color: darken($warning, 10);
+        top: 2px;
+      }
+    }
   }
   .well {
     background-color: lighten($base, 30);
@@ -270,10 +287,11 @@ $gray: rgba(85, 85, 85, 0.5);
     border: solid 1px $accent;
     color: $accent;
   }
+
 }
 
 body {
-  @include theme($powder, $orange, $green, $gray);
+  @include theme($powder, $orange, $green, $gray, $red);
 }
 
 

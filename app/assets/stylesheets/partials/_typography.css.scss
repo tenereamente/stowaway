@@ -2,18 +2,16 @@ h1, h2, h3 {
   font-weight: 500;
 }
 
-h4, h5 {
-  font-family: $alt-font;
-}
-
 p {
-  font-size: 125%;
-  a {
-    border-bottom: 1px solid;
-  }
+  font-family: $alt-font;
   &.small {
     font-size: 1em;
+    line-height: 1.25em;
   }
+}
+
+.hint {
+  font-family: $alt-font;
 }
 
 .t-center {
@@ -26,12 +24,6 @@ p {
 
 .title {
   text-transform: capitalize;
-}
-
-.shade {
-  h2 {
-    margin-bottom: 0;
-  }
 }
 
 .locations {

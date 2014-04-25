@@ -1,173 +1,203 @@
 .bigtime{:style => "background-image: url(#{@space.photo if @space.photo.exists?})"}
-  .row
-    .large-4.small.12.push-8.columns
+  .bigprice
+    .dollars
+      %sup $
+      #{@space.monthly_price}
+    .small per month
+  .shade
+    %h2
+      #{@space.title}
+      %sup
+        %i.icon-map-marker
+        #{@space.city}, #{@space.state}
+        - if can_edit_space?(@space)
+          - if is_space_owner?(@space)
+            - title = 'Edit Your Listing'
+            - link_text = 'Edit'
+          - else
+            - title = 'Admin Edit Listing'
+            - link_text = 'Admin Edit'
+          |
+          = link_to edit_space_path(@space), { :class=>'icon-btn has-tip', :title => title } do
+            = link_text
+    %ul.features.clearfix
+      - if @space.environment? == "indoor"
+        %li.has-tip{ data: { tooltip: 'Indoors' }, title: 'Indoors' }
+          .ico-home
+      - elsif @space.environment == "outdoor"
+        %li.has-tip{ data: { tooltip: 'Outdoors' }, title: 'Outdoors' }
+          .ico-tree
+      - if @space.type?
+        - if @space.type == "attic"
+          %li.has-tip{ data: { tooltip: 'Attic' }, title: 'Attic' }
+            .ico-flashlight
+        - elsif @space.type == "spare_room"
+          %li.has-tip{ data: { tooltip: 'Spare Room' }, title: 'Spare Room' }
+            .ico-dolly
+        - elsif @space.type == "garage"
+          %li.has-tip{ data: { tooltip: 'Garage' }, title: 'Garage' }
+            .ico-drill
+        - elsif @space.type == "basement"
+          %li.has-tip{ data: { tooltip: 'Basement' }, title: 'Basement' }
+            .ico-travel
+        - elsif @space.type == "covered"
+          %li.has-tip{ data: { tooltip: 'Covered' }, title: 'Covered' }
+            .ico-trailer
+        - elsif @space.type == "uncovered"
+          %li.has-tip{ data: { tooltip: 'Uncovered' }, title: 'Uncovered' }
+            .ico-acorn
+        - elsif @space.type == "driveway"
+          %li.has-tip{ data: { tooltip: 'Driveway' }, title: 'Driveway' }
+            .icon-road
+      - if @space.access?
+        - if @space.access == "anytime"
+          %li.has-tip{ data: { tooltip: 'Anytime Access' }, title: 'Anytime Access' }
+            .ico-open
+        - elsif @space.access == "appointment"
+          %li.has-tip{ data: { tooltip: 'Appointment Access' }, title: 'Appointment Access' }
+            .ico-clock
+        - elsif @space.access == "limited"
+          %li.has-tip{ data: { tooltip: 'Limited Access' }, title: 'Limited Access' }
+            .ico-bolt
+      - if @space.climate_controlled?
+        %li.has-tip{ data: { tooltip: 'Climate Controlled' }, title: 'Climate Controlled' }
+          .ico-equalizer
+      - if @space.lockable?
+        %li.has-tip{ data: { tooltip: 'Lockable' }, title: 'Lockable' }
+          .ico-locked
+      - if @space.attended?
+        %li.has-tip{ data: { tooltip: 'Attended' }, title: 'Attended' }
+          .ico-tie
 
-    .large-8.small-12.pull-4.columns
-      .shade
-        %h2
-          = @space.title
-        %h5
-          %i.icon-map-marker.pull-left
-          #{@space.address1}, #{@space.city} #{@space.state}
-
-.row
-  .large-4.small.12.push-8.columns
-    = link_to user_path(@space.user), id: 'account' do
-      - if @space.user.avatar.exists?
-        = image_tag @space.user.avatar.url(:thumb)
-      - else
-        = image_tag "http://placehold.it/32x32", :class => "avatar"
-      = @space.user.name
-
-    %ul
-      %li
-        Status:
-        - if @space.complete
-          Active
-        - else
-          Inactive
-        - if can_edit_space?(@space) and (not @space.complete)
-          %li
-            Done with describing your space?
-            = simple_form_for @space do |f|
-              = f.hidden_field :complete, :value => true
-              = f.hidden_field :available, :value => true
-              = f.button :submit, 'Looks good, list it!', class: 'btn-primary fullbtn button greenie radius'
-          %li
-            - if @space.available
-              Take your space off the market for now?
-              = simple_form_for @space do |f|
-                = f.hidden_field :available, :value => false
-                = f.button :submit, "Deactivate", class: 'btn-primary fullbtn button standard radius'
-            - elsif @space.complete
-              Mark your space as available again?
-              = simple_form_for @space do |f|
-                = f.hidden_field :available, :value => true
-                = f.button :submit, "Active", class: 'btn-primary fullbtn button greenie radius'
-    .well
-      %h3
-        $
-        #{@space.monthly_price} / Month
-      - if can_edit_space?(@space)
-        = link_to edit_space_path(@space), {:class=>'button radius fullbtn warmish has-tip', "data-tooltip"=>"", :title => 'Like a Boss'} do
-          %i{:class=>'icon-pencil'}
-          Edit Listing
-      - if not @space.available
-        = link_to '#', {:class=>'button radius fullbtn standard'} do
-          %i{:class=>'icon-thumbs-down'}
-          Make Unavailable
-      - elsif not user_signed_in?
-        = link_to sign_in_path, {:class=>'button radius greenie fullbtn hast-tip', :title => 'Sign in and book'} do
-          %i{:class=>'icon-ok'}
-          Sign in & Book It
-      - else
-        = form_tag(user_charges_path(current_user), method: :post) do
-          = hidden_field_tag 'space_id', @space.id
-          = button_tag type: "submit", name: nil, :class => "button book-it-button radius has-tip fullbtn greenie", 'data-address'=> @space.normalized_address, 'data-price'=> @space.monthly_price, 'data-stripe_public_key'=> Rails.configuration.stripe[:publishable_key], 'data-image'=>@space.photo.url(:thumb)  do
-            %i.icon-credit-card
-            Pay by Card
-
-  .large-8.small-12.pull-4.columns
-    %section.mb20
-      %ul.small-block-3.large-block-grid-6.features
-        - if @space.environment?
-          %li
-            - if @space.environment == "indoor"
-              .ico-home
-              Indoors
-            - elsif @space.environment == "outdoor"
-              .ico-tree
-              Outdoors
-        - if @space.type?
-          - if @space.type == "attic"
-            %li
-              .ico-flashlight
-              Attic Space
-          - elsif @space.type == "spare_room"
-            %li
-              .ico-dolly
-              Spare Room
-          - elsif @space.type == "garage"
-            %li
-              .ico-drill
-              Garage
-          - elsif @space.type == "basement"
-            %li
-              .ico-travel
-              Basement
-          - elsif @space.type == "covered"
-            %li
-              .ico-trailer
-              Covered Area
-          - elsif @space.type == "uncovered"
-            %li
-              .ico-acorn
-              Uncovered Area
-          - elsif @space.type == "driveway"
-            %li
-              .icon-road
-              Driveway
-        - if @space.access?
-          - if @space.access == "anytime"
-            %li
-              .ico-open
-              Anytime Access
-          - elsif @space.access == "appointment"
-            %li
-              .ico-clock
-              By Appointment Access
-          - elsif @space.access == "limited"
-            %li
-              .ico-bolt
-              One-Time Access
-        - if @space.climate_controlled?
-          %li
-            .ico-equalizer
-            Climate Controlled
-        - if @space.lockable?
-          %li
-            .ico-locked
-            Lockable
-        - if @space.attended?
-          %li
-            .ico-tie
-            Attended
-
-    %ul.small-block-2.large-block-grid-4.fitimg
-      -if @space.photo2?
+.row.mb20
+  .large-8.medium-7.columns
+    %ul.clearing-thumbs{"data-clearing" => ""}
+      - if @space.photo?
         %li
-          = image_or_placeholder(@space.photo2)
-      -if @space.photo3?
+          %a{:href => "#{@space.photo}"}
+            = image_or_placeholder(@space.photo)
+      - if @space.photo2?
         %li
-          = image_or_placeholder(@space.photo3)
-      -if @space.photo4?
+          %a{:href => "#{@space.photo2}"}
+            = image_or_placeholder(@space.photo2)
+      - if @space.photo3?
         %li
-          = image_or_placeholder(@space.photo4)
-      -if @space.photo5?
-        %li
-          = image_or_placeholder(@space.photo5)
-    %section.mb20
-      %h3 Overview
-      %p= @space.notes
-
+          %a{:href => "#{@space.photo3}"}
+            = image_or_placeholder(@space.photo3)
+      - if @space.photo4?
+        %li.last
+          %a{:href => "#{@space.photo4}"}
+            = image_or_placeholder(@space.photo4)
+    .panel
+      .row
+        .large-7.columns
+          %p
+            = @space.notes
+        .large-5.columns
+          %table
+            %tbody
+              %tr
+                %td Space Type:
+                %td.value
+                  - if @space.type == "attic"
+                    Attic
+                  - elsif @space.type == "spare_room"
+                    Spare Room
+                  - elsif @space.type == "garage"
+                    Garage
+                  - elsif @space.type == "basement"
+                    Basement
+                  - elsif @space.type == "covered"
+                    Covered Area
+                  - elsif @space.type == "uncovered"
+                    Uncovered Area
+                  - elsif @space.type == "driveway"
+                    Driveway
+              %tr
+                %td Access:
+                %td.value
+                  - if @space.access == "anytime"
+                    Anytime
+                  - elsif @space.access == "appointment"
+                    Appointment
+                  - elsif @space.access == "limited"
+                    Limited
+              - if @space.climate_controlled?
+                %tr
+                  %td Climate Control:
+                  %td.value
+                    %i.icon-check
+              - if @space.lockable?
+                %tr
+                  %td Lockable:
+                  %td.value
+                    %i.icon-check
+              - if @space.attended?
+                %tr
+                  %td Attended:
+                  %td.value
+                    %i.icon-check
     - if @space.tags.any?
-      %section.mb50#tags
-        %h3
+      %blockquote
+        %i.icon-lightbulb.pull-left
+        %h4#tags
           Great for
           - @space.tags.each do |tag|
             %span
               = link_to tag.name, spaces_url(tag: tag.name)
-
-    %h3
-      Send
-      = succeed "a message." do
-        %strong
-          #{@space.user.name}
-    = simple_form_for Message.new do |f|
-      = f.input :recipient, as: :hidden, input_html: { value: @space.user.id }
-      = f.input :avatar, as: :hidden, input_html: { value: @space.user.avatar.url(:thumb)}
-      = f.input :subject, as: :hidden, input_html: { value: "Something about #{@space.title}" }
-      = f.input_field :body, as: :text, label: 'Message'
-      = f.button :submit, 'Send', class: "button fullbtn radius"
-
-
+  .large-4.medium-5.columns
+    .well
+      - if is_space_owner?(@space)
+        %ul
+          - unless @space.complete
+            %li
+              Done with describing your space?
+              = simple_form_for @space do |f|
+                = f.hidden_field :complete, :value => true
+                = f.hidden_field :available, :value => true
+                = button_tag(type: 'submit', class: 'btn-primary fullbtn button greenie radius') do
+                  %i{:class => 'icon-thumbs-up'}
+                  Looks good, list it!
+          %li
+            - if @space.available and @space.complete
+              Is your space full for now?
+              = simple_form_for @space do |f|
+                = f.hidden_field :available, :value => false
+                = button_tag(type: 'submit', class: 'btn-primary fullbtn button standard radius') do
+                  %i{:class=>'icon-thumbs-down'}
+                  Make unavailable
+            - elsif @space.complete
+              Mark your space as available again?
+              = simple_form_for @space do |f|
+                = f.hidden_field :available, :value => true
+                = button_tag(type: 'submit', class: 'btn-primary fullbtn button standard radius') do
+                  %i{:class => 'icon-thumbs-up'}
+                  Make available.
+      - else
+        %a.button.radius.fullbtn.greenie{id: 'space-inquiry', :href => "#", "data-reveal-id" => "inquiryModal"}
+          %i.icon-message
+          Ask about this Space
+    #owner.well.clearfix
+      = link_to user_path(@space.user), id: 'account' do
+        - if @space.user.avatar.exists?
+          = image_tag @space.user.avatar.url(:square)
+        %h3
+          = @space.user.name
+      %p.small.text-center.mb20 Space Owner
+#inquiryModal.reveal-modal
+  %h2
+    Inquire about #{@space.title}
+  = simple_form_for Message.new do |f|
+    = f.input :recipient, as: :hidden, input_html: { value: @space.user }
+    %label
+      To:
+      - if @space.user.avatar.exists?
+        = image_tag @space.user.avatar.url(:thumb)
+      %strong
+        #{@space.user.name}
+    = f.input :avatar, as: :hidden, input_html: { value: @space.user.avatar.url(:thumb)}
+    %label Re:
+    = f.input :subject, input_label: "Re:", input_html: { value: "I would like to inquire about #{@space.title}" }
+    = f.input_field :body, as: :text, label: 'Message'
+    = f.button :submit, 'Send', class: "button fullbtn radius"
+  

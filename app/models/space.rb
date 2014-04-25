@@ -41,4 +41,12 @@ class Space < ActiveRecord::Base
   def geocode?
     (!normalized_address.blank? && (lat.blank? || lng.blank?)) || address1_changed? || address2_changed? || city_changed? || zip_changed?
   end
+
+  def get_photo_count
+    # this is so dumb.
+    a = [:photo, :photo1, :photo2, :photo3, :photo4, :photo5]
+    count = 0
+    a.each { |p| count += 1 if self.send(p).exists? }
+    return count
+  end
 end

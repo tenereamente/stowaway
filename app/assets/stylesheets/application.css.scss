@@ -7,6 +7,7 @@
 @import "compass";
 
 @import "base/foundation_overrides";
+@import "base/foundation_grid";
 @import "base/variables";
 @import "base/colors";
 @import "base/mixins";
@@ -112,7 +113,6 @@ footer {
           margin: 4px;
           background: #000;
         }
-
       }
       .icon-ok-sign {
         display: none;
@@ -132,7 +132,7 @@ footer {
 .well {
   border: 0!important;
   @include border-radius($radius);
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
   padding: 1em 1em 0 1em;
   h3 {
     text-align:center;
@@ -175,5 +175,146 @@ blockquote {
   &:hover, &:focus {
    cursor: default;
    border-bottom: 0 none;
+  }
+}
+
+h2 {
+  sup {
+    font-family: $alt-font;
+    font-size: 50%;
+    letter-spacing: 0px;
+  }
+}
+
+.center-small {
+  text-align: center;
+}
+
+.avatar {
+  img {
+    @include border-round($round);
+    border: 1px solid whitesmoke;
+  }
+}
+
+#owner {
+  img {
+    width: 100%;
+  }
+}
+
+.bigtime {
+  @include border-radius($radius);
+  padding: 6em 0 0;
+  @media screen and (max-width: $tablet-screen) {
+    padding-top: 2.5em;
+  }
+  @media screen and (max-width: $tablet-screen) {
+    padding-top: 1.5em;
+  }
+  margin: 0 0 1em;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  h2 {
+    line-height: 1.15em;
+    @media screen and (max-width: $tablet-screen) {
+      font-size: 175%;
+    }
+    @media screen and (max-width: $small-screen) {
+      font-size: 150%;
+    }
+  }
+  .bigprice {
+    color: darken($orange, 20);
+    @include border-round($round);
+    background: $orange;
+    float: right;
+    height: 6em;
+    width: 6em;
+    padding: 1.5em .5em 0;
+    text-align: center;
+    margin-right: 1.5em;
+    margin-left: .5em;
+    margin-top: -3em;
+    @media screen and (max-width: $tablet-screen) {
+      margin-top: -1em;
+    }
+    @media screen and (max-width: $small-screen) {
+      height: 5em;
+      width: 5em;
+      padding-top: 1.25em;
+    }
+    border: 4px solid rgba(white, .5);
+    .dollars {
+      color: white;
+      font-size: 175%;
+      font-weight: bold;
+      @media screen and (max-width: $small-screen) {
+        font-size: 125%;
+      }
+      sup {
+        font-size: 50%;
+        color: darken($orange, 20);
+      }
+    }
+    .small {
+      font-size: 80%;
+      @media screen and (max-width: $small-screen) {
+        font-size: 75%;
+      }
+    }
+  }
+  .shade {
+    padding: .75em 1.5em;
+    @include border-radius(0 0 $radius $radius);
+    @media screen and (max-width: $tablet-screen) {
+      h2 {
+        sup {
+          display: block;
+        }
+      }
+    }
+    ul.features {
+      margin-bottom: .75em;
+      @media screen and (max-width: $tablet-screen) {
+        display: inline-block;
+        float: none;
+      }
+      li {
+        &:hover {
+          div {
+            &:before {
+              color: white;
+            }
+          }
+        }
+        text-align: center;
+        float: left;
+        display: inline;
+        margin-right: 2em;
+        font-size: 70%;
+
+        @media screen and (max-width: $tablet-screen) {
+          font-size: 50%;
+        }
+        div {
+          display: block;
+          font-size: 175%;
+          height: 2.5em;
+          width: 2.5em;
+          line-height: 2.4em;
+          text-align: center;
+          border: 2px solid $ltgray;
+          @include border-round($round);
+          &:before {
+            color: $ltgray;
+          }
+        }
+      }
+    }
+    #tags {
+      color: darken(white,.8);
+    }
   }
 }

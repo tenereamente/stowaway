@@ -48,7 +48,7 @@ directory "/app" do
   action :create
   owner "web_user"
   group "web_user"
-  mode "0775"
+  mode "0744"
 end
 
 # This section is set to /app/production

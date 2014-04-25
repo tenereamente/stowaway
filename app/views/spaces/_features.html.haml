@@ -1,18 +1,36 @@
 - display_style = f.object.new_record? ? 'display: none' : ''
-%h4 Tell us where the space is located.
+%h4
+  - if @resource.created_at.nil?
+    Tell us where the space is located.
+  - else
+    Space Location
+
 .where
   = f.collection_radio_buttons :environment, [[:indoor, 'Indoor'] ,[:outdoor, 'Outdoor']], :first, :last do |b|
     = b.radio_button
     = b.label(class: 'button radius', id: "#{b.text.underscore}_button_label") do
       - if b.text == 'Indoor'
-        %span.ico-home
+        %i.ico-home
       - else
-        %span.ico-tree
+        %i.ico-tree
       %span
         = b.text
 
-%h4#what_kind_of_space{ style: display_style } What type of space is it?
-#indoor_button_group.indoor.what{ style: display_style }
+%h4
+  - if @resource.created_at.nil?
+    #what_kind_of_space{ style: display_style } What type of space is it?
+    - indoor_button_display_style = display_style
+    - outdoor_button_display_style = display_style
+  - else
+    #what_kind_of_space{ style: display_style } Space Type
+    - if @resource.environment == 'outdoor'
+      - indoor_button_display_style = 'display: none'
+      - outdoor_button_display_style = ''
+    - else
+      - indoor_button_display_style = ''
+      - outdoor_button_display_style = 'display: none'
+
+#indoor_button_group.indoor.what{ style: indoor_button_display_style }
   - space_type = [[:attic, 'Attic'],
     [:garage, 'Garage'],
     [:spare_room, 'Spare Room'],
@@ -21,76 +39,90 @@
     = b.radio_button
     = b.label(class: 'button radius', id: "#{b.text.parameterize.underscore}_button_label") do
       - if b.text == 'Attic'
-        %span.ico-flashlight
+        %i.ico-flashlight
       - elsif b.text == 'Garage'
-        %span.ico-drill
+        %i.ico-drill
       - elsif b.text == 'Spare Room'
-        %span.ico-dolly
+        %i.ico-dolly
       - elsif b.text == 'Basement'
-        %span.ico-travel
+        %i.ico-travel
       %span
         = b.text
-#outdoor_button_group.outdoor.what{ style: display_style }
+
+#outdoor_button_group.outdoor.what{ style: outdoor_button_display_style }
   - space_type = [[:driveway, 'Driveway'], [:covered, 'Covered Area'], [:uncovered, 'Uncovered Area']]
   = f.collection_radio_buttons :type, space_type, :first, :second do |b|
     = b.radio_button
     = b.label(class: 'button radius', id: "#{b.text.parameterize.underscore}_button_label") do
       - if b.text == 'Driveway'
-        %span.icon-road
+        %i.icon-road
       - elsif b.text == 'Covered Area'
-        %span.ico-trailer
+        %i.ico-trailer
       - elsif b.text == 'Uncovered Area'
-        %span.ico-acorn
+        %i.ico-acorn
       - else
       %span
         = b.text
 
 %section.access#access_button_group{ style: display_style }
-  %h4 How's the access?
-  %p.small Specify here how often you would like to be contacted.
-  .what
+  %h4
+    - if @resource.created_at.nil?
+      How's the access?
+      %p.small Specify here how often you would like to be contacted.
+    - else
+      Access Level
+
+  .how
     = f.collection_radio_buttons :access, [[:anytime, 'Open Anytime'], [:appointment, 'By Appointment'], [:limited, 'Onetime']], :first, :second do |b|
       = b.radio_button
       = b.label(class: 'button radius', id: "#{b.text.parameterize.underscore}_button_label") do
         - if b.text == 'Open Anytime'
-          %span.ico-open
+          %i.ico-open
         - elsif b.text == 'By Appointment'
-          %span.ico-clock
+          %i.ico-clock
         - elsif b.text == 'Onetime'
-          %span.ico-bolt
+          %i.ico-bolt
         %span
           = b.text
 
-%section.features
-  %h4 Features
-  %ul.checkbtns.inline-list
+%section.features{ style: display_style }
+  %h4
+    Features
+    %small (Select all that apply.)
+  %ul.checkbtns
     %li
       - active = f.object.climate_controlled ? 'active' : ''
-      = f.label :climate_controlled, :class => 'checkbox button radius' + active, id: 'climate_checkbox_label' do
-        %span.ico-equalizer
-        Climate Controlled
+      = f.label :climate_controlled, :class => 'checkbox fullbtn button radius ' + active, id: 'climate_checkbox_label' do
+        %i.ico-equalizer
+        The climate in the storage area is controlled.
+        - if f.object.lockable ? 'active' : ''
+          %i.ico-checkmark
       = f.check_box :climate_controlled, :class => 'checkbox'
     %li
       - active = f.object.lockable ? 'active' : ''
-      = f.label :lockable, :class => 'checkbox button radius ' + active, id: 'lockable_checkbox_label' do
-        %span.ico-locked
-        Lockable
+      = f.label :lockable, :class => 'checkbox fullbtn button radius ' + active, id: 'lockable_checkbox_label' do
+        %i.ico-locked
+        The space is locked from the outside.
+        - if f.object.lockable ? 'active' : ''
+          %i.ico-checkmark
       = f.check_box :lockable, :class => 'checkbox'
     %li
       - active = f.object.attended ? 'active' : ''
-      = f.label :attended, :class => 'checkbox button radius ' + active, id: 'attended_checkbox_label' do
-        %span.ico-tie
-        Attended
+      = f.label :attended, :class => 'checkbox fullbtn button radius ' + active, id: 'attended_checkbox_label' do
+        %i.ico-tie
+        Someone is nearby/attending the space.
+        - if f.object.attended ? 'active' : ''
+          %i.ico-checkmark
       = f.check_box :attended, :class => 'checkbox '
-
+%hr
 %section.dimensions
   .row
-    .column.large-3
+    .column.large-4
       %h4
         Dimensions
-        %small
+        %sup
           (in feet)
-    .column.large-9
+    .column.large-8
       = f.input :length, :label => 'length', input_html: { min: 5, max: 500, :step =>"2" }
       = f.input :width, :label => 'width', input_html: { min: 5, max: 500 }
       = f.input :height, :label => 'height', input_html: { min: 5, max: 500 }
@@ -98,7 +130,7 @@
 %hr
 %section.tags
   %h4
-    Tags
+    Tag your space with items great for storing...
   = f.text_field :tag_list
 %hr
 %section.description

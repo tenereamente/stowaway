@@ -1,9 +1,26 @@
-= f.input :title, required: true, autofocus: true, label: 'Give Your Space a Title'
+.row
+  .medium-3.column
+    %h4
+      Title
+      %sup
+        = link_to '#' , class: 'query' do
+          %i.icon-info-sign
+  .medium-9.column
+    = f.input :title, required: true, autofocus: true, label: 'Something descriptive and catchy'
+    - if @resource.created_at.nil?
+      = f.hint 'Choose a name the will standout'
 %hr
 .row
-  .large-3.column
-    %h4 Address
-  .large-9.column
+  .medium-3.column
+    %h4
+      Location
+    %p.small
+      For
+      %a beta
+      we are operational in
+      %a Maine only.
+
+  .medium-9.column
     = f.input :address1, required: true, label: 'street name & number'
     = f.input :address2, label: 'apt, floor, or suite'
     .row

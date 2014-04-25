@@ -24,24 +24,22 @@ button.large, .button.large {
 body .contain-to-grid .top-bar {
   li.abtn {
     margin: 0 .25em;
-    @media screen and (max-width: 680px) {
+    @media screen and (max-width: 320px) {
       float: left;
       width: 48%;
-      margin: 0 1%;
-    }
-    @media screen and (max-width: 320px) {
-      width: 100%;
+      margin-right: 2%;
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
     a.button {
-      padding: 1em;
+      padding: .75em;
       line-height: 1;
-      height: 3em;
+      height: 2.5em;
     }
   }
 }
 input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button {
-  padding: 1em;
-  font-size: 1em;
   border: 0 none;
   &:hover {
     cursor: pointer;

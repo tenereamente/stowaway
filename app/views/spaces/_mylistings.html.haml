@@ -8,8 +8,8 @@
         %i.icon-map-marker.pull-left
         #{s.normalized_address}
       %ul
-        = render 'spaces/detail/type'
-        = render 'spaces/detail/access'
+        = render 'spaces/detail/type', s: s
+        = render 'spaces/detail/access', s: s
 
     .small-12.large-4.column
       .well
@@ -18,7 +18,11 @@
           = succeed " / Month" do
             = h s.monthly_price
         - if can_edit_space?(s)
+          - if is_space_owner?(s)
+            - link_text = 'Edit Listing'
+          - else
+            - link_text = 'Admin Edit Listing'
           = link_to edit_space_path(s), {:class=>'button radius fullbtn warmish'} do
             %i{:class=>'icon-pencil'}
-            Edit Listing
+            = link_text
 

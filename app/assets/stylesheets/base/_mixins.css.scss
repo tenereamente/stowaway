@@ -5,6 +5,13 @@
     border-radius:         $radius;
 }
 
+/* BORDER ROUND */
+@mixin border-round($round) {
+    -moz-border-radius:    $round;
+    -webkit-border-radius: $round;
+    border-radius:         $round;
+}
+
 /* FONT FACE */
 
 @mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false ) {

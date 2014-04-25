@@ -1,10 +1,11 @@
-$small-screen: 30em;
-$medium-screen: 42em;
-$large-screen: 90em;
-
+$xs-screen: 20em;//320px
+$small-screen: 30em;//480px
+$medium-screen: 40em;//640px
+$tablet-screen: 48em;//768px
+$nav-toggle-screen: 58em;//768px
+$large-screen: 90em;//1440
 $em-base: 18 !default;
-
 $base-font: "Dosis";
 $alt-font: "Quicksand";
-
 $radius: .25em;
+$round: 100em;

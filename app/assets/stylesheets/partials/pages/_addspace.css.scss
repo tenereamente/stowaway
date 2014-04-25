@@ -4,7 +4,7 @@ $large-screen: 90em;
 
 body.spaces {
   &.index {
-    @media screen and (max-width: 50em) {
+    @media screen and (max-width: calc(41.947em)) {
       #content, aside {
         width: 100%;
       }
@@ -41,27 +41,84 @@ body.spaces {
     }
   }
   #main {
-    .where, .what {
+    .where, .what, .how {
       label {
         float: left;
+        padding: 1em;
+        transition: $transition;
+        &.checked {
+          background: red;
+        }
+        i {
+          display: block;
+          margin: 0 auto 1em;
+        }
       }
     }
     .where {
       label {
-        width: 48%;
+        width: 49%;
         &#indoor_button_label {
-          margin-right: 4%;
+          margin-right: 2%;
         }
       }
     }
-
     .what {
       &.indoor {
         label {
-          width: 22%;
-          margin-right: 4%;
+          width: 23.5%;
+          margin-right: 2%;
           &#basement_button_label {
             margin-right: 0;
+          }
+          @media screen and (max-width: $medium-screen) {
+            width: 49%;
+            &#garage_button_label {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      &.outdoor {
+        label {
+          width: 32%;
+          margin-right: 2%;
+          &#uncovered_area_button_label {
+            margin-right: 0;
+          }
+          @media screen and (max-width: $medium-screen) {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: .25em;
+            i {
+              display: inline;
+            }
+          }
+        }
+      }
+    }
+    .how {
+      label {
+        width: 32%;
+        margin-right: 2%;
+        &#onetime_button_label {
+          margin-right: 0;
+        }
+        @media screen and (max-width: $medium-screen) {
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: .25em;
+          i {
+            display: inline;
+          }
+        }
+      }
+      .features {
+        ul {
+          li {
+            @media screen and (max-width: $medium-screen) {
+              margin-bottom: .25em;
+            }
           }
         }
       }
