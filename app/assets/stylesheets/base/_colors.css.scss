@@ -129,11 +129,11 @@ $red: #D44B4E;
         color: lighten($base, 80);
         box-shadow: 0 3px 0 darken($base, 40);
         &:hover {
-          background-color: darken($base, 20);
+          background-color: lighten($base, 5);
         }
         &:active, &.active {
-          background-color: $tertiary;
-          box-shadow: inset 0 3px 0 darken($tertiary, 20);
+          background-color: darken($base,20);
+          box-shadow: inset 0 3px 0 darken($base, 30);
         }
       }
     }
