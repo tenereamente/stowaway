@@ -7,8 +7,6 @@
           %i.icon-info-sign
   .medium-9.column
     = f.input :title, required: true, autofocus: true, label: 'Something descriptive and catchy'
-    - if @resource.created_at.nil?
-      = f.hint 'Choose a name the will standout'
 %hr
 .row
   .medium-3.column
@@ -23,9 +21,5 @@
   .medium-9.column
     = f.input :address1, required: true, label: 'street name & number'
     = f.input :address2, label: 'apt, floor, or suite'
-    .row
-      .small-8.column
-        = f.input :city, required: true, label: 'city'
-      .small-4.column
-        = f.input :zip, required: true, label: 'zip code'
+    = f.input :city, required: true, label: 'city'
 

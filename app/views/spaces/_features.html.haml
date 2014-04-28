@@ -64,7 +64,7 @@
       %span
         = b.text
 
-%section.access#access_button_group{ style: display_style }
+%section.access.clearfix#access_button_group{ style: display_style }
   %h4
     - if @resource.created_at.nil?
       How's the access?
@@ -133,7 +133,7 @@
     Tag your space with items great for storing...
   = f.text_field :tag_list
 %hr
-%section.description
+%section.description.mb20
   %h3 Description
   = f.input :notes, :label => 'Tell us a bit about your space.'
 

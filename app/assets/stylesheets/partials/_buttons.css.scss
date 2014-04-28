@@ -118,3 +118,11 @@ $pagebg : #e7e6dd;
   &:after { top: -.625rem; }
   &:before { top: .625rem; }
 }
+
+.upload_img1, .upload_img2, .upload_img3, .upload_img4, .upload_img5 {
+  width: 100%;
+  border: 2px dotted;
+  @include border-radius($radius);
+  display: block;
+  text-align: center;
+}

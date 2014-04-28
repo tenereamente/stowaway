@@ -123,5 +123,22 @@ span.error {
   @include border-radius(0 0 $radius $radius);
   margin-top: -3px;
   font-family: $alt-font;
+}
 
+#space_address1 {
+  @include border-radius($radius $radius 0 0);
+}
+#space_address2 {
+  @include border-radius(0);
+  border-top: 0;
+  &:focus {
+    border-top: 1px;
+  }
+}
+#space_city {
+  @include border-radius(0 0 $radius $radius);
+  border-top: 0;
+  &:focus {
+    border-top: 1px;
+  }
 }

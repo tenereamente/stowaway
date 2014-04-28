@@ -1,9 +1,11 @@
 
-= simple_form_for(@resource, html: {class: 'form-vertical custom', id: 'list-space-step1' }) do |f|
+= simple_form_for(@resource, html: {class: 'form-vertical custom mb0', id: 'list-space-step1' }) do |f|
   %h2
     Edit:
     %strong
       #{@resource.title}
+  = f.button :submit, 'Update & Preview', class: 'show-for-small btn-primary fullbtn button greenie radius'
+
   .row
     .medium-8.columns
       = render partial: 'address', :locals => { f: f }
@@ -18,27 +20,48 @@
               = h @resource.monthly_price
 
         = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "5,500", 'data-slider-step' => '5', :value => @resource.monthly_price }
-      %ol.small-block-grid-3.large-block-grid-2.fitimg
-        %li
-          - if @resource.photo.exists?
-            = image_or_placeholder(@resource.photo)
-          = f.file_field :photo, class: 'btn radius'
-
-        %li
-          - if @resource.photo2.exists?
-            = image_or_placeholder(@resource.photo2)
-          = f.file_field :photo2
-        %li
-          - if @resource.photo3.exists?
-            = image_or_placeholder(@resource.photo3)
-          = f.file_field :photo3
-        %li
-          - if @resource.photo4.exists?
-            = image_or_placeholder(@resource.photo4)
-          = f.file_field :photo4
-        %li
-          - if @resource.photo5.exists?
-            = image_or_placeholder(@resource.photo5)
-          = f.file_field :photo5
+      #photos
+        %h4 Add Photos
+        %ul.clearing-thumbs
+          %li
+            - if @resource.photo.exists?
+              %a{:href => "#{@resource.photo}"}
+                = image_or_placeholder(@resource.photo)
+            - else
+              %a.upload_img1
+                %i.icon-plus
+            = f.file_field :photo, class: 'upload_field1', style: 'display: none'
+          %li
+            - if @resource.photo2.exists?
+              %a{:href => "#{@resource.photo2}"}
+                = image_or_placeholder(@resource.photo2)
+            - else
+              %a.upload_img2
+                %i.icon-plus
+            = f.file_field :photo2, class: 'upload_field2', style: 'display: none'
+          %li
+            - if @resource.photo3.exists?
+              %a{:href => "#{@resource.photo3}"}
+                = image_or_placeholder(@resource.photo3)
+            - else
+              %a.upload_img3
+                %i.icon-plus
+            = f.file_field :photo3, class: 'upload_field3', style: 'display: none'
+          %li
+            - if @resource.photo4.exists?
+              %a{:href => "#{@resource.photo4}"}
+                = image_or_placeholder(@resource.photo4)
+            - else
+              %a.upload_img4
+                %i.icon-plus
+            = f.file_field :photo4, class: 'upload_field4', style: 'display: none'
+          %li
+            - if @resource.photo5.exists?
+              %a{:href => "#{@resource.photo5}"}
+                = image_or_placeholder(@resource.photo5)
+            - else
+              %a.upload_img5
+                %i.icon-plus
+            = f.file_field :photo5, class: 'upload_field5', style: 'display: none'
       = f.button :submit, 'Update & Preview', class: 'btn-primary fullbtn button greenie radius'
-      #{link_to "Delete Listing", space_path(@resource), :class => 'button fullbtn btn-primary warning radius', :data => { :confirm => "Are you sure?" }, :method => :delete}
+      #{link_to "Delete Listing", space_path(@resource), :class => 'button fullbtn mb0 btn-primary warning radius', :data => { :confirm => "Are you sure?" }, :method => :delete}

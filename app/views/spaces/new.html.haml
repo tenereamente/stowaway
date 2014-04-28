@@ -1,4 +1,4 @@
-= simple_form_for(@resource, validate: true, html: {class: 'custom', id: 'list-space-step1', autocomplete: 'off' }) do |f|
+= simple_form_for(@resource, validate: true, html: {class: 'custom mb0', id: 'list-space-step1', autocomplete: 'off' }) do |f|
   %h2
     List a Space
     %sup (in or near Portland, ME.)
@@ -21,24 +21,47 @@
           %span
             Set Your Price
         = f.input :monthly_price, as: :text, label: false, input_html: { 'data-slider' => 'true', 'data-slider-range' => "0,500", 'data-slider-step' => '5', value: 50 }
-      %h4 Add Photos
-      %ul.small-block-grid-2.medium-block-grid-3.large-block-grid-2.fitimg
-        %li
-          = image_or_placeholder(@resource.photo)
-          = f.file_field :photo
-        %li
-          = image_or_placeholder(@resource.photo2)
-          = f.file_field :photo2
-        %li
-          = image_or_placeholder(@resource.photo3)
-          = f.file_field :photo3
-        %li
-          = image_or_placeholder(@resource.photo4)
-          = f.file_field :photo4
-        %li
-          = image_or_placeholder(@resource.photo5)
-          = f.file_field :photo5
-
-  = f.button :submit, 'Preview', :class => 'button-primary fullbtn greenie button radius'
-
-
+      #photos
+        %h4 Add Photos
+        %ul.clearing-thumbs
+          %li
+            - if @resource.photo.exists?
+              %a{:href => "#{@resource.photo}"}
+                = image_or_placeholder(@resource.photo)
+            - else
+              %a.upload_img1
+                %i.icon-plus
+            = f.file_field :photo2, class: 'upload_field1', style: 'display: none'
+          %li
+            - if @resource.photo2.exists?
+              %a{:href => "#{@resource.photo2}"}
+                = image_or_placeholder(@resource.photo2)
+            - else
+              %a.upload_img2
+                %i.icon-plus
+            = f.file_field :photo2, class: 'upload_field2', style: 'display: none'
+          %li
+            - if @resource.photo3.exists?
+              %a{:href => "#{@resource.photo3}"}
+                = image_or_placeholder(@resource.photo3)
+            - else
+              %a.upload_img3
+                %i.icon-plus
+            = f.file_field :photo3, class: 'upload_field3', style: 'display: none'
+          %li
+            - if @resource.photo4.exists?
+              %a{:href => "#{@resource.photo4}"}
+                = image_or_placeholder(@resource.photo4)
+            - else
+              %a.upload_img4
+                %i.icon-plus
+            = f.file_field :photo4, class: 'upload_field4', style: 'display: none'
+          %li
+            - if @resource.photo5.exists?
+              %a{:href => "#{@resource.photo5}"}
+                = image_or_placeholder(@resource.photo5)
+            - else
+              %a.upload_img5
+                %i.icon-plus
+            = f.file_field :photo5, class: 'upload_field5', style: 'display: none'
+      = f.button :submit, 'Preview Listing', :class => 'button-primary fullbtn greenie button radius'
