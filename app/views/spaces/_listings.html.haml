@@ -12,7 +12,8 @@
           #{s.title}
         %sup
           %i.icon-map-marker
-          #{s.city}, #{s.state}
+          #{s.city}
+          /, #{s.state}
           - if can_edit_space?(s)
             - if is_space_owner?(s)
               - link_text = 'Edit'

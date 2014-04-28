@@ -1,5 +1,3 @@
 %h2.title
-  Listed Spaces
-
-/= image_or_placeholder(@user.avatar)
-= render 'mylistings', locals: { 'spaces' => @spaces }
+  Your Listed Spaces
+= render 'listings', locals: { 'spaces' => @spaces }
