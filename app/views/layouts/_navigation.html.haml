@@ -4,14 +4,9 @@
       %li.name
         .logo
           = link_to "stowaway.co", root_path
-          %small.beta beta in portland, maine.
-      %li.toggle-topbar
-        %a.navicon-button{:href=>'#'}
-          %i.icon-reorder.icon-2x
+          %small.beta beta
     %section.top-bar-section
       %ul.right
-        %li.toggle-topbar
-          %a{:href => "#"}
         - if user_signed_in?
           %li.has-dropdown
             = link_to user_path(current_user), id: 'account' do
@@ -67,3 +62,5 @@
           %a.button.radius{:href => new_space_path}
             %i.icon-plus.icon-left.icon-muted
             %span List
+  %a.menu-link{:href=>'#menu'}
+    %i.icon-reorder.icon-2x

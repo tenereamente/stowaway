@@ -1,2 +1,2 @@
-$(".navicon-button").click ->
-  $(this).toggleClass "open"
+$(document).ready ->
+  $(".menu-link").bigSlide(side: 'right')

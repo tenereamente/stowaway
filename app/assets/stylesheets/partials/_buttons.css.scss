@@ -83,6 +83,10 @@ $pagebg : #e7e6dd;
   user-select: none;
   opacity: .8;
   text-indent: 0;
+  .open {
+    display: none;
+  }
+
   &:hover {
     opacity: 1;
 

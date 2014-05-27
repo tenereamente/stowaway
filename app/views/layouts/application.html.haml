@@ -10,14 +10,61 @@
         %link{ type: "text/css", rel: "stylesheet", href: "//fonts.googleapis.com/css?family=Quicksand:400,700|Open+Sans+Condensed:300,700|Dosis:300,400,500,600,700" }
         = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
-    = render 'layouts/navigation'
-    #main{:role => "main"}
-      .row
-        .columns
-          .box
-            = render 'layouts/messages'
-            = yield
-      #f_shiv
-    %footer#footer
-      = render 'layouts/footer'
-      / ! end of #container
+    .push
+      = render 'layouts/navigation'
+      #main{:role => "main"}
+        .row
+          .columns
+            .box
+              = render 'layouts/messages'
+              = yield
+        #f_shiv
+      %footer#footer
+        = render 'layouts/footer'
+        / ! end of #container
+    - if user_signed_in?
+      %nav#menu.panel.shade{role: 'navigation'}
+        %ul
+          %li.abtn
+            %a.button.radius.expand{:href => spaces_path}
+              %i.icon-search.icon-left.icon-muted
+              %span Find a Space
+          %li.abtn.last
+            %a.button.radius.expand{:href => new_space_path}
+              %i.icon-plus.icon-left.icon-muted
+              %span List a Space
+          %li.has-dropdown
+            = link_to user_path(current_user), id: 'account' do
+              = render 'layouts/avatar.small'
+              %span
+                = current_user.name
+            %ul.dropdown
+              %li
+                = link_to user_path(current_user) do
+                  %i.icon-dashboard
+                  Dashboard
+              %li
+                = link_to user_spaces_path(current_user) do
+                  %i.icon-tasks
+                  My Listings
+              %li
+                = link_to messages_path do
+                  %i.icon-envelope
+                  My Messages
+              %li
+                = link_to user_charges_path(current_user) do
+                  %i.icon-money
+                  My Charges
+              %li
+                = link_to edit_user_registration_path(current_user) do
+                  %i.icon-pencil
+                  Edit Profile
+              - if current_user.has_role? :admin
+                %li
+                  = link_to rails_admin_path do
+                    %i.icon-cogs
+                    Admin
+              %li
+                = link_to destroy_user_session_path, :method=>'delete' do
+                  %i.icon-power-off
+                  Sign Out

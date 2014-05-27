@@ -23,7 +23,6 @@
 @import "vendor/simple-slider-volume";
 
 @import "compass/layout/sticky-footer";
-
 @import "partials/pages/space";
 @import "partials/pages/addspace";
 
@@ -320,4 +319,8 @@ h2 {
       color: darken(white,.8);
     }
   }
+}
+
+.push {
+  position: relative;
 }

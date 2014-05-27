@@ -20,4 +20,3 @@
 $(function(){ $(document).foundation(); });
 
 window.ClientSideValidations.remote_validators_prefix = null;
-
