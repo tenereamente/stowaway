@@ -27,7 +27,7 @@
         .row
           %table
             %tbody
-              - @messages.each do |m|
+              - @sent_messages.each do |m|
                 %tr{ class: "sent" }
                   %td= link_to m.last_sender.name, message_path(m)
                   %td= link_to m.subject, message_path(m)
@@ -42,7 +42,7 @@
         .row
           %table
             %tbody
-              - @messages.each do |m|
+              - @trash_messages.each do |m|
                 %tr{ class: "trash" }
                   %td= link_to m.last_sender.name, message_path(m)
                   %td= link_to m.subject, message_path(m)

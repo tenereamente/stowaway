@@ -25,10 +25,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 class MessagesController < ApplicationController
   def index
-    @box = params[:box] || 'inbox'
-    @messages = current_user.mailbox.inbox if @box == 'inbox'
-    @messages = current_user.mailbox.sentbox if @box == 'sent'
-    @messages = current_user.mailbox.trash if @box == 'trash'
+    @messages = current_user.mailbox.inbox
+    @sent_messages = current_user.mailbox.sentbox
+    @trash_messages = current_user.mailbox.trash
     @inbox_thread_count = current_user.mailbox.inbox.count
     @sent_thread_count = current_user.mailbox.sentbox.count
     @trash_thread_count = current_user.mailbox.trash.count
