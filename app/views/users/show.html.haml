@@ -38,7 +38,7 @@
               #{s.city}, #{s.state}
               - if can_edit_space?(s)
                 |
-                = link_to edit_space_path(s), { :class=>'icon-btn has-tip', :title => 'Edit Your Listing' } do
+                = link_to edit_space_path(s), { :class=>'', :title => 'Edit Your Listing' } do
                   Edit
           %ul.features.clearfix
             - if s.environment? == "indoor"
