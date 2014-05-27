@@ -31,6 +31,7 @@ class MessagesController < ApplicationController
     @messages = current_user.mailbox.trash if @box == 'trash'
     @inbox_thread_count = current_user.mailbox.inbox.count
     @sent_thread_count = current_user.mailbox.sentbox.count
+    @trash_thread_count = current_user.mailbox.trash.count
   end
 
   def new
