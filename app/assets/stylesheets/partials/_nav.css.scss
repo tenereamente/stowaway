@@ -43,16 +43,6 @@
         }
       }
       li {
-        @media screen and (max-width: $medium-screen) {
-          &.abtn {
-            width: 48%;
-            margin-right: 2%;
-            float: left;
-          }
-          &.last {
-            margin-right: 0;
-          }
-        }
         a {
           font-size: emCalc(18);
           &:not(.button) {
@@ -60,9 +50,6 @@
             padding: 0 .5em;
           }
           &#account {
-            @media screen and (max-width: $medium-screen) {
-              margin: 0 0 .75em 0;
-            }
             img {
               @include border-round($round);
               margin-right: .5em;
@@ -76,7 +63,6 @@
         .dropdown {
           padding: 0 .5em .5em;
           border-radius: 0 0 $radius $radius;
-          @include transition(all);
           li {
             a {
               padding: .5em;
@@ -97,8 +83,33 @@ nav#menu {
     position: fixed;
     right: -15.625em; /*left or right and the width of your navigation panel*/
     width: 15.625em; /*should match the above value*/
+    #account {
+      margin-bottom: .5em;
+      img {
+        @include border-round($round);
+        width: 30px;
+        height: 30px;
+        margin-right: 1em;
+      }
+    }
     ul.dropdown {
       margin-left: 0;
+      a {
+        display: block;
+        line-height: 2;
+        margin-bottom: .5em;
+        i {
+          margin-right: 1em;
+          padding: .25em;
+          @include border-round($round);
+          border: 1px solid;
+          width: 30px;
+          height: 30px;
+          display: inline-block;
+          text-align:center;
+          line-height: 21px;
+        }
+      }
     }
   }
 }
