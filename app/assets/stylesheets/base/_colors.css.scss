@@ -28,6 +28,11 @@ $red: #D44B4E;
   }
   #menu.panel {
     border: 0;
+    a {
+      &:hover {
+        color: $tertiary;
+      }
+    }
   }
   .feature-icons {
     li {
@@ -147,7 +152,7 @@ $red: #D44B4E;
     }
   }
   .contain-to-grid {
-    background: darken($base, 50);
+    background: rgba(darken($base, 60),.8);
     .top-bar {
       background: none;
       .top-bar-section .has-dropdown {
@@ -288,6 +293,9 @@ $red: #D44B4E;
     background-color: lighten($accent, 40);
     border: solid 1px $accent;
     color: $accent;
+  }
+  .menu-link:hover, .menu-link:active  {
+    color: $tertiary;
   }
 
 }

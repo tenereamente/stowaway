@@ -50,6 +50,7 @@
             padding: 0 .5em;
           }
           &#account {
+            display: block;
             img {
               @include border-round($round);
               margin-right: .5em;
@@ -85,6 +86,7 @@ nav#menu {
     width: 15.625em; /*should match the above value*/
     #account {
       margin-bottom: .5em;
+      display: block;
       img {
         @include border-round($round);
         width: 30px;
@@ -115,11 +117,14 @@ nav#menu {
 }
 .menu-link {
   display: none;
+  font-size: 1.5em;
+  @include transition(all);
   @media screen and (max-width: $tablet-screen) {
     display: inline-block!important;
     position: absolute;
-    top: 1em;
-    right: 1em;
+    top: .25em;
+    right: .25em;
+    padding: .5em;
   }
 }
 @media screen and (max-width: $tablet-screen) {

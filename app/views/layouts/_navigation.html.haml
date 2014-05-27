@@ -21,15 +21,15 @@
               %li
                 = link_to user_spaces_path(current_user) do
                   %i.icon-tasks
-                  My Listings
+                  Listings
               %li
                 = link_to messages_path do
                   %i.icon-envelope
-                  My Messages
+                  Messages
               %li
                 = link_to user_charges_path(current_user) do
                   %i.icon-money
-                  My Charges
+                  Charges
               %li
                 = link_to edit_user_registration_path(current_user) do
                   %i.icon-pencil
@@ -63,4 +63,4 @@
             %i.icon-plus.icon-left.icon-muted
             %span List
   %a.menu-link{:href=>'#'}
-    %i.icon-reorder.icon-2x
+    %i.icon-reorder
