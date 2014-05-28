@@ -88,55 +88,54 @@
         %li.last
           %a{:href => "#{@space.photo4}"}
             = image_or_placeholder(@space.photo4)
-    .panel
-      .row
-        .large-7.columns
-          %p
-            = @space.notes
-        .large-5.columns
-          %table
-            %tbody
+    .row
+      .large-7.columns
+        %p
+          = @space.notes
+      .large-5.columns
+        %table
+          %tbody
+            %tr
+              %td Space Type:
+              %td.value
+                - if @space.type == "attic"
+                  Attic
+                - elsif @space.type == "spare_room"
+                  Spare Room
+                - elsif @space.type == "garage"
+                  Garage
+                - elsif @space.type == "basement"
+                  Basement
+                - elsif @space.type == "covered"
+                  Covered Area
+                - elsif @space.type == "uncovered"
+                  Uncovered Area
+                - elsif @space.type == "driveway"
+                  Driveway
+            %tr
+              %td Access:
+              %td.value
+                - if @space.access == "anytime"
+                  Anytime
+                - elsif @space.access == "appointment"
+                  Appointment
+                - elsif @space.access == "limited"
+                  Limited
+            - if @space.climate_controlled?
               %tr
-                %td Space Type:
+                %td Climate Control:
                 %td.value
-                  - if @space.type == "attic"
-                    Attic
-                  - elsif @space.type == "spare_room"
-                    Spare Room
-                  - elsif @space.type == "garage"
-                    Garage
-                  - elsif @space.type == "basement"
-                    Basement
-                  - elsif @space.type == "covered"
-                    Covered Area
-                  - elsif @space.type == "uncovered"
-                    Uncovered Area
-                  - elsif @space.type == "driveway"
-                    Driveway
+                  %i.icon-check
+            - if @space.lockable?
               %tr
-                %td Access:
+                %td Lockable:
                 %td.value
-                  - if @space.access == "anytime"
-                    Anytime
-                  - elsif @space.access == "appointment"
-                    Appointment
-                  - elsif @space.access == "limited"
-                    Limited
-              - if @space.climate_controlled?
-                %tr
-                  %td Climate Control:
-                  %td.value
-                    %i.icon-check
-              - if @space.lockable?
-                %tr
-                  %td Lockable:
-                  %td.value
-                    %i.icon-check
-              - if @space.attended?
-                %tr
-                  %td Attended:
-                  %td.value
-                    %i.icon-check
+                  %i.icon-check
+            - if @space.attended?
+              %tr
+                %td Attended:
+                %td.value
+                  %i.icon-check
     - if @space.tags.any?
       %blockquote
         %i.icon-lightbulb.pull-left
@@ -151,7 +150,7 @@
         %ul
           - unless @space.complete
             %li
-              Done with describing your space?
+              %p Done with describing your space?
               = simple_form_for @space do |f|
                 = f.hidden_field :complete, :value => true
                 = f.hidden_field :available, :value => true
@@ -160,19 +159,19 @@
                   Looks good, list it!
           %li
             - if @space.available and @space.complete
-              Is your space full for now?
+              %p Is your space full for now?
               = simple_form_for @space do |f|
                 = f.hidden_field :available, :value => false
                 = button_tag(type: 'submit', class: 'btn-primary fullbtn button standard radius') do
                   %i{:class=>'icon-thumbs-down'}
                   Make unavailable
             - elsif @space.complete
-              Mark your space as available again?
+              %p Is your space available?
               = simple_form_for @space do |f|
                 = f.hidden_field :available, :value => true
-                = button_tag(type: 'submit', class: 'btn-primary fullbtn button standard radius') do
+                = button_tag(type: 'submit', class: 'btn-primary fullbtn button greenie radius') do
                   %i{:class => 'icon-thumbs-up'}
-                  Make available.
+                  Make available
       - else
         %a.button.radius.fullbtn.greenie{id: 'space-inquiry', :href => "#", "data-reveal-id" => "inquiryModal"}
           %i.icon-message
@@ -184,7 +183,7 @@
         %h3
           = @space.user.name
       %p.small.text-center.mb20 Space Owner
-#inquiryModal.reveal-modal
+#inquiryModal.reveal-modal.medium
   %h2
     Inquire about #{@space.title}
   = simple_form_for Message.new do |f|
@@ -197,7 +196,7 @@
         #{@space.user.name}
     = f.input :avatar, as: :hidden, input_html: { value: @space.user.avatar.url(:thumb)}
     %label Re:
-    = f.input :subject, input_label: "Re:", input_html: { value: "I would like to inquire about #{@space.title}" }
-    = f.input_field :body, as: :text, label: 'Message'
+    = f.input :subject, input_label: "Re:", input_html: { value: "I would like to inquire about storage." }
+    %label Your Message
+    = f.input_field :body, as: :text
     = f.button :submit, 'Send', class: "button fullbtn radius"
-

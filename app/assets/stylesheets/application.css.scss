@@ -25,6 +25,7 @@
 @import "compass/layout/sticky-footer";
 @import "partials/pages/space";
 @import "partials/pages/addspace";
+@import "partials/pages/messages";
 
 @include sticky-footer(5.188em, "#main", "#f_shiv", "#footer");
 

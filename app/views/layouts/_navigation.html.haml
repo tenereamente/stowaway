@@ -27,10 +27,6 @@
                   %i.icon-envelope
                   Messages
               %li
-                = link_to user_charges_path(current_user) do
-                  %i.icon-money
-                  Charges
-              %li
                 = link_to edit_user_registration_path(current_user) do
                   %i.icon-pencil
                   Edit Profile
@@ -46,14 +42,8 @@
         - else
           %li
             = link_to 'Sign up', new_user_registration_path
-
-        %li.has-dropdown
+        %li
           = link_to 'Help', 'http://stowaway.uservoice.com/'
-          %ul.dropdown
-            %li
-              = link_to 'FAQ', 'http://stowaway.uservoice.com/'
-            %li
-              = link_to 'Terms', terms_path
         %li.abtn
           %a.button.radius{:href => spaces_path}
             %i.icon-search.icon-left.icon-muted

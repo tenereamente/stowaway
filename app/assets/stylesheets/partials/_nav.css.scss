@@ -80,6 +80,7 @@
   }
 }
 nav#menu {
+  @include border-radius(0);
   &.panel {
     position: fixed;
     right: -15.625em; /*left or right and the width of your navigation panel*/

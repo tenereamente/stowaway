@@ -2,9 +2,6 @@
   .medium-3.column
     %h4
       Title
-      %sup
-        = link_to '#' , class: 'query' do
-          %i.icon-info-sign
   .medium-9.column
     = f.input :title, required: true, autofocus: true, label: 'Something descriptive and catchy'
 %hr
@@ -13,12 +10,13 @@
     %h4
       Location
     %p.small
-      For
-      %a beta
-      we are operational in
-      %a Maine only.
+      For now, we are operating only in Maine.
 
   .medium-9.column
     = f.input :address1, required: true, label: 'street name & number'
     = f.input :address2, label: 'apt, floor, or suite'
-    = f.input :city, required: true, label: 'city'
+    .row
+      .medium-6.column
+        = f.input :city, required: true, label: 'city'
+      .medium-6.column
+        = f.input :zip, required: true, label: 'zip code'

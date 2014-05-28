@@ -1,6 +1,6 @@
 = form_tag messages_path, method: :delete do
   = hidden_field_tag 'current_box', @box
-  .section-container.vertical-tabs{ data: { section: "vertical-tabs" } }
+  .section-container.vertical-tabs#mailboxes{ data: { section: "vertical-tabs" } }
     %section.active
       %p.title{ data: { "section-title" => true } }
         = link_to '#inbox' do
@@ -8,15 +8,14 @@
           Inbox
           %sup.badge (#{@inbox_thread_count})
       .content{ data: { "section-content" => true } }
-        .row
-          %table
-            %tbody
-              - @messages.each do |m|
-                %tr{ class: "#{ 'unread' if m.is_unread?(current_user) }" }
-                  %td= link_to m.last_sender.name, message_path(m)
-                  %td= link_to m.subject, message_path(m)
-                  %td= link_to m.count_messages, message_path(m)
-                  %td= link_to truncate(m.last_message.body), message_path(m)
+        %table
+          %tbody
+            - @messages.each do |m|
+              %tr{ class: "#{ 'unread' if m.is_unread?(current_user) }" }
+                %td= link_to m.last_sender.name, message_path(m)
+                %td= link_to m.subject, message_path(m)
+                %td= link_to m.count_messages, message_path(m)
+                %td= link_to truncate(m.last_message.body), message_path(m)
     %section
       %p.title{ data: { 'section-title' => true } }
         = link_to '#sent' do
@@ -24,27 +23,25 @@
           Sent
           %sup.badge (#{@sent_thread_count})
       .content{ data: { "section-content" => true } }
-        .row
-          %table
-            %tbody
-              - @sent_messages.each do |m|
-                %tr{ class: "sent" }
-                  %td= link_to m.last_sender.name, message_path(m)
-                  %td= link_to m.subject, message_path(m)
-                  %td= link_to m.count_messages, message_path(m)
-                  %td= link_to truncate(m.last_message.body), message_path(m)
+        %table
+          %tbody
+            - @sent_messages.each do |m|
+              %tr{ class: "sent" }
+                %td= link_to m.last_sender.name, message_path(m)
+                %td= link_to m.subject, message_path(m)
+                %td= link_to m.count_messages, message_path(m)
+                %td= link_to truncate(m.last_message.body), message_path(m)
     %section
       %p.title{ data: { "section-title" => true } }
         = link_to '#trash' do
           %i.ico-remove
           Trash
       .content{ data: { "section-content" => true } }
-        .row
-          %table
-            %tbody
-              - @trash_messages.each do |m|
-                %tr{ class: "trash" }
-                  %td= link_to m.last_sender.name, message_path(m)
-                  %td= link_to m.subject, message_path(m)
-                  %td= link_to m.count_messages, message_path(m)
-                  %td= link_to truncate(m.last_message.body), message_path(m)
+        %table
+          %tbody
+            - @trash_messages.each do |m|
+              %tr{ class: "trash" }
+                %td= link_to m.last_sender.name, message_path(m)
+                %td= link_to m.subject, message_path(m)
+                %td= link_to m.count_messages, message_path(m)
+                %td= link_to truncate(m.last_message.body), message_path(m)

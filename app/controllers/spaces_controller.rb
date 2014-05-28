@@ -76,7 +76,7 @@ class SpacesController < ApplicationController
     unless can_edit_space?(@space)
       redirect_to space_path(@space), :error => "Don't have permission to edit this space"
     end
-    
+
     if @space.update_attributes(space_params)
       # if this was an update flipping a space to completed status,
       # trigger a customer.io event notification so that the user
@@ -87,7 +87,7 @@ class SpacesController < ApplicationController
         image_count = @space.get_photo_count
         $customerio.track(current_user.id, "listed_space_confirmation", listing_url: listing_url, listing_title: listing_title, listing_image_count: image_count)
       end
-      redirect_to space_path(@space), :notice => "Space updated."
+      redirect_to space_path(@space)
     else
       redirect_to edit_space_path(@space), :alert => "Unable to update space."
     end
